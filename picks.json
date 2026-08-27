@@ -1,0 +1,39 @@
+{
+  "updated": "2026-08-27 07:30 EDT",
+  "unit_dollars": 50,
+  "season": 2026,
+  "ytd": {
+    "ml": {"bets": 54, "wr": 0.630, "units": 11.6, "rule": "Edge vs open ≥ 7%, cap −180"},
+    "rl": {"bets": 35, "wr": 0.771, "units": 30.7, "rule": "+1.5 dog, juice −130 to +170, edge ≥ 3%"},
+    "ou": {"bets": 46, "wr": 0.609, "units": 7.5, "rule": "|p − 52.4%| ≥ 4%"},
+    "stacked_units": 49.8
+  },
+  "locks": [
+    {"market": "ML", "rule": "Edge vs open ≥ 7%. Cap −180. 1u at close. No tight-ump filter."},
+    {"market": "RL", "rule": "+1.5 dog only. Juice −130 to +170. Edge ≥ 3%. Never the −1.5 favorite."},
+    {"market": "OU", "rule": "Bet over or under when |p − 52.4%| ≥ 4%. Skip pushes. 1u."}
+  ],
+  "slate_date": "2026-08-27",
+  "slate": [
+    {"time": "1:05 PM", "away": "COL", "home": "WSH", "ml_away": "+111", "ml_home": "−119", "note": "Nationals Park"},
+    {"time": "2:15 PM", "away": "BAL", "home": "STL", "ml_away": "−114", "ml_home": "+106", "note": "T. Rogers vs Undecided"},
+    {"time": "7:05 PM", "away": "HOU", "home": "NYY", "ml_away": "+135", "ml_home": "−163", "note": "Yankee Stadium"},
+    {"time": "7:07 PM", "away": "KC", "home": "TOR", "ml_away": "", "ml_home": "", "note": "Rogers Centre"},
+    {"time": "7:10 PM", "away": "MIL", "home": "NYM", "ml_away": "", "ml_home": "", "note": "Citi Field"},
+    {"time": "7:15 PM", "away": "LAD", "home": "ATL", "ml_away": "", "ml_home": "", "note": "FS1 · Truist Park"},
+    {"time": "9:45 PM", "away": "ARI", "home": "SF", "ml_away": "", "ml_home": "", "note": "Oracle Park"}
+  ],
+  "picks": [],
+  "picks_status": "No lock fired yet. Slate is loaded. Need opening lines + model pass before a 1u ticket posts.",
+  "recent": [
+    {"date": "08-22", "game": "STL @ PHI", "market": "OU", "side": "Under 9.0", "result": "L", "units": -1.0},
+    {"date": "08-19", "game": "SD @ NYM", "market": "RL", "side": "SD +1.5", "result": "L", "units": -1.0},
+    {"date": "08-19", "game": "MIA @ PHI", "market": "RL", "side": "MIA +1.5", "result": "L", "units": -1.0},
+    {"date": "08-18", "game": "SF @ CLE", "market": "OU", "side": "Under 8.5", "result": "L", "units": -1.0},
+    {"date": "08-16", "game": "KC @ LAA", "market": "ML", "side": "KC −120", "result": "W", "units": 0.83},
+    {"date": "08-16", "game": "KC @ LAA", "market": "OU", "side": "Under 8.5", "result": "W", "units": 0.91},
+    {"date": "08-16", "game": "BOS @ PIT", "market": "RL", "side": "PIT −1.5", "result": "W", "units": 0.57},
+    {"date": "08-15", "game": "ARI @ ATL", "market": "ML", "side": "ARI +120", "result": "W", "units": 1.20},
+    {"date": "08-15", "game": "MIL @ LAD", "market": "ML", "side": "MIL −122", "result": "W", "units": 0.82}
+  ]
+}

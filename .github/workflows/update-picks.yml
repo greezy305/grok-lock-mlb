@@ -1,0 +1,49 @@
+name: Update picks
+
+on:
+  workflow_dispatch:
+    inputs:
+      picks_json:
+        description: "Full picks.json body (leave blank to only bump timestamp)"
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAGES_PUSH }}
+
+      - name: Write picks.json
+        env:
+          BODY: ${{ inputs.picks_json }}
+        run: |
+          if [ -n "$BODY" ]; then
+            printf '%s\n' "$BODY" > picks.json
+            python3 -m json.tool picks.json > /dev/null
+          else
+            python3 - <<'PY'
+          import json, datetime
+          from pathlib import Path
+          p = Path("picks.json")
+          data = json.loads(p.read_text()) if p.exists() else {}
+          data["updated"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+          p.write_text(json.dumps(data, indent=2) + "\n")
+          PY
+          fi
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add picks.json
+          git diff --cached --quiet && echo "No change" && exit 0
+          git commit -m "chore: update picks.json"
+          git push

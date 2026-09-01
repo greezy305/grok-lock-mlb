@@ -1,39 +1,259 @@
 {
-  "updated": "2026-08-27 07:30 EDT",
+  "updated": "2026-08-31 23:06 ET",
   "unit_dollars": 50,
   "season": 2026,
+  "book": "hardrockbet",
   "ytd": {
-    "ml": {"bets": 54, "wr": 0.630, "units": 11.6, "rule": "Edge vs open ≥ 7%, cap −180"},
-    "rl": {"bets": 35, "wr": 0.771, "units": 30.7, "rule": "+1.5 dog, juice −130 to +170, edge ≥ 3%"},
-    "ou": {"bets": 46, "wr": 0.609, "units": 7.5, "rule": "|p − 52.4%| ≥ 4%"},
+    "ml": {
+      "bets": 54,
+      "wr": 0.63,
+      "units": 11.6
+    },
+    "rl": {
+      "bets": 35,
+      "wr": 0.771,
+      "units": 30.7
+    },
+    "ou": {
+      "bets": 46,
+      "wr": 0.609,
+      "units": 7.5
+    },
     "stacked_units": 49.8
   },
   "locks": [
-    {"market": "ML", "rule": "Edge vs open ≥ 7%. Cap −180. 1u at close. No tight-ump filter."},
-    {"market": "RL", "rule": "+1.5 dog only. Juice −130 to +170. Edge ≥ 3%. Never the −1.5 favorite."},
-    {"market": "OU", "rule": "Bet over or under when |p − 52.4%| ≥ 4%. Skip pushes. 1u."}
+    {
+      "market": "ML",
+      "rule": "Edge vs open >= 7%. Cap -180. Hard Rock Bet FL."
+    },
+    {
+      "market": "RL",
+      "rule": "+1.5 dog only. Juice -130 to +170."
+    },
+    {
+      "market": "OU",
+      "rule": "|P(over) - 52.4%| >= 4%. Skip pushes. 1u."
+    }
   ],
-  "slate_date": "2026-08-27",
+  "slate_date": "2026-08-31",
   "slate": [
-    {"time": "1:05 PM", "away": "COL", "home": "WSH", "ml_away": "+111", "ml_home": "−119", "note": "Nationals Park"},
-    {"time": "2:15 PM", "away": "BAL", "home": "STL", "ml_away": "−114", "ml_home": "+106", "note": "T. Rogers vs Undecided"},
-    {"time": "7:05 PM", "away": "HOU", "home": "NYY", "ml_away": "+135", "ml_home": "−163", "note": "Yankee Stadium"},
-    {"time": "7:07 PM", "away": "KC", "home": "TOR", "ml_away": "", "ml_home": "", "note": "Rogers Centre"},
-    {"time": "7:10 PM", "away": "MIL", "home": "NYM", "ml_away": "", "ml_home": "", "note": "Citi Field"},
-    {"time": "7:15 PM", "away": "LAD", "home": "ATL", "ml_away": "", "ml_home": "", "note": "FS1 · Truist Park"},
-    {"time": "9:45 PM", "away": "ARI", "home": "SF", "ml_away": "", "ml_home": "", "note": "Oracle Park"}
+    {
+      "time": "8:11 PM ET",
+      "away": "Chicago White Sox",
+      "home": "Houston Astros",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "8:42 PM ET",
+      "away": "Baltimore Orioles",
+      "home": "Colorado Rockies",
+      "ml_away": "-130",
+      "ml_home": "+100",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "9:38 PM ET",
+      "away": "New York Yankees",
+      "home": "Los Angeles Angels",
+      "ml_away": "+600",
+      "ml_home": "-1000",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "9:41 PM ET",
+      "away": "Philadelphia Phillies",
+      "home": "Arizona Diamondbacks",
+      "ml_away": "-165",
+      "ml_home": "+125",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "6:41 PM ET",
+      "away": "San Diego Padres",
+      "home": "Cincinnati Reds",
+      "ml_away": "-130",
+      "ml_home": "+120",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "6:41 PM ET",
+      "away": "Toronto Blue Jays",
+      "home": "Cleveland Guardians",
+      "ml_away": "+160",
+      "ml_home": "-170",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "6:41 PM ET",
+      "away": "New York Mets",
+      "home": "Tampa Bay Rays",
+      "ml_away": "+115",
+      "ml_home": "-125",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "6:41 PM ET",
+      "away": "San Francisco Giants",
+      "home": "Pittsburgh Pirates",
+      "ml_away": "+140",
+      "ml_home": "-150",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "6:46 PM ET",
+      "away": "Atlanta Braves",
+      "home": "Washington Nationals",
+      "ml_away": "-160",
+      "ml_home": "+150",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "6:46 PM ET",
+      "away": "Seattle Mariners",
+      "home": "Boston Red Sox",
+      "ml_away": "+105",
+      "ml_home": "-115",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "7:41 PM ET",
+      "away": "Milwaukee Brewers",
+      "home": "Chicago Cubs",
+      "ml_away": "+110",
+      "ml_home": "-120",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "7:41 PM ET",
+      "away": "Detroit Tigers",
+      "home": "Minnesota Twins",
+      "ml_away": "-115",
+      "ml_home": "+105",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "7:41 PM ET",
+      "away": "Miami Marlins",
+      "home": "Kansas City Royals",
+      "ml_away": "+105",
+      "ml_home": "-115",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "8:06 PM ET",
+      "away": "Athletics",
+      "home": "Texas Rangers",
+      "ml_away": "+165",
+      "ml_home": "-175",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "8:41 PM ET",
+      "away": "Baltimore Orioles",
+      "home": "Colorado Rockies",
+      "ml_away": "-135",
+      "ml_home": "+125",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "9:39 PM ET",
+      "away": "New York Yankees",
+      "home": "Los Angeles Angels",
+      "ml_away": "-170",
+      "ml_home": "+160",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "9:41 PM ET",
+      "away": "Philadelphia Phillies",
+      "home": "Arizona Diamondbacks",
+      "ml_away": "-130",
+      "ml_home": "+120",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "10:11 PM ET",
+      "away": "St. Louis Cardinals",
+      "home": "Los Angeles Dodgers",
+      "ml_away": "+160",
+      "ml_home": "-170",
+      "note": "hardrockbet"
+    }
   ],
-  "picks": [],
-  "picks_status": "No lock fired yet. Slate is loaded. Need opening lines + model pass before a 1u ticket posts.",
-  "recent": [
-    {"date": "08-22", "game": "STL @ PHI", "market": "OU", "side": "Under 9.0", "result": "L", "units": -1.0},
-    {"date": "08-19", "game": "SD @ NYM", "market": "RL", "side": "SD +1.5", "result": "L", "units": -1.0},
-    {"date": "08-19", "game": "MIA @ PHI", "market": "RL", "side": "MIA +1.5", "result": "L", "units": -1.0},
-    {"date": "08-18", "game": "SF @ CLE", "market": "OU", "side": "Under 8.5", "result": "L", "units": -1.0},
-    {"date": "08-16", "game": "KC @ LAA", "market": "ML", "side": "KC −120", "result": "W", "units": 0.83},
-    {"date": "08-16", "game": "KC @ LAA", "market": "OU", "side": "Under 8.5", "result": "W", "units": 0.91},
-    {"date": "08-16", "game": "BOS @ PIT", "market": "RL", "side": "PIT −1.5", "result": "W", "units": 0.57},
-    {"date": "08-15", "game": "ARI @ ATL", "market": "ML", "side": "ARI +120", "result": "W", "units": 1.20},
-    {"date": "08-15", "game": "MIL @ LAD", "market": "ML", "side": "MIL −122", "result": "W", "units": 0.82}
-  ]
+  "picks": [
+    {
+      "market": "OU",
+      "away": "Chicago White Sox",
+      "home": "Houston Astros",
+      "side": "Over 9.5",
+      "time": "8:11 PM ET",
+      "edge": "juice 25.0%",
+      "units": "1u",
+      "note": "hardrockbet"
+    },
+    {
+      "market": "OU",
+      "away": "Chicago White Sox",
+      "home": "Houston Astros",
+      "side": "Under 9.5",
+      "time": "8:11 PM ET",
+      "edge": "juice 81.8%",
+      "units": "1u",
+      "note": "hardrockbet"
+    },
+    {
+      "market": "OU",
+      "away": "Philadelphia Phillies",
+      "home": "Arizona Diamondbacks",
+      "side": "Over 6.5",
+      "time": "9:41 PM ET",
+      "edge": "juice 60.8%",
+      "units": "1u",
+      "note": "hardrockbet"
+    },
+    {
+      "market": "OU",
+      "away": "Philadelphia Phillies",
+      "home": "Arizona Diamondbacks",
+      "side": "Under 6.5",
+      "time": "9:41 PM ET",
+      "edge": "juice 45.5%",
+      "units": "1u",
+      "note": "hardrockbet"
+    },
+    {
+      "market": "RL",
+      "away": "Athletics",
+      "home": "Texas Rangers",
+      "side": "Athletics +1.5 -130",
+      "time": "8:06 PM ET",
+      "edge": "HR +1.5 dog",
+      "units": "1u",
+      "note": "hardrockbet"
+    },
+    {
+      "market": "OU",
+      "away": "Baltimore Orioles",
+      "home": "Colorado Rockies",
+      "side": "Over 11.5",
+      "time": "8:41 PM ET",
+      "edge": "juice 47.6%",
+      "units": "1u",
+      "note": "hardrockbet"
+    },
+    {
+      "market": "OU",
+      "away": "St. Louis Cardinals",
+      "home": "Los Angeles Dodgers",
+      "side": "Under 8.5",
+      "time": "10:11 PM ET",
+      "edge": "juice 47.6%",
+      "units": "1u",
+      "note": "hardrockbet"
+    }
+  ],
+  "picks_status": "7 ticket(s) \u00b7 hardrockbet",
+  "recent": []
 }

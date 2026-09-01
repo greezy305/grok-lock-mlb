@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-31 23:06 ET",
+  "updated": "2026-09-01 14:05 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -35,78 +35,46 @@
       "rule": "|P(over) - 52.4%| >= 4%. Skip pushes. 1u."
     }
   ],
-  "slate_date": "2026-08-31",
+  "slate_date": "2026-09-01",
   "slate": [
-    {
-      "time": "8:11 PM ET",
-      "away": "Chicago White Sox",
-      "home": "Houston Astros",
-      "ml_away": "",
-      "ml_home": "",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "8:42 PM ET",
-      "away": "Baltimore Orioles",
-      "home": "Colorado Rockies",
-      "ml_away": "-130",
-      "ml_home": "+100",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "9:38 PM ET",
-      "away": "New York Yankees",
-      "home": "Los Angeles Angels",
-      "ml_away": "+600",
-      "ml_home": "-1000",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "9:41 PM ET",
-      "away": "Philadelphia Phillies",
-      "home": "Arizona Diamondbacks",
-      "ml_away": "-165",
-      "ml_home": "+125",
-      "note": "hardrockbet"
-    },
     {
       "time": "6:41 PM ET",
       "away": "San Diego Padres",
       "home": "Cincinnati Reds",
-      "ml_away": "-130",
-      "ml_home": "+120",
+      "ml_away": "-140",
+      "ml_home": "+115",
       "note": "hardrockbet"
     },
     {
       "time": "6:41 PM ET",
       "away": "Toronto Blue Jays",
       "home": "Cleveland Guardians",
-      "ml_away": "+160",
-      "ml_home": "-170",
+      "ml_away": "+155",
+      "ml_home": "-190",
       "note": "hardrockbet"
     },
     {
       "time": "6:41 PM ET",
       "away": "New York Mets",
       "home": "Tampa Bay Rays",
-      "ml_away": "+115",
-      "ml_home": "-125",
+      "ml_away": "+110",
+      "ml_home": "-135",
       "note": "hardrockbet"
     },
     {
       "time": "6:41 PM ET",
       "away": "San Francisco Giants",
       "home": "Pittsburgh Pirates",
-      "ml_away": "+140",
-      "ml_home": "-150",
+      "ml_away": "+145",
+      "ml_home": "-170",
       "note": "hardrockbet"
     },
     {
       "time": "6:46 PM ET",
       "away": "Atlanta Braves",
       "home": "Washington Nationals",
-      "ml_away": "-160",
-      "ml_home": "+150",
+      "ml_away": "-190",
+      "ml_home": "+155",
       "note": "hardrockbet"
     },
     {
@@ -114,7 +82,7 @@
       "away": "Seattle Mariners",
       "home": "Boston Red Sox",
       "ml_away": "+105",
-      "ml_home": "-115",
+      "ml_home": "-125",
       "note": "hardrockbet"
     },
     {
@@ -122,46 +90,54 @@
       "away": "Milwaukee Brewers",
       "home": "Chicago Cubs",
       "ml_away": "+110",
-      "ml_home": "-120",
+      "ml_home": "-130",
       "note": "hardrockbet"
     },
     {
       "time": "7:41 PM ET",
       "away": "Detroit Tigers",
       "home": "Minnesota Twins",
-      "ml_away": "-115",
-      "ml_home": "+105",
+      "ml_away": "-110",
+      "ml_home": "-110",
       "note": "hardrockbet"
     },
     {
       "time": "7:41 PM ET",
       "away": "Miami Marlins",
       "home": "Kansas City Royals",
-      "ml_away": "+105",
-      "ml_home": "-115",
+      "ml_away": "+100",
+      "ml_home": "-120",
       "note": "hardrockbet"
     },
     {
       "time": "8:06 PM ET",
       "away": "Athletics",
       "home": "Texas Rangers",
-      "ml_away": "+165",
-      "ml_home": "-175",
+      "ml_away": "+185",
+      "ml_home": "-225",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "8:11 PM ET",
+      "away": "Chicago White Sox",
+      "home": "Houston Astros",
+      "ml_away": "-110",
+      "ml_home": "-110",
       "note": "hardrockbet"
     },
     {
       "time": "8:41 PM ET",
       "away": "Baltimore Orioles",
       "home": "Colorado Rockies",
-      "ml_away": "-135",
-      "ml_home": "+125",
+      "ml_away": "-155",
+      "ml_home": "+130",
       "note": "hardrockbet"
     },
     {
       "time": "9:39 PM ET",
       "away": "New York Yankees",
       "home": "Los Angeles Angels",
-      "ml_away": "-170",
+      "ml_away": "-195",
       "ml_home": "+160",
       "note": "hardrockbet"
     },
@@ -169,8 +145,8 @@
       "time": "9:41 PM ET",
       "away": "Philadelphia Phillies",
       "home": "Arizona Diamondbacks",
-      "ml_away": "-130",
-      "ml_home": "+120",
+      "ml_away": "-135",
+      "ml_home": "+115",
       "note": "hardrockbet"
     },
     {
@@ -178,48 +154,108 @@
       "away": "St. Louis Cardinals",
       "home": "Los Angeles Dodgers",
       "ml_away": "+160",
-      "ml_home": "-170",
+      "ml_home": "-190",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "12:41 PM ET",
+      "away": "San Diego Padres",
+      "home": "Cincinnati Reds",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "1:06 PM ET",
+      "away": "Atlanta Braves",
+      "home": "Washington Nationals",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "2:36 PM ET",
+      "away": "Athletics",
+      "home": "Texas Rangers",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "3:11 PM ET",
+      "away": "Baltimore Orioles",
+      "home": "Colorado Rockies",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "6:41 PM ET",
+      "away": "Toronto Blue Jays",
+      "home": "Cleveland Guardians",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "6:41 PM ET",
+      "away": "San Francisco Giants",
+      "home": "Pittsburgh Pirates",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "7:41 PM ET",
+      "away": "Milwaukee Brewers",
+      "home": "Chicago Cubs",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "7:41 PM ET",
+      "away": "Detroit Tigers",
+      "home": "Minnesota Twins",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "7:41 PM ET",
+      "away": "Miami Marlins",
+      "home": "Kansas City Royals",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "9:39 PM ET",
+      "away": "New York Yankees",
+      "home": "Los Angeles Angels",
+      "ml_away": "",
+      "ml_home": "",
       "note": "hardrockbet"
     }
   ],
   "picks": [
     {
       "market": "OU",
-      "away": "Chicago White Sox",
-      "home": "Houston Astros",
-      "side": "Over 9.5",
-      "time": "8:11 PM ET",
-      "edge": "juice 25.0%",
+      "away": "Seattle Mariners",
+      "home": "Boston Red Sox",
+      "side": "Over 7.5",
+      "time": "6:46 PM ET",
+      "edge": "juice 47.6%",
       "units": "1u",
       "note": "hardrockbet"
     },
     {
       "market": "OU",
-      "away": "Chicago White Sox",
-      "home": "Houston Astros",
-      "side": "Under 9.5",
-      "time": "8:11 PM ET",
-      "edge": "juice 81.8%",
-      "units": "1u",
-      "note": "hardrockbet"
-    },
-    {
-      "market": "OU",
-      "away": "Philadelphia Phillies",
-      "home": "Arizona Diamondbacks",
-      "side": "Over 6.5",
-      "time": "9:41 PM ET",
-      "edge": "juice 60.8%",
-      "units": "1u",
-      "note": "hardrockbet"
-    },
-    {
-      "market": "OU",
-      "away": "Philadelphia Phillies",
-      "home": "Arizona Diamondbacks",
-      "side": "Under 6.5",
-      "time": "9:41 PM ET",
-      "edge": "juice 45.5%",
+      "away": "Seattle Mariners",
+      "home": "Boston Red Sox",
+      "side": "Under 7.5",
+      "time": "6:46 PM ET",
+      "edge": "juice 56.5%",
       "units": "1u",
       "note": "hardrockbet"
     },
@@ -227,33 +263,23 @@
       "market": "RL",
       "away": "Athletics",
       "home": "Texas Rangers",
-      "side": "Athletics +1.5 -130",
+      "side": "Athletics +1.5 -125",
       "time": "8:06 PM ET",
       "edge": "HR +1.5 dog",
       "units": "1u",
       "note": "hardrockbet"
     },
     {
-      "market": "OU",
-      "away": "Baltimore Orioles",
-      "home": "Colorado Rockies",
-      "side": "Over 11.5",
-      "time": "8:41 PM ET",
-      "edge": "juice 47.6%",
-      "units": "1u",
-      "note": "hardrockbet"
-    },
-    {
-      "market": "OU",
+      "market": "RL",
       "away": "St. Louis Cardinals",
       "home": "Los Angeles Dodgers",
-      "side": "Under 8.5",
+      "side": "St. Louis Cardinals +1.5 -130",
       "time": "10:11 PM ET",
-      "edge": "juice 47.6%",
+      "edge": "HR +1.5 dog",
       "units": "1u",
       "note": "hardrockbet"
     }
   ],
-  "picks_status": "7 ticket(s) \u00b7 hardrockbet",
+  "picks_status": "4 ticket(s) \u00b7 hardrockbet",
   "recent": []
 }

@@ -10,27 +10,16 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png" />
   <title>GREEN Lock Picker</title>
   <style>
     :root {
-      --bg: #0b0f0c;
-      --card: #141a15;
-      --line: #243028;
-      --text: #e8f0e6;
-      --mute: #8aa08a;
-      --green: #7CFF6B;
-      --red: #ff6b6b;
-      --amber: #ffd36b;
-      --blue: #8ec8ff;
+      --bg: #0b0f0c; --card: #141a15; --line: #243028; --text: #e8f0e6;
+      --mute: #8aa08a; --green: #7CFF6B; --red: #ff6b6b; --amber: #ffd36b; --blue: #8ec8ff;
     }
     * { box-sizing: border-box; }
     html, body {
-      margin: 0; padding: 0;
-      background: var(--bg); color: var(--text);
+      margin: 0; padding: 0; background: var(--bg); color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      -webkit-font-smoothing: antialiased;
     }
     body { padding: calc(18px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom)); }
     header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 18px; }
@@ -39,72 +28,50 @@
     .stamp { font-size: 11px; color: var(--mute); text-align: right; }
     .bank {
       background: linear-gradient(180deg, #1a231b, #121812);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px 16px 14px;
-      margin-bottom: 14px;
+      border: 1px solid var(--line); border-radius: 18px; padding: 16px 16px 14px; margin-bottom: 14px;
     }
     .bank .label { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
     .bank .big { font-size: 42px; font-weight: 700; letter-spacing: -.04em; margin: 4px 0 2px; }
-    .bank .big.pos { color: var(--green); }
     .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px; }
-    .stat {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 10px 8px;
-      text-align: center;
-    }
+    .stat { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 8px; text-align: center; }
     .stat .m { font-size: 10px; color: var(--mute); letter-spacing: .12em; text-transform: uppercase; }
     .stat .u { font-size: 18px; font-weight: 700; margin-top: 4px; }
     .stat .s { font-size: 11px; color: var(--mute); margin-top: 2px; }
-    .pos { color: var(--green); }
-    .neg { color: var(--red); }
+    .pos { color: var(--green); } .neg { color: var(--red); }
     .tabs { display: flex; gap: 6px; margin: 16px 0 12px; }
     .tab {
       flex: 1; border: 1px solid var(--line); background: var(--card); color: var(--mute);
       border-radius: 999px; padding: 9px 0; font-size: 13px; font-weight: 600;
     }
     .tab.on { background: #1d2a1e; color: var(--green); border-color: #2e4a30; }
-    .card {
-      background: var(--card); border: 1px solid var(--line); border-radius: 16px;
-      padding: 14px; margin-bottom: 10px;
-    }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px; margin-bottom: 10px; }
+    .card.win { border-color: #2e4a30; } .card.loss { border-color: #4a2e2e; } .card.push { border-color: #3a3620; }
     .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
     .game { font-size: 16px; font-weight: 700; }
     .time { font-size: 12px; color: var(--mute); }
     .note { font-size: 12px; color: var(--mute); margin-top: 6px; }
     .odds { font-size: 13px; color: var(--blue); margin-top: 4px; }
-    .badge {
-      display: inline-block; font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
-      padding: 3px 8px; border-radius: 999px; font-weight: 700;
-    }
+    .badge { display: inline-block; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; font-weight: 700; }
     .ml { background: #1c2c3a; color: var(--blue); }
     .rl { background: #2a2416; color: var(--amber); }
     .ou { background: #1b2a1c; color: var(--green); }
-    .wait { background: #222; color: var(--mute); }
-    .empty {
-      text-align: center; color: var(--mute); padding: 28px 12px;
-      border: 1px dashed var(--line); border-radius: 16px;
-    }
-    .empty strong { color: var(--text); display: block; margin-bottom: 6px; }
+    .winb { background: #1b2a1c; color: var(--green); }
+    .lossb { background: #2a1b1b; color: var(--red); }
+    .pushb { background: #2a2416; color: var(--amber); }
+    .pendb { background: #222; color: var(--mute); }
+    .empty { text-align: center; color: var(--mute); padding: 28px 12px; border: 1px dashed var(--line); border-radius: 16px; }
     .pick-side { font-size: 18px; font-weight: 700; margin: 4px 0; }
     .edge { color: var(--green); font-size: 13px; }
-    .rules li { margin: 0 0 10px; font-size: 13px; color: #c5d4c4; line-height: 1.4; }
-    .rules { margin: 0; padding-left: 18px; }
-    .recent-u { font-variant-numeric: tabular-nums; font-weight: 700; }
-    footer { margin-top: 18px; font-size: 11px; color: var(--mute); text-align: center; line-height: 1.5; }
-    .install {
-      display: none; margin: 0 0 14px; padding: 12px 14px; border-radius: 14px;
-      background: #1d2a1e; border: 1px solid #2e4a30; font-size: 13px; color: #cfe8cc;
+    .refresh {
+      width: 100%; margin: 0 0 12px; border: 1px solid var(--line); background: var(--card);
+      color: var(--text); border-radius: 12px; padding: 10px; font-weight: 600;
     }
-    .install.on { display: block; }
+    .rules { margin: 0; padding-left: 18px; }
+    .rules li { margin: 0 0 10px; font-size: 13px; color: #c5d4c4; line-height: 1.4; }
+    footer { margin-top: 18px; font-size: 11px; color: var(--mute); text-align: center; line-height: 1.5; }
   </style>
 </head>
 <body>
-  <div class="install" id="installHint">
-    On iPhone: Share → Add to Home Screen. Opens like an app, no browser chrome.
-  </div>
   <header>
     <div>
       <div class="brand">GREEN · 2026 locks</div>
@@ -115,19 +82,21 @@
 
   <section class="bank">
     <div class="label">Stacked YTD · 1u = $50</div>
-    <div class="big pos" id="stacked">+49.8u</div>
-    <div class="note" id="bankNote">$2,490 paper · regular season only</div>
+    <div class="big pos" id="stacked">+0.0u</div>
+    <div class="note" id="bankNote">research + live paper</div>
     <div class="grid">
-      <div class="stat"><div class="m">ML</div><div class="u pos" id="mlU">+11.6</div><div class="s" id="mlS">54 · 63%</div></div>
-      <div class="stat"><div class="m">RL</div><div class="u pos" id="rlU">+30.7</div><div class="s" id="rlS">35 · 77%</div></div>
-      <div class="stat"><div class="m">OU</div><div class="u pos" id="ouU">+7.5</div><div class="s" id="ouS">46 · 61%</div></div>
+      <div class="stat"><div class="m">ML</div><div class="u pos" id="mlU">+0</div><div class="s" id="mlS">—</div></div>
+      <div class="stat"><div class="m">RL</div><div class="u pos" id="rlU">+0</div><div class="s" id="rlS">—</div></div>
+      <div class="stat"><div class="m">OU</div><div class="u pos" id="ouU">+0</div><div class="s" id="ouS">—</div></div>
     </div>
   </section>
 
+  <button class="refresh" id="refreshBtn">Refresh picks + results</button>
+
   <div class="tabs">
-    <button class="tab on" data-tab="today">Today</button>
+    <button class="tab on" data-tab="today">Picks</button>
     <button class="tab" data-tab="slate">Slate</button>
-    <button class="tab" data-tab="recent">Recent</button>
+    <button class="tab" data-tab="recent">Results</button>
     <button class="tab" data-tab="rules">Rules</button>
   </div>
 
@@ -137,18 +106,13 @@
   <div id="rules" hidden></div>
 
   <footer>
-    Locked Aug 26 · paper Aug 27–Sep 27 · no parlays · no playoffs<br />
-    Picks post only when a lock fires. Pull to refresh after we update the file.
+    One ticket per game per market. No parlays. No playoffs.<br />
+    Cron grades finals at 11:00 / 3:30 / 6:30 ET. Pull to refresh after a run.
   </footer>
 
   <script>
     if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
-    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-    const standalone = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone;
-    if (isIOS && !standalone) document.getElementById("installHint").classList.add("on");
-
     const fmtU = n => (n >= 0 ? "+" : "") + Number(n).toFixed(1) + "u";
-
     function show(id) {
       ["today","slate","recent","rules"].forEach(t => {
         document.getElementById(t).hidden = t !== id;
@@ -157,33 +121,52 @@
     }
     document.querySelectorAll(".tab").forEach(b => b.onclick = () => show(b.dataset.tab));
 
+    function resultBadge(p) {
+      const s = (p.status || p.result || "pending").toLowerCase();
+      if (s === "win" || s === "w") return '<span class="badge winb">WIN</span>';
+      if (s === "loss" || s === "l") return '<span class="badge lossb">LOSS</span>';
+      if (s === "push" || s === "p") return '<span class="badge pushb">PUSH</span>';
+      return '<span class="badge pendb">PENDING</span>';
+    }
+    function cardClass(p) {
+      const s = (p.status || p.result || "").toLowerCase();
+      if (s === "win" || s === "w") return "win";
+      if (s === "loss" || s === "l") return "loss";
+      if (s === "push" || s === "p") return "push";
+      return "";
+    }
+
     function render(d) {
       document.getElementById("stamp").innerHTML = (d.slate_date || "") + "<br>" + (d.updated || "");
-      document.getElementById("stacked").textContent = fmtU(d.ytd.stacked_units);
+      const y = d.ytd || {};
+      document.getElementById("stacked").textContent = fmtU(y.stacked_units || 0);
+      document.getElementById("stacked").className = "big " + ((y.stacked_units || 0) >= 0 ? "pos" : "neg");
       document.getElementById("bankNote").textContent =
-        "$" + Math.round(d.ytd.stacked_units * d.unit_dollars).toLocaleString() + " paper · regular season only";
-      document.getElementById("mlU").textContent = fmtU(d.ytd.ml.units);
-      document.getElementById("rlU").textContent = fmtU(d.ytd.rl.units);
-      document.getElementById("ouU").textContent = fmtU(d.ytd.ou.units);
-      document.getElementById("mlS").textContent = d.ytd.ml.bets + " · " + Math.round(d.ytd.ml.wr*100) + "%";
-      document.getElementById("rlS").textContent = d.ytd.rl.bets + " · " + Math.round(d.ytd.rl.wr*100) + "%";
-      document.getElementById("ouS").textContent = d.ytd.ou.bets + " · " + Math.round(d.ytd.ou.wr*100) + "%";
+        "$" + Math.round((y.stacked_units || 0) * (d.unit_dollars || 50)).toLocaleString() +
+        " paper · live " + fmtU(y.live_units || 0);
+      ["ml","rl","ou"].forEach(k => {
+        const row = y[k] || {units:0,bets:0,wr:0};
+        const el = document.getElementById(k + "U");
+        el.textContent = fmtU(row.units);
+        el.className = "u " + (row.units >= 0 ? "pos" : "neg");
+        document.getElementById(k + "S").textContent = row.bets + " · " + Math.round((row.wr||0)*100) + "%";
+      });
 
       const picks = d.picks || [];
       const today = document.getElementById("today");
       if (!picks.length) {
-        today.innerHTML = `<div class="empty"><strong>No lock today — yet</strong>${d.picks_status || "Waiting on opens + model pass."}</div>`;
+        today.innerHTML = `<div class="empty"><strong>No lock today</strong>${d.picks_status || ""}</div>`;
       } else {
         today.innerHTML = picks.map(p => `
-          <div class="card">
+          <div class="card ${cardClass(p)}">
             <div class="row">
-              <span class="badge ${p.market.toLowerCase()}">${p.market}</span>
-              <span class="time">${p.time || ""}</span>
+              <span class="badge ${(p.market||"").toLowerCase()}">${p.market}</span>
+              ${resultBadge(p)}
             </div>
             <div class="game">${p.away} @ ${p.home}</div>
             <div class="pick-side">${p.side}</div>
             <div class="edge">${p.edge || ""} · ${p.units || "1u"}</div>
-            <div class="note">${p.note || ""}</div>
+            <div class="note">${p.final || p.time || ""} ${p.note ? " · " + p.note : ""}</div>
           </div>`).join("");
       }
 
@@ -191,35 +174,41 @@
         <div class="card">
           <div class="row">
             <div class="game">${g.away} @ ${g.home}</div>
-            <div class="time">${g.time}</div>
+            <div class="time">${g.time || ""}</div>
           </div>
           <div class="odds">${[g.ml_away && (g.away+" "+g.ml_away), g.ml_home && (g.home+" "+g.ml_home)].filter(Boolean).join(" · ") || "lines pending"}</div>
-          <div class="note">${g.note || ""}</div>
-        </div>`).join("");
+        </div>`).join("") || `<div class="empty">No slate loaded.</div>`;
 
-      document.getElementById("recent").innerHTML = (d.recent || []).map(r => `
-        <div class="card">
+      const recent = d.recent || [];
+      document.getElementById("recent").innerHTML = recent.length ? recent.map(r => `
+        <div class="card ${cardClass(r)}">
           <div class="row">
-            <span class="badge ${r.market.toLowerCase()}">${r.market}</span>
-            <span class="recent-u ${r.units>=0?"pos":"neg"}">${r.units>=0?"+":""}${Number(r.units).toFixed(2)}u</span>
+            <span class="badge ${(r.market||"").toLowerCase()}">${r.market}</span>
+            <span class="${(r.units||0)>=0?"pos":"neg"}">${fmtU(r.units||0)}</span>
           </div>
           <div class="game">${r.game}</div>
-          <div class="note">${r.date} · ${r.side} · ${r.result}</div>
-        </div>`).join("");
+          <div class="note">${r.date} · ${r.side} · ${r.result || ""} ${r.final ? " · " + r.final : ""}</div>
+        </div>`).join("") : `<div class="empty">No graded tickets yet. After finals, the next cron pass paints W/L here.</div>`;
 
       document.getElementById("rules").innerHTML = `
         <div class="card"><ol class="rules">
           ${(d.locks||[]).map(l => `<li><strong>${l.market}.</strong> ${l.rule}</li>`).join("")}
           <li>Max 1 unit per game per market. No parlays. No playoffs.</li>
-          <li>Live ledger starts Aug 27. Do not change a lock mid-stream.</li>
+          <li>Tickets freeze when first posted. Later cron runs only grade them.</li>
         </ol></div>`;
     }
 
-    const FALLBACK = {"updated":"2026-08-27 07:30 EDT","unit_dollars":50,"season":2026,"ytd":{"ml":{"bets":54,"wr":0.63,"units":11.6},"rl":{"bets":35,"wr":0.771,"units":30.7},"ou":{"bets":46,"wr":0.609,"units":7.5},"stacked_units":49.8},"locks":[{"market":"ML","rule":"Edge vs open ≥ 7%. Cap −180. 1u at close. No tight-ump filter."},{"market":"RL","rule":"+1.5 dog only. Juice −130 to +170. Edge ≥ 3%. Never the −1.5 favorite."},{"market":"OU","rule":"Bet over or under when |p − 52.4%| ≥ 4%. Skip pushes. 1u."}],"slate_date":"2026-08-27","slate":[{"time":"1:05 PM","away":"COL","home":"WSH","ml_away":"+111","ml_home":"−119","note":"Nationals Park"},{"time":"2:15 PM","away":"BAL","home":"STL","ml_away":"−114","ml_home":"+106","note":"T. Rogers vs Undecided"},{"time":"7:05 PM","away":"HOU","home":"NYY","ml_away":"+135","ml_home":"−163","note":"Yankee Stadium"},{"time":"7:07 PM","away":"KC","home":"TOR","ml_away":"","ml_home":"","note":"Rogers Centre"},{"time":"7:10 PM","away":"MIL","home":"NYM","ml_away":"","ml_home":"","note":"Citi Field"},{"time":"7:15 PM","away":"LAD","home":"ATL","ml_away":"","ml_home":"","note":"FS1 · Truist Park"},{"time":"9:45 PM","away":"ARI","home":"SF","ml_away":"","ml_home":"","note":"Oracle Park"}],"picks":[],"picks_status":"No lock fired yet. Slate is loaded. Need opening lines + model pass before a 1u ticket posts.","recent":[{"date":"08-22","game":"STL @ PHI","market":"OU","side":"Under 9.0","result":"L","units":-1},{"date":"08-19","game":"SD @ NYM","market":"RL","side":"SD +1.5","result":"L","units":-1},{"date":"08-19","game":"MIA @ PHI","market":"RL","side":"MIA +1.5","result":"L","units":-1},{"date":"08-18","game":"SF @ CLE","market":"OU","side":"Under 8.5","result":"L","units":-1},{"date":"08-16","game":"KC @ LAA","market":"ML","side":"KC −120","result":"W","units":0.83},{"date":"08-16","game":"KC @ LAA","market":"OU","side":"Under 8.5","result":"W","units":0.91},{"date":"08-16","game":"BOS @ PIT","market":"RL","side":"PIT −1.5","result":"W","units":0.57},{"date":"08-15","game":"ARI @ ATL","market":"ML","side":"ARI +120","result":"W","units":1.2},{"date":"08-15","game":"MIL @ LAD","market":"ML","side":"MIL −122","result":"W","units":0.82}]};
-    fetch("./picks.json?t=" + Date.now())
-      .then(r => r.json())
-      .then(render)
-      .catch(() => render(FALLBACK));
+    async function load() {
+      document.getElementById("stamp").textContent = "refreshing…";
+      try {
+        const r = await fetch("./picks.json?t=" + Date.now(), { cache: "no-store" });
+        render(await r.json());
+      } catch (e) {
+        document.getElementById("today").innerHTML = `<div class="empty">Could not load picks.json</div>`;
+      }
+    }
+    document.getElementById("refreshBtn").onclick = load;
+    load();
   </script>
 </body>
 </html>

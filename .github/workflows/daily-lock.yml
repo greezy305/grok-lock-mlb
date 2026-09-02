@@ -25,7 +25,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add picks.json opens.json
+          git add picks.json opens.json ledger.json
           git diff --cached --quiet && echo "No change" && exit 0
           git commit -m "chore: daily Hard Rock lock pass"
           git push

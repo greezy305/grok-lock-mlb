@@ -388,5 +388,45 @@
     "ou_line": null,
     "ou_over": null,
     "ou_under": null
+  },
+  "f857ea6771bf681398b05379f108f0c5": {
+    "away": "San Francisco Giants",
+    "home": "Pittsburgh Pirates",
+    "ml_away": null,
+    "ml_home": null,
+    "rl_away": null,
+    "ou_line": null,
+    "ou_over": null,
+    "ou_under": null
+  },
+  "b27b102032634f4f3dc542889c7d62e9": {
+    "away": "Boston Red Sox",
+    "home": "Baltimore Orioles",
+    "ml_away": null,
+    "ml_home": null,
+    "rl_away": null,
+    "ou_line": null,
+    "ou_over": null,
+    "ou_under": null
+  },
+  "3ce16b1285f3f868ac4262314873f267": {
+    "away": "Tampa Bay Rays",
+    "home": "Texas Rangers",
+    "ml_away": null,
+    "ml_home": null,
+    "rl_away": null,
+    "ou_line": null,
+    "ou_over": null,
+    "ou_under": null
+  },
+  "9218b403d53014d099eb5bec35ae957c": {
+    "away": "Athletics",
+    "home": "Seattle Mariners",
+    "ml_away": null,
+    "ml_home": null,
+    "rl_away": null,
+    "ou_line": null,
+    "ou_over": null,
+    "ou_under": null
   }
 }

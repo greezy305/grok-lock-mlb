@@ -318,5 +318,75 @@
     "ou_line": null,
     "ou_over": null,
     "ou_under": null
+  },
+  "a09e4cef3ad772a51e4f166de8ac96b8": {
+    "away": "Philadelphia Phillies",
+    "home": "Arizona Diamondbacks",
+    "ml_away": -130,
+    "ml_home": 110,
+    "rl_away": null,
+    "ou_line": 8.5,
+    "ou_over": -115,
+    "ou_under": -105
+  },
+  "8cc27a7b0c6903978e605ba541bed625": {
+    "away": "St. Louis Cardinals",
+    "home": "Los Angeles Dodgers",
+    "ml_away": 200,
+    "ml_home": -260,
+    "rl_away": -110,
+    "ou_line": 7.5,
+    "ou_over": -125,
+    "ou_under": 105
+  },
+  "e956df5f498f78f522f5b8656f304df4": {
+    "away": "Toronto Blue Jays",
+    "home": "Cleveland Guardians",
+    "ml_away": null,
+    "ml_home": null,
+    "rl_away": null,
+    "ou_line": null,
+    "ou_over": null,
+    "ou_under": null
+  },
+  "e3f232afa3f72858e94154eb4e526488": {
+    "away": "Chicago White Sox",
+    "home": "Houston Astros",
+    "ml_away": null,
+    "ml_home": null,
+    "rl_away": null,
+    "ou_line": null,
+    "ou_over": null,
+    "ou_under": null
+  },
+  "c3d5e91757e67f6c08706b0970a77f89": {
+    "away": "Milwaukee Brewers",
+    "home": "Chicago Cubs",
+    "ml_away": null,
+    "ml_home": null,
+    "rl_away": null,
+    "ou_line": null,
+    "ou_over": null,
+    "ou_under": null
+  },
+  "d64025a75ea543bf8f87ab2a697704d8": {
+    "away": "Miami Marlins",
+    "home": "Kansas City Royals",
+    "ml_away": null,
+    "ml_home": null,
+    "rl_away": null,
+    "ou_line": null,
+    "ou_over": null,
+    "ou_under": null
+  },
+  "a7447a61565d33b1dcfb229c623b45cb": {
+    "away": "St. Louis Cardinals",
+    "home": "Los Angeles Dodgers",
+    "ml_away": null,
+    "ml_home": null,
+    "rl_away": null,
+    "ou_line": null,
+    "ou_over": null,
+    "ou_under": null
   }
 }

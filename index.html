@@ -10,7 +10,7 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <title>Grok-Lock-MLB</title>
+  <title>Daily Lock Check</title>
   <style>
     :root {
       --bg: #0b0f0c; --card: #141a15; --line: #243028; --text: #e8f0e6;
@@ -24,8 +24,8 @@
     body { padding: calc(18px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom)); }
     header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 18px; }
     .brand { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--green); font-weight: 700; }
-    h1 { margin: 4px 0 0; font-size: 28px; letter-spacing: -.03em; }
-    .stamp { font-size: 11px; color: var(--mute); text-align: right; }
+    h1 { margin: 4px 0 0; font-size: 22px; letter-spacing: -.03em; line-height: 1.15; max-width: 70%; }
+    .stamp { font-size: 11px; color: var(--mute); text-align: right; white-space: nowrap; flex-shrink: 0; }
     .bank {
       background: linear-gradient(180deg, #1a231b, #121812);
       border: 1px solid var(--line); border-radius: 18px; padding: 16px 16px 14px; margin-bottom: 14px;
@@ -74,8 +74,8 @@
 <body>
   <header>
     <div>
-      <div class="brand">GREEN · 2026 locks</div>
-      <h1>Grok-Lock-MLB</h1>
+      <div class="brand">GROK-LOCK-MLB - 2026</div>
+      <h1>Daily Lock Check</h1>
     </div>
     <div class="stamp" id="stamp">loading…</div>
   </header>
@@ -181,7 +181,9 @@
       const pending = (d.picks || []).filter(isPending);
       const today = document.getElementById("today");
       if (!pending.length) {
-        today.innerHTML = `<div class="empty"><strong>${locksEmptyMessage()}</strong>${d.picks_status || ""}</div>`;
+        today.innerHTML =
+          `<div class="empty"><strong>${locksEmptyMessage()}</strong>` +
+          `<div style="margin-top:8px;font-size:12px">Graded tickets are on Results.</div></div>`;
       } else {
         today.innerHTML = pending.map(p => `
           <div class="card">
@@ -240,4 +242,3 @@
   </script>
 </body>
 </html>
-MLB Betting Model Development - Grok

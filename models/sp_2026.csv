@@ -1,0 +1,824 @@
+pitcher,k,team,ip,xfip,siera,KBB,K-BB%,stuff_plus
+Joe La Sorsa,joe la sorsa,BOS,0.1,1.62,1.57,0.5,50.0%,111
+Yacksel Ríos,yacksel ros,CHC,1.2,1.59,1.21,0.4,40.0%,106
+Manuel Rodríguez,manuel rodrguez,TB,1.0,0.09,2.19,0.4,40.0%,86
+Mason Miller,mason miller,SD,55.1,1.47,1.49,0.386,38.6%,119
+Miguel Ullola,miguel ullola,HOU,6.0,2.6,1.99,0.348,34.8%,107
+P.J. Higgins,pj higgins,CIN,1.0,4.11,4.37,0.3329999999999999,33.3%,24
+Jacob Misiorowski,jacob misiorowski,MIL,145.0,2.1,2.14,0.3329999999999999,33.3%,128
+Nate Lavender,nate lavender,NYM,7.2,2.84,1.99,0.32,32.0%,97
+Jhoan Duran,jhoan duran,PHI,46.1,1.64,1.63,0.308,30.8%,122
+Samy Natera Jr.,samy natera jr,LAA,27.0,2.93,2.23,0.308,30.8%,111
+Daniel Espino,daniel espino,CLE,6.0,2.09,2.41,0.296,29.6%,110
+Mason Montgomery,mason montgomery,PIT,52.2,2.03,2.19,0.295,29.5%,111
+Zach Eflin,zach eflin,BAL,3.2,1.73,2.58,0.294,29.4%,95
+Ben Joyce,ben joyce,LAA,6.2,2.64,2.22,0.292,29.2%,124
+Andrés Muñoz,andrs muoz,SEA,47.1,2.21,2.23,0.286,28.6%,119
+Ricky Tiedemann,ricky tiedemann,TOR,1.2,2.5,2.9,0.286,28.6%,119
+Drew Sommers,drew sommers,DET,26.0,2.05,2.22,0.284,28.4%,119
+Carl Edwards Jr.,carl edwards jr,NYM,6.0,2.43,2.64,0.28,28.0%,88
+Cam Booser,cam booser,TB,31.0,3.31,2.61,0.2739999999999999,27.4%,113
+Nick Pivetta,nick pivetta,SD,16.0,3.19,2.84,0.273,27.3%,102
+Brian Keller,brian keller,PHI,3.0,3.6,3.01,0.273,27.3%,100
+Dylan Lee,dylan lee,ATL,58.2,2.96,2.45,0.268,26.8%,114
+Josh Hader,josh hader,HOU,32.0,2.75,2.44,0.267,26.7%,117
+Tanner Scott,tanner scott,LAD,52.1,2.86,2.44,0.265,26.5%,120
+Tarik Skubal,tarik skubal,2 Tms,120.2,2.61,2.74,0.264,26.4%,118
+Kervin Castro,kervin castro,NYY,6.1,2.46,2.38,0.261,26.1%,99
+Riley Martin,riley martin,CHC,8.1,3.04,2.6,0.258,25.8%,109
+Tyler Ferguson,tyler ferguson,2 Tms,17.0,3.66,2.67,0.257,25.7%,104
+Cade Smith,cade smith,CLE,59.0,2.93,2.53,0.255,25.5%,113
+Chris Sale,chris sale,ATL,135.0,2.73,2.81,0.255,25.5%,118
+Didier Fuentes,didier fuentes,ATL,57.1,2.84,2.55,0.253,25.3%,114
+Dylan Cease,dylan cease,TOR,144.1,2.74,3.01,0.25,25.0%,106
+Chris Devenski,chris devenski,PIT,2.1,2.46,2.53,0.25,25.0%,106
+Garrett Whitlock,garrett whitlock,BOS,44.0,2.91,2.58,0.25,25.0%,99
+Bradley Hanner,bradley hanner,NYY,2.2,2.53,2.64,0.25,25.0%,117
+Jack Ralston,jack ralston,MIA,2.0,2.6,2.08,0.25,25.0%,125
+Cam Schlittler,cam schlittler,NYY,158.0,2.9,2.92,0.249,24.9%,113
+Louis Varland,louis varland,TOR,66.1,2.38,2.38,0.248,24.8%,115
+Gavin Williams,gavin williams,CLE,154.2,2.86,2.96,0.246,24.6%,105
+Logan Henderson,logan henderson,MIL,69.1,3.24,3.1,0.246,24.6%,104
+Will Dion,will dion,2 Tms,31.2,3.21,2.69,0.246,24.6%,110
+Tyler Glasnow,tyler glasnow,LAD,39.2,2.89,3.01,0.243,24.3%,103
+Jacob deGrom,jacob degrom,TEX,126.2,3.07,3.05,0.241,24.1%,109
+Brandyn Garcia,brandyn garcia,ARI,37.0,2.63,2.28,0.241,24.1%,116
+Jonathan Bowlan,jonathan bowlan,PHI,46.2,2.79,2.57,0.241,24.1%,111
+Kyle Harrison,kyle harrison,MIL,98.1,3.02,3.04,0.239,23.9%,106
+Grant Taylor,grant taylor,CWS,68.0,2.84,2.7,0.237,23.7%,106
+Jeff Hoffman,jeff hoffman,2 Tms,55.2,2.9,2.71,0.237,23.7%,106
+Brent Headrick,brent headrick,NYY,66.1,3.08,2.77,0.233,23.3%,104
+Jack Dreyer,jack dreyer,LAD,52.2,3.02,2.76,0.23,23.0%,104
+Adrian Morejon,adrian morejon,SD,71.0,2.49,2.39,0.228,22.8%,129
+Trevor Megill,trevor megill,MIL,50.0,3.38,2.87,0.228,22.8%,114
+Jesús Luzardo,jess luzardo,PHI,156.0,2.92,3.08,0.228,22.8%,111
+Tayler Saucedo,tayler saucedo,LAA,10.1,3.83,2.94,0.2269999999999999,22.7%,97
+Logan VanWey,logan vanwey,HOU,6.0,3.43,3.04,0.2269999999999999,22.7%,102
+Paul Skenes,paul skenes,PIT,139.0,3.25,3.17,0.2269999999999999,22.7%,99
+Erik Sabrowski,erik sabrowski,CLE,37.0,3.65,3.17,0.226,22.6%,111
+Justin Slaten,justin slaten,BOS,31.1,2.81,2.76,0.226,22.6%,108
+Hagen Smith,hagen smith,CWS,8.0,2.65,3.36,0.226,22.6%,108
+Trevor Williams,trevor williams,WSH,17.0,2.98,2.77,0.225,22.5%,94
+Cristopher Sánchez,cristopher snchez,PHI,168.1,2.55,2.83,0.223,22.3%,117
+Ty Blach,ty blach,CHC,3.0,2.26,1.47,0.222,22.2%,110
+Zack Wheeler,zack wheeler,PHI,124.1,3.07,3.2,0.22,22.0%,105
+Paul Sewald,paul sewald,2 Tms,42.0,4.26,3.52,0.22,22.0%,107
+Daniel Duarte,daniel duarte,NYM,23.0,3.38,2.93,0.217,21.7%,102
+Blake Weiman,blake weiman,LAA,8.0,2.97,3.02,0.216,21.6%,95
+Ian Seymour,ian seymour,TB,101.1,3.6,3.21,0.216,21.6%,103
+Pete Fairbanks,pete fairbanks,MIA,40.1,3.96,3.19,0.215,21.5%,123
+Jacob Latz,jacob latz,TEX,59.0,3.36,2.98,0.215,21.5%,112
+Drew Rasmussen,drew rasmussen,TB,140.1,3.22,3.26,0.215,21.5%,109
+Tyron Guerrero,tyron guerrero,BOS,34.2,2.85,2.62,0.214,21.4%,112
+Michael Grove,michael grove,TB,7.0,3.74,3.42,0.214,21.4%,93
+Garrett Acton,garrett acton,MIN,6.2,3.77,3.02,0.214,21.4%,101
+Luis Gastelum,luis gastelum,STL,21.2,3.0,2.86,0.213,21.3%,101
+Gerrit Cole,gerrit cole,NYY,92.2,3.5,3.39,0.213,21.3%,103
+Brandon Woodruff,brandon woodruff,MIL,45.1,3.87,3.61,0.213,21.3%,95
+Reid Detmers,reid detmers,LAA,149.0,3.49,3.37,0.212,21.2%,104
+Joe Ryan,joe ryan,MIN,125.2,3.61,3.4,0.212,21.2%,107
+Steven Okert,steven okert,HOU,64.2,3.92,3.26,0.211,21.1%,114
+Garrett Cleavinger,garrett cleavinger,TB,39.2,3.23,3.02,0.21,21.0%,110
+Payton Tolle,payton tolle,BOS,120.0,3.64,3.43,0.209,20.9%,114
+Anthony Bender,anthony bender,MIA,34.1,3.37,2.99,0.207,20.7%,114
+Aaron Ashby,aaron ashby,MIL,73.0,2.89,2.96,0.207,20.7%,119
+Luis Mey,luis mey,CIN,20.1,3.46,3.23,0.207,20.7%,106
+Brock Stewart,brock stewart,LAD,17.1,3.44,3.01,0.206,20.6%,107
+Bryan Baker,bryan baker,TB,52.0,3.37,3.03,0.206,20.6%,117
+Dedniel Núñez,dedniel nez,NYM,7.1,3.65,3.24,0.206,20.6%,101
+Trent Harris,trent harris,SF,7.0,2.52,2.93,0.206,20.6%,99
+Aroldis Chapman,aroldis chapman,BOS,44.2,3.22,3.07,0.204,20.4%,116
+Braxton Ashcraft,braxton ashcraft,PIT,155.1,3.2,3.33,0.204,20.4%,107
+David Bednar,david bednar,NYY,57.1,3.0,2.86,0.203,20.3%,104
+Tyler Zuber,tyler zuber,MIA,27.1,3.43,2.98,0.203,20.3%,114
+Shohei Ohtani,shohei ohtani,LAD,85.2,3.22,3.3,0.203,20.3%,114
+Juan Morillo,juan morillo,ARI,51.1,3.03,2.91,0.203,20.3%,109
+Ryan Fernandez,ryan fernandez,STL,15.1,3.29,3.08,0.203,20.3%,96
+Chase Burns,chase burns,CIN,139.2,3.45,3.46,0.203,20.3%,112
+Daniel Palencia,daniel palencia,CHC,17.2,3.35,3.1,0.203,20.3%,100
+Cade Cavalli,cade cavalli,WSH,148.2,3.23,3.31,0.2019999999999999,20.2%,102
+Cody Ponce,cody ponce,TOR,2.1,3.74,3.45,0.2,20.0%,95
+Carlos Vargas,carlos vargas,SEA,2.1,3.09,3.12,0.2,20.0%,111
+Hunter Stratton,hunter stratton,2 Tms,3.1,1.74,2.25,0.2,20.0%,106
+Sammy Peralta,sammy peralta,2 Tms,8.2,4.37,3.28,0.2,20.0%,94
+Garrett Stallings,garrett stallings,MIL,8.0,3.66,3.2,0.2,20.0%,88
+Luke Little,luke little,CHC,1.0,2.6,1.92,0.2,20.0%,98
+Spencer Bivens,spencer bivens,SF,2.0,3.1,3.04,0.2,20.0%,118
+William Kempner,william kempner,MIA,12.1,3.87,3.16,0.2,20.0%,116
+Logan Gilbert,logan gilbert,SEA,155.1,3.58,3.5,0.2,20.0%,110
+Luke Weaver,luke weaver,2 Tms,49.2,3.59,3.12,0.1989999999999999,19.9%,101
+Hunter Greene,hunter greene,CIN,27.2,3.59,3.58,0.198,19.8%,111
+Caleb Thielbar,caleb thielbar,CHC,40.2,3.87,3.26,0.1969999999999999,19.7%,114
+Blake Snell,blake snell,LAD,21.0,3.04,3.41,0.195,19.5%,116
+Sean Burke,sean burke,CWS,146.0,3.72,3.5,0.195,19.5%,99
+Bradgley Rodriguez,bradgley rodriguez,SD,58.0,3.33,3.09,0.1939999999999999,19.4%,102
+Erik Miller,erik miller,2 Tms,42.0,3.06,3.23,0.193,19.3%,118
+Bryan Woo,bryan woo,SEA,138.1,3.71,3.59,0.192,19.2%,109
+Dylan Dodd,dylan dodd,ATL,40.2,3.82,3.32,0.19,19.0%,107
+Emmet Sheehan,emmet sheehan,LAD,95.1,3.96,3.65,0.1889999999999999,18.9%,100
+Nathan Eovaldi,nathan eovaldi,TEX,132.2,3.34,3.44,0.1889999999999999,18.9%,96
+Yaramil Hiraldo,yaramil hiraldo,BAL,7.2,4.6,3.64,0.1889999999999999,18.9%,104
+Matt Festa,matt festa,CLE,54.1,3.82,3.24,0.1889999999999999,18.9%,101
+Yoshinobu Yamamoto,yoshinobu yamamoto,LAD,151.2,3.37,3.49,0.1889999999999999,18.9%,102
+Garrett Crochet,garrett crochet,BOS,30.0,3.73,3.58,0.188,18.8%,113
+Elvis Alvarado,elvis alvarado,OAK,42.0,3.96,3.31,0.188,18.8%,113
+Michael Petersen,michael petersen,MIA,53.2,3.96,3.31,0.188,18.8%,112
+Parker Messick,parker messick,CLE,155.0,3.35,3.53,0.188,18.8%,97
+Kirby Yates,kirby yates,2 Tms,38.0,4.09,3.33,0.188,18.8%,88
+Mark Leiter Jr.,mark leiter jr,OAK,33.2,3.47,3.17,0.188,18.8%,92
+Bryse Wilson,bryse wilson,3 Tms,29.2,3.42,3.28,0.188,18.8%,93
+Jack Anderson,jack anderson,2 Tms,12.1,3.46,3.26,0.188,18.8%,91
+Gregory Soto,gregory soto,PIT,56.0,3.61,3.25,0.187,18.7%,112
+Brandon Eisert,brandon eisert,2 Tms,34.1,3.39,3.26,0.187,18.7%,83
+Chase Shugart,chase shugart,PHI,44.0,3.93,3.29,0.186,18.6%,103
+Shota Imanaga,shota imanaga,CHC,145.1,3.87,3.69,0.186,18.6%,92
+Tyler Wells,tyler wells,2 Tms,63.1,4.08,3.51,0.185,18.5%,96
+Brett Kerry,brett kerry,LAA,13.2,3.32,3.14,0.185,18.5%,86
+Ryan Weathers,ryan weathers,NYY,137.1,3.23,3.47,0.185,18.5%,103
+Griffin Jax,griffin jax,TB,91.2,3.32,3.52,0.185,18.5%,104
+Christian Scott,christian scott,NYM,89.1,3.84,3.69,0.185,18.5%,107
+Tim Mayza,tim mayza,PHI,58.1,3.21,3.17,0.184,18.4%,97
+Raisel Iglesias,raisel iglesias,ATL,48.0,3.69,3.3,0.184,18.4%,96
+Jacob Webb,jacob webb,CHC,57.2,3.35,3.25,0.183,18.3%,98
+Michael Rucker,michael rucker,SEA,30.0,3.44,3.23,0.182,18.2%,102
+Rico Garcia,rico garcia,BAL,55.2,3.69,3.32,0.181,18.1%,99
+Dylan Smith,dylan smith,SF,28.1,4.05,3.45,0.18,18.0%,105
+Grant Wolfram,grant wolfram,BAL,40.0,3.73,3.27,0.18,18.0%,111
+Nick Frasso,nick frasso,COL,8.0,4.1,3.66,0.179,17.9%,98
+Evan Phillips,evan phillips,LAD,15.1,4.21,3.49,0.179,17.9%,115
+Bryce Miller,bryce miller,SEA,94.0,3.87,3.74,0.178,17.8%,107
+Burch Smith,burch smith,DET,17.0,3.12,3.17,0.178,17.8%,97
+Nolan McLean,nolan mclean,NYM,148.2,3.58,3.65,0.178,17.8%,107
+Ryan Zeferjahn,ryan zeferjahn,2 Tms,58.2,3.88,3.47,0.178,17.8%,117
+Ryan Helsley,ryan helsley,BAL,15.1,3.19,3.31,0.176,17.6%,121
+Chase Solesky,chase solesky,TB,3.0,3.43,3.18,0.176,17.6%,109
+Jared Jones,jared jones,PIT,68.0,3.88,3.76,0.176,17.6%,100
+MacKenzie Gore,mackenzie gore,TEX,145.2,3.79,3.73,0.176,17.6%,99
+Alex Hoppe,alex hoppe,2 Tms,34.2,3.05,3.17,0.176,17.6%,111
+Drew Anderson,drew anderson,DET,81.1,3.61,3.41,0.175,17.5%,99
+Jeremiah Estrada,jeremiah estrada,SD,31.0,3.6,3.46,0.175,17.5%,112
+Alek Jacob,alek jacob,SD,5.0,4.6,3.41,0.174,17.4%,86
+Ben Brown,ben brown,CHC,68.0,3.46,3.53,0.174,17.4%,102
+Emilio Pagán,emilio pagn,CIN,30.1,4.77,3.78,0.173,17.3%,104
+Max Meyer,max meyer,MIA,111.0,3.73,3.75,0.173,17.3%,98
+Cole Sulser,cole sulser,TB,46.1,3.78,3.44,0.173,17.3%,98
+A.J. Minter,aj minter,2 Tms,32.1,4.0,3.5,0.172,17.2%,102
+Emerson Hancock,emerson hancock,SEA,133.2,3.82,3.76,0.171,17.1%,101
+Kevin Ginkel,kevin ginkel,ARI,55.0,3.84,3.44,0.171,17.1%,95
+Kevin Kelly,kevin kelly,TB,59.2,2.85,2.66,0.171,17.1%,115
+Franco Aleman,franco aleman,CLE,18.2,4.28,3.5,0.171,17.1%,101
+Kevin Gausman,kevin gausman,2 Tms,150.1,3.77,3.8,0.171,17.1%,98
+José Fermin,jos fermin,LAA,43.2,3.56,3.37,0.17,17.0%,104
+Steven Cruz,steven cruz,KC,49.2,3.7,3.42,0.17,17.0%,108
+José Alvarado,jos alvarado,PHI,47.0,4.1,3.46,0.17,17.0%,116
+Michael Soroka,michael soroka,ARI,95.1,3.72,3.79,0.17,17.0%,94
+Joe Mantiply,joe mantiply,TOR,17.2,3.41,3.27,0.1689999999999999,16.9%,112
+Ty Madden,ty madden,DET,39.0,3.81,3.47,0.1689999999999999,16.9%,88
+Aaron Nola,aaron nola,PHI,137.0,3.79,3.81,0.1689999999999999,16.9%,104
+Devin Williams,devin williams,NYM,38.2,3.6,3.49,0.1689999999999999,16.9%,110
+Hunter Harvey,hunter harvey,CHC,4.0,4.1,3.46,0.1669999999999999,16.7%,106
+Jake Rogers,jake rogers,DET,2.1,3.73,3.22,0.1669999999999999,16.7%,31
+Jhonathan Díaz,jhonathan daz,SEA,1.1,3.85,3.62,0.1669999999999999,16.7%,97
+Seth Martinez,seth martinez,BOS,1.0,5.6,3.62,0.1669999999999999,16.7%,111
+Evan Sisk,evan sisk,PIT,40.2,4.03,3.46,0.1669999999999999,16.7%,105
+Joey Estes,joey estes,OAK,4.1,4.02,4.25,0.1669999999999999,16.7%,89
+Edgardo Henriquez,edgardo henriquez,LAD,52.2,3.83,3.48,0.1669999999999999,16.7%,127
+Rolddy Muñoz,rolddy muoz,ATL,2.0,3.1,2.99,0.1669999999999999,16.7%,93
+Kyle Hurt,kyle hurt,LAD,41.0,3.82,3.53,0.1669999999999999,16.7%,94
+Eiberson Castellano,eiberson castellano,COL,3.0,2.75,2.17,0.1669999999999999,16.7%,90
+Robert Suarez,robert suarez,ATL,32.0,3.39,3.34,0.165,16.5%,109
+Tommy Nance,tommy nance,2 Tms,48.1,3.26,3.33,0.165,16.5%,104
+Eury Pérez,eury prez,MIA,127.2,3.95,3.87,0.165,16.5%,115
+Eduard Bazardo,eduard bazardo,SEA,59.0,3.97,3.56,0.165,16.5%,104
+Enyel De Los Santos,enyel de los santos,HOU,60.0,3.92,3.54,0.165,16.5%,95
+Connor Brogdon,connor brogdon,CLE,15.1,4.31,3.7,0.1639999999999999,16.4%,96
+Casey Mize,casey mize,2 Tms,104.2,4.15,4.05,0.1639999999999999,16.4%,88
+Spencer Miles,spencer miles,TOR,80.1,3.22,3.24,0.1639999999999999,16.4%,101
+Dean Kremer,dean kremer,2 Tms,58.2,3.86,3.89,0.163,16.3%,91
+Ranger Suarez,ranger suarez,BOS,118.1,3.56,3.82,0.163,16.3%,94
+Caleb Kilian,caleb kilian,2 Tms,47.2,3.77,3.5,0.163,16.3%,103
+Brooks Raley,brooks raley,2 Tms,48.1,3.9,3.53,0.162,16.2%,109
+Peyton Gray,peyton gray,TEX,51.2,4.04,3.55,0.162,16.2%,92
+Yennier Cano,yennier cano,BAL,41.2,3.14,2.85,0.162,16.2%,109
+Andrew Nardi,andrew nardi,MIA,22.2,4.02,3.56,0.162,16.2%,109
+Jake Bird,jake bird,2 Tms,37.2,4.16,3.53,0.161,16.1%,110
+Drew Rom,drew rom,2 Tms,11.1,4.11,3.68,0.161,16.1%,90
+Jack Perkins,jack perkins,OAK,90.1,4.28,3.8,0.161,16.1%,98
+Taj Bradley,taj bradley,MIN,140.2,3.98,3.96,0.16,16.0%,109
+Colton Gordon,colton gordon,HOU,9.1,4.12,3.68,0.16,16.0%,98
+Jordan Montgomery,jordan montgomery,TEX,10.0,3.14,3.24,0.159,15.9%,91
+Foster Griffin,foster griffin,2 Tms,149.1,3.8,3.86,0.159,15.9%,98
+Greg Weissert,greg weissert,BOS,49.1,3.88,3.53,0.159,15.9%,104
+Keegan Thompson,keegan thompson,COL,12.0,4.14,3.78,0.158,15.8%,91
+Josh Simpson,josh simpson,SEA,7.1,5.08,3.78,0.158,15.8%,109
+Spencer Strider,spencer strider,ATL,39.0,4.36,4.14,0.158,15.8%,97
+Fernando Cruz,fernando cruz,NYY,53.2,4.35,3.75,0.157,15.7%,98
+Abner Uribe,abner uribe,MIL,48.1,3.43,3.36,0.157,15.7%,109
+Max Fried,max fried,NYY,86.1,3.58,3.82,0.157,15.7%,106
+Cole Winn,cole winn,TEX,46.2,3.85,3.6,0.156,15.6%,99
+Logan Allen,logan allen,CLE,9.1,3.79,3.61,0.156,15.6%,97
+Mason Fluharty,mason fluharty,TOR,52.0,4.09,3.68,0.155,15.5%,105
+Victor Mederos,victor mederos,ATL,23.0,4.51,3.75,0.155,15.5%,102
+Sonny Gray,sonny gray,BOS,138.2,3.64,3.83,0.155,15.5%,101
+Hogan Harris,hogan harris,OAK,56.2,3.84,3.66,0.154,15.4%,105
+Connor Prielipp,connor prielipp,MIN,93.2,3.97,3.96,0.154,15.4%,103
+Jack Flaherty,jack flaherty,DET,86.1,4.45,4.12,0.154,15.4%,100
+Bryan Hudson,bryan hudson,CWS,53.2,3.9,3.62,0.154,15.4%,107
+Sean Manaea,sean manaea,NYM,117.0,4.2,3.85,0.154,15.4%,103
+Wyatt Olds,wyatt olds,BOS,3.1,2.94,3.66,0.154,15.4%,107
+Chase Dollander,chase dollander,COL,44.0,3.93,3.66,0.153,15.3%,110
+Shane Drohan,shane drohan,MIL,105.1,3.9,3.88,0.153,15.3%,99
+Mason Englert,mason englert,TB,35.2,4.25,3.95,0.153,15.3%,95
+Travis Adams,travis adams,MIN,42.0,4.13,3.71,0.151,15.1%,93
+Connelly Early,connelly early,BOS,91.2,4.09,3.99,0.151,15.1%,103
+Kyle Hart,kyle hart,SD,53.1,3.81,3.58,0.151,15.1%,107
+Blake Treinen,blake treinen,LAD,23.0,3.73,3.57,0.15,15.0%,108
+Luis Medina,luis medina,OAK,58.1,4.13,3.74,0.15,15.0%,104
+Jhony Brito,jhony brito,SD,5.1,4.7,4.24,0.15,15.0%,104
+Matthew Liberatore,matthew liberatore,STL,125.0,4.06,4.04,0.15,15.0%,98
+Brady Basso,brady basso,OAK,24.0,3.83,3.8,0.15,15.0%,99
+Jovani Morán,jovani morn,BOS,54.0,3.97,3.72,0.149,14.9%,100
+Tejay Antone,tejay antone,CIN,42.0,4.26,3.65,0.149,14.9%,101
+Kyle Backhus,kyle backhus,PHI,20.0,3.87,3.59,0.149,14.9%,110
+Lake Bachar,lake bachar,2 Tms,71.2,4.28,3.8,0.149,14.9%,98
+Robby Ahlstrom,robby ahlstrom,TEX,30.1,3.92,3.65,0.148,14.8%,107
+Will Klein,will klein,LAD,41.2,3.51,3.47,0.148,14.8%,95
+Joe Boyle,joe boyle,TB,19.0,4.04,4.0,0.148,14.8%,109
+Will Warren,will warren,NYY,122.0,3.83,3.99,0.148,14.8%,103
+Kyle Leahy,kyle leahy,STL,126.1,3.7,3.93,0.147,14.7%,92
+Graham Ashcraft,graham ashcraft,CIN,27.0,3.56,3.73,0.147,14.7%,112
+Justin Sterner,justin sterner,OAK,42.2,4.14,3.73,0.147,14.7%,100
+Robert Gasser,robert gasser,MIL,77.0,4.37,4.15,0.147,14.7%,105
+Will Vest,will vest,DET,26.2,3.43,3.2,0.147,14.7%,105
+Wilber Dotel,wilber dotel,PIT,28.2,3.71,3.67,0.146,14.6%,102
+Cole Ragans,cole ragans,KC,35.1,4.37,4.29,0.146,14.6%,109
+Dustin May,dustin may,2 Tms,124.0,3.95,4.02,0.145,14.5%,102
+JoJo Romero,jojo romero,STL,43.0,3.89,3.59,0.145,14.5%,109
+Tanner Gordon,tanner gordon,COL,76.2,4.47,4.05,0.145,14.5%,86
+Bennett Sousa,bennett sousa,HOU,16.2,4.3,3.85,0.145,14.5%,107
+Alex Vesia,alex vesia,LAD,45.1,4.37,3.99,0.144,14.4%,115
+Colin Holderman,colin holderman,CLE,51.0,3.97,3.51,0.144,14.4%,108
+Joey Cantillo,joey cantillo,CLE,130.1,3.89,4.08,0.144,14.4%,95
+George Kirby,george kirby,SEA,140.0,3.91,4.05,0.143,14.3%,101
+Nicky Lopez,nicky lopez,TEX,1.0,2.6,3.07,0.143,14.3%,14
+Shane McClanahan,shane mcclanahan,TB,107.1,3.98,4.07,0.142,14.2%,107
+AJ Blubaugh,aj blubaugh,HOU,80.1,4.43,3.89,0.142,14.2%,103
+José Urquidy,jos urquidy,2 Tms,19.0,4.26,3.78,0.141,14.1%,98
+Ryan Gusto,ryan gusto,MIA,57.2,4.14,4.07,0.141,14.1%,96
+Tyler Mahle,tyler mahle,2 Tms,118.1,3.94,4.09,0.141,14.1%,88
+Brad Keller,brad keller,PHI,31.1,3.97,3.71,0.141,14.1%,109
+Matt Brash,matt brash,SEA,16.2,3.99,3.7,0.141,14.1%,102
+Trevor Rogers,trevor rogers,BAL,132.2,4.17,4.15,0.14,14.0%,102
+Seranthony Domínguez,seranthony domnguez,2 Tms,47.2,4.13,3.85,0.14,14.0%,110
+Mick Abel,mick abel,MIN,20.1,4.3,4.1,0.14,14.0%,111
+Trevor Richards,trevor richards,2 Tms,64.0,4.59,4.06,0.14,14.0%,90
+Peter Lambert,peter lambert,HOU,122.1,4.44,4.19,0.14,14.0%,92
+Justin Wrobleski,justin wrobleski,LAD,126.1,4.18,4.16,0.14,14.0%,97
+Jake Bennett,jake bennett,BOS,87.2,3.88,4.1,0.139,13.9%,93
+Yohan Ramírez,yohan ramrez,PIT,71.1,4.01,3.81,0.139,13.9%,109
+Kenley Jansen,kenley jansen,DET,34.1,4.61,4.18,0.139,13.9%,109
+Joel Payamps,joel payamps,ATL,7.2,4.86,4.16,0.139,13.9%,96
+TJ Shook,tj shook,COL,7.2,4.6,4.11,0.139,13.9%,84
+Cionel Pérez,cionel prez,2 Tms,41.2,3.5,3.45,0.138,13.8%,106
+Tom Cosgrove,tom cosgrove,WSH,13.1,4.83,4.06,0.138,13.8%,100
+Alex McFarlane,alex mcfarlane,PHI,7.1,3.43,3.47,0.138,13.8%,127
+Owen Murphy,owen murphy,ATL,6.2,4.9,4.31,0.138,13.8%,96
+Roki Sasaki,roki sasaki,LAD,116.0,4.05,4.14,0.138,13.8%,111
+Austin Warren,austin warren,NYM,37.2,4.09,3.83,0.138,13.8%,97
+Orlando Ribalta,orlando ribalta,WSH,39.1,4.35,3.86,0.138,13.8%,103
+Sean Newcomb,sean newcomb,CWS,72.0,3.8,3.7,0.1369999999999999,13.7%,105
+Tyler Holton,tyler holton,DET,60.2,3.78,3.58,0.1369999999999999,13.7%,101
+Tyler Alexander,tyler alexander,TEX,56.0,3.81,3.63,0.1369999999999999,13.7%,99
+Noah Cameron,noah cameron,KC,143.1,4.05,4.16,0.1369999999999999,13.7%,97
+Woo-Suk Go,woosuk go,MIN,4.0,3.97,3.7,0.136,13.6%,82
+Kade Anderson,kade anderson,SEA,5.2,4.78,4.44,0.136,13.6%,97
+Davis Martin,davis martin,CWS,125.0,4.0,4.12,0.136,13.6%,90
+José Suarez,jos suarez,3 Tms,58.2,3.99,3.82,0.136,13.6%,96
+Kyle Freeland,kyle freeland,COL,124.1,4.18,4.19,0.135,13.5%,91
+Jack Leiter,jack leiter,TEX,80.0,4.25,4.22,0.135,13.5%,102
+Troy Melton,troy melton,DET,90.0,3.99,4.15,0.135,13.5%,100
+Josh Walker,josh walker,BAL,17.2,4.34,3.83,0.135,13.5%,96
+Enmanuel De Jesus,enmanuel de jesus,DET,42.1,4.09,3.81,0.135,13.5%,103
+Chase Silseth,chase silseth,2 Tms,50.0,4.2,3.94,0.134,13.4%,97
+Michael Fulmer,michael fulmer,LAA,3.2,2.95,3.66,0.133,13.3%,107
+Jordan Romano,jordan romano,2 Tms,22.2,4.36,3.95,0.133,13.3%,92
+Kolby Allard,kolby allard,CLE,8.2,4.14,3.76,0.133,13.3%,93
+Yusei Kikuchi,yusei kikuchi,LAA,36.0,4.29,4.22,0.133,13.3%,97
+Mark Manfredi,mark manfredi,COL,3.0,3.76,4.27,0.133,13.3%,93
+Logan Webb,logan webb,SF,141.2,3.77,3.96,0.133,13.3%,99
+Kai-Wei Teng,kaiwei teng,HOU,70.0,4.52,4.09,0.133,13.3%,96
+Gage Jump,gage jump,OAK,82.0,4.08,4.23,0.133,13.3%,107
+Riley O'Brien,riley obrien,STL,52.2,4.04,3.72,0.133,13.3%,107
+Julian Garcia,julian garcia,CIN,32.1,4.32,3.92,0.132,13.2%,87
+Andrew Kittredge,andrew kittredge,BAL,39.1,3.86,3.77,0.132,13.2%,98
+Adam Macko,adam macko,TOR,22.0,4.42,3.92,0.131,13.1%,98
+Paxton Schultz,paxton schultz,WSH,32.1,4.65,4.02,0.131,13.1%,91
+Brent Suter,brent suter,2 Tms,75.1,3.66,3.72,0.131,13.1%,98
+Andrew Morris,andrew morris,MIN,60.2,4.02,3.84,0.13,13.0%,107
+Tanner Banks,tanner banks,PHI,29.0,4.57,4.0,0.13,13.0%,101
+Alan Rangel,alan rangel,PHI,26.0,4.62,4.16,0.13,13.0%,100
+Jakob Junis,jakob junis,TEX,43.1,4.18,3.9,0.13,13.0%,95
+Tatsuya Imai,tatsuya imai,HOU,67.2,4.23,4.32,0.13,13.0%,87
+Luis Castillo,luis castillo,2 Tms,118.0,4.34,4.25,0.13,13.0%,96
+Orion Kerkering,orion kerkering,PHI,51.0,4.62,3.98,0.129,12.9%,109
+Blas Castaño,blas castao,COL,20.2,4.06,3.74,0.129,12.9%,93
+José Soriano,jos soriano,2 Tms,144.1,3.75,4.09,0.129,12.9%,97
+Gerardo Carrillo,gerardo carrillo,ARI,15.1,3.78,4.03,0.129,12.9%,100
+Shane Baz,shane baz,BAL,151.1,4.12,4.27,0.129,12.9%,99
+Cody Laweryson,cody laweryson,MIN,16.2,4.36,3.9,0.128,12.8%,93
+Jordan Leasure,jordan leasure,CWS,18.2,5.19,4.51,0.128,12.8%,105
+Zebby Matthews,zebby matthews,MIN,103.2,4.08,4.21,0.128,12.8%,95
+George Soriano,george soriano,STL,57.0,4.2,3.92,0.128,12.8%,100
+Jordan Hicks,jordan hicks,CWS,39.0,3.95,3.98,0.128,12.8%,114
+Michael Wacha,michael wacha,KC,162.2,4.33,4.34,0.128,12.8%,98
+Hunter Gaddis,hunter gaddis,CLE,44.2,4.6,4.03,0.128,12.8%,97
+Mitch Farris,mitch farris,LAA,47.1,4.16,3.95,0.127,12.7%,93
+Bryan Abreu,bryan abreu,HOU,48.2,4.3,4.14,0.127,12.7%,100
+Jake Woodford,jake woodford,2 Tms,26.1,3.86,3.85,0.127,12.7%,98
+Jake Irvin,jake irvin,WSH,77.1,4.64,4.34,0.127,12.7%,99
+Antonio Senzatela,antonio senzatela,2 Tms,60.0,4.04,3.84,0.126,12.6%,103
+Chad Patrick,chad patrick,MIL,91.0,4.33,4.09,0.126,12.6%,101
+Jonathan Loáisiga,jonathan loisiga,ARI,52.1,3.77,3.64,0.126,12.6%,105
+José A. Ferrer,jos a ferrer,SEA,54.1,3.93,3.56,0.126,12.6%,127
+Brandon Sproat,brandon sproat,MIL,95.2,4.28,4.28,0.126,12.6%,100
+Luis Severino,luis severino,OAK,62.2,4.13,4.3,0.125,12.5%,107
+Patrick Sandoval,patrick sandoval,BOS,39.2,4.36,4.34,0.125,12.5%,102
+Freddy Peralta,freddy peralta,2 Tms,135.0,4.34,4.31,0.125,12.5%,96
+Calvin Faucher,calvin faucher,MIA,55.1,3.75,3.83,0.124,12.4%,104
+Matt Waldron,matt waldron,2 Tms,37.0,4.55,4.11,0.124,12.4%,94
+Tanner Bibee,tanner bibee,CLE,156.1,4.34,4.37,0.124,12.4%,103
+Cooper Criswell,cooper criswell,SEA,30.2,3.65,3.44,0.124,12.4%,102
+David Morgan,david morgan,SD,22.0,4.0,3.76,0.124,12.4%,102
+Angel Chivilli,angel chivilli,NYY,16.2,4.78,4.06,0.123,12.3%,94
+Tyler Kinley,tyler kinley,ATL,42.2,4.72,4.17,0.123,12.3%,103
+Carlos Rodón,carlos rodn,NYY,54.1,4.27,4.42,0.123,12.3%,107
+Ryan Rolison,ryan rolison,CHC,51.0,4.04,4.0,0.123,12.3%,103
+Grant Anderson,grant anderson,MIL,52.0,4.47,4.09,0.122,12.2%,103
+Casey Legumina,casey legumina,2 Tms,56.1,4.37,4.01,0.121,12.1%,112
+Hunter Dobbins,hunter dobbins,STL,54.0,4.14,4.23,0.121,12.1%,96
+Reynaldo López,reynaldo lpez,ATL,71.2,4.4,4.29,0.121,12.1%,90
+Kris Bubic,kris bubic,KC,50.1,4.14,4.39,0.121,12.1%,94
+Alex Lange,alex lange,KC,50.2,4.35,3.98,0.12,12.0%,96
+Alec Gamboa,alec gamboa,BOS,19.1,3.58,3.71,0.12,12.0%,111
+Jordan Wicks,jordan wicks,CHC,10.1,4.02,3.89,0.12,12.0%,97
+Kumar Rocker,kumar rocker,TEX,126.2,4.27,4.31,0.119,11.9%,91
+Jameson Taillon,jameson taillon,2 Tms,84.0,4.78,4.54,0.119,11.9%,92
+Ryan Watson,ryan watson,2 Tms,61.0,4.43,4.04,0.119,11.9%,91
+Brendon Little,brendon little,TOR,19.0,3.78,4.21,0.118,11.8%,110
+Mitchell Parker,mitchell parker,WSH,39.2,4.49,4.08,0.118,11.8%,95
+Raymond Burgos,raymond burgos,BOS,10.0,4.05,3.89,0.118,11.8%,89
+Joey Gerber,joey gerber,NYM,8.1,4.42,4.25,0.118,11.8%,100
+Kyle Bradish,kyle bradish,BAL,138.2,4.04,4.32,0.118,11.8%,100
+Griffin Canning,griffin canning,SD,75.1,4.36,4.25,0.1169999999999999,11.7%,91
+Trey Yesavage,trey yesavage,TOR,93.2,4.61,4.54,0.1169999999999999,11.7%,108
+Yuki Matsui,yuki matsui,SD,50.2,4.8,4.29,0.1169999999999999,11.7%,104
+Sandy Alcantara,sandy alcantara,MIA,183.2,4.2,4.37,0.1159999999999999,11.6%,100
+Pierce Johnson,pierce johnson,CIN,38.1,4.34,4.08,0.1159999999999999,11.6%,100
+Bryce Elder,bryce elder,ATL,137.2,4.16,4.38,0.1159999999999999,11.6%,85
+Gabe Speier,gabe speier,SEA,35.0,4.55,4.03,0.1159999999999999,11.6%,114
+Anthony Banda,anthony banda,MIN,34.1,5.02,4.09,0.115,11.5%,103
+Jalen Beeks,jalen beeks,TEX,26.0,4.14,4.04,0.115,11.5%,89
+Landen Roupp,landen roupp,SF,134.2,4.07,4.34,0.115,11.5%,98
+Michael King,michael king,SD,149.0,4.35,4.4,0.115,11.5%,96
+Brad Lord,brad lord,WSH,65.0,4.01,3.77,0.115,11.5%,95
+Blade Tidwell,blade tidwell,SF,32.2,4.34,4.28,0.115,11.5%,105
+Landon Knack,landon knack,LAD,7.2,5.65,4.53,0.114,11.4%,94
+Cole Henry,cole henry,WSH,13.2,5.85,4.39,0.114,11.4%,96
+Edwin Díaz,edwin daz,LAD,13.2,5.26,4.19,0.114,11.4%,104
+Cam Sanders,cam sanders,2 Tms,19.1,4.67,4.19,0.114,11.4%,103
+J.T. Ginn,jt ginn,OAK,132.1,4.23,4.36,0.114,11.4%,93
+Aaron Civale,aaron civale,2 Tms,94.2,4.81,4.6,0.113,11.3%,97
+David Sandlin,david sandlin,CWS,24.2,4.19,4.29,0.113,11.3%,98
+Ryne Stanek,ryne stanek,STL,51.0,4.32,4.13,0.113,11.3%,109
+Matthew Boyd,matthew boyd,CHC,91.0,4.45,4.45,0.113,11.3%,96
+Ryne Nelson,ryne nelson,ARI,83.1,4.94,4.7,0.113,11.3%,106
+Camilo Doval,camilo doval,2 Tms,50.2,4.01,3.9,0.1119999999999999,11.2%,100
+Andrew Alvarez,andrew alvarez,WSH,80.0,3.87,4.15,0.1119999999999999,11.2%,96
+Brandon Pfaadt,brandon pfaadt,ARI,98.1,4.24,4.27,0.1119999999999999,11.2%,94
+Johan Oviedo,johan oviedo,BOS,3.2,5.56,4.14,0.111,11.1%,105
+Jack Weisenburger,jack weisenburger,NYM,4.1,5.06,4.37,0.111,11.1%,104
+Andrew Sears,andrew sears,DET,4.0,5.36,4.65,0.111,11.1%,100
+Daniel Lynch IV,daniel lynch iv,KC,58.1,4.35,4.13,0.111,11.1%,104
+Phil Maton,phil maton,CHC,27.2,4.32,4.06,0.11,11.0%,103
+Keider Montero,keider montero,DET,133.2,4.6,4.5,0.11,11.0%,94
+Brennan Bernardino,brennan bernardino,COL,52.0,4.29,4.08,0.11,11.0%,92
+Zac Thornton,zac thornton,NYM,50.1,4.11,4.45,0.11,11.0%,98
+Brady Singer,brady singer,CIN,131.2,4.42,4.45,0.11,11.0%,92
+Andrew Painter,andrew painter,PHI,92.1,4.54,4.45,0.11,11.0%,103
+Trevor McDonald,trevor mcdonald,SF,70.1,4.12,4.07,0.11,11.0%,99
+Walker Buehler,walker buehler,SD,126.1,4.21,4.38,0.11,11.0%,96
+Nick Martinez,nick martinez,TB,147.2,4.5,4.67,0.11,11.0%,98
+Cal Quantrill,cal quantrill,TEX,83.2,4.62,4.41,0.11,11.0%,89
+Paul Blackburn,paul blackburn,NYY,73.0,3.89,3.85,0.109,10.9%,92
+Anthony Nunez,anthony nunez,BAL,46.0,4.32,4.15,0.109,10.9%,107
+Craig Yoho,craig yoho,2 Tms,28.1,4.58,4.16,0.108,10.8%,96
+Gabriel Hughes,gabriel hughes,COL,42.2,4.3,4.45,0.108,10.8%,85
+Kodai Senga,kodai senga,NYM,52.0,4.9,4.57,0.108,10.8%,97
+Lance McCullers Jr.,lance mccullers jr,2 Tms,44.0,4.29,4.53,0.108,10.8%,97
+Reiver Sanmartin,reiver sanmartin,SF,12.2,3.77,3.72,0.107,10.7%,98
+Cole Sands,cole sands,MIN,12.0,4.77,4.18,0.107,10.7%,91
+Edward Cabrera,edward cabrera,CHC,76.0,4.21,4.49,0.106,10.6%,94
+Craig Kimbrel,craig kimbrel,3 Tms,39.0,4.69,4.29,0.106,10.6%,110
+Hayden Wesneski,hayden wesneski,HOU,27.2,4.49,4.55,0.106,10.6%,94
+Chris Martin,chris martin,TEX,14.0,4.49,4.32,0.106,10.6%,102
+Chris Murphy,chris murphy,CWS,30.0,5.32,4.46,0.106,10.6%,108
+Michael McGreevy,michael mcgreevy,STL,137.1,4.17,4.47,0.106,10.6%,81
+Patrick Corbin,patrick corbin,TOR,80.0,4.41,4.47,0.106,10.6%,94
+Jonathan Heasley,jonathan heasley,TB,4.0,5.11,4.82,0.105,10.5%,92
+Carmen Mlodzinski,carmen mlodzinski,PIT,105.2,4.31,4.33,0.105,10.5%,92
+Bryan King,bryan king,HOU,53.0,4.38,4.02,0.105,10.5%,100
+Seth Lugo,seth lugo,KC,145.1,4.45,4.55,0.105,10.5%,89
+Hunter Brown,hunter brown,HOU,74.1,4.12,4.44,0.105,10.5%,104
+Beck Way,beck way,KC,23.1,3.86,3.87,0.105,10.5%,99
+Slade Cecconi,slade cecconi,CLE,110.0,4.39,4.5,0.105,10.5%,94
+Jason Adam,jason adam,SD,32.1,4.57,4.17,0.104,10.4%,98
+Anthony Kay,anthony kay,CWS,127.1,4.57,4.44,0.104,10.4%,104
+Walbert Ureña,walbert urea,LAA,112.2,4.21,4.42,0.104,10.4%,99
+Grayson Rodriguez,grayson rodriguez,LAA,66.0,4.52,4.57,0.104,10.4%,104
+Cody Bradford,cody bradford,TEX,20.2,4.82,4.9,0.103,10.3%,86
+Cristian Javier,cristian javier,HOU,40.1,5.16,4.81,0.103,10.3%,100
+Taylor Clarke,taylor clarke,ARI,58.2,4.22,4.08,0.103,10.3%,92
+Jacob Lopez,jacob lopez,OAK,94.0,5.08,4.75,0.103,10.3%,97
+Eddy Yean,eddy yean,WSH,10.0,4.45,4.09,0.103,10.3%,87
+Beau Brieske,beau brieske,DET,9.1,4.6,4.27,0.103,10.3%,98
+Javier Assad,javier assad,CHC,83.1,4.35,4.4,0.102,10.2%,99
+Brandon Young,brandon young,BAL,123.1,4.47,4.56,0.102,10.2%,97
+Jesse Scholtens,jesse scholtens,TB,44.2,4.67,4.34,0.102,10.2%,93
+Jose Cuas,jose cuas,KC,13.0,4.75,4.48,0.102,10.2%,101
+David Peterson,david peterson,2 Tms,118.1,4.07,4.26,0.102,10.2%,89
+Janson Junk,janson junk,MIA,97.1,4.41,4.55,0.1009999999999999,10.1%,100
+Tobias Myers,tobias myers,NYM,46.0,4.57,4.4,0.1009999999999999,10.1%,103
+Sam Moll,sam moll,CIN,52.2,4.16,4.09,0.1,10.0%,102
+DL Hall,dl hall,MIL,43.0,4.25,4.4,0.1,10.0%,102
+Brandan Bidois,brandan bidois,PIT,15.2,5.53,4.59,0.1,10.0%,110
+Welinton Herrera,welinton herrera,COL,2.1,4.6,4.38,0.1,10.0%,91
+Tyler Samaniego,tyler samaniego,BOS,20.1,4.3,4.15,0.1,10.0%,101
+Matt Strahm,matt strahm,KC,35.2,5.63,4.71,0.099,9.9%,104
+Gus Varland,gus varland,WSH,31.2,5.09,4.51,0.099,9.9%,102
+Steven Matz,steven matz,TB,65.2,4.51,4.53,0.099,9.9%,99
+Andre Pallante,andre pallante,STL,136.0,3.95,4.21,0.099,9.9%,97
+Huascar Brazobán,huascar brazobn,2 Tms,62.2,4.08,4.18,0.099,9.9%,96
+Robert Stock,robert stock,NYM,16.2,5.32,4.76,0.099,9.9%,97
+Zack Kelly,zack kelly,BOS,16.1,4.14,4.11,0.099,9.9%,108
+Bailey Ober,bailey ober,MIN,108.1,4.92,4.84,0.098,9.8%,91
+Jackson Jobe,jackson jobe,DET,14.0,4.42,4.25,0.098,9.8%,105
+Stephen Kolek,stephen kolek,KC,54.0,4.2,4.5,0.098,9.8%,92
+JP Sears,jp sears,SD,32.2,4.74,4.6,0.098,9.8%,91
+Braydon Fisher,braydon fisher,TOR,65.2,4.44,4.36,0.098,9.8%,100
+Jaden Hill,jaden hill,COL,28.2,4.72,4.28,0.098,9.8%,98
+Jonathan Pintaro,jonathan pintaro,NYM,20.0,4.42,4.27,0.098,9.8%,109
+Spencer Arrighetti,spencer arrighetti,2 Tms,91.1,5.0,4.72,0.0969999999999999,9.7%,100
+Clay Holmes,clay holmes,2 Tms,68.2,3.76,4.06,0.0969999999999999,9.7%,99
+Zach Pop,zach pop,PHI,7.1,4.73,4.26,0.0969999999999999,9.7%,105
+Matt Svanson,matt svanson,STL,43.1,4.74,4.32,0.0969999999999999,9.7%,96
+Dennis Santana,dennis santana,2 Tms,44.1,5.02,4.43,0.096,9.6%,91
+Isaac Mattson,isaac mattson,PIT,36.2,4.8,4.46,0.096,9.6%,98
+Noah Schultz,noah schultz,CWS,65.1,4.97,4.7,0.096,9.6%,97
+Brayan Bello,brayan bello,BOS,90.1,3.98,4.07,0.096,9.6%,93
+Eduardo Rodriguez,eduardo rodriguez,ARI,155.0,4.41,4.67,0.096,9.6%,92
+Sam Bachman,sam bachman,LAA,45.2,4.36,4.25,0.096,9.6%,102
+Brock Burke,brock burke,CIN,62.2,4.77,4.38,0.096,9.6%,105
+Shawn Armstrong,shawn armstrong,CLE,33.0,4.87,4.36,0.096,9.6%,102
+John Brebbia,john brebbia,COL,4.1,5.65,5.08,0.095,9.5%,88
+Carlos Rodriguez,carlos rodriguez,MIL,9.1,5.25,4.72,0.095,9.5%,86
+Mike Burrows,mike burrows,HOU,94.2,4.84,4.72,0.095,9.5%,94
+Jason Foley,jason foley,SF,13.0,3.98,4.03,0.094,9.4%,99
+Mitch Keller,mitch keller,PIT,115.2,4.59,4.7,0.093,9.3%,92
+Kendry Rojas,kendry rojas,MIN,29.2,4.7,4.69,0.092,9.2%,104
+Cade Povich,cade povich,BAL,28.1,4.85,4.66,0.092,9.2%,101
+Vince Velasquez,vince velasquez,CHC,3.1,5.2,5.48,0.091,9.1%,91
+Brooks Kriske,brooks kriske,OAK,2.2,4.98,4.7,0.091,9.1%,98
+Yovanny Cruz,yovanny cruz,2 Tms,9.1,4.97,4.46,0.091,9.1%,115
+Keaton Winn,keaton winn,SF,43.0,4.18,4.12,0.091,9.1%,98
+Tyler Uberstine,tyler uberstine,BOS,2.2,4.98,4.99,0.091,9.1%,108
+Eduardo Rivera,eduardo rivera,BOS,10.0,4.24,4.53,0.091,9.1%,101
+Kohl Drake,kohl drake,ARI,16.2,6.05,5.38,0.091,9.1%,93
+Quinn Mathews,quinn mathews,STL,14.0,4.78,4.75,0.091,9.1%,97
+Scott Blewett,scott blewett,2 Tms,18.1,3.83,3.9,0.09,9.0%,92
+Carson Palmquist,carson palmquist,WSH,16.1,5.12,4.67,0.09,9.0%,107
+Cole Wilcox,cole wilcox,SEA,27.0,4.13,4.3,0.089,8.9%,99
+Colin Rea,colin rea,CHC,124.2,4.71,4.66,0.089,8.9%,94
+Tim Herrin,tim herrin,CLE,45.1,4.8,4.4,0.089,8.9%,100
+Paul Gervase,paul gervase,LAD,7.2,4.53,4.47,0.088,8.8%,87
+Yoendrys Gómez,yoendrys gmez,2 Tms,57.0,5.14,4.63,0.088,8.8%,113
+Taylor Rogers,taylor rogers,MIN,47.2,5.0,4.49,0.088,8.8%,106
+Bubba Chandler,bubba chandler,PIT,125.1,4.71,4.78,0.088,8.8%,103
+Grant Holmes,grant holmes,ATL,123.2,4.57,4.74,0.087,8.7%,87
+Robbie Ray,robbie ray,2 Tms,143.0,4.81,4.86,0.087,8.7%,94
+Framber Valdez,framber valdez,DET,144.2,4.25,4.4,0.086,8.6%,102
+Ryan Thompson,ryan thompson,ARI,40.2,4.25,4.09,0.086,8.6%,121
+Tony Santillan,tony santillan,CIN,32.0,4.96,4.55,0.086,8.6%,92
+Easton McGee,easton mcgee,2 Tms,7.1,4.87,4.44,0.086,8.6%,98
+Ryan Yarbrough,ryan yarbrough,NYY,50.0,5.01,4.57,0.085,8.5%,100
+Tyler Phillips,tyler phillips,MIA,100.2,4.45,4.56,0.085,8.5%,96
+Seth Johnson,seth johnson,2 Tms,21.0,4.98,4.58,0.085,8.5%,110
+Justin Lawrence,justin lawrence,3 Tms,34.1,5.09,4.55,0.085,8.5%,102
+Eric Lauer,eric lauer,2 Tms,103.1,5.29,5.07,0.084,8.4%,89
+Randy Vásquez,randy vsquez,SD,118.0,4.9,4.82,0.084,8.4%,97
+Cody Bolton,cody bolton,HOU,20.0,4.87,4.69,0.084,8.4%,98
+Adrian Houser,adrian houser,SF,108.0,4.59,4.64,0.084,8.4%,90
+Rhett Lowder,rhett lowder,CIN,107.0,4.74,4.78,0.084,8.4%,86
+Austin Hedges,austin hedges,CLE,2.2,3.47,3.55,0.083,8.3%,69
+Tomoyuki Sugano,tomoyuki sugano,COL,121.2,4.77,4.92,0.083,8.3%,81
+Nick Lodolo,nick lodolo,CIN,75.0,4.76,4.76,0.083,8.3%,105
+Shane Bieber,shane bieber,TOR,55.2,4.62,4.78,0.083,8.3%,90
+Albert Suárez,albert surez,BAL,55.0,4.77,4.62,0.083,8.3%,84
+Jonathan Hernández,jonathan hernndez,LAD,25.1,4.62,4.48,0.083,8.3%,105
+Cade Gibson,cade gibson,MIA,37.1,4.51,4.25,0.0819999999999999,8.2%,106
+Carson Seymour,carson seymour,SF,16.1,4.54,4.36,0.0819999999999999,8.2%,106
+Jeffrey Springs,jeffrey springs,OAK,118.1,5.08,4.98,0.0819999999999999,8.2%,97
+John King,john king,MIA,49.2,4.64,4.4,0.081,8.1%,94
+James Karinchak,james karinchak,ATL,9.2,5.33,4.89,0.081,8.1%,95
+Ron Marinaccio,ron marinaccio,3 Tms,57.2,5.15,4.51,0.081,8.1%,94
+Gavin Hollowell,gavin hollowell,CHC,14.1,5.68,5.13,0.081,8.1%,109
+Erick Fedde,erick fedde,CWS,118.1,4.76,4.68,0.08,8.0%,89
+Sam Hentges,sam hentges,SF,32.0,4.85,4.56,0.08,8.0%,97
+Chayce McDermott,chayce mcdermott,2 Tms,5.2,5.93,5.74,0.08,8.0%,99
+Matt Wilkinson,matt wilkinson,SF,5.2,6.11,6.02,0.08,8.0%,88
+Jimmy Herget,jimmy herget,COL,38.2,5.16,4.68,0.08,8.0%,99
+Eric Orze,eric orze,MIN,41.1,4.69,4.47,0.079,7.9%,96
+Ronel Blanco,ronel blanco,HOU,23.1,4.98,4.85,0.079,7.9%,93
+Chris Paddack,chris paddack,3 Tms,57.0,4.83,4.79,0.079,7.9%,89
+Connor Seabold,connor seabold,3 Tms,24.0,5.25,4.52,0.078,7.8%,91
+Martín Pérez,martn prez,ATL,115.1,4.31,4.71,0.078,7.8%,86
+Eli Morgan,eli morgan,KC,19.1,5.17,4.62,0.077,7.7%,96
+Taylor Rashi,taylor rashi,2 Tms,5.2,4.77,4.51,0.077,7.7%,85
+Cade Horton,cade horton,CHC,7.1,3.84,4.38,0.077,7.7%,99
+Ryan Weiss,ryan weiss,HOU,26.0,5.0,4.78,0.076,7.6%,102
+Mason Barnett,mason barnett,OAK,40.2,5.18,4.8,0.076,7.6%,96
+Shaun Anderson,shaun anderson,LAA,20.0,4.7,4.49,0.075,7.5%,86
+Nate Pearson,nate pearson,2 Tms,32.2,4.75,4.55,0.075,7.5%,105
+Khristian Curtis,khristian curtis,PIT,8.0,4.47,4.62,0.074,7.4%,93
+Andrew Abbott,andrew abbott,CIN,145.1,4.82,4.97,0.073,7.3%,94
+Clayton Beeter,clayton beeter,WSH,40.2,4.49,4.56,0.073,7.3%,101
+Juan Mejia,juan mejia,COL,54.2,4.55,4.57,0.072,7.2%,97
+Elieser Hernández,elieser hernndez,ATL,6.0,5.35,4.74,0.071,7.1%,93
+Jason Alexander,jason alexander,HOU,18.1,4.84,4.75,0.071,7.1%,90
+Noah Murdock,noah murdock,PIT,3.0,3.92,4.46,0.071,7.1%,105
+Miles Mikolas,miles mikolas,WSH,116.0,4.72,4.77,0.07,7.0%,89
+Keegan Akin,keegan akin,BAL,25.1,5.31,4.88,0.07,7.0%,100
+Zach Agnos,zach agnos,COL,74.0,5.06,4.69,0.07,7.0%,90
+Zach McCambley,zach mccambley,CIN,8.2,4.83,4.55,0.07,7.0%,98
+Zac Gallen,zac gallen,ARI,98.0,4.79,4.93,0.068,6.8%,87
+Andrew Hoffmann,andrew hoffmann,ARI,11.2,5.28,4.77,0.068,6.8%,91
+Wandy Peralta,wandy peralta,SD,64.0,4.4,4.49,0.067,6.7%,100
+Cole Irvin,cole irvin,LAD,6.0,4.93,4.52,0.067,6.7%,89
+Yilber Díaz,yilber daz,2 Tms,1.2,6.71,4.89,0.067,6.7%,101
+Brian Fitzpatrick,brian fitzpatrick,MIL,6.2,4.52,4.37,0.067,6.7%,99
+JR Ritchie,jr ritchie,ATL,58.0,4.89,4.93,0.066,6.6%,94
+Caleb Ferguson,caleb ferguson,2 Tms,30.0,4.44,4.55,0.066,6.6%,105
+Tyler Davis,tyler davis,CWS,26.1,4.79,4.74,0.066,6.6%,103
+John Schreiber,john schreiber,KC,47.1,4.56,4.6,0.066,6.6%,100
+Scott Barlow,scott barlow,OAK,33.1,5.72,4.77,0.066,6.6%,92
+Lucas Sims,lucas sims,CWS,10.0,5.0,4.78,0.065,6.5%,100
+Chris Bassitt,chris bassitt,BAL,67.1,4.78,4.81,0.065,6.5%,97
+Ryan Johnson,ryan johnson,LAA,67.1,5.4,5.17,0.064,6.4%,92
+Joel Kuhnel,joel kuhnel,2 Tms,35.1,4.4,4.29,0.064,6.4%,97
+Jayden Murray,jayden murray,2 Tms,16.1,5.71,5.03,0.063,6.3%,95
+Justin Bruihl,justin bruihl,STL,64.2,4.74,4.44,0.063,6.3%,101
+Zack Littell,zack littell,2 Tms,124.1,5.26,5.08,0.063,6.3%,83
+José Buttó,jos butt,SF,2.0,7.11,5.51,0.063,6.3%,92
+Lyon Richardson,lyon richardson,2 Tms,3.1,5.64,4.98,0.063,6.3%,87
+Matt Pushard,matt pushard,STL,7.0,5.24,4.77,0.063,6.3%,96
+Jacob Waguespack,jacob waguespack,DET,29.0,4.77,4.68,0.062,6.2%,92
+Ryan Feltner,ryan feltner,COL,97.2,4.98,5.08,0.062,6.2%,92
+Peyton Pallette,peyton pallette,CLE,20.2,5.18,4.87,0.062,6.2%,92
+Jose Cabrera,jose cabrera,ARI,17.2,5.39,5.16,0.062,6.2%,88
+Luinder Avila,luinder avila,KC,70.0,4.78,4.97,0.061,6.1%,100
+Josh Ekness,josh ekness,MIA,16.0,5.19,4.85,0.061,6.1%,118
+Hoby Milner,hoby milner,CHC,35.2,4.78,4.67,0.06,6.0%,106
+Max Scherzer,max scherzer,TOR,45.0,5.58,5.31,0.059,5.9%,93
+Brant Hurter,brant hurter,DET,25.1,4.04,4.2,0.059,5.9%,118
+Yunior Tur,yunior tur,OAK,4.2,7.61,5.09,0.059,5.9%,102
+Michael Lorenzen,michael lorenzen,COL,115.2,4.92,5.0,0.059,5.9%,87
+Zak Kent,zak kent,2 Tms,14.1,5.44,4.84,0.0579999999999999,5.8%,93
+Ryan Borucki,ryan borucki,SF,23.2,5.06,4.71,0.0579999999999999,5.8%,98
+Max Lazar,max lazar,PHI,8.0,4.85,4.6,0.057,5.7%,96
+Kody Funderburk,kody funderburk,MIN,40.2,4.33,4.49,0.057,5.7%,103
+Yerry De los Santos,yerry de los santos,NYY,16.2,4.66,4.62,0.0559999999999999,5.6%,95
+Trent Thornton,trent thornton,CHC,41.2,4.64,4.67,0.0559999999999999,5.6%,97
+Julian Fernández,julian fernndez,WSH,4.0,6.48,5.68,0.0559999999999999,5.6%,91
+Trevor Martin,trevor martin,TB,11.1,5.84,4.89,0.0559999999999999,5.6%,102
+Ethan Pecko,ethan pecko,HOU,3.2,7.06,5.95,0.0559999999999999,5.6%,100
+Germán Márquez,germn mrquez,SD,53.0,5.38,5.2,0.055,5.5%,87
+Carlos Carrasco,carlos carrasco,ATL,16.2,4.69,4.73,0.055,5.5%,82
+Tim Hill,tim hill,NYY,49.0,4.31,3.79,0.054,5.4%,127
+Taijuan Walker,taijuan walker,PHI,22.2,5.51,5.15,0.052,5.2%,89
+JT Brubaker,jt brubaker,SF,60.1,4.99,4.85,0.052,5.2%,90
+Max Rajcic,max rajcic,STL,9.0,5.49,5.06,0.051,5.1%,97
+Alimber Santa,alimber santa,HOU,15.1,4.56,4.68,0.051,5.1%,103
+Luke Murphy,luke murphy,LAA,10.1,5.13,5.06,0.05,5.0%,93
+AJ Smith-Shawver,aj smithshawver,ATL,8.2,4.94,5.23,0.05,5.0%,103
+Jackson Kent,jackson kent,WSH,12.1,4.59,5.3,0.049,4.9%,86
+Ken Waldichuk,ken waldichuk,WSH,9.1,5.56,5.04,0.049,4.9%,99
+Nick Mears,nick mears,KC,19.1,4.73,4.84,0.048,4.8%,100
+Chris Roycroft,chris roycroft,2 Tms,24.2,4.74,4.42,0.048,4.8%,100
+Tyler Schweitzer,tyler schweitzer,CWS,29.2,5.11,4.97,0.048,4.8%,98
+Bruce Zimmermann,bruce zimmermann,STL,5.0,5.6,5.34,0.048,4.8%,81
+Anthony Molina,anthony molina,ATL,5.0,4.09,4.15,0.048,4.8%,99
+Merrill Kelly,merrill kelly,ARI,134.2,5.06,5.27,0.047,4.7%,89
+Coleman Crow,coleman crow,MIL,18.2,5.65,5.4,0.047,4.7%,101
+Randy Dobnak,randy dobnak,KC,45.2,4.35,4.79,0.046,4.6%,82
+Ryan Walker,ryan walker,SF,28.1,5.0,4.84,0.045,4.5%,106
+Tyler Rogers,tyler rogers,TOR,59.1,4.25,4.08,0.045,4.5%,137
+Xzavion Curry,xzavion curry,NYM,16.0,6.17,5.65,0.045,4.5%,85
+Sean Sullivan,sean sullivan,COL,22.1,6.92,6.11,0.044,4.4%,81
+Kent Emanuel,kent emanuel,CIN,5.0,6.0,5.47,0.043,4.3%,87
+Ian Hamilton,ian hamilton,ATL,4.2,3.95,3.93,0.043,4.3%,94
+Chase Petty,chase petty,CIN,31.2,5.52,5.22,0.043,4.3%,100
+Richard Lovelady,richard lovelady,2 Tms,30.1,5.07,5.06,0.0409999999999999,4.1%,95
+Shane Smith,shane smith,CWS,8.1,5.86,5.54,0.0409999999999999,4.1%,98
+Marco Raya,marco raya,MIN,6.0,4.76,4.92,0.04,4.0%,89
+Matt Gage,matt gage,SF,27.1,5.27,5.04,0.04,4.0%,94
+Mike Paredes,mike paredes,MIN,34.1,5.44,5.3,0.039,3.9%,94
+Kyle Finnegan,kyle finnegan,DET,53.1,5.08,5.0,0.039,3.9%,98
+Jack Kochanowicz,jack kochanowicz,LAA,64.0,4.98,5.08,0.037,3.7%,95
+Peter Strzelecki,peter strzelecki,STL,13.2,5.7,5.3,0.037,3.7%,96
+Angel Zerpa,angel zerpa,MIL,12.2,4.32,4.48,0.036,3.6%,107
+Victor Vodnik,victor vodnik,2 Tms,43.0,4.72,4.59,0.036,3.6%,101
+Ben Peoples,ben peoples,TEX,14.1,5.33,5.06,0.035,3.5%,103
+Dax Fulton,dax fulton,MIA,14.0,4.38,4.79,0.035,3.5%,109
+Drey Jameson,drey jameson,ARI,19.1,5.17,5.09,0.035,3.5%,96
+Jefry Yan,jefry yan,NYM,6.1,5.15,5.35,0.033,3.3%,118
+Sam Aldegheri,sam aldegheri,LAA,33.2,5.72,5.54,0.033,3.3%,90
+Brenan Hanifee,brenan hanifee,DET,21.1,4.62,4.44,0.032,3.2%,104
+Gordon Graceffo,gordon graceffo,STL,63.1,5.19,5.08,0.032,3.2%,92
+Trey Gibson,trey gibson,BAL,33.0,4.87,5.33,0.031,3.1%,97
+Danny Young,danny young,ATL,12.1,6.14,5.41,0.031,3.1%,109
+Carson Whisenhunt,carson whisenhunt,SF,34.2,5.62,5.6,0.03,3.0%,94
+Zach Maxwell,zach maxwell,CIN,13.0,6.34,5.46,0.03,3.0%,110
+Kade Morris,kade morris,OAK,12.2,5.03,4.69,0.03,3.0%,94
+Dietrich Enns,dietrich enns,BAL,16.0,5.69,5.41,0.0289999999999999,2.9%,100
+Gavin Collyer,gavin collyer,TEX,23.0,6.14,5.37,0.0289999999999999,2.9%,115
+Antwone Kelly,antwone kelly,PIT,8.1,4.78,4.87,0.0279999999999999,2.8%,116
+Ethan Roberts,ethan roberts,CHC,25.2,5.28,5.06,0.027,2.7%,96
+PJ Poulin,pj poulin,WSH,36.2,5.29,5.34,0.026,2.6%,94
+Nick Sandlin,nick sandlin,LAA,8.2,6.39,5.23,0.025,2.5%,99
+George Klassen,george klassen,LAA,27.0,5.15,5.58,0.024,2.4%,99
+Aaron Bummer,aaron bummer,2 Tms,16.2,6.04,5.24,0.023,2.3%,104
+Codi Heuer,codi heuer,CLE,9.2,5.74,5.24,0.022,2.2%,98
+Joel Peguero,joel peguero,SF,11.1,5.52,4.99,0.021,2.1%,100
+Valente Bellozo,valente bellozo,COL,10.2,6.24,5.64,0.021,2.1%,86
+Cameron Foster,cameron foster,BAL,9.0,5.26,5.19,0.02,2.0%,102
+Connor Thomas,connor thomas,2 Tms,9.1,6.26,5.22,0.019,1.9%,90
+Joe Rock,joe rock,CWS,10.1,6.29,5.64,0.019,1.9%,98
+Nick Davila,nick davila,SEA,26.1,5.24,5.04,0.018,1.8%,93
+Joe Ross,joe ross,2 Tms,11.2,5.76,5.3,0.018,1.8%,90
+Mitch Bratt,mitch bratt,ARI,39.2,6.0,6.0,0.017,1.7%,89
+Jose Quintana,jose quintana,COL,41.0,5.9,5.9,0.017,1.7%,81
+Tristan Beck,tristan beck,SF,14.0,5.67,5.23,0.016,1.6%,95
+Max Kranick,max kranick,WSH,13.2,6.14,5.53,0.015,1.5%,93
+Simeon Woods Richardson,simeon woods richardson,2 Tms,65.0,5.75,5.69,0.0139999999999999,1.4%,87
+Osvaldo Bido,osvaldo bido,2 Tms,18.2,6.26,5.57,0.012,1.2%,99
+Hunter Barco,hunter barco,PIT,17.2,5.93,5.39,0.011,1.1%,103
+Justin Topa,justin topa,MIN,19.0,5.39,5.08,0.011,1.1%,95
+Seth Halvorsen,seth halvorsen,2 Tms,20.0,5.37,5.45,0.01,1.0%,105
+Lucas Erceg,lucas erceg,KC,43.1,5.4,5.18,0.01,1.0%,99
+Drew Pomeranz,drew pomeranz,2 Tms,29.0,6.48,5.84,0.0069999999999999,0.7%,106
+Luis García,luis garca,2 Tms,15.0,6.2,5.64,0.0,0.0%,95
+Gary Sánchez,gary snchez,MIL,2.0,3.84,3.57,0.0,0.0%,24
+Michael Kelly,michael kelly,OAK,5.0,6.1,5.75,0.0,0.0%,102
+Carson Kelly,carson kelly,CHC,3.0,7.11,7.13,0.0,0.0%,41
+Yunior Marte,yunior marte,CIN,0.1,24.15,6.43,0.0,0.0%,123
+Lou Trivino III,lou trivino iii,2 Tms,6.0,6.77,5.77,0.0,0.0%,90
+Kevin Herget,kevin herget,NYM,1.0,6.11,7.27,0.0,0.0%,72
+Reese McGuire,reese mcguire,CWS,1.0,7.62,13.17,0.0,0.0%,13
+Luis Torrens,luis torrens,NYM,2.1,5.03,5.37,0.0,0.0%,-2
+Brandon Leibrandt,brandon leibrandt,CIN,6.0,6.86,6.03,0.0,0.0%,88
+Jose Trevino,jose trevino,CIN,5.0,5.7,5.5,0.0,0.0%,47
+Jorge Mateo,jorge mateo,ATL,2.1,6.75,6.27,0.0,0.0%,16
+Thomas Pannone,thomas pannone,MIL,3.0,5.77,5.96,0.0,0.0%,102
+Tanner Rainey,tanner rainey,DET,6.2,5.57,6.17,0.0,0.0%,101
+Sam Haggerty,sam haggerty,TEX,1.0,6.09,2.23,0.0,0.0%,-16
+LaMonte Wade Jr.,lamonte wade jr,HOU,1.0,7.62,6.47,0.0,0.0%,23
+Weston Wilson,weston wilson,2 Tms,3.1,7.62,6.78,0.0,0.0%,31
+Zack Short,zack short,NYM,1.0,4.6,5.95,0.0,0.0%,23
+Guillo Zuñiga,guillo zuiga,NYM,1.0,7.11,7.3,0.0,0.0%,106
+Josh Rojas,josh rojas,KC,1.0,6.11,6.83,0.0,0.0%,30
+Jhonny Pereda,jhonny pereda,SEA,0.1,12.15,6.83,0.0,0.0%,34
+Bailey Falter,bailey falter,KC,9.2,5.89,5.75,0.0,0.0%,89
+Jake Meyers,jake meyers,HOU,1.0,3.09,-1.27,0.0,0.0%,62
+Jose Espada,jose espada,BAL,1.0,4.6,5.07,0.0,0.0%,91
+César Salazar,csar salazar,HOU,1.0,7.62,8.33,0.0,0.0%,25
+Ray Kerr,ray kerr,ATL,2.1,6.31,5.67,0.0,0.0%,93
+Domingo Gonzalez,domingo gonzalez,SEA,7.2,5.71,5.75,0.0,0.0%,95
+Roddery Muñoz,roddery muoz,HOU,4.0,6.85,6.12,0.0,0.0%,87
+Antoine Kelly,antoine kelly,CHC,1.1,3.84,4.97,0.0,0.0%,117
+Pedro Pagés,pedro pags,STL,1.0,6.11,6.83,0.0,0.0%,22
+Jackson Rutledge,jackson rutledge,WSH,1.1,5.72,4.51,0.0,0.0%,91
+Hunter Bigge,hunter bigge,TB,19.1,5.92,5.68,0.0,0.0%,99
+Juan Burgos,juan burgos,ARI,3.2,6.79,6.13,0.0,0.0%,113
+Jared Koenig,jared koenig,MIL,7.0,6.46,5.56,0.0,0.0%,104
+CJ Van Eyk,cj van eyk,TOR,5.2,6.46,5.42,0.0,0.0%,86
+Jake Eder,jake eder,LAD,4.0,6.36,6.42,0.0,0.0%,92
+Jeff Criswell,jeff criswell,COL,4.0,5.72,5.7,0.0,0.0%,81
+Connor Phillips,connor phillips,CIN,27.2,6.55,6.0,0.0,0.0%,116
+Christian Koss,christian koss,SF,2.0,5.35,5.67,0.0,0.0%,17
+Zach Brzykcy,zach brzykcy,MIA,3.0,4.26,4.51,0.0,0.0%,87
+Jose Corniell,jose corniell,TEX,4.1,7.49,6.13,0.0,0.0%,92
+Javier Sanoja,javier sanoja,MIA,4.2,9.12,7.35,0.0,0.0%,50
+Winston Santos,winston santos,TEX,2.0,6.61,6.52,0.0,0.0%,99
+Adrian Del Castillo,adrian del castillo,ARI,1.2,8.51,7.66,0.0,0.0%,0
+Ben Casparius,ben casparius,LAD,4.2,6.21,5.84,0.0,0.0%,103
+Chad Dallas,chad dallas,TOR,7.2,6.23,5.71,0.0,0.0%,98
+Carter Baumler,carter baumler,TEX,5.2,6.54,6.0,0.0,0.0%,102
+Cameron Weston,cameron weston,BAL,1.0,4.09,6.8,0.0,0.0%,88
+Duncan Davitt,duncan davitt,CWS,2.0,5.85,5.78,0.0,0.0%,102
+Brycen Mautz,brycen mautz,STL,3.0,5.77,5.68,0.0,0.0%,98
+Riley Cornelio,riley cornelio,WSH,20.0,6.05,5.87,0.0,0.0%,105
+Rafael Flores Jr.,rafael flores jr,PIT,1.0,4.6,5.3,0.0,0.0%,32
+Alex Cook,alex cook,TB,3.2,6.93,6.88,0.0,0.0%,100
+Erik Tolman,erik tolman,WSH,2.0,5.1,5.59,0.0,0.0%,108
+Jonah Tong,jonah tong,NYM,10.0,5.9,5.62,0.0,0.0%,97
+Mason Black,mason black,KC,29.1,6.25,5.82,-0.0069999999999999,-0.7%,94
+Brandon Williamson,brandon williamson,CIN,28.0,6.46,6.23,-0.008,-0.8%,98
+Jose Franco,jose franco,CIN,20.1,6.05,5.89,-0.011,-1.1%,94
+Luis Morales,luis morales,OAK,16.0,6.54,5.93,-0.011,-1.1%,98
+Elmer Rodríguez,elmer rodrguez,NYY,17.0,6.07,5.91,-0.012,-1.2%,94
+Charlie Barnes,charlie barnes,2 Tms,13.0,5.52,5.46,-0.016,-1.6%,76
+Lazaro Estrada,lazaro estrada,TOR,13.0,5.98,5.93,-0.018,-1.8%,95
+Hurston Waldrep,hurston waldrep,ATL,10.2,5.91,5.62,-0.018,-1.8%,90
+Luis Curvelo,luis curvelo,TEX,10.1,7.17,6.31,-0.018,-1.8%,100
+Matt Krook,matt krook,2 Tms,8.1,6.33,6.01,-0.022,-2.2%,113
+Yariel Rodríguez,yariel rodrguez,TOR,9.1,6.48,5.94,-0.022,-2.2%,99
+Tommy Kahnle,tommy kahnle,BOS,9.0,5.99,5.91,-0.023,-2.3%,90
+Christian Roa,christian roa,HOU,8.2,7.43,6.07,-0.023,-2.3%,97
+Luis Gil,luis gil,NYY,19.1,6.36,6.23,-0.024,-2.4%,97
+Hayden Juenger,hayden juenger,2 Tms,16.0,6.57,6.15,-0.025,-2.5%,87
+Robert Garcia,robert garcia,TEX,8.0,5.34,6.03,-0.0289999999999999,-2.9%,112
+Brett Sullivan,brett sullivan,COL,7.2,5.97,6.09,-0.0289999999999999,-2.9%,22
+Philip Abner,philip abner,ARI,14.1,6.03,6.01,-0.031,-3.1%,91
+J.P. France,jp france,HOU,6.2,6.62,6.04,-0.032,-3.2%,95
+Brendan Beck,brendan beck,NYY,6.2,7.31,7.05,-0.032,-3.2%,86
+Marco Gonzales,marco gonzales,TEX,6.2,6.48,6.31,-0.034,-3.4%,93
+Lucas Giolito,lucas giolito,SD,29.2,6.34,6.49,-0.036,-3.6%,87
+Tyler Heineman,tyler heineman,2 Tms,5.1,6.2,6.41,-0.038,-3.8%,9
+Corbin Martin,corbin martin,CHC,5.0,7.2,6.45,-0.04,-4.0%,94
+Miguel Rojas,miguel rojas,LAD,4.0,7.23,6.16,-0.043,-4.3%,36
+Tyler Gilbert,tyler gilbert,CWS,3.2,7.61,6.38,-0.045,-4.5%,107
+Jared Shuster,jared shuster,STL,9.0,6.21,6.02,-0.045,-4.5%,90
+Geoff Hartlieb,geoff hartlieb,OAK,13.1,6.93,6.46,-0.047,-4.7%,88
+Nolan Hoffman,nolan hoffman,PHI,4.2,5.78,5.99,-0.048,-4.8%,97
+Ben Williamson,ben williamson,TB,5.0,7.01,7.42,-0.048,-4.8%,30
+Ricky Vanasco,ricky vanasco,DET,6.1,8.24,6.36,-0.05,-5.0%,89
+Danny Coulombe,danny coulombe,BOS,22.0,6.14,6.3,-0.052,-5.2%,95
+Justin Verlander,justin verlander,DET,3.2,7.06,7.19,-0.053,-5.3%,101
+Rodolfo Durán,rodolfo durn,SD,3.0,9.12,7.36,-0.053,-5.3%,51
+Austin Voth,austin voth,2 Tms,10.0,7.61,6.77,-0.054,-5.4%,91
+Mitch Spence,mitch spence,KC,9.1,6.8,6.36,-0.054,-5.4%,90
+Kyle Higashioka,kyle higashioka,TEX,3.0,8.11,6.99,-0.0559999999999999,-5.6%,32
+Josh Fleming,josh fleming,TOR,3.0,7.43,5.57,-0.0559999999999999,-5.6%,107
+Jorbit Vivas,jorbit vivas,WSH,2.2,10.43,7.46,-0.0559999999999999,-5.6%,28
+Nick Raquet,nick raquet,BAL,3.2,7.88,7.03,-0.059,-5.9%,99
+Myles Straw,myles straw,TOR,3.0,5.6,5.06,-0.067,-6.7%,19
+Garrett Stubbs,garrett stubbs,PHI,3.1,7.16,7.52,-0.067,-6.7%,40
+Leo Rivas,leo rivas,SEA,1.0,15.15,7.48,-0.077,-7.7%,29
+Alek Manoah,alek manoah,LAA,7.1,7.67,6.97,-0.077,-7.7%,66
+Joey Lucchesi,joey lucchesi,LAA,3.1,8.34,6.81,-0.083,-8.3%,100
+Gregory Santos,gregory santos,SF,5.0,6.0,6.47,-0.091,-9.1%,99
+Tanner Andrews,tanner andrews,TOR,3.0,6.43,6.96,-0.091,-9.1%,88
+Tyler Tolbert,tyler tolbert,KC,4.2,8.25,6.74,-0.091,-9.1%,45
+Robby Snelling,robby snelling,MIA,5.0,6.2,7.27,-0.091,-9.1%,105
+Carlos Cortes,carlos cortes,OAK,8.0,7.92,7.27,-0.098,-9.8%,59
+Alex Jackson,alex jackson,MIN,2.0,9.12,8.07,-0.1,-10.0%,27
+Andrew Wantz,andrew wantz,2 Tms,3.2,9.51,7.5,-0.1,-10.0%,103
+Luisangel Acuña,luisangel acua,CWS,2.1,5.67,6.07,-0.1,-10.0%,40
+Emiliano Teodo,emiliano teodo,TEX,1.2,7.3,7.02,-0.1,-10.0%,106
+Andre Granillo,andre granillo,WSH,9.1,8.25,7.32,-0.1,-10.0%,98
+John Klein,john klein,MIN,4.1,7.37,7.52,-0.105,-10.5%,96
+Braxton Garrett,braxton garrett,MIA,4.1,8.41,8.14,-0.107,-10.7%,90
+Victor Robles,victor robles,SEA,1.0,7.6,6.58,-0.111,-11.1%,55
+Wyatt Mills,wyatt mills,LAD,6.1,8.39,7.58,-0.111,-11.1%,99
+Justin Martinez,justin martinez,ARI,2.0,8.1,7.27,-0.111,-11.1%,129
+Troy Johnston,troy johnston,COL,2.0,8.35,6.97,-0.111,-11.1%,55
+Eric Cerantola,eric cerantola,KC,5.1,7.22,8.85,-0.111,-11.1%,89
+Doug Nikhazy,doug nikhazy,CWS,2.0,5.84,6.12,-0.111,-11.1%,64
+Dylan Moore,dylan moore,PHI,1.2,7.59,6.09,-0.125,-12.5%,13
+Bryan Torres,bryan torres,STL,2.0,6.85,8.17,-0.125,-12.5%,28
+Andrew Vaughn,andrew vaughn,MIL,1.0,8.6,6.89,-0.125,-12.5%,35
+Joey Wiemer,joey wiemer,WSH,2.0,12.87,8.45,-0.125,-12.5%,36
+James McCann,james mccann,ARI,4.0,7.6,6.91,-0.13,-13.0%,45
+Matt Seelinger,matt seelinger,NYM,2.0,10.11,8.05,-0.133,-13.3%,101
+Tyler Callihan,tyler callihan,PIT,3.0,8.44,7.87,-0.133,-13.3%,41
+Adam Frazier,adam frazier,LAA,2.0,9.11,7.7,-0.143,-14.3%,37
+Kyle Nicolas,kyle nicolas,CIN,7.1,8.76,8.61,-0.143,-14.3%,94
+Parker Mushinski,parker mushinski,COL,6.2,7.83,7.77,-0.147,-14.7%,102
+Chase Lee,chase lee,TOR,8.0,7.66,8.11,-0.162,-16.2%,96
+Chadwick Tromp,chadwick tromp,BAL,1.0,9.11,8.49,-0.1669999999999999,-16.7%,33
+Nolan Kingham,nolan kingham,TEX,1.0,10.11,9.21,-0.1669999999999999,-16.7%,89
+Ildemaro Vargas,ildemaro vargas,ARI,3.2,9.24,8.89,-0.176,-17.6%,45
+Jedixson Paez,jedixson paez,CWS,3.0,10.11,9.13,-0.187,-18.7%,81
+Wilkin Ramos,wilkin ramos,SF,2.0,8.84,8.44,-0.2,-20.0%,94
+Max Schuemann,max schuemann,NYY,1.0,9.11,10.04,-0.2,-20.0%,41
+Buddy Kennedy,buddy kennedy,SF,1.0,13.62,9.12,-0.222,-22.2%,12
+Carlos Duran,carlos duran,KC,1.1,8.34,8.82,-0.222,-22.2%,93
+Blake Adams,blake adams,COL,1.0,15.13,10.1,-0.222,-22.2%,86
+Ben Bowden,ben bowden,OAK,1.0,15.11,9.92,-0.25,-25.0%,84
+Carlos Estévez,carlos estvez,KC,0.1,30.15,11.17,-0.286,-28.6%,80
+Kade Strowd,kade strowd,ARI,1.0,11.6,12.07,-0.286,-28.6%,96
+Zach McKinstry,zach mckinstry,DET,1.0,15.11,12.75,-0.375,-37.5%,6
+Josh White,josh white,MIA,0.2,27.12,14.7,-0.375,-37.5%,83
+Orlando Arcia,orlando arcia,MIN,1.0,10.6,13.16,-0.4,-40.0%,41
+Aaron Brooks,aaron brooks,TB,0.1,30.15,17.84,-0.5,-50.0%,81
+Tanner McDougal,tanner mcdougal,CWS,0.1,39.09,20.13,-0.6,-60.0%,81
+Jonathan Cannon,jonathan cannon,CWS,0.0,12.09,,-1.0,-100.0%,93

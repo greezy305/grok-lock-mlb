@@ -58,6 +58,26 @@
     "game_status": "Scheduled"
   },
   {
+    "id": "2026-09-03|Chicago White Sox|Houston Astros|OU",
+    "date": "2026-09-03",
+    "market": "OU",
+    "away": "Chicago White Sox",
+    "home": "Houston Astros",
+    "side": "Over 7.5 -135",
+    "odds": -135,
+    "units": "1u",
+    "time": "2:11 PM ET",
+    "status": "pending",
+    "result": "",
+    "pnl": 0.0,
+    "note": "hardrockbet",
+    "book": "hardrockbet",
+    "edge": "P(over) 57.4%",
+    "ou_line": 7.5,
+    "live": "Chicago White Sox 0-0 Houston Astros",
+    "game_status": "In Progress"
+  },
+  {
     "id": "2026-09-02|Athletics|Texas Rangers|OU",
     "date": "2026-09-02",
     "market": "OU",

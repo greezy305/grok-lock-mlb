@@ -2,9 +2,9 @@ name: Daily lock
 
 on:
   schedule:
-    - cron: "0 15 * * *"
-    - cron: "30 19 * * *"
-    - cron: "30 22 * * *"
+    - cron: "30 14 * * *"  # 10:30 AM ET (EDT)
+    - cron: "0 18 * * *"   # 2:00 PM ET
+    - cron: "45 21 * * *"  # 5:45 PM ET
   workflow_dispatch:
 
 permissions:
@@ -15,11 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAGES_PUSH }}
 
       - name: Run picker
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-        run: python3 scripts/daily_lock.py
+        run: |
+          python3 scripts/daily_lock.py
 
       - name: Commit picks
         run: |

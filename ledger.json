@@ -17,7 +17,7 @@
     "edge": "P(over) 46.5%",
     "ou_line": 9.5,
     "live": "Miami Marlins 0-0 Kansas City Royals",
-    "game_status": "Pre-Game"
+    "game_status": "Warmup"
   },
   {
     "id": "2026-09-03|Athletics|Seattle Mariners|RL",
@@ -35,8 +35,8 @@
     "note": "hardrockbet",
     "book": "hardrockbet",
     "edge": "plus-money +1.5 dog",
-    "live": "Athletics None-None Seattle Mariners",
-    "game_status": "Scheduled"
+    "live": "Athletics 0-0 Seattle Mariners",
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-03|St. Louis Cardinals|Los Angeles Dodgers|RL",
@@ -54,8 +54,8 @@
     "note": "hardrockbet",
     "book": "hardrockbet",
     "edge": "plus-money +1.5 dog",
-    "live": "St. Louis Cardinals None-None Los Angeles Dodgers",
-    "game_status": "Scheduled"
+    "live": "St. Louis Cardinals 0-0 Los Angeles Dodgers",
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-03|Chicago White Sox|Houston Astros|OU",

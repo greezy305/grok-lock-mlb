@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-03 17:18 ET",
+  "updated": "2026-09-03 19:31 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -48,24 +48,24 @@
       "time": "7:15 PM ET",
       "away": "Boston Red Sox",
       "home": "Baltimore Orioles",
-      "ml_away": "-125",
-      "ml_home": "+105",
+      "ml_away": "-115",
+      "ml_home": "-115",
       "note": "hardrockbet"
     },
     {
       "time": "7:15 PM ET",
       "away": "Milwaukee Brewers",
       "home": "Chicago Cubs",
-      "ml_away": "-125",
-      "ml_home": "+105",
+      "ml_away": "-110",
+      "ml_home": "-115",
       "note": "hardrockbet"
     },
     {
       "time": "7:40 PM ET",
       "away": "Miami Marlins",
       "home": "Kansas City Royals",
-      "ml_away": "-105",
-      "ml_home": "-115",
+      "ml_away": "+100",
+      "ml_home": "-120",
       "note": "hardrockbet"
     },
     {
@@ -81,14 +81,14 @@
       "away": "Athletics",
       "home": "Seattle Mariners",
       "ml_away": "+175",
-      "ml_home": "-210",
+      "ml_home": "-220",
       "note": "hardrockbet"
     },
     {
       "time": "10:10 PM ET",
       "away": "St. Louis Cardinals",
       "home": "Los Angeles Dodgers",
-      "ml_away": "+250",
+      "ml_away": "+240",
       "ml_home": "-300",
       "note": "hardrockbet"
     }
@@ -123,7 +123,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Athletics None-None Seattle Mariners",
+      "final": "Athletics 0-0 Seattle Mariners",
       "odds": -130,
       "check": "",
       "posted_at": ""
@@ -140,7 +140,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "St. Louis Cardinals None-None Los Angeles Dodgers",
+      "final": "St. Louis Cardinals 0-0 Los Angeles Dodgers",
       "odds": 105,
       "check": "",
       "posted_at": ""

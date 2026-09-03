@@ -107,7 +107,7 @@
 
   <footer>
     One ticket per game per market. No parlays. No playoffs.<br />
-    Cron grades finals at 11:00 / 3:30 / 6:30 ET. Pull to refresh after a run.
+    Cron locks at 10:30 / 2:00 / 5:45 ET. Pull to refresh after a run.
   </footer>
 
   <script>
@@ -164,7 +164,7 @@
       return "";
     }
     function locksEmptyMessage() {
-      // Cron: 11:00, 15:30, 18:30 ET — after last check use final wording
+      // Cron: 10:30, 14:00, 17:45 ET — after last check use final wording
       const now = new Date();
       const parts = new Intl.DateTimeFormat("en-US", {
         timeZone: "America/New_York", hour: "numeric", minute: "numeric", hour12: false
@@ -172,7 +172,7 @@
       const hour = Number(parts.find(p => p.type === "hour").value);
       const minute = Number(parts.find(p => p.type === "minute").value);
       const mins = hour * 60 + minute;
-      if (mins >= 18 * 60 + 30) return "No Locks!";
+      if (mins >= 17 * 60 + 45) return "No Locks!";
       return "No Locks yet!";
     }
 
@@ -269,7 +269,7 @@
             <div class="pick-side">${p.side}</div>
             <div class="edge">${p.edge || ""} · ${p.units || "1u"}</div>
             ${stakeLines(p)}
-            <div class="note">${p.time || ""} ${p.note ? " · " + p.note : ""}</div>
+            <div class="note">${p.time || ""}${p.note ? " · " + p.note : ""}${p.check ? " · " + p.check : ""}</div>
           </div>`).join("");
       }
 

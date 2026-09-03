@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-03 14:16 ET",
+  "updated": "2026-09-03 17:18 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -19,14 +19,14 @@
       "live_units": 0.95
     },
     "ou": {
-      "bets": 53,
-      "wr": 0.604,
-      "units": 8.15,
-      "live_bets": 7,
-      "live_units": 0.65
+      "bets": 54,
+      "wr": 0.611,
+      "units": 8.89,
+      "live_bets": 8,
+      "live_units": 1.39
     },
-    "stacked_units": 51.4,
-    "live_units": 1.6
+    "stacked_units": 52.14,
+    "live_units": 2.34
   },
   "locks": [
     {
@@ -45,30 +45,6 @@
   "slate_date": "2026-09-03",
   "slate": [
     {
-      "time": "12:37 PM ET",
-      "away": "San Francisco Giants",
-      "home": "Pittsburgh Pirates",
-      "ml_away": "+500",
-      "ml_home": "-850",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "1:11 PM ET",
-      "away": "Toronto Blue Jays",
-      "home": "Cleveland Guardians",
-      "ml_away": "+160",
-      "ml_home": "-210",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "2:11 PM ET",
-      "away": "Chicago White Sox",
-      "home": "Houston Astros",
-      "ml_away": "+160",
-      "ml_home": "-220",
-      "note": "hardrockbet"
-    },
-    {
       "time": "7:15 PM ET",
       "away": "Boston Red Sox",
       "home": "Baltimore Orioles",
@@ -80,8 +56,8 @@
       "time": "7:15 PM ET",
       "away": "Milwaukee Brewers",
       "home": "Chicago Cubs",
-      "ml_away": "-120",
-      "ml_home": "+100",
+      "ml_away": "-125",
+      "ml_home": "+105",
       "note": "hardrockbet"
     },
     {
@@ -104,7 +80,7 @@
       "time": "9:40 PM ET",
       "away": "Athletics",
       "home": "Seattle Mariners",
-      "ml_away": "+170",
+      "ml_away": "+175",
       "ml_home": "-210",
       "note": "hardrockbet"
     },
@@ -112,7 +88,7 @@
       "time": "10:10 PM ET",
       "away": "St. Louis Cardinals",
       "home": "Los Angeles Dodgers",
-      "ml_away": "+240",
+      "ml_away": "+250",
       "ml_home": "-300",
       "note": "hardrockbet"
     }
@@ -130,8 +106,10 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Miami Marlins None-None Kansas City Royals",
-      "odds": -135
+      "final": "Miami Marlins 0-0 Kansas City Royals",
+      "odds": -135,
+      "check": "",
+      "posted_at": ""
     },
     {
       "market": "RL",
@@ -146,7 +124,9 @@
       "result": "",
       "pnl": 0.0,
       "final": "Athletics None-None Seattle Mariners",
-      "odds": -130
+      "odds": -130,
+      "check": "",
+      "posted_at": ""
     },
     {
       "market": "RL",
@@ -161,7 +141,9 @@
       "result": "",
       "pnl": 0.0,
       "final": "St. Louis Cardinals None-None Los Angeles Dodgers",
-      "odds": 105
+      "odds": 105,
+      "check": "",
+      "posted_at": ""
     },
     {
       "market": "OU",
@@ -172,15 +154,26 @@
       "edge": "P(over) 57.4%",
       "units": "1u",
       "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "Chicago White Sox 0-0 Houston Astros",
-      "odds": -135
+      "status": "win",
+      "result": "W",
+      "pnl": 0.741,
+      "final": "Chicago White Sox 2-6 Houston Astros",
+      "odds": -135,
+      "check": "",
+      "posted_at": ""
     }
   ],
   "picks_status": "4 model ticket(s) \u00b7 hardrockbet",
   "recent": [
+    {
+      "date": "2026-09-03",
+      "game": "Chicago White Sox @ Houston Astros",
+      "market": "OU",
+      "side": "Over 7.5 -135",
+      "result": "W",
+      "units": 0.741,
+      "final": "Chicago White Sox 2-6 Houston Astros"
+    },
     {
       "date": "2026-09-02",
       "game": "Athletics @ Texas Rangers",

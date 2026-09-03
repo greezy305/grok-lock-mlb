@@ -16,8 +16,8 @@
     "book": "hardrockbet",
     "edge": "P(over) 46.5%",
     "ou_line": 9.5,
-    "live": "Miami Marlins None-None Kansas City Royals",
-    "game_status": "Scheduled"
+    "live": "Miami Marlins 0-0 Kansas City Royals",
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-03|Athletics|Seattle Mariners|RL",
@@ -67,15 +67,16 @@
     "odds": -135,
     "units": "1u",
     "time": "2:11 PM ET",
-    "status": "pending",
-    "result": "",
-    "pnl": 0.0,
+    "status": "win",
+    "result": "W",
+    "pnl": 0.741,
     "note": "hardrockbet",
     "book": "hardrockbet",
     "edge": "P(over) 57.4%",
     "ou_line": 7.5,
     "live": "Chicago White Sox 0-0 Houston Astros",
-    "game_status": "In Progress"
+    "game_status": "Final",
+    "final": "Chicago White Sox 2-6 Houston Astros"
   },
   {
     "id": "2026-09-02|Athletics|Texas Rangers|OU",

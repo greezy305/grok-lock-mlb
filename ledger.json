@@ -185,5 +185,24 @@
     "book": "hardrockbet",
     "edge": "P(over) 46.5%",
     "ou_line": 7.5
+  },
+  {
+    "id": "2026-09-02|St. Louis Cardinals|Los Angeles Dodgers|RL",
+    "date": "2026-09-02",
+    "market": "RL",
+    "away": "St. Louis Cardinals",
+    "home": "Los Angeles Dodgers",
+    "side": "St. Louis Cardinals +1.5 -105",
+    "odds": -105,
+    "units": "1u",
+    "time": "10:11 PM ET",
+    "status": "pending",
+    "result": "",
+    "pnl": 0.0,
+    "note": "hardrockbet",
+    "book": "hardrockbet",
+    "edge": "plus-money +1.5 dog",
+    "live": "St. Louis Cardinals 2-3 Los Angeles Dodgers",
+    "game_status": "In Progress"
   }
 ]

@@ -169,6 +169,29 @@ def event_et_label(ev):
         return start
 
 
+def event_commence_et(ev):
+    """Return timezone-aware ET datetime for commence_time, or None."""
+    start = ev.get("commence_time") or ""
+    try:
+        return datetime.fromisoformat(start.replace("Z", "+00:00")).astimezone(ET)
+    except Exception:
+        return None
+
+
+def check_label(now):
+    """Which scheduled scan window this run is closest to."""
+    mins = now.hour * 60 + now.minute
+    windows = [
+        (10 * 60 + 30, "10:30 ET check"),
+        (14 * 60, "2:00 ET check"),
+        (17 * 60 + 45, "5:45 ET check"),
+    ]
+    best = min(windows, key=lambda w: abs(w[0] - mins))
+    posted = now.strftime("%I:%M %p ET").lstrip("0")
+    return "%s · posted %s" % (best[1], posted)
+
+
+
 def main_totals(totals):
     """
     Pick the main full-game total: Over/Under share the same point,
@@ -364,6 +387,8 @@ def main():
     new_tickets = []
     skipped_date = 0
     skipped_ou = 0
+    skipped_live = 0
+    scan_tag = check_label(now)
 
     for ev in events:
         away = ev.get("away_team")
@@ -376,6 +401,12 @@ def main():
         if ev_day != day:
             skipped_date += 1
             continue
+
+        commence = event_commence_et(ev)
+        # Pregame only: do not open NEW tickets after first pitch
+        pregame = True
+        if commence is not None and commence <= now:
+            pregame = False
 
         mk = book_markets(ev)
         h2h = mk.get("h2h")
@@ -420,6 +451,11 @@ def main():
             }
         op = opens[eid]
 
+        # Still show on slate, but never open a NEW lock after first pitch
+        if not pregame:
+            skipped_live += 1
+            continue
+
         def add_ticket(market, side, odds, extra=None):
             tid = ticket_id(day, away, home, market)
             if tid in by_id:
@@ -439,6 +475,8 @@ def main():
                 "pnl": 0.0,
                 "note": book_used,
                 "book": book_used,
+                "posted_at": now.strftime("%Y-%m-%d %H:%M ET"),
+                "check": scan_tag,
             }
             if extra:
                 row.update(extra)
@@ -500,7 +538,11 @@ def main():
                         },
                     )
 
-    print("skipped_future_events", skipped_date, "skipped_bad_ou", skipped_ou)
+    print(
+        "skipped_future_events", skipped_date,
+        "skipped_bad_ou", skipped_ou,
+        "skipped_live", skipped_live,
+    )
 
     ledger = list(by_id.values())
     graded = [grade_ticket(t, grade_games) for t in ledger]
@@ -524,6 +566,8 @@ def main():
             "pnl": t.get("pnl"),
             "final": t.get("final") or t.get("live") or "",
             "odds": t.get("odds"),
+            "check": t.get("check") or "",
+            "posted_at": t.get("posted_at") or "",
         })
 
     recent = []

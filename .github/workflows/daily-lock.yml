@@ -14,9 +14,11 @@ jobs:
   lock:
     runs-on: ubuntu-latest
     steps:
+      # Default GITHUB_TOKEN is enough for a public repo with contents: write.
+      # PAGES_PUSH was failing checkout (empty/expired PAT).
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAGES_PUSH }}
+          persist-credentials: true
 
       - name: Run picker
         env:

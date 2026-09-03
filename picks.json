@@ -147,21 +147,6 @@
     },
     {
       "market": "OU",
-      "away": "Philadelphia Phillies",
-      "home": "Arizona Diamondbacks",
-      "side": "Under 2.5 -1500",
-      "time": "3:41 PM ET",
-      "edge": "P(over) 45.5%",
-      "units": "1u",
-      "note": "hardrockbet",
-      "status": "loss",
-      "result": "L",
-      "pnl": -1.0,
-      "final": "Philadelphia Phillies 2-1 Arizona Diamondbacks",
-      "odds": -1500
-    },
-    {
-      "market": "OU",
       "away": "Miami Marlins",
       "home": "Kansas City Royals",
       "side": "Over 8.5 -130",

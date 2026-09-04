@@ -182,9 +182,9 @@ def check_label(now):
     """Which scheduled scan window this run is closest to."""
     mins = now.hour * 60 + now.minute
     windows = [
-        (10 * 60 + 30, "10:30 ET check"),
-        (14 * 60, "2:00 ET check"),
-        (17 * 60 + 45, "5:45 ET check"),
+        (10 * 60 + 30, "10:30 AM ET check"),
+        (14 * 60, "2:00 PM ET check"),
+        (17 * 60 + 45, "5:45 PM ET check"),
     ]
     best = min(windows, key=lambda w: abs(w[0] - mins))
     posted = now.strftime("%I:%M %p ET").lstrip("0")

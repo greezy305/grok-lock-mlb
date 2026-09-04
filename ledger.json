@@ -39,8 +39,8 @@
     "posted_at": "2026-09-04 13:40 ET",
     "check": "2:00 ET check \u00b7 posted 1:40 PM ET",
     "edge": "plus-money +1.5 dog",
-    "live": "Athletics None-None Seattle Mariners",
-    "game_status": "Scheduled"
+    "live": "Athletics 0-0 Seattle Mariners",
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-04|Washington Nationals|Los Angeles Dodgers|RL",
@@ -60,8 +60,8 @@
     "posted_at": "2026-09-04 13:40 ET",
     "check": "2:00 ET check \u00b7 posted 1:40 PM ET",
     "edge": "plus-money +1.5 dog",
-    "live": "Washington Nationals None-None Los Angeles Dodgers",
-    "game_status": "Scheduled"
+    "live": "Washington Nationals 0-0 Los Angeles Dodgers",
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-04|St. Louis Cardinals|Colorado Rockies|OU",
@@ -82,7 +82,7 @@
     "check": "5:45 ET check \u00b7 posted 4:33 PM ET",
     "edge": "P(over) 56.5%",
     "ou_line": 10.5,
-    "live": "St. Louis Cardinals None-None Colorado Rockies",
+    "live": "St. Louis Cardinals 0-0 Colorado Rockies",
     "game_status": "Pre-Game"
   },
   {

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04 13:40 ET",
+  "updated": "2026-09-04 16:33 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -45,11 +45,11 @@
   "slate_date": "2026-09-04",
   "slate": [
     {
-      "time": "2:41 PM ET",
+      "time": "3:16 PM ET",
       "away": "Detroit Tigers",
       "home": "Cleveland Guardians",
-      "ml_away": "+110",
-      "ml_home": "-130",
+      "ml_away": "-325",
+      "ml_home": "+240",
       "note": "hardrockbet"
     },
     {
@@ -64,8 +64,8 @@
       "time": "6:41 PM ET",
       "away": "Atlanta Braves",
       "home": "Philadelphia Phillies",
-      "ml_away": "-105",
-      "ml_home": "-115",
+      "ml_away": "-110",
+      "ml_home": "-110",
       "note": "hardrockbet"
     },
     {
@@ -88,7 +88,7 @@
       "time": "7:10 PM ET",
       "away": "Chicago Cubs",
       "home": "Miami Marlins",
-      "ml_away": "-160",
+      "ml_away": "-165",
       "ml_home": "+135",
       "note": "hardrockbet"
     },
@@ -186,7 +186,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Minnesota Twins None-None Chicago White Sox",
+      "final": "Minnesota Twins 0-0 Chicago White Sox",
       "odds": -135,
       "check": "2:00 ET check \u00b7 posted 1:40 PM ET",
       "posted_at": "2026-09-04 13:40 ET"
@@ -224,9 +224,26 @@
       "odds": 110,
       "check": "2:00 ET check \u00b7 posted 1:40 PM ET",
       "posted_at": "2026-09-04 13:40 ET"
+    },
+    {
+      "market": "OU",
+      "away": "St. Louis Cardinals",
+      "home": "Colorado Rockies",
+      "side": "Over 10.5 -130",
+      "time": "8:41 PM ET",
+      "edge": "P(over) 56.5%",
+      "units": "1u",
+      "note": "hardrockbet",
+      "status": "pending",
+      "result": "",
+      "pnl": 0.0,
+      "final": "St. Louis Cardinals None-None Colorado Rockies",
+      "odds": -130,
+      "check": "5:45 ET check \u00b7 posted 4:33 PM ET",
+      "posted_at": "2026-09-04 16:33 ET"
     }
   ],
-  "picks_status": "3 model ticket(s) \u00b7 hardrockbet",
+  "picks_status": "4 model ticket(s) \u00b7 hardrockbet",
   "recent": [
     {
       "date": "2026-09-03",

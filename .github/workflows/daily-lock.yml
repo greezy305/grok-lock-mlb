@@ -1,0 +1,61 @@
+name: Daily lock
+
+on:
+  schedule:
+    - cron: "30 14 * * *"  # 10:30 AM ET (EDT)
+    - cron: "0 18 * * *"   # 2:00 PM ET
+    - cron: "30 21 * * *"  # 5:30 PM ET (EDT)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Run picker
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: |
+          python3 scripts/daily_lock.py
+
+      - name: Commit picks
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add picks.json opens.json ledger.json lock_plan.json notify.json || true
+          git diff --cached --quiet && echo "No change" && exit 0
+          git commit -m "chore: daily Hard Rock lock pass"
+          git push
+
+      - name: Push notify (new tickets only)
+        if: success()
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          if [ -z "$NTFY_TOPIC" ]; then
+            echo "NTFY_TOPIC secret not set — skip push"
+            exit 0
+          fi
+          if [ ! -f notify.json ]; then
+            echo "no notify.json"
+            exit 0
+          fi
+          NEW=$(python3 -c "import json; print(json.load(open('notify.json')).get('new_tickets',0))")
+          echo "new_tickets=$NEW"
+          if [ "$NEW" = "0" ] || [ -z "$NEW" ]; then
+            echo "No new tickets — no push"
+            exit 0
+          fi
+          TITLE=$(python3 -c "import json; d=json.load(open('notify.json')); print(', '.join(d.get('titles') or [])[:180] or 'New locks')")
+          curl -sS -H "Title: Grok-Lock +$NEW pick(s)" \
+               -H "Priority: high" \
+               -H "Tags: baseball,moneybag" \
+               -d "$TITLE" \
+               "https://ntfy.sh/${NTFY_TOPIC}"
+          echo "ntfy sent"

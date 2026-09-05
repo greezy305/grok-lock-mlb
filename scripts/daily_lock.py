@@ -133,6 +133,10 @@ def load_json(path, default):
     return default
 
 
+def norm_name(s):
+    return "".join(ch for ch in (s or "").lower() if ch.isalnum())
+
+
 def names_match(a, b):
     if not a or not b:
         return False
@@ -184,7 +188,7 @@ def check_label(now):
     windows = [
         (10 * 60 + 30, "10:30 AM ET check"),
         (14 * 60, "2:00 PM ET check"),
-        (17 * 60 + 45, "5:45 PM ET check"),
+        (17 * 60 + 30, "5:30 PM ET check"),
     ]
     best = min(windows, key=lambda w: abs(w[0] - mins))
     posted = now.strftime("%I:%M %p ET").lstrip("0")
@@ -342,26 +346,196 @@ def ytd_from_ledger(ledger):
     return out
 
 
+def is_line_refresh_window(now):
+    """True when this run is the evening line-refresh pass (~5:30 PM ET)."""
+    mins = now.hour * 60 + now.minute
+    return abs(mins - (17 * 60 + 30)) <= 20  # within 20 min of 5:30
+
+
+def current_price_for_ticket(t, ev):
+    """Pull latest Hard Rock price for an existing pending ticket. Returns (side, odds) or None."""
+    mk = book_markets(ev)
+    market = t.get("market")
+    away = t.get("away")
+    home = t.get("home")
+    side = t.get("side") or ""
+
+    if market == "ML":
+        h2h = mk.get("h2h")
+        picking_away = away and away in side
+        name = away if picking_away else home
+        o = outcome_price(h2h, name=name)
+        if not o:
+            return None
+        px = px_int(o.get("price"))
+        if px is None:
+            return None
+        return ("%s %+d" % (name, px), px)
+
+    if market == "RL":
+        spreads = mk.get("spreads") or []
+        # dog +1.5 on whichever side the ticket named
+        team = away if (away and away in side) else home
+        o = None
+        for row in spreads:
+            if row.get("name") == team and float(row.get("point") or 0) > 0:
+                o = row
+                break
+        if not o:
+            o = outcome_price(spreads, name=team, point=1.5)
+        if not o:
+            return None
+        px = px_int(o.get("price"))
+        pt = o.get("point")
+        if px is None:
+            return None
+        return ("%s +%s %+d" % (team, pt if pt is not None else "1.5", px), px)
+
+    if market == "OU":
+        tot_over, tot_under = main_totals(mk.get("totals"))
+        if not tot_over or not tot_under:
+            return None
+        line = tot_over.get("point")
+        under_side = side.lower().startswith("under")
+        o = tot_under if under_side else tot_over
+        px = px_int(o.get("price"))
+        if px is None or line is None:
+            return None
+        label = "Under" if under_side else "Over"
+        return ("%s %s %+d" % (label, line, px), px)
+
+    return None
+
+
+def refresh_pending_lines(by_id, events, now, day):
+    """Update odds/side on pending pregame tickets (evening pass only)."""
+    if not is_line_refresh_window(now):
+        return 0
+    by_match = {}
+    for ev in events:
+        key = (ev.get("away_team"), ev.get("home_team"))
+        by_match[key] = ev
+        # loose key by lower names
+        by_match[(norm_name(ev.get("away_team")), norm_name(ev.get("home_team")))] = ev
+
+    updated = 0
+    for t in by_id.values():
+        if t.get("status") not in (None, "", "pending"):
+            continue
+        if t.get("date") != day:
+            continue
+        # only pregame
+        ev = by_match.get((t.get("away"), t.get("home")))
+        if not ev:
+            ev = by_match.get((norm_name(t.get("away")), norm_name(t.get("home"))))
+        if not ev:
+            continue
+        commence = event_commence_et(ev)
+        if commence is not None and commence <= now:
+            continue  # live — leave locked price
+        hit = current_price_for_ticket(t, ev)
+        if not hit:
+            continue
+        new_side, new_odds = hit
+        old_odds = t.get("odds")
+        if old_odds == new_odds and t.get("side") == new_side:
+            continue
+        t["side"] = new_side
+        t["odds"] = new_odds
+        t["line_refreshed_at"] = now.strftime("%Y-%m-%d %H:%M ET")
+        # keep original check; note refresh on edge tag lightly
+        edge = t.get("edge") or ""
+        if "refreshed" not in edge.lower():
+            t["edge"] = (edge + " · line refreshed").strip(" ·")
+        updated += 1
+    print("line_refresh_updated", updated)
+    return updated
+
+
+
+
+def load_lock_plan():
+    return load_json(Path("lock_plan.json"), {})
+
+
+def save_lock_plan(plan):
+    Path("lock_plan.json").write_text(json.dumps(plan, indent=2) + "\n")
+
+
+def build_lock_plan(day, events, now):
+    """From morning slate: decide if later Odds API passes are needed."""
+    last_commence = None
+    last_label = ""
+    need_2pm = False
+    need_530 = False
+    for ev in events:
+        if event_et_date(ev) != day:
+            continue
+        c = event_commence_et(ev)
+        if c is None:
+            continue
+        if last_commence is None or c > last_commence:
+            last_commence = c
+            last_label = event_et_label(ev)
+        gm = c.hour * 60 + c.minute
+        if gm >= 14 * 60:
+            need_2pm = True
+        if gm >= 17 * 60 + 30:
+            need_530 = True
+    return {
+        "date": day,
+        "written_at": now.strftime("%Y-%m-%d %H:%M ET"),
+        "last_game": last_label,
+        "last_game_iso": last_commence.isoformat() if last_commence else "",
+        "need_2pm": need_2pm,
+        "need_530": need_530,
+    }
+
+
+def should_pull_odds(now, day, by_id):
+    """Morning always pulls. Later passes skip Odds API when slate has no late games."""
+    mins = now.hour * 60 + now.minute
+    if abs(mins - (10 * 60 + 30)) <= 45 or mins < 12 * 60:
+        return True, "morning_pass"
+
+    plan = load_lock_plan()
+    if plan.get("date") != day:
+        return True, "no_plan_for_today"
+
+    pending_today = [
+        x for x in by_id.values()
+        if x.get("date") == day and x.get("status") in (None, "", "pending")
+    ]
+
+    if abs(mins - 14 * 60) <= 45:
+        if plan.get("need_2pm"):
+            return True, "plan_need_2pm"
+        if pending_today:
+            return True, "pending_tickets"
+        return False, "skip_2pm_no_late_games"
+
+    if abs(mins - (17 * 60 + 30)) <= 45 or mins >= 17 * 60:
+        if plan.get("need_530"):
+            return True, "plan_need_530"
+        if pending_today:
+            return True, "pending_tickets"
+        return False, "skip_530_no_late_games"
+
+    return True, "off_window_default"
+
+
 def main():
     api_key = os.environ.get("ODDS_API_KEY") or ""
     print("key_set", "yes" if api_key else "no")
-    if not api_key:
-        raise SystemExit("ODDS_API_KEY missing")
 
     now = et_now()
     day = now.strftime("%Y-%m-%d")
-    events = []
-    book_used = None
-    for book in BOOKS:
-        try:
-            events = pull_odds(api_key, book)
-        except Exception as e:
-            print("odds_error", book, type(e).__name__)
-            events = []
-        if events and any(e.get("bookmakers") for e in events):
-            book_used = book
-            break
-    print("book", book_used, "events", len(events))
+
+    opens_path = Path("opens.json")
+    ledger_path = Path("ledger.json")
+    opens = load_json(opens_path, {})
+    ledger = load_json(ledger_path, [])
+    by_id = {t.get("id"): t for t in ledger if t.get("id")}
 
     try:
         slate = pull_schedule(day)
@@ -377,11 +551,36 @@ def main():
         except Exception:
             pass
 
-    opens_path = Path("opens.json")
-    ledger_path = Path("ledger.json")
-    opens = load_json(opens_path, {})
-    ledger = load_json(ledger_path, [])
-    by_id = {t.get("id"): t for t in ledger if t.get("id")}
+    pull, pull_reason = should_pull_odds(now, day, by_id)
+    print("odds_pull", pull, pull_reason)
+
+    events = []
+    book_used = None
+    if pull:
+        if not api_key:
+            raise SystemExit("ODDS_API_KEY missing")
+        for book in BOOKS:
+            try:
+                events = pull_odds(api_key, book)
+            except Exception as e:
+                print("odds_error", book, type(e).__name__)
+                events = []
+            if events and any(e.get("bookmakers") for e in events):
+                book_used = book
+                break
+        print("book", book_used, "events", len(events))
+        mins = now.hour * 60 + now.minute
+        if mins < 13 * 60 or abs(mins - (10 * 60 + 30)) <= 45:
+            plan = build_lock_plan(day, events, now)
+            save_lock_plan(plan)
+            print(
+                "lock_plan",
+                "last_game", plan.get("last_game"),
+                "need_2pm", plan.get("need_2pm"),
+                "need_530", plan.get("need_530"),
+            )
+    else:
+        print("book", "skipped", "events", 0)
 
     slate_cards = []
     new_tickets = []
@@ -544,6 +743,29 @@ def main():
         "skipped_live", skipped_live,
     )
 
+    # If Odds API was skipped, still build slate from free MLB schedule
+    if not slate_cards and slate:
+        for g in slate:
+            tlabel = ""
+            try:
+                gd = g.get("time")
+                if gd:
+                    dt = datetime.fromisoformat(gd.replace("Z", "+00:00")).astimezone(ET)
+                    tlabel = dt.strftime("%-I:%M %p ET")
+            except Exception:
+                tlabel = ""
+            slate_cards.append({
+                "time": tlabel,
+                "away": g.get("away"),
+                "home": g.get("home"),
+                "ml_away": "",
+                "ml_home": "",
+                "note": "MLB schedule (odds skipped)",
+            })
+
+    # 5:30 PM ET pass: refresh Hard Rock prices on pending pregame tickets
+    refresh_pending_lines(by_id, events, now, day)
+
     ledger = list(by_id.values())
     graded = [grade_ticket(t, grade_games) for t in ledger]
     graded.sort(key=lambda t: t.get("date", ""), reverse=True)
@@ -620,7 +842,16 @@ def main():
     Path("picks.json").write_text(json.dumps(payload, indent=2) + "\n")
     opens_path.write_text(json.dumps(opens, indent=2) + "\n")
     ledger_path.write_text(json.dumps(graded, indent=2) + "\n")
+    Path("notify.json").write_text(json.dumps({
+        "new_tickets": len(new_tickets),
+        "picks_today": len(today_picks),
+        "day": day,
+        "book": book_used,
+        "updated": now.strftime("%Y-%m-%d %H:%M ET"),
+        "titles": ["%s %s" % (x.get("market"), x.get("side")) for x in new_tickets[:5]],
+    }, indent=2) + "\n")
     print("picks", len(today_picks), "ledger", len(graded), "new", len(new_tickets))
+    print("notify_new", len(new_tickets))
 
 
 if __name__ == "__main__":

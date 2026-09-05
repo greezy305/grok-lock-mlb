@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-05 12:52 ET",
+  "updated": "2026-09-05 16:08 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -80,8 +80,8 @@
       "time": "6:41 PM ET",
       "away": "Milwaukee Brewers",
       "home": "Cincinnati Reds",
-      "ml_away": "-165",
-      "ml_home": "+140",
+      "ml_away": "-160",
+      "ml_home": "+135",
       "note": "hardrockbet"
     },
     {
@@ -89,14 +89,14 @@
       "away": "Los Angeles Angels",
       "home": "Pittsburgh Pirates",
       "ml_away": "+155",
-      "ml_home": "-185",
+      "ml_home": "-190",
       "note": "hardrockbet"
     },
     {
       "time": "7:06 PM ET",
       "away": "Boston Red Sox",
       "home": "Baltimore Orioles",
-      "ml_away": "-135",
+      "ml_away": "-130",
       "ml_home": "+115",
       "note": "hardrockbet"
     },
@@ -178,7 +178,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Detroit Tigers None-None Cleveland Guardians",
+      "final": "Detroit Tigers 0-0 Cleveland Guardians",
       "odds": -130,
       "check": "2:00 PM ET check \u00b7 posted 12:52 PM ET",
       "posted_at": "2026-09-05 12:52 ET"
@@ -195,7 +195,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Milwaukee Brewers None-None Cincinnati Reds",
+      "final": "Milwaukee Brewers 0-0 Cincinnati Reds",
       "odds": -130,
       "check": "2:00 PM ET check \u00b7 posted 12:52 PM ET",
       "posted_at": "2026-09-05 12:52 ET"

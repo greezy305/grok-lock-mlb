@@ -9,9 +9,9 @@
     "odds": -140,
     "units": "1u",
     "time": "1:40 PM ET",
-    "status": "pending",
-    "result": "",
-    "pnl": 0.0,
+    "status": "loss",
+    "result": "L",
+    "pnl": -1.0,
     "note": "hardrockbet",
     "book": "hardrockbet",
     "posted_at": "2026-09-06 12:30 ET",
@@ -19,7 +19,8 @@
     "edge": "P(over) 58.3%",
     "ou_line": 6.5,
     "live": "Detroit Tigers 2-2 Cleveland Guardians",
-    "game_status": "In Progress"
+    "game_status": "Final",
+    "final": "Detroit Tigers 2-3 Cleveland Guardians"
   },
   {
     "id": "2026-09-06|Athletics|Seattle Mariners|RL",
@@ -31,16 +32,17 @@
     "odds": -130,
     "units": "1u",
     "time": "4:10 PM ET",
-    "status": "pending",
-    "result": "",
-    "pnl": 0.0,
+    "status": "loss",
+    "result": "L",
+    "pnl": -1.0,
     "note": "hardrockbet",
     "book": "hardrockbet",
     "posted_at": "2026-09-06 12:30 ET",
     "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
     "edge": "plus-money +1.5 dog",
     "live": "Athletics 0-0 Seattle Mariners",
-    "game_status": "Warmup"
+    "game_status": "Final",
+    "final": "Athletics 0-2 Seattle Mariners"
   },
   {
     "id": "2026-09-06|Athletics|Seattle Mariners|OU",
@@ -52,9 +54,9 @@
     "odds": -130,
     "units": "1u",
     "time": "4:10 PM ET",
-    "status": "pending",
-    "result": "",
-    "pnl": 0.0,
+    "status": "win",
+    "result": "W",
+    "pnl": 0.769,
     "note": "hardrockbet",
     "book": "hardrockbet",
     "posted_at": "2026-09-06 12:30 ET",
@@ -62,7 +64,8 @@
     "edge": "P(over) 47.6%",
     "ou_line": 7.5,
     "live": "Athletics 0-0 Seattle Mariners",
-    "game_status": "Warmup"
+    "game_status": "Final",
+    "final": "Athletics 0-2 Seattle Mariners"
   },
   {
     "id": "2026-09-06|New York Yankees|San Diego Padres|OU",
@@ -74,9 +77,9 @@
     "odds": -140,
     "units": "1u",
     "time": "4:10 PM ET",
-    "status": "pending",
-    "result": "",
-    "pnl": 0.0,
+    "status": "win",
+    "result": "W",
+    "pnl": 0.714,
     "note": "hardrockbet",
     "book": "hardrockbet",
     "posted_at": "2026-09-06 12:30 ET",
@@ -84,7 +87,8 @@
     "edge": "P(over) 58.3%",
     "ou_line": 6.5,
     "live": "New York Yankees 0-0 San Diego Padres",
-    "game_status": "Warmup"
+    "game_status": "Final",
+    "final": "New York Yankees 3-4 San Diego Padres"
   },
   {
     "id": "2026-09-06|Washington Nationals|Los Angeles Dodgers|RL",
@@ -105,7 +109,7 @@
     "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
     "edge": "plus-money +1.5 dog",
     "live": "Washington Nationals None-None Los Angeles Dodgers",
-    "game_status": "Scheduled"
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-05|Detroit Tigers|Cleveland Guardians|OU",

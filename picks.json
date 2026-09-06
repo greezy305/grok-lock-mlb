@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-06 15:48 ET",
+  "updated": "2026-09-06 18:56 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -12,21 +12,21 @@
       "live_units": 0.0
     },
     "rl": {
-      "bets": 42,
-      "wr": 0.785,
-      "units": 35.09,
-      "live_bets": 7,
-      "live_units": 4.39
+      "bets": 43,
+      "wr": 0.767,
+      "units": 34.09,
+      "live_bets": 8,
+      "live_units": 3.39
     },
     "ou": {
-      "bets": 59,
-      "wr": 0.61,
-      "units": 9.17,
-      "live_bets": 13,
-      "live_units": 1.67
+      "bets": 62,
+      "wr": 0.613,
+      "units": 9.66,
+      "live_bets": 16,
+      "live_units": 2.16
     },
-    "stacked_units": 55.86,
-    "live_units": 6.06
+    "stacked_units": 55.35,
+    "live_units": 5.55
   },
   "locks": [
     {
@@ -45,107 +45,11 @@
   "slate_date": "2026-09-06",
   "slate": [
     {
-      "time": "1:11 PM ET",
-      "away": "Atlanta Braves",
-      "home": "Philadelphia Phillies",
-      "ml_away": "-700",
-      "ml_home": "+450",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "1:37 PM ET",
-      "away": "Los Angeles Angels",
-      "home": "Pittsburgh Pirates",
-      "ml_away": "+650",
-      "ml_home": "-1100",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "1:38 PM ET",
-      "away": "Boston Red Sox",
-      "home": "Baltimore Orioles",
-      "ml_away": "-1500",
-      "ml_home": "+800",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "1:40 PM ET",
-      "away": "Detroit Tigers",
-      "home": "Cleveland Guardians",
-      "ml_away": "+120",
-      "ml_home": "-155",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "1:40 PM ET",
-      "away": "San Francisco Giants",
-      "home": "New York Mets",
-      "ml_away": "-575",
-      "ml_home": "+375",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "1:41 PM ET",
-      "away": "Chicago Cubs",
-      "home": "Miami Marlins",
-      "ml_away": "",
-      "ml_home": "",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "2:10 PM ET",
-      "away": "Arizona Diamondbacks",
-      "home": "Houston Astros",
-      "ml_away": "-350",
-      "ml_home": "+250",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "2:11 PM ET",
-      "away": "Toronto Blue Jays",
-      "home": "Kansas City Royals",
-      "ml_away": "+1200",
-      "ml_home": "-3000",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "2:36 PM ET",
-      "away": "Tampa Bay Rays",
-      "home": "Texas Rangers",
-      "ml_away": "-800",
-      "ml_home": "+475",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "3:10 PM ET",
-      "away": "St. Louis Cardinals",
-      "home": "Colorado Rockies",
-      "ml_away": "+105",
-      "ml_home": "-135",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "4:10 PM ET",
-      "away": "Athletics",
-      "home": "Seattle Mariners",
-      "ml_away": "+175",
-      "ml_home": "-220",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "4:10 PM ET",
-      "away": "New York Yankees",
-      "home": "San Diego Padres",
-      "ml_away": "-105",
-      "ml_home": "-115",
-      "note": "hardrockbet"
-    },
-    {
       "time": "6:20 PM ET",
       "away": "Minnesota Twins",
       "home": "Chicago White Sox",
-      "ml_away": "+125",
-      "ml_home": "-150",
+      "ml_away": "+115",
+      "ml_home": "-155",
       "note": "hardrockbet"
     },
     {
@@ -167,10 +71,10 @@
       "edge": "P(over) 58.3%",
       "units": "1u",
       "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "Detroit Tigers 2-2 Cleveland Guardians",
+      "status": "loss",
+      "result": "L",
+      "pnl": -1.0,
+      "final": "Detroit Tigers 2-3 Cleveland Guardians",
       "odds": -140,
       "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
       "posted_at": "2026-09-06 12:30 ET"
@@ -184,10 +88,10 @@
       "edge": "plus-money +1.5 dog",
       "units": "1u",
       "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "Athletics 0-0 Seattle Mariners",
+      "status": "loss",
+      "result": "L",
+      "pnl": -1.0,
+      "final": "Athletics 0-2 Seattle Mariners",
       "odds": -130,
       "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
       "posted_at": "2026-09-06 12:30 ET"
@@ -201,10 +105,10 @@
       "edge": "P(over) 47.6%",
       "units": "1u",
       "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "Athletics 0-0 Seattle Mariners",
+      "status": "win",
+      "result": "W",
+      "pnl": 0.769,
+      "final": "Athletics 0-2 Seattle Mariners",
       "odds": -130,
       "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
       "posted_at": "2026-09-06 12:30 ET"
@@ -218,10 +122,10 @@
       "edge": "P(over) 58.3%",
       "units": "1u",
       "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "New York Yankees 0-0 San Diego Padres",
+      "status": "win",
+      "result": "W",
+      "pnl": 0.714,
+      "final": "New York Yankees 3-4 San Diego Padres",
       "odds": -140,
       "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
       "posted_at": "2026-09-06 12:30 ET"
@@ -246,6 +150,42 @@
   ],
   "picks_status": "5 model ticket(s) \u00b7 hardrockbet",
   "recent": [
+    {
+      "date": "2026-09-06",
+      "game": "Detroit Tigers @ Cleveland Guardians",
+      "market": "OU",
+      "side": "Over 6.5 -140",
+      "result": "L",
+      "units": -1.0,
+      "final": "Detroit Tigers 2-3 Cleveland Guardians"
+    },
+    {
+      "date": "2026-09-06",
+      "game": "Athletics @ Seattle Mariners",
+      "market": "RL",
+      "side": "Athletics +1.5 -130",
+      "result": "L",
+      "units": -1.0,
+      "final": "Athletics 0-2 Seattle Mariners"
+    },
+    {
+      "date": "2026-09-06",
+      "game": "Athletics @ Seattle Mariners",
+      "market": "OU",
+      "side": "Under 7.5 -130",
+      "result": "W",
+      "units": 0.769,
+      "final": "Athletics 0-2 Seattle Mariners"
+    },
+    {
+      "date": "2026-09-06",
+      "game": "New York Yankees @ San Diego Padres",
+      "market": "OU",
+      "side": "Over 6.5 -140",
+      "result": "W",
+      "units": 0.714,
+      "final": "New York Yankees 3-4 San Diego Padres"
+    },
     {
       "date": "2026-09-05",
       "game": "Detroit Tigers @ Cleveland Guardians",

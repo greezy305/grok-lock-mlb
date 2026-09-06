@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-06 13:16 ET",
+  "updated": "2026-09-06 15:48 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -45,107 +45,99 @@
   "slate_date": "2026-09-06",
   "slate": [
     {
-      "time": "12:12 PM ET",
-      "away": "Milwaukee Brewers",
-      "home": "Cincinnati Reds",
-      "ml_away": "+135",
-      "ml_home": "-180",
-      "note": "hardrockbet"
-    },
-    {
       "time": "1:11 PM ET",
       "away": "Atlanta Braves",
       "home": "Philadelphia Phillies",
-      "ml_away": "+105",
-      "ml_home": "-140",
+      "ml_away": "-700",
+      "ml_home": "+450",
       "note": "hardrockbet"
     },
     {
-      "time": "1:35 PM ET",
-      "away": "Boston Red Sox",
-      "home": "Baltimore Orioles",
-      "ml_away": "-135",
-      "ml_home": "+115",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "1:35 PM ET",
+      "time": "1:37 PM ET",
       "away": "Los Angeles Angels",
       "home": "Pittsburgh Pirates",
-      "ml_away": "+155",
-      "ml_home": "-185",
+      "ml_away": "+650",
+      "ml_home": "-1100",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "1:38 PM ET",
+      "away": "Boston Red Sox",
+      "home": "Baltimore Orioles",
+      "ml_away": "-1500",
+      "ml_home": "+800",
       "note": "hardrockbet"
     },
     {
       "time": "1:40 PM ET",
       "away": "Detroit Tigers",
       "home": "Cleveland Guardians",
-      "ml_away": "+140",
-      "ml_home": "-170",
+      "ml_away": "+120",
+      "ml_home": "-155",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "1:40 PM ET",
+      "away": "San Francisco Giants",
+      "home": "New York Mets",
+      "ml_away": "-575",
+      "ml_home": "+375",
       "note": "hardrockbet"
     },
     {
       "time": "1:41 PM ET",
       "away": "Chicago Cubs",
       "home": "Miami Marlins",
-      "ml_away": "-150",
-      "ml_home": "+125",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "1:45 PM ET",
-      "away": "San Francisco Giants",
-      "home": "New York Mets",
-      "ml_away": "+135",
-      "ml_home": "-170",
+      "ml_away": "",
+      "ml_home": "",
       "note": "hardrockbet"
     },
     {
       "time": "2:10 PM ET",
       "away": "Arizona Diamondbacks",
       "home": "Houston Astros",
-      "ml_away": "-110",
-      "ml_home": "-110",
+      "ml_away": "-350",
+      "ml_home": "+250",
       "note": "hardrockbet"
     },
     {
       "time": "2:11 PM ET",
       "away": "Toronto Blue Jays",
       "home": "Kansas City Royals",
-      "ml_away": "-125",
-      "ml_home": "+105",
+      "ml_away": "+1200",
+      "ml_home": "-3000",
       "note": "hardrockbet"
     },
     {
       "time": "2:36 PM ET",
       "away": "Tampa Bay Rays",
       "home": "Texas Rangers",
-      "ml_away": "-110",
-      "ml_home": "-110",
+      "ml_away": "-800",
+      "ml_home": "+475",
       "note": "hardrockbet"
     },
     {
       "time": "3:10 PM ET",
       "away": "St. Louis Cardinals",
       "home": "Colorado Rockies",
-      "ml_away": "-135",
-      "ml_home": "+110",
+      "ml_away": "+105",
+      "ml_home": "-135",
       "note": "hardrockbet"
     },
     {
       "time": "4:10 PM ET",
       "away": "Athletics",
       "home": "Seattle Mariners",
-      "ml_away": "+165",
-      "ml_home": "-200",
+      "ml_away": "+175",
+      "ml_home": "-220",
       "note": "hardrockbet"
     },
     {
       "time": "4:10 PM ET",
       "away": "New York Yankees",
       "home": "San Diego Padres",
-      "ml_away": "-110",
-      "ml_home": "-110",
+      "ml_away": "-105",
+      "ml_home": "-115",
       "note": "hardrockbet"
     },
     {
@@ -178,7 +170,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Detroit Tigers 0-0 Cleveland Guardians",
+      "final": "Detroit Tigers 2-2 Cleveland Guardians",
       "odds": -140,
       "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
       "posted_at": "2026-09-06 12:30 ET"
@@ -195,7 +187,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Athletics None-None Seattle Mariners",
+      "final": "Athletics 0-0 Seattle Mariners",
       "odds": -130,
       "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
       "posted_at": "2026-09-06 12:30 ET"
@@ -212,7 +204,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Athletics None-None Seattle Mariners",
+      "final": "Athletics 0-0 Seattle Mariners",
       "odds": -130,
       "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
       "posted_at": "2026-09-06 12:30 ET"

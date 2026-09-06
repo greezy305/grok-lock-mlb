@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-05 16:08 ET",
+  "updated": "2026-09-06 12:30 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -12,21 +12,21 @@
       "live_units": 0.0
     },
     "rl": {
-      "bets": 40,
-      "wr": 0.775,
-      "units": 33.3,
-      "live_bets": 5,
-      "live_units": 2.6
+      "bets": 42,
+      "wr": 0.785,
+      "units": 35.09,
+      "live_bets": 7,
+      "live_units": 4.39
     },
     "ou": {
-      "bets": 57,
-      "wr": 0.614,
-      "units": 9.4,
-      "live_bets": 11,
-      "live_units": 1.9
+      "bets": 59,
+      "wr": 0.61,
+      "units": 9.17,
+      "live_bets": 13,
+      "live_units": 1.67
     },
-    "stacked_units": 54.3,
-    "live_units": 4.5
+    "stacked_units": 55.86,
+    "live_units": 6.06
   },
   "locks": [
     {
@@ -42,90 +42,66 @@
       "rule": "One side. |P(over) \u2212 52.4%| \u2265 4%. Full-game lines 5.5\u201314.5 only."
     }
   ],
-  "slate_date": "2026-09-05",
+  "slate_date": "2026-09-06",
   "slate": [
     {
-      "time": "4:11 PM ET",
-      "away": "Chicago Cubs",
-      "home": "Miami Marlins",
-      "ml_away": "-130",
-      "ml_home": "+110",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "4:11 PM ET",
-      "away": "San Francisco Giants",
-      "home": "New York Mets",
-      "ml_away": "+145",
-      "ml_home": "-170",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "6:06 PM ET",
-      "away": "Atlanta Braves",
-      "home": "Philadelphia Phillies",
-      "ml_away": "+135",
-      "ml_home": "-160",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "6:11 PM ET",
-      "away": "Detroit Tigers",
-      "home": "Cleveland Guardians",
-      "ml_away": "+130",
-      "ml_home": "-160",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "6:41 PM ET",
+      "time": "12:12 PM ET",
       "away": "Milwaukee Brewers",
       "home": "Cincinnati Reds",
-      "ml_away": "-160",
-      "ml_home": "+135",
+      "ml_away": "-110",
+      "ml_home": "-120",
       "note": "hardrockbet"
     },
     {
-      "time": "6:41 PM ET",
-      "away": "Los Angeles Angels",
-      "home": "Pittsburgh Pirates",
-      "ml_away": "+155",
-      "ml_home": "-190",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "7:06 PM ET",
-      "away": "Boston Red Sox",
-      "home": "Baltimore Orioles",
-      "ml_away": "-130",
-      "ml_home": "+115",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "7:06 PM ET",
-      "away": "Tampa Bay Rays",
-      "home": "Texas Rangers",
-      "ml_away": "-115",
-      "ml_home": "-105",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "7:11 PM ET",
-      "away": "Minnesota Twins",
-      "home": "Chicago White Sox",
-      "ml_away": "+105",
-      "ml_home": "-125",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "7:11 PM ET",
-      "away": "Toronto Blue Jays",
-      "home": "Kansas City Royals",
+      "time": "1:10 PM ET",
+      "away": "Atlanta Braves",
+      "home": "Philadelphia Phillies",
       "ml_away": "-110",
       "ml_home": "-110",
       "note": "hardrockbet"
     },
     {
-      "time": "7:16 PM ET",
+      "time": "1:35 PM ET",
+      "away": "Boston Red Sox",
+      "home": "Baltimore Orioles",
+      "ml_away": "-135",
+      "ml_home": "+120",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "1:35 PM ET",
+      "away": "Los Angeles Angels",
+      "home": "Pittsburgh Pirates",
+      "ml_away": "+155",
+      "ml_home": "-185",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "1:40 PM ET",
+      "away": "Detroit Tigers",
+      "home": "Cleveland Guardians",
+      "ml_away": "+140",
+      "ml_home": "-170",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "1:40 PM ET",
+      "away": "San Francisco Giants",
+      "home": "New York Mets",
+      "ml_away": "+135",
+      "ml_home": "-170",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "1:41 PM ET",
+      "away": "Chicago Cubs",
+      "home": "Miami Marlins",
+      "ml_away": "-150",
+      "ml_home": "+125",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "2:10 PM ET",
       "away": "Arizona Diamondbacks",
       "home": "Houston Astros",
       "ml_away": "-110",
@@ -133,35 +109,59 @@
       "note": "hardrockbet"
     },
     {
-      "time": "7:16 PM ET",
-      "away": "New York Yankees",
-      "home": "San Diego Padres",
-      "ml_away": "+105",
-      "ml_home": "-125",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "8:11 PM ET",
-      "away": "St. Louis Cardinals",
-      "home": "Colorado Rockies",
+      "time": "2:11 PM ET",
+      "away": "Toronto Blue Jays",
+      "home": "Kansas City Royals",
       "ml_away": "-125",
       "ml_home": "+105",
       "note": "hardrockbet"
     },
     {
-      "time": "9:11 PM ET",
-      "away": "Washington Nationals",
-      "home": "Los Angeles Dodgers",
-      "ml_away": "+195",
-      "ml_home": "-240",
+      "time": "2:36 PM ET",
+      "away": "Tampa Bay Rays",
+      "home": "Texas Rangers",
+      "ml_away": "-110",
+      "ml_home": "-110",
       "note": "hardrockbet"
     },
     {
-      "time": "9:41 PM ET",
+      "time": "3:10 PM ET",
+      "away": "St. Louis Cardinals",
+      "home": "Colorado Rockies",
+      "ml_away": "-135",
+      "ml_home": "+110",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "4:10 PM ET",
       "away": "Athletics",
       "home": "Seattle Mariners",
-      "ml_away": "+210",
-      "ml_home": "-260",
+      "ml_away": "+165",
+      "ml_home": "-200",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "4:10 PM ET",
+      "away": "New York Yankees",
+      "home": "San Diego Padres",
+      "ml_away": "-115",
+      "ml_home": "-105",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "6:20 PM ET",
+      "away": "Minnesota Twins",
+      "home": "Chicago White Sox",
+      "ml_away": "+125",
+      "ml_home": "-150",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "10:11 PM ET",
+      "away": "Washington Nationals",
+      "home": "Los Angeles Dodgers",
+      "ml_away": "+170",
+      "ml_home": "-210",
       "note": "hardrockbet"
     }
   ],
@@ -170,59 +170,25 @@
       "market": "OU",
       "away": "Detroit Tigers",
       "home": "Cleveland Guardians",
-      "side": "Over 6.5 -130",
-      "time": "6:11 PM ET",
-      "edge": "P(over) 56.5%",
+      "side": "Over 6.5 -140",
+      "time": "1:40 PM ET",
+      "edge": "P(over) 58.3%",
       "units": "1u",
       "note": "hardrockbet",
       "status": "pending",
       "result": "",
       "pnl": 0.0,
       "final": "Detroit Tigers 0-0 Cleveland Guardians",
-      "odds": -130,
-      "check": "2:00 PM ET check \u00b7 posted 12:52 PM ET",
-      "posted_at": "2026-09-05 12:52 ET"
-    },
-    {
-      "market": "OU",
-      "away": "Milwaukee Brewers",
-      "home": "Cincinnati Reds",
-      "side": "Under 9.5 -130",
-      "time": "6:41 PM ET",
-      "edge": "P(over) 47.6%",
-      "units": "1u",
-      "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "Milwaukee Brewers 0-0 Cincinnati Reds",
-      "odds": -130,
-      "check": "2:00 PM ET check \u00b7 posted 12:52 PM ET",
-      "posted_at": "2026-09-05 12:52 ET"
-    },
-    {
-      "market": "RL",
-      "away": "Washington Nationals",
-      "home": "Los Angeles Dodgers",
-      "side": "Washington Nationals +1.5 -120",
-      "time": "9:11 PM ET",
-      "edge": "plus-money +1.5 dog",
-      "units": "1u",
-      "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "Washington Nationals None-None Los Angeles Dodgers",
-      "odds": -120,
-      "check": "2:00 PM ET check \u00b7 posted 12:52 PM ET",
-      "posted_at": "2026-09-05 12:52 ET"
+      "odds": -140,
+      "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
+      "posted_at": "2026-09-06 12:30 ET"
     },
     {
       "market": "RL",
       "away": "Athletics",
       "home": "Seattle Mariners",
-      "side": "Athletics +1.5 -105",
-      "time": "9:41 PM ET",
+      "side": "Athletics +1.5 -130",
+      "time": "4:10 PM ET",
       "edge": "plus-money +1.5 dog",
       "units": "1u",
       "note": "hardrockbet",
@@ -230,13 +196,100 @@
       "result": "",
       "pnl": 0.0,
       "final": "Athletics None-None Seattle Mariners",
-      "odds": -105,
-      "check": "2:00 PM ET check \u00b7 posted 12:52 PM ET",
-      "posted_at": "2026-09-05 12:52 ET"
+      "odds": -130,
+      "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
+      "posted_at": "2026-09-06 12:30 ET"
+    },
+    {
+      "market": "OU",
+      "away": "Athletics",
+      "home": "Seattle Mariners",
+      "side": "Under 7.5 -130",
+      "time": "4:10 PM ET",
+      "edge": "P(over) 47.6%",
+      "units": "1u",
+      "note": "hardrockbet",
+      "status": "pending",
+      "result": "",
+      "pnl": 0.0,
+      "final": "Athletics None-None Seattle Mariners",
+      "odds": -130,
+      "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
+      "posted_at": "2026-09-06 12:30 ET"
+    },
+    {
+      "market": "OU",
+      "away": "New York Yankees",
+      "home": "San Diego Padres",
+      "side": "Over 6.5 -140",
+      "time": "4:10 PM ET",
+      "edge": "P(over) 58.3%",
+      "units": "1u",
+      "note": "hardrockbet",
+      "status": "pending",
+      "result": "",
+      "pnl": 0.0,
+      "final": "New York Yankees None-None San Diego Padres",
+      "odds": -140,
+      "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
+      "posted_at": "2026-09-06 12:30 ET"
+    },
+    {
+      "market": "RL",
+      "away": "Washington Nationals",
+      "home": "Los Angeles Dodgers",
+      "side": "Washington Nationals +1.5 -125",
+      "time": "10:11 PM ET",
+      "edge": "plus-money +1.5 dog",
+      "units": "1u",
+      "note": "hardrockbet",
+      "status": "pending",
+      "result": "",
+      "pnl": 0.0,
+      "final": "Washington Nationals None-None Los Angeles Dodgers",
+      "odds": -125,
+      "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
+      "posted_at": "2026-09-06 12:30 ET"
     }
   ],
-  "picks_status": "4 model ticket(s) \u00b7 hardrockbet",
+  "picks_status": "5 model ticket(s) \u00b7 hardrockbet",
   "recent": [
+    {
+      "date": "2026-09-05",
+      "game": "Detroit Tigers @ Cleveland Guardians",
+      "market": "OU",
+      "side": "Over 6.5 -130",
+      "result": "L",
+      "units": -1.0,
+      "final": "Detroit Tigers 6-0 Cleveland Guardians"
+    },
+    {
+      "date": "2026-09-05",
+      "game": "Milwaukee Brewers @ Cincinnati Reds",
+      "market": "OU",
+      "side": "Under 9.5 -130",
+      "result": "W",
+      "units": 0.769,
+      "final": "Milwaukee Brewers 3-5 Cincinnati Reds"
+    },
+    {
+      "date": "2026-09-05",
+      "game": "Washington Nationals @ Los Angeles Dodgers",
+      "market": "RL",
+      "side": "Washington Nationals +1.5 -120",
+      "result": "W",
+      "units": 0.833,
+      "final": "Washington Nationals 5-6 Los Angeles Dodgers"
+    },
+    {
+      "date": "2026-09-05",
+      "game": "Athletics @ Seattle Mariners",
+      "market": "RL",
+      "side": "Athletics +1.5 -105",
+      "result": "W",
+      "units": 0.952,
+      "final": "Athletics 6-2 Seattle Mariners"
+    },
     {
       "date": "2026-09-04",
       "game": "Minnesota Twins @ Chicago White Sox",

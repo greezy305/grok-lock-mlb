@@ -19,7 +19,7 @@
     "edge": "P(over) 58.3%",
     "ou_line": 6.5,
     "live": "Detroit Tigers 0-0 Cleveland Guardians",
-    "game_status": "Pre-Game"
+    "game_status": "Warmup"
   },
   {
     "id": "2026-09-06|Athletics|Seattle Mariners|RL",
@@ -40,7 +40,7 @@
     "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
     "edge": "plus-money +1.5 dog",
     "live": "Athletics None-None Seattle Mariners",
-    "game_status": "Scheduled"
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-06|Athletics|Seattle Mariners|OU",
@@ -62,7 +62,7 @@
     "edge": "P(over) 47.6%",
     "ou_line": 7.5,
     "live": "Athletics None-None Seattle Mariners",
-    "game_status": "Scheduled"
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-06|New York Yankees|San Diego Padres|OU",
@@ -83,8 +83,8 @@
     "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
     "edge": "P(over) 58.3%",
     "ou_line": 6.5,
-    "live": "New York Yankees None-None San Diego Padres",
-    "game_status": "Scheduled"
+    "live": "New York Yankees 0-0 San Diego Padres",
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-06|Washington Nationals|Los Angeles Dodgers|RL",

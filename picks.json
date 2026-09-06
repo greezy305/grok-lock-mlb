@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-06 12:30 ET",
+  "updated": "2026-09-06 13:16 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -48,16 +48,16 @@
       "time": "12:12 PM ET",
       "away": "Milwaukee Brewers",
       "home": "Cincinnati Reds",
-      "ml_away": "-110",
-      "ml_home": "-120",
+      "ml_away": "+135",
+      "ml_home": "-180",
       "note": "hardrockbet"
     },
     {
-      "time": "1:10 PM ET",
+      "time": "1:11 PM ET",
       "away": "Atlanta Braves",
       "home": "Philadelphia Phillies",
-      "ml_away": "-110",
-      "ml_home": "-110",
+      "ml_away": "+105",
+      "ml_home": "-140",
       "note": "hardrockbet"
     },
     {
@@ -65,7 +65,7 @@
       "away": "Boston Red Sox",
       "home": "Baltimore Orioles",
       "ml_away": "-135",
-      "ml_home": "+120",
+      "ml_home": "+115",
       "note": "hardrockbet"
     },
     {
@@ -85,19 +85,19 @@
       "note": "hardrockbet"
     },
     {
-      "time": "1:40 PM ET",
-      "away": "San Francisco Giants",
-      "home": "New York Mets",
-      "ml_away": "+135",
-      "ml_home": "-170",
-      "note": "hardrockbet"
-    },
-    {
       "time": "1:41 PM ET",
       "away": "Chicago Cubs",
       "home": "Miami Marlins",
       "ml_away": "-150",
       "ml_home": "+125",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "1:45 PM ET",
+      "away": "San Francisco Giants",
+      "home": "New York Mets",
+      "ml_away": "+135",
+      "ml_home": "-170",
       "note": "hardrockbet"
     },
     {
@@ -144,8 +144,8 @@
       "time": "4:10 PM ET",
       "away": "New York Yankees",
       "home": "San Diego Padres",
-      "ml_away": "-115",
-      "ml_home": "-105",
+      "ml_away": "-110",
+      "ml_home": "-110",
       "note": "hardrockbet"
     },
     {
@@ -161,7 +161,7 @@
       "away": "Washington Nationals",
       "home": "Los Angeles Dodgers",
       "ml_away": "+170",
-      "ml_home": "-210",
+      "ml_home": "-200",
       "note": "hardrockbet"
     }
   ],
@@ -229,7 +229,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "New York Yankees None-None San Diego Padres",
+      "final": "New York Yankees 0-0 San Diego Padres",
       "odds": -140,
       "check": "2:00 PM ET check \u00b7 posted 12:30 PM ET",
       "posted_at": "2026-09-06 12:30 ET"

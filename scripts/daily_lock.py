@@ -743,9 +743,19 @@ def main():
         "skipped_live", skipped_live,
     )
 
-    # If Odds API was skipped, still build slate from free MLB schedule
-    if not slate_cards and slate:
+    # Always merge full MLB day schedule so Finals stay on Slate after books drop them
+    if slate:
+        def _norm(s):
+            return norm_name(s or "")
+
+        have = set()
+        for c in slate_cards:
+            have.add((_norm(c.get("away")), _norm(c.get("home"))))
+
         for g in slate:
+            ak, hk = _norm(g.get("away")), _norm(g.get("home"))
+            if (ak, hk) in have:
+                continue
             tlabel = ""
             try:
                 gd = g.get("time")
@@ -760,8 +770,9 @@ def main():
                 "home": g.get("home"),
                 "ml_away": "",
                 "ml_home": "",
-                "note": "MLB schedule (odds skipped)",
+                "note": "final/no book line",
             })
+            have.add((ak, hk))
 
     # 5:30 PM ET pass: refresh Hard Rock prices on pending pregame tickets
     refresh_pending_lines(by_id, events, now, day)
@@ -775,6 +786,7 @@ def main():
         if t.get("date") != day:
             continue
         today_picks.append({
+            "date": t.get("date") or day,
             "market": t.get("market"),
             "away": t.get("away"),
             "home": t.get("home"),
@@ -788,6 +800,7 @@ def main():
             "pnl": t.get("pnl"),
             "final": t.get("final") or t.get("live") or "",
             "odds": t.get("odds"),
+            "ou_line": t.get("ou_line"),
             "check": t.get("check") or "",
             "posted_at": t.get("posted_at") or "",
         })

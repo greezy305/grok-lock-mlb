@@ -638,11 +638,20 @@ def main():
 
         ml_away = outcome_price(h2h, name=away)
         ml_home = outcome_price(h2h, name=home)
+        # Run line: dog +1.5 / fav -1.5
         rl_away = outcome_price(spreads, name=away, point=1.5)
         if rl_away is None:
             for o in spreads or []:
                 if o.get("name") == away and float(o.get("point") or 0) > 0:
                     rl_away = o
+                    break
+        rl_home = outcome_price(spreads, name=home, point=-1.5)
+        if rl_home is None:
+            rl_home = outcome_price(spreads, name=home, point=1.5)
+        if rl_home is None:
+            for o in spreads or []:
+                if o.get("name") == home and abs(float(o.get("point") or 0)) == 1.5:
+                    rl_home = o
                     break
 
         # PATCH 2: main full-game total only (line + juice band)
@@ -652,12 +661,43 @@ def main():
 
         aw_px = px_int(ml_away["price"]) if ml_away else None
         hm_px = px_int(ml_home["price"]) if ml_home else None
+        rl_aw_px = px_int(rl_away["price"]) if rl_away else None
+        rl_hm_px = px_int(rl_home["price"]) if rl_home else None
+        ou_o_px = px_int(tot_over["price"]) if tot_over else None
+        ou_u_px = px_int(tot_under["price"]) if tot_under else None
+        ou_line = None
+        if tot_over and tot_over.get("point") is not None:
+            ou_line = tot_over.get("point")
+        elif tot_under and tot_under.get("point") is not None:
+            ou_line = tot_under.get("point")
+
+        def _fmt_px(px):
+            return ("%+d" % px) if px is not None else ""
+
+        def _fmt_rl(px, point_hint):
+            if px is None:
+                return ""
+            # e.g. "+1.5\n-130" style split in UI; store price only, line fixed in UI
+            return _fmt_px(px)
+
+        def _fmt_ou(px, side):
+            if px is None:
+                return ""
+            if ou_line is None:
+                return _fmt_px(px)
+            return "%s %s %s" % (side, ou_line, _fmt_px(px))
+
         slate_cards.append({
             "time": tlabel,
             "away": away,
             "home": home,
-            "ml_away": ("%+d" % aw_px) if aw_px is not None else "",
-            "ml_home": ("%+d" % hm_px) if hm_px is not None else "",
+            "ml_away": _fmt_px(aw_px),
+            "ml_home": _fmt_px(hm_px),
+            "rl_away": _fmt_rl(rl_aw_px, 1.5),
+            "rl_home": _fmt_rl(rl_hm_px, -1.5),
+            "ou_line": ou_line,
+            "ou_over": _fmt_px(ou_o_px),
+            "ou_under": _fmt_px(ou_u_px),
             "note": book_used or "no Hard Rock book",
         })
 
@@ -794,6 +834,11 @@ def main():
                 "home": g.get("home"),
                 "ml_away": "",
                 "ml_home": "",
+                "rl_away": "",
+                "rl_home": "",
+                "ou_line": None,
+                "ou_over": "",
+                "ou_under": "",
                 "note": "final/no book line",
             })
             have.add((ak, hk))

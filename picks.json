@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-07 16:56 ET",
+  "updated": "2026-09-07 19:37 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -45,35 +45,11 @@
   "slate_date": "2026-09-07",
   "slate": [
     {
-      "time": "2:11 PM ET",
-      "away": "Arizona Diamondbacks",
-      "home": "Kansas City Royals",
-      "ml_away": "",
-      "ml_home": "",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "2:11 PM ET",
-      "away": "Chicago Cubs",
-      "home": "Milwaukee Brewers",
-      "ml_away": "",
-      "ml_home": "",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "3:11 PM ET",
-      "away": "Minnesota Twins",
-      "home": "Detroit Tigers",
-      "ml_away": "+185",
-      "ml_home": "-250",
-      "note": "hardrockbet"
-    },
-    {
       "time": "5:11 PM ET",
       "away": "Washington Nationals",
       "home": "San Diego Padres",
-      "ml_away": "+170",
-      "ml_home": "-210",
+      "ml_away": "+500",
+      "ml_home": "-850",
       "note": "hardrockbet"
     },
     {
@@ -131,6 +107,30 @@
       "ml_away": "",
       "ml_home": "",
       "note": "final/no book line"
+    },
+    {
+      "time": "2:10 PM ET",
+      "away": "Arizona Diamondbacks",
+      "home": "Kansas City Royals",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "2:10 PM ET",
+      "away": "Chicago Cubs",
+      "home": "Milwaukee Brewers",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "3:10 PM ET",
+      "away": "Minnesota Twins",
+      "home": "Detroit Tigers",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "final/no book line"
     }
   ],
   "picks": [
@@ -147,7 +147,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Washington Nationals 0-0 San Diego Padres",
+      "final": "Washington Nationals 2-3 San Diego Padres",
       "odds": -130,
       "ou_line": null,
       "check": "10:30 AM ET check \u00b7 posted 5:59 AM ET",

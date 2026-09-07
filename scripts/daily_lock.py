@@ -147,7 +147,15 @@ def norm_name(s):
 def names_match(a, b):
     if not a or not b:
         return False
-    return a.strip().lower() == b.strip().lower()
+    x = a.strip().lower()
+    y = b.strip().lower()
+    if x == y:
+        return True
+    # nickname / city variants: "athletics" vs "oakland athletics"
+    xt, yt = x.split(), y.split()
+    if xt and yt and xt[-1] == yt[-1]:
+        return True
+    return x in y or y in x
 
 
 def ticket_id(date, away, home, market):
@@ -242,7 +250,7 @@ def main_totals(totals):
 
 def grade_ticket(t, games):
     if t.get("status") not in (None, "", "pending"):
-        return t
+        return t  # void / already settled
     tdate = t.get("date")
     for g in games:
         if tdate and g.get("date") and g.get("date") != tdate:
@@ -559,7 +567,8 @@ def main():
         slate = []
 
     grade_games = list(slate)
-    for i in range(1, 4):
+    # Look back 14 days so lagged pendings (e.g. 9/02) still grade
+    for i in range(1, 15):
         prev = (now - timedelta(days=i)).strftime("%Y-%m-%d")
         try:
             grade_games.extend(pull_schedule(prev))
@@ -793,7 +802,41 @@ def main():
     refresh_pending_lines(by_id, events, now, day)
 
     ledger = list(by_id.values())
+    # Void F5 / absurd juice tickets (should never have been locked)
+    for t in ledger:
+        if t.get("market") == "OU":
+            line = t.get("ou_line")
+            if line is None:
+                # parse from side e.g. "Under 2.5 -1500"
+                import re as _re
+                m = _re.search(r"(\d+(?:\.\d+)?)", str(t.get("side") or ""))
+                line = float(m.group(1)) if m else None
+            try:
+                odds = float(t.get("odds") or 0)
+            except (TypeError, ValueError):
+                odds = 0
+            bad_line = line is not None and (line < OU_LINE_LO or line > OU_LINE_HI)
+            bad_odds = abs(odds) >= 500 or odds < OU_JUICE_LO or odds > OU_JUICE_HI
+            if bad_line or bad_odds:
+                t["status"] = "void"
+                t["result"] = "VOID"
+                t["pnl"] = 0.0
+                t["note"] = (t.get("note") or "") + " · voided junk line/odds"
     graded = [grade_ticket(t, grade_games) for t in ledger]
+    # Normalize every settled ticket to win-1u (rewrites old risk-1u pnls)
+    for t in graded:
+        st = t.get("status")
+        if st == "win":
+            t["pnl"] = 1.0
+        elif st == "loss":
+            try:
+                odds = float(t.get("odds") or -110)
+            except (TypeError, ValueError):
+                odds = -110.0
+            if abs(odds) < 500:
+                t["pnl"] = round(-risk_units(odds), 3)
+        elif st == "push":
+            t["pnl"] = 0.0
     graded.sort(key=lambda t: t.get("date", ""), reverse=True)
 
     today_picks = []
@@ -830,10 +873,11 @@ def main():
             "market": t.get("market"),
             "side": t.get("side"),
             "result": t.get("result"),
-            "units": t.get("pnl"),
+            "units": t.get("pnl"),  # win-1u
+            "odds": t.get("odds"),
             "final": t.get("final"),
         })
-        if len(recent) >= 25:
+        if len(recent) >= 200:
             break
 
     ytd = ytd_from_ledger(graded)

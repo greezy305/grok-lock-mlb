@@ -26,11 +26,12 @@ OU_LINE_LO = 5.5
 OU_LINE_HI = 14.5
 OU_JUICE_LO = -200
 OU_JUICE_HI = 200
+# Live ledger only — no pre-live RESEARCH seed mixed into YTD
 RESEARCH = {
-    "ml": {"bets": 54, "wr": 0.63, "units": 11.6},
-    "rl": {"bets": 35, "wr": 0.771, "units": 30.7},
-    "ou": {"bets": 46, "wr": 0.609, "units": 7.5},
-    "stacked_units": 49.8,
+    "ml": {"bets": 0, "wr": 0.0, "units": 0.0},
+    "rl": {"bets": 0, "wr": 0.0, "units": 0.0},
+    "ou": {"bets": 0, "wr": 0.0, "units": 0.0},
+    "stacked_units": 0.0,
 }
 
 
@@ -46,10 +47,16 @@ def american_to_prob(odds):
 
 
 def profit_units(odds):
+    """Win-1u: a win always returns +1.0 unit (risk is sized to win $50)."""
+    return 1.0
+
+
+def risk_units(odds):
+    """Amount risked under win-1u sizing to win 1u at american odds."""
     o = float(odds)
-    if o >= 0:
-        return o / 100.0
-    return 100.0 / abs(o)
+    if o < 0:
+        return abs(o) / 100.0
+    return 100.0 / o
 
 
 def get_json(url):
@@ -293,11 +300,11 @@ def grade_ticket(t, games):
         elif won is True:
             t["status"] = "win"
             t["result"] = "W"
-            t["pnl"] = round(profit_units(odds or -110), 3)
+            t["pnl"] = 1.0  # win-1u
         elif won is False:
             t["status"] = "loss"
             t["result"] = "L"
-            t["pnl"] = -1.0
+            t["pnl"] = round(-risk_units(odds or -110), 3)
         t["final"] = "%s %s-%s %s" % (t.get("away"), aw, hm, t.get("home"))
         t["game_status"] = g.get("status")
         return t
@@ -305,44 +312,52 @@ def grade_ticket(t, games):
 
 
 def ytd_from_ledger(ledger):
+    """Live ledger only, win-1u: win +1.0, loss −risk_units(odds)."""
     live = {
         "ml": {"bets": 0, "wins": 0, "units": 0.0},
         "rl": {"bets": 0, "wins": 0, "units": 0.0},
         "ou": {"bets": 0, "wins": 0, "units": 0.0},
     }
     for t in ledger:
-        if t.get("status") not in ("win", "loss", "push"):
+        st = t.get("status")
+        if st not in ("win", "loss", "push"):
             continue
-        key = t.get("market", "").lower()
+        key = (t.get("market") or "").lower()
         if key not in live:
             continue
-        if t.get("status") != "push":
-            live[key]["bets"] += 1
-            live[key]["units"] += float(t.get("pnl") or 0)
-            if t.get("status") == "win":
-                live[key]["wins"] += 1
+        if st == "push":
+            continue
+        odds = t.get("odds")
+        try:
+            odds = float(odds)
+        except (TypeError, ValueError):
+            odds = -110.0
+        if abs(odds) >= 500:
+            continue  # junk odds
+        live[key]["bets"] += 1
+        if st == "win":
+            live[key]["wins"] += 1
+            live[key]["units"] += 1.0
+            t["pnl"] = 1.0
+        else:
+            live[key]["units"] += -risk_units(odds)
+            t["pnl"] = round(-risk_units(odds), 3)
     out = {}
-    stacked_live = 0.0
+    stacked = 0.0
     for k in ("ml", "rl", "ou"):
         bets = live[k]["bets"]
-        wr = (live[k]["wins"] / bets) if bets else 0.0
+        wins = live[k]["wins"]
         units = round(live[k]["units"], 2)
-        stacked_live += units
+        stacked += units
         out[k] = {
-            "bets": RESEARCH[k]["bets"] + bets,
-            "wr": wr if bets else RESEARCH[k]["wr"],
-            "units": round(RESEARCH[k]["units"] + units, 2),
+            "bets": bets,
+            "wr": round(wins / bets, 3) if bets else 0.0,
+            "units": units,
             "live_bets": bets,
             "live_units": units,
         }
-        if bets:
-            out[k]["wr"] = round(
-                (RESEARCH[k]["wr"] * RESEARCH[k]["bets"] + live[k]["wins"])
-                / (RESEARCH[k]["bets"] + bets),
-                3,
-            )
-    out["stacked_units"] = round(RESEARCH["stacked_units"] + stacked_live, 2)
-    out["live_units"] = round(stacked_live, 2)
+    out["stacked_units"] = round(stacked, 2)
+    out["live_units"] = round(stacked, 2)
     return out
 
 

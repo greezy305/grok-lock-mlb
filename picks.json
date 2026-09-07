@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-07 14:50 ET",
+  "updated": "2026-09-07 16:56 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -45,59 +45,27 @@
   "slate_date": "2026-09-07",
   "slate": [
     {
-      "time": "1:06 PM ET",
-      "away": "Atlanta Braves",
-      "home": "Philadelphia Phillies",
-      "ml_away": "+575",
-      "ml_home": "-950",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "1:11 PM ET",
-      "away": "New York Mets",
-      "home": "Miami Marlins",
-      "ml_away": "-700",
-      "ml_home": "+425",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "1:36 PM ET",
-      "away": "Cleveland Guardians",
-      "home": "Baltimore Orioles",
-      "ml_away": "+475",
-      "ml_home": "-750",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "1:36 PM ET",
-      "away": "Los Angeles Angels",
-      "home": "Boston Red Sox",
-      "ml_away": "+1750",
-      "ml_home": "-7000",
-      "note": "hardrockbet"
-    },
-    {
       "time": "2:11 PM ET",
       "away": "Arizona Diamondbacks",
       "home": "Kansas City Royals",
-      "ml_away": "-120",
-      "ml_home": "-110",
+      "ml_away": "",
+      "ml_home": "",
       "note": "hardrockbet"
     },
     {
       "time": "2:11 PM ET",
       "away": "Chicago Cubs",
       "home": "Milwaukee Brewers",
-      "ml_away": "+105",
-      "ml_home": "-140",
+      "ml_away": "",
+      "ml_home": "",
       "note": "hardrockbet"
     },
     {
       "time": "3:11 PM ET",
       "away": "Minnesota Twins",
       "home": "Detroit Tigers",
-      "ml_away": "+100",
-      "ml_home": "-120",
+      "ml_away": "+185",
+      "ml_home": "-250",
       "note": "hardrockbet"
     },
     {
@@ -131,6 +99,38 @@
       "ml_away": "-210",
       "ml_home": "+175",
       "note": "hardrockbet"
+    },
+    {
+      "time": "1:05 PM ET",
+      "away": "Atlanta Braves",
+      "home": "Philadelphia Phillies",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "1:10 PM ET",
+      "away": "New York Mets",
+      "home": "Miami Marlins",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "1:35 PM ET",
+      "away": "Los Angeles Angels",
+      "home": "Boston Red Sox",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "1:35 PM ET",
+      "away": "Cleveland Guardians",
+      "home": "Baltimore Orioles",
+      "ml_away": "",
+      "ml_home": "",
+      "note": "final/no book line"
     }
   ],
   "picks": [
@@ -147,7 +147,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Washington Nationals None-None San Diego Padres",
+      "final": "Washington Nationals 0-0 San Diego Padres",
       "odds": -130,
       "ou_line": null,
       "check": "10:30 AM ET check \u00b7 posted 5:59 AM ET",

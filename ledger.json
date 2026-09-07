@@ -18,7 +18,7 @@
     "check": "10:30 AM ET check \u00b7 posted 5:59 AM ET",
     "edge": "plus-money +1.5 dog",
     "live": "Washington Nationals None-None San Diego Padres",
-    "game_status": "Scheduled"
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-06|Detroit Tigers|Cleveland Guardians|OU",
@@ -500,10 +500,10 @@
     "odds": -1500,
     "units": "1u",
     "time": "3:41 PM ET",
-    "status": "loss",
-    "result": "L",
-    "pnl": -1.0,
-    "note": "hardrockbet",
+    "status": "void",
+    "result": "VOID",
+    "pnl": 0.0,
+    "note": "hardrockbet \u00b7 voided junk line/odds",
     "book": "hardrockbet",
     "edge": "P(over) 45.5%",
     "ou_line": 2.5,

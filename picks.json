@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-07 05:59 ET",
+  "updated": "2026-09-07 14:49 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -48,39 +48,39 @@
       "time": "1:06 PM ET",
       "away": "Atlanta Braves",
       "home": "Philadelphia Phillies",
-      "ml_away": "+150",
-      "ml_home": "-180",
+      "ml_away": "+120",
+      "ml_home": "-160",
       "note": "hardrockbet"
     },
     {
       "time": "1:11 PM ET",
       "away": "New York Mets",
       "home": "Miami Marlins",
-      "ml_away": "-105",
-      "ml_home": "-115",
+      "ml_away": "-700",
+      "ml_home": "+425",
       "note": "hardrockbet"
     },
     {
       "time": "1:36 PM ET",
       "away": "Cleveland Guardians",
       "home": "Baltimore Orioles",
-      "ml_away": "+105",
-      "ml_home": "-125",
+      "ml_away": "+400",
+      "ml_home": "-650",
       "note": "hardrockbet"
     },
     {
       "time": "1:36 PM ET",
       "away": "Los Angeles Angels",
       "home": "Boston Red Sox",
-      "ml_away": "+145",
-      "ml_home": "-175",
+      "ml_away": "+1300",
+      "ml_home": "-3000",
       "note": "hardrockbet"
     },
     {
       "time": "2:11 PM ET",
       "away": "Arizona Diamondbacks",
       "home": "Kansas City Royals",
-      "ml_away": "-105",
+      "ml_away": "-115",
       "ml_home": "-115",
       "note": "hardrockbet"
     },
@@ -88,23 +88,23 @@
       "time": "2:11 PM ET",
       "away": "Chicago Cubs",
       "home": "Milwaukee Brewers",
-      "ml_away": "+105",
-      "ml_home": "-125",
+      "ml_away": "+130",
+      "ml_home": "-170",
       "note": "hardrockbet"
     },
     {
       "time": "3:11 PM ET",
       "away": "Minnesota Twins",
       "home": "Detroit Tigers",
-      "ml_away": "+105",
-      "ml_home": "-125",
+      "ml_away": "+100",
+      "ml_home": "-120",
       "note": "hardrockbet"
     },
     {
       "time": "5:11 PM ET",
       "away": "Washington Nationals",
       "home": "San Diego Padres",
-      "ml_away": "+175",
+      "ml_away": "+170",
       "ml_home": "-210",
       "note": "hardrockbet"
     },
@@ -112,7 +112,7 @@
       "time": "8:11 PM ET",
       "away": "St. Louis Cardinals",
       "home": "San Francisco Giants",
-      "ml_away": "+115",
+      "ml_away": "+110",
       "ml_home": "-135",
       "note": "hardrockbet"
     },
@@ -120,16 +120,16 @@
       "time": "9:11 PM ET",
       "away": "Cincinnati Reds",
       "home": "Los Angeles Dodgers",
-      "ml_away": "+125",
-      "ml_home": "-155",
+      "ml_away": "+150",
+      "ml_home": "-180",
       "note": "hardrockbet"
     },
     {
       "time": "10:06 PM ET",
       "away": "Toronto Blue Jays",
       "home": "Athletics",
-      "ml_away": "-200",
-      "ml_home": "+170",
+      "ml_away": "-210",
+      "ml_home": "+175",
       "note": "hardrockbet"
     }
   ],
@@ -162,7 +162,8 @@
       "market": "OU",
       "side": "Over 6.5 -140",
       "result": "L",
-      "units": -1.0,
+      "units": -1.4,
+      "odds": -140,
       "final": "Detroit Tigers 2-3 Cleveland Guardians"
     },
     {
@@ -171,7 +172,8 @@
       "market": "RL",
       "side": "Athletics +1.5 -130",
       "result": "L",
-      "units": -1.0,
+      "units": -1.3,
+      "odds": -130,
       "final": "Athletics 0-2 Seattle Mariners"
     },
     {
@@ -180,7 +182,8 @@
       "market": "OU",
       "side": "Under 7.5 -130",
       "result": "W",
-      "units": 0.769,
+      "units": 1.0,
+      "odds": -130,
       "final": "Athletics 0-2 Seattle Mariners"
     },
     {
@@ -189,7 +192,8 @@
       "market": "OU",
       "side": "Over 6.5 -140",
       "result": "W",
-      "units": 0.714,
+      "units": 1.0,
+      "odds": -140,
       "final": "New York Yankees 3-4 San Diego Padres"
     },
     {
@@ -199,6 +203,7 @@
       "side": "Washington Nationals +1.5 -125",
       "result": "L",
       "units": -1.25,
+      "odds": -125,
       "final": "Washington Nationals 5-7 Los Angeles Dodgers"
     },
     {
@@ -207,7 +212,8 @@
       "market": "OU",
       "side": "Over 6.5 -130",
       "result": "L",
-      "units": -1.0,
+      "units": -1.3,
+      "odds": -130,
       "final": "Detroit Tigers 6-0 Cleveland Guardians"
     },
     {
@@ -216,7 +222,8 @@
       "market": "OU",
       "side": "Under 9.5 -130",
       "result": "W",
-      "units": 0.769,
+      "units": 1.0,
+      "odds": -130,
       "final": "Milwaukee Brewers 3-5 Cincinnati Reds"
     },
     {
@@ -225,7 +232,8 @@
       "market": "RL",
       "side": "Washington Nationals +1.5 -120",
       "result": "W",
-      "units": 0.833,
+      "units": 1.0,
+      "odds": -120,
       "final": "Washington Nationals 5-6 Los Angeles Dodgers"
     },
     {
@@ -234,7 +242,8 @@
       "market": "RL",
       "side": "Athletics +1.5 -105",
       "result": "W",
-      "units": 0.952,
+      "units": 1.0,
+      "odds": -105,
       "final": "Athletics 6-2 Seattle Mariners"
     },
     {
@@ -243,7 +252,8 @@
       "market": "OU",
       "side": "Under 9.5 -135",
       "result": "W",
-      "units": 0.741,
+      "units": 1.0,
+      "odds": -135,
       "final": "Minnesota Twins 1-4 Chicago White Sox"
     },
     {
@@ -252,7 +262,8 @@
       "market": "RL",
       "side": "Athletics +1.5 -120",
       "result": "W",
-      "units": 0.833,
+      "units": 1.0,
+      "odds": -120,
       "final": "Athletics 7-6 Seattle Mariners"
     },
     {
@@ -261,7 +272,8 @@
       "market": "RL",
       "side": "Washington Nationals +1.5 +110",
       "result": "L",
-      "units": -1.0,
+      "units": -0.909,
+      "odds": 110,
       "final": "Washington Nationals 3-5 Los Angeles Dodgers"
     },
     {
@@ -270,7 +282,8 @@
       "market": "OU",
       "side": "Over 10.5 -130",
       "result": "W",
-      "units": 0.769,
+      "units": 1.0,
+      "odds": -130,
       "final": "St. Louis Cardinals 7-6 Colorado Rockies"
     },
     {
@@ -279,7 +292,8 @@
       "market": "OU",
       "side": "Under 9.5 -135",
       "result": "L",
-      "units": -1.0,
+      "units": -1.35,
+      "odds": -135,
       "final": "Miami Marlins 3-7 Kansas City Royals"
     },
     {
@@ -288,7 +302,8 @@
       "market": "RL",
       "side": "Athletics +1.5 -130",
       "result": "W",
-      "units": 0.769,
+      "units": 1.0,
+      "odds": -130,
       "final": "Athletics 7-4 Seattle Mariners"
     },
     {
@@ -297,7 +312,8 @@
       "market": "RL",
       "side": "St. Louis Cardinals +1.5 +105",
       "result": "W",
-      "units": 1.05,
+      "units": 1.0,
+      "odds": 105,
       "final": "St. Louis Cardinals 2-3 Los Angeles Dodgers"
     },
     {
@@ -306,7 +322,8 @@
       "market": "OU",
       "side": "Over 7.5 -135",
       "result": "W",
-      "units": 0.741,
+      "units": 1.0,
+      "odds": -135,
       "final": "Chicago White Sox 2-6 Houston Astros"
     },
     {
@@ -316,6 +333,7 @@
       "side": "Under 7.5 +100",
       "result": "L",
       "units": -1.0,
+      "odds": 100,
       "final": "Athletics 1-8 Texas Rangers"
     },
     {
@@ -324,7 +342,8 @@
       "market": "OU",
       "side": "Under 11.5 -120",
       "result": "W",
-      "units": 0.833,
+      "units": 1.0,
+      "odds": -120,
       "final": "Baltimore Orioles 2-1 Colorado Rockies"
     },
     {
@@ -333,7 +352,8 @@
       "market": "OU",
       "side": "Under 7.5 +105",
       "result": "W",
-      "units": 1.05,
+      "units": 1.0,
+      "odds": 105,
       "final": "New York Mets 3-2 Tampa Bay Rays"
     },
     {
@@ -343,6 +363,7 @@
       "side": "Over 8.5 +100",
       "result": "W",
       "units": 1.0,
+      "odds": 100,
       "final": "Milwaukee Brewers 3-17 Chicago Cubs"
     },
     {
@@ -351,17 +372,9 @@
       "market": "OU",
       "side": "Under 7.5 +105",
       "result": "L",
-      "units": -1.0,
+      "units": -0.952,
+      "odds": 105,
       "final": "St. Louis Cardinals 13-8 Los Angeles Dodgers"
-    },
-    {
-      "date": "2026-09-02",
-      "game": "Philadelphia Phillies @ Arizona Diamondbacks",
-      "market": "OU",
-      "side": "Under 2.5 -1500",
-      "result": "L",
-      "units": -1.0,
-      "final": "Philadelphia Phillies 2-1 Arizona Diamondbacks"
     },
     {
       "date": "2026-09-02",
@@ -369,7 +382,8 @@
       "market": "OU",
       "side": "Over 8.5 -130",
       "result": "W",
-      "units": 0.769,
+      "units": 1.0,
+      "odds": -130,
       "final": "Miami Marlins 6-3 Kansas City Royals"
     },
     {
@@ -378,7 +392,8 @@
       "market": "RL",
       "side": "St. Louis Cardinals +1.5 -105",
       "result": "W",
-      "units": 0.952,
+      "units": 1.0,
+      "odds": -105,
       "final": "St. Louis Cardinals 8-6 Los Angeles Dodgers"
     }
   ]

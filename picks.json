@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-07 19:37 ET",
+  "updated": "2026-09-07 19:57 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -12,11 +12,11 @@
       "live_units": 0.0
     },
     "rl": {
-      "bets": 9,
-      "wr": 0.667,
-      "units": 2.54,
-      "live_bets": 9,
-      "live_units": 2.54
+      "bets": 10,
+      "wr": 0.7,
+      "units": 3.54,
+      "live_bets": 10,
+      "live_units": 3.54
     },
     "ou": {
       "bets": 15,
@@ -25,8 +25,8 @@
       "live_bets": 15,
       "live_units": 4.0
     },
-    "stacked_units": 6.54,
-    "live_units": 6.54
+    "stacked_units": 7.54,
+    "live_units": 7.54
   },
   "locks": [
     {
@@ -45,19 +45,16 @@
   "slate_date": "2026-09-07",
   "slate": [
     {
-      "time": "5:11 PM ET",
-      "away": "Washington Nationals",
-      "home": "San Diego Padres",
-      "ml_away": "+500",
-      "ml_home": "-850",
-      "note": "hardrockbet"
-    },
-    {
       "time": "8:11 PM ET",
       "away": "St. Louis Cardinals",
       "home": "San Francisco Giants",
       "ml_away": "+110",
       "ml_home": "-135",
+      "rl_away": "-195",
+      "rl_home": "+160",
+      "ou_line": 8.5,
+      "ou_over": "+105",
+      "ou_under": "-125",
       "note": "hardrockbet"
     },
     {
@@ -66,6 +63,11 @@
       "home": "Los Angeles Dodgers",
       "ml_away": "+150",
       "ml_home": "-180",
+      "rl_away": "-145",
+      "rl_home": "+120",
+      "ou_line": 8.5,
+      "ou_over": "-105",
+      "ou_under": "-115",
       "note": "hardrockbet"
     },
     {
@@ -74,6 +76,11 @@
       "home": "Athletics",
       "ml_away": "-210",
       "ml_home": "+175",
+      "rl_away": "",
+      "rl_home": "+105",
+      "ou_line": 8.5,
+      "ou_over": "+105",
+      "ou_under": "-125",
       "note": "hardrockbet"
     },
     {
@@ -82,6 +89,11 @@
       "home": "Philadelphia Phillies",
       "ml_away": "",
       "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
       "note": "final/no book line"
     },
     {
@@ -90,6 +102,11 @@
       "home": "Miami Marlins",
       "ml_away": "",
       "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
       "note": "final/no book line"
     },
     {
@@ -98,6 +115,11 @@
       "home": "Boston Red Sox",
       "ml_away": "",
       "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
       "note": "final/no book line"
     },
     {
@@ -106,6 +128,11 @@
       "home": "Baltimore Orioles",
       "ml_away": "",
       "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
       "note": "final/no book line"
     },
     {
@@ -114,6 +141,11 @@
       "home": "Kansas City Royals",
       "ml_away": "",
       "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
       "note": "final/no book line"
     },
     {
@@ -122,6 +154,11 @@
       "home": "Milwaukee Brewers",
       "ml_away": "",
       "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
       "note": "final/no book line"
     },
     {
@@ -130,6 +167,24 @@
       "home": "Detroit Tigers",
       "ml_away": "",
       "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "5:10 PM ET",
+      "away": "Washington Nationals",
+      "home": "San Diego Padres",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
       "note": "final/no book line"
     }
   ],
@@ -144,9 +199,9 @@
       "edge": "plus-money +1.5 dog",
       "units": "1u",
       "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
+      "status": "win",
+      "result": "W",
+      "pnl": 1.0,
       "final": "Washington Nationals 2-3 San Diego Padres",
       "odds": -130,
       "ou_line": null,
@@ -156,6 +211,16 @@
   ],
   "picks_status": "1 model ticket(s) \u00b7 hardrockbet",
   "recent": [
+    {
+      "date": "2026-09-07",
+      "game": "Washington Nationals @ San Diego Padres",
+      "market": "RL",
+      "side": "Washington Nationals +1.5 -130",
+      "result": "W",
+      "units": 1.0,
+      "odds": -130,
+      "final": "Washington Nationals 2-3 San Diego Padres"
+    },
     {
       "date": "2026-09-06",
       "game": "Detroit Tigers @ Cleveland Guardians",

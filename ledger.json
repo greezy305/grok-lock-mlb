@@ -17,8 +17,8 @@
     "posted_at": "2026-09-08 14:01 ET",
     "check": "2:00 PM ET check \u00b7 posted 2:01 PM ET",
     "edge": "plus-money +1.5 dog",
-    "live": "Colorado Rockies None-None New York Yankees",
-    "game_status": "Scheduled"
+    "live": "Colorado Rockies 0-0 New York Yankees",
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-08|Chicago Cubs|Milwaukee Brewers|RL",
@@ -39,7 +39,7 @@
     "check": "2:00 PM ET check \u00b7 posted 2:01 PM ET",
     "edge": "plus-money +1.5 dog",
     "live": "Chicago Cubs None-None Milwaukee Brewers",
-    "game_status": "Scheduled"
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-08|Cincinnati Reds|Los Angeles Dodgers|RL",
@@ -567,7 +567,7 @@
     "status": "void",
     "result": "VOID",
     "pnl": 0.0,
-    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
+    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
     "book": "hardrockbet",
     "edge": "P(over) 45.5%",
     "ou_line": 2.5,

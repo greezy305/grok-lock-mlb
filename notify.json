@@ -1,8 +1,12 @@
 {
-  "new_tickets": 0,
-  "picks_today": 1,
-  "day": "2026-09-07",
+  "new_tickets": 3,
+  "picks_today": 3,
+  "day": "2026-09-08",
   "book": "hardrockbet",
-  "updated": "2026-09-07 19:57 ET",
-  "titles": []
+  "updated": "2026-09-08 14:01 ET",
+  "titles": [
+    "RL Colorado Rockies +1.5 -125",
+    "RL Chicago Cubs +1.5 -120",
+    "RL Cincinnati Reds +1.5 -130"
+  ]
 }

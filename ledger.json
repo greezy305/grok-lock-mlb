@@ -17,8 +17,8 @@
     "posted_at": "2026-09-08 14:01 ET",
     "check": "2:00 PM ET check \u00b7 posted 2:01 PM ET",
     "edge": "plus-money +1.5 dog",
-    "live": "Colorado Rockies 0-0 New York Yankees",
-    "game_status": "Pre-Game"
+    "live": "Colorado Rockies 0-1 New York Yankees",
+    "game_status": "In Progress"
   },
   {
     "id": "2026-09-08|Chicago Cubs|Milwaukee Brewers|RL",
@@ -38,8 +38,8 @@
     "posted_at": "2026-09-08 14:01 ET",
     "check": "2:00 PM ET check \u00b7 posted 2:01 PM ET",
     "edge": "plus-money +1.5 dog",
-    "live": "Chicago Cubs None-None Milwaukee Brewers",
-    "game_status": "Pre-Game"
+    "live": "Chicago Cubs 0-0 Milwaukee Brewers",
+    "game_status": "Warmup"
   },
   {
     "id": "2026-09-08|Cincinnati Reds|Los Angeles Dodgers|RL",
@@ -49,10 +49,10 @@
     "home": "Los Angeles Dodgers",
     "side": "Cincinnati Reds +1.5 -130",
     "odds": -130,
-    "units": "1u",
+    "units": 0,
     "time": "10:11 PM ET",
-    "status": "pending",
-    "result": "",
+    "status": "void",
+    "result": "V",
     "pnl": 0.0,
     "note": "hardrockbet",
     "book": "hardrockbet",
@@ -60,7 +60,30 @@
     "check": "2:00 PM ET check \u00b7 posted 2:01 PM ET",
     "edge": "plus-money +1.5 dog",
     "live": "Cincinnati Reds None-None Los Angeles Dodgers",
-    "game_status": "Scheduled"
+    "game_status": "Scheduled",
+    "void_reason": "RL main no longer \u00b11.5 for Cincinnati Reds (book points: 2.5)"
+  },
+  {
+    "id": "2026-09-08|Arizona Diamondbacks|Kansas City Royals|OU",
+    "date": "2026-09-08",
+    "market": "OU",
+    "away": "Arizona Diamondbacks",
+    "home": "Kansas City Royals",
+    "side": "Under 9.5 -135",
+    "odds": -135,
+    "units": "1u",
+    "time": "7:40 PM ET",
+    "status": "pending",
+    "result": "",
+    "pnl": 0.0,
+    "note": "hardrockbet",
+    "book": "hardrockbet",
+    "posted_at": "2026-09-08 19:33 ET",
+    "check": "5:30 PM ET check \u00b7 posted 7:33 PM ET",
+    "edge": "P(over) 47.6%",
+    "ou_line": 9.5,
+    "live": "Arizona Diamondbacks 0-0 Kansas City Royals",
+    "game_status": "Warmup"
   },
   {
     "id": "2026-09-07|Washington Nationals|San Diego Padres|RL",
@@ -567,7 +590,7 @@
     "status": "void",
     "result": "VOID",
     "pnl": 0.0,
-    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
+    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
     "book": "hardrockbet",
     "edge": "P(over) 45.5%",
     "ou_line": 2.5,

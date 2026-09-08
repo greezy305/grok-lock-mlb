@@ -1,4 +1,4 @@
-const CACHE = "lock-picker-v11";
+const CACHE = "lock-picker-v14";
 const ASSETS = ["./index.html", "./manifest.json", "./icon.png", "./apple-touch-icon.png"];
 // Do NOT precache picks.json — always network for live board
 self.addEventListener("install", e => {

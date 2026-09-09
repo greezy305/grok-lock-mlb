@@ -7,10 +7,10 @@
     "home": "Boston Red Sox",
     "side": "Los Angeles Angels +1.5 -115",
     "odds": -115,
-    "units": "1u",
+    "units": 0,
     "time": "6:46 PM ET",
-    "status": "pending",
-    "result": "",
+    "status": "void",
+    "result": "V",
     "pnl": 0.0,
     "note": "hardrockbet",
     "book": "hardrockbet",
@@ -18,7 +18,8 @@
     "check": "2:00 PM ET check \u00b7 posted 12:43 PM ET",
     "edge": "plus-money +1.5 dog",
     "live": "Los Angeles Angels 0-0 Boston Red Sox",
-    "game_status": "Pre-Game"
+    "game_status": "Pre-Game",
+    "void_reason": "RL side flipped off +1.5 for Los Angeles Angels"
   },
   {
     "id": "2026-09-09|Colorado Rockies|New York Yankees|RL",
@@ -83,8 +84,8 @@
     "posted_at": "2026-09-09 12:43 ET",
     "check": "2:00 PM ET check \u00b7 posted 12:43 PM ET",
     "edge": "plus-money +1.5 dog",
-    "live": "Cincinnati Reds None-None Los Angeles Dodgers",
-    "game_status": "Scheduled"
+    "live": "Cincinnati Reds 0-0 Los Angeles Dodgers",
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-08|Colorado Rockies|New York Yankees|RL",
@@ -680,7 +681,7 @@
     "status": "void",
     "result": "VOID",
     "pnl": 0.0,
-    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
+    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
     "book": "hardrockbet",
     "edge": "P(over) 45.5%",
     "ou_line": 2.5,

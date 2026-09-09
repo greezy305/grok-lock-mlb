@@ -17,8 +17,8 @@
     "posted_at": "2026-09-09 12:43 ET",
     "check": "2:00 PM ET check \u00b7 posted 12:43 PM ET",
     "edge": "plus-money +1.5 dog",
-    "live": "Los Angeles Angels None-None Boston Red Sox",
-    "game_status": "Scheduled"
+    "live": "Los Angeles Angels 0-0 Boston Red Sox",
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-09|Colorado Rockies|New York Yankees|RL",
@@ -680,7 +680,7 @@
     "status": "void",
     "result": "VOID",
     "pnl": 0.0,
-    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
+    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
     "book": "hardrockbet",
     "edge": "P(over) 45.5%",
     "ou_line": 2.5,

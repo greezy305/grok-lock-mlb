@@ -28,10 +28,10 @@
     "home": "New York Yankees",
     "side": "Colorado Rockies +1.5 -105",
     "odds": -105,
-    "units": "1u",
+    "units": 0,
     "time": "7:06 PM ET",
-    "status": "pending",
-    "result": "",
+    "status": "void",
+    "result": "V",
     "pnl": 0.0,
     "note": "hardrockbet",
     "book": "hardrockbet",
@@ -39,7 +39,8 @@
     "check": "2:00 PM ET check \u00b7 posted 12:43 PM ET",
     "edge": "plus-money +1.5 dog",
     "live": "Colorado Rockies None-None New York Yankees",
-    "game_status": "Scheduled"
+    "game_status": "Scheduled",
+    "void_reason": "RL main no longer \u00b11.5 for Colorado Rockies (book points: none)"
   },
   {
     "id": "2026-09-09|Colorado Rockies|New York Yankees|OU",
@@ -49,10 +50,10 @@
     "home": "New York Yankees",
     "side": "Under 9.5 -130",
     "odds": -130,
-    "units": "1u",
+    "units": 0,
     "time": "7:06 PM ET",
-    "status": "pending",
-    "result": "",
+    "status": "void",
+    "result": "V",
     "pnl": 0.0,
     "note": "hardrockbet",
     "book": "hardrockbet",
@@ -61,7 +62,8 @@
     "edge": "P(over) 47.6%",
     "ou_line": 9.5,
     "live": "Colorado Rockies None-None New York Yankees",
-    "game_status": "Scheduled"
+    "game_status": "Scheduled",
+    "void_reason": "OU main total no longer posted"
   },
   {
     "id": "2026-09-09|Cincinnati Reds|Los Angeles Dodgers|RL",
@@ -678,7 +680,7 @@
     "status": "void",
     "result": "VOID",
     "pnl": 0.0,
-    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
+    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
     "book": "hardrockbet",
     "edge": "P(over) 45.5%",
     "ou_line": 2.5,

@@ -445,7 +445,7 @@ def void_invalid_main_lines(by_id, events, day):
     """Void pending picks whose main market no longer matches model rules.
 
     Primary case: RL locked at ±1.5 but book main spread moved (e.g. +2.5).
-    Also voids if the locked RL side/point is no longer offered as main 1.5.
+    Only voids when book clearly posts a different main point (e.g. +2.5). Empty/missing feed is NOT a void.
     """
     if not events:
         return 0
@@ -469,14 +469,15 @@ def void_invalid_main_lines(by_id, events, day):
         if market == "RL":
             spreads = mk.get("spreads") or []
             side = t.get("side") or ""
-            # Locked team from side string
             team = away if (away and away in side) else home
-            # Require a main ±1.5 still offered on that team
+            # Collect points offered for this team
             main_15 = None
             other_points = []
+            team_spreads = 0
             for o in spreads:
                 if o.get("name") != team:
                     continue
+                team_spreads += 1
                 try:
                     pt = float(o.get("point"))
                 except (TypeError, ValueError):
@@ -485,9 +486,13 @@ def void_invalid_main_lines(by_id, events, day):
                     main_15 = o
                 else:
                     other_points.append(pt)
-            if main_15 is None:
-                # No ±1.5 for this side — main moved (e.g. to 2.5)
-                pts = ", ".join(str(p) for p in sorted(set(other_points))) or "none"
+            # Missing feed / empty spreads → do NOT void (API gap)
+            if team_spreads == 0 or (main_15 is None and not other_points):
+                print("skip_void_rl_no_feed", t.get("id"))
+                continue
+            # Only void when book clearly shows a different main point (e.g. +2.5)
+            if main_15 is None and other_points:
+                pts = ", ".join(str(p) for p in sorted(set(other_points)))
                 void_ticket(
                     t,
                     "RL main no longer ±1.5 for %s (book points: %s)" % (team, pts),
@@ -496,13 +501,10 @@ def void_invalid_main_lines(by_id, events, day):
                 print("void_rl", t.get("id"), t.get("void_reason"))
                 continue
 
-            # If ticket side implied +1.5 dog but only -1.5 remains (or vice versa), void
-            want_plus = "+1.5" in side or (team == away and "+1.5" in side)
-            # Parse locked point from side
             locked_plus = "+1.5" in side
             locked_minus = "-1.5" in side
             try:
-                pt = float(main_15.get("point"))
+                pt = float(main_15.get("point")) if main_15 else None
             except (TypeError, ValueError):
                 pt = None
             if locked_plus and pt is not None and pt < 0:
@@ -515,7 +517,8 @@ def void_invalid_main_lines(by_id, events, day):
                 print("void_rl", t.get("id"), t.get("void_reason"))
 
         elif market == "OU":
-            # Void if main total missing or moved more than 1.0 run from lock
+            # Only void when a different main total is clearly posted (>1.0 run move).
+            # Missing total in this pull → do NOT void (API gap).
             tot_over, tot_under = main_totals(mk.get("totals"))
             locked_line = t.get("ou_line")
             if locked_line is None:
@@ -530,10 +533,9 @@ def void_invalid_main_lines(by_id, events, day):
             elif tot_under and tot_under.get("point") is not None:
                 cur = float(tot_under["point"])
             if cur is None:
-                void_ticket(t, "OU main total no longer posted")
-                voided += 1
-                print("void_ou", t.get("id"), t.get("void_reason"))
-            elif abs(cur - locked_line) > 1.0 + 1e-6:
+                print("skip_void_ou_no_feed", t.get("id"))
+                continue
+            if abs(cur - locked_line) > 1.0 + 1e-6:
                 void_ticket(
                     t,
                     "OU main moved from %s to %s (>%s run)" % (locked_line, cur, 1.0),
@@ -542,8 +544,11 @@ def void_invalid_main_lines(by_id, events, day):
                 print("void_ou", t.get("id"), t.get("void_reason"))
 
         elif market == "ML":
-            # Void if ML no longer posted for the side
+            # Only void when h2h is present but this side is missing (not empty feed)
             h2h = mk.get("h2h") or []
+            if not h2h:
+                print("skip_void_ml_no_feed", t.get("id"))
+                continue
             side = t.get("side") or ""
             team = away if (away and away in side) else home
             o = outcome_price(h2h, name=team)

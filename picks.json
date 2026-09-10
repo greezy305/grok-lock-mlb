@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-10 18:47 ET",
+  "updated": "2026-09-10 19:16 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -45,29 +45,16 @@
   "slate_date": "2026-09-10",
   "slate": [
     {
-      "time": "4:11 PM ET",
-      "away": "Texas Rangers",
-      "home": "Seattle Mariners",
-      "ml_away": "+750",
-      "ml_home": "-1400",
-      "rl_away": "",
-      "rl_home": "-5000",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "7:05 PM ET",
+      "time": "7:08 PM ET",
       "away": "Colorado Rockies",
       "home": "New York Yankees",
-      "ml_away": "+240",
-      "ml_home": "-300",
-      "rl_away": "+110",
-      "rl_home": "-130",
+      "ml_away": "+275",
+      "ml_home": "-400",
+      "rl_away": "-130",
+      "rl_home": "",
       "ou_line": 8.5,
-      "ou_over": "-105",
-      "ou_under": "-115",
+      "ou_over": "+100",
+      "ou_under": "-135",
       "note": "hardrockbet"
     },
     {
@@ -108,30 +95,23 @@
       "ou_over": "",
       "ou_under": "",
       "note": "final/no book line"
-    }
-  ],
-  "picks": [
+    },
     {
-      "date": "2026-09-10",
-      "market": "RL",
-      "away": "Colorado Rockies",
-      "home": "New York Yankees",
-      "side": "Colorado Rockies +1.5 +110",
-      "time": "7:05 PM ET",
-      "edge": "plus-money +1.5 dog",
-      "units": "1u",
-      "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "Colorado Rockies 0-0 New York Yankees",
-      "odds": 110,
+      "time": "4:10 PM ET",
+      "away": "Texas Rangers",
+      "home": "Seattle Mariners",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
       "ou_line": null,
-      "check": "2:00 PM ET check \u00b7 posted 1:47 PM ET",
-      "posted_at": "2026-09-10 13:47 ET"
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
     }
   ],
-  "picks_status": "1 model ticket(s) \u00b7 hardrockbet",
+  "picks": [],
+  "picks_status": "No lock this pass.",
   "recent": [
     {
       "date": "2026-09-09",

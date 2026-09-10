@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-10 13:47 ET",
+  "updated": "2026-09-10 16:15 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -45,42 +45,16 @@
   "slate_date": "2026-09-10",
   "slate": [
     {
-      "time": "12:16 PM ET",
-      "away": "Tampa Bay Rays",
-      "home": "Atlanta Braves",
-      "ml_away": "+100",
-      "ml_home": "-130",
-      "rl_away": "",
-      "rl_home": "-400",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "1:06 PM ET",
-      "away": "Houston Astros",
-      "home": "Philadelphia Phillies",
-      "ml_away": "+105",
-      "ml_home": "-135",
-      "rl_away": "-250",
-      "rl_home": "+185",
-      "ou_line": 6.5,
-      "ou_over": "-145",
-      "ou_under": "+110",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "4:10 PM ET",
+      "time": "4:11 PM ET",
       "away": "Texas Rangers",
       "home": "Seattle Mariners",
-      "ml_away": "+110",
-      "ml_home": "-125",
-      "rl_away": "",
-      "rl_home": "-210",
+      "ml_away": "+105",
+      "ml_home": "-140",
+      "rl_away": "-230",
+      "rl_home": "+170",
       "ou_line": 6.5,
-      "ou_over": "-125",
-      "ou_under": "+105",
+      "ou_over": "-120",
+      "ou_under": "-110",
       "note": "hardrockbet"
     },
     {
@@ -90,10 +64,10 @@
       "ml_away": "+240",
       "ml_home": "-300",
       "rl_away": "+110",
-      "rl_home": "-135",
+      "rl_home": "-130",
       "ou_line": 8.5,
-      "ou_over": "-110",
-      "ou_under": "-110",
+      "ou_over": "-105",
+      "ou_under": "-115",
       "note": "hardrockbet"
     },
     {
@@ -108,6 +82,32 @@
       "ou_over": "-120",
       "ou_under": "+100",
       "note": "hardrockbet"
+    },
+    {
+      "time": "12:15 PM ET",
+      "away": "Tampa Bay Rays",
+      "home": "Atlanta Braves",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "1:05 PM ET",
+      "away": "Houston Astros",
+      "home": "Philadelphia Phillies",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
     }
   ],
   "picks": [
@@ -124,7 +124,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Colorado Rockies None-None New York Yankees",
+      "final": "Colorado Rockies 0-0 New York Yankees",
       "odds": 110,
       "ou_line": null,
       "check": "2:00 PM ET check \u00b7 posted 1:47 PM ET",

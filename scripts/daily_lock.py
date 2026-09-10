@@ -501,20 +501,8 @@ def void_invalid_main_lines(by_id, events, day):
                 print("void_rl", t.get("id"), t.get("void_reason"))
                 continue
 
-            locked_plus = "+1.5" in side
-            locked_minus = "-1.5" in side
-            try:
-                pt = float(main_15.get("point")) if main_15 else None
-            except (TypeError, ValueError):
-                pt = None
-            if locked_plus and pt is not None and pt < 0:
-                void_ticket(t, "RL side flipped off +1.5 for %s" % team)
-                voided += 1
-                print("void_rl", t.get("id"), t.get("void_reason"))
-            elif locked_minus and pt is not None and pt > 0:
-                void_ticket(t, "RL side flipped off -1.5 for %s" % team)
-                voided += 1
-                print("void_rl", t.get("id"), t.get("void_reason"))
+            # Side-flip voids disabled — too many false positives from feed glitches.
+            # Only explicit non-1.5 book points trigger RL voids (handled above).
 
         elif market == "OU":
             # Only void when a different main total is clearly posted (>1.0 run move).

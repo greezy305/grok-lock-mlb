@@ -1021,14 +1021,23 @@ def main():
 
     recent = []
     for t in graded:
-        if t.get("status") not in ("win", "loss", "push"):
+        st = (t.get("status") or "").lower()
+        res = (t.get("result") or "").upper()
+        # Accept win/loss/push or settled+W/L (manual repairs / older rows)
+        if st in ("win", "loss", "push"):
+            pass
+        elif st in ("settled", "graded", "final") and res in ("W", "L", "P", "WIN", "LOSS", "PUSH"):
+            st = "win" if res in ("W", "WIN") else ("loss" if res in ("L", "LOSS") else "push")
+            t["status"] = st
+        else:
             continue
         recent.append({
             "date": t.get("date"),
             "game": "%s @ %s" % (t.get("away"), t.get("home")),
             "market": t.get("market"),
             "side": t.get("side"),
-            "result": t.get("result"),
+            "result": "W" if st == "win" else ("L" if st == "loss" else "P"),
+            "status": st,
             "units": t.get("pnl"),  # win-1u
             "odds": t.get("odds"),
             "final": t.get("final"),

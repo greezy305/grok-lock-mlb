@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-10 22:05 ET",
+  "updated": "2026-09-10 22:30 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -12,11 +12,11 @@
       "live_units": 0.0
     },
     "rl": {
-      "bets": 15,
-      "wr": 0.6,
-      "units": 2.33,
-      "live_bets": 15,
-      "live_units": 2.33
+      "bets": 16,
+      "wr": 0.562,
+      "units": 1.42,
+      "live_bets": 16,
+      "live_units": 1.42
     },
     "ou": {
       "bets": 17,
@@ -25,8 +25,8 @@
       "live_bets": 17,
       "live_units": 6.0
     },
-    "stacked_units": 8.33,
-    "live_units": 8.33
+    "stacked_units": 7.42,
+    "live_units": 7.42
   },
   "locks": [
     {
@@ -44,32 +44,6 @@
   ],
   "slate_date": "2026-09-10",
   "slate": [
-    {
-      "time": "7:08 PM ET",
-      "away": "Colorado Rockies",
-      "home": "New York Yankees",
-      "ml_away": "+275",
-      "ml_home": "-400",
-      "rl_away": "-130",
-      "rl_home": "",
-      "ou_line": 8.5,
-      "ou_over": "+100",
-      "ou_under": "-135",
-      "note": "hardrockbet"
-    },
-    {
-      "time": "7:41 PM ET",
-      "away": "Pittsburgh Pirates",
-      "home": "Chicago White Sox",
-      "ml_away": "-105",
-      "ml_home": "-115",
-      "rl_away": "",
-      "rl_home": "-200",
-      "ou_line": 7.5,
-      "ou_over": "-115",
-      "ou_under": "-105",
-      "note": "hardrockbet"
-    },
     {
       "time": "12:15 PM ET",
       "away": "Tampa Bay Rays",
@@ -108,33 +82,48 @@
       "ou_over": "",
       "ou_under": "",
       "note": "final/no book line"
-    }
-  ],
-  "picks": [
+    },
     {
-      "date": "2026-09-10",
-      "market": "RL",
+      "time": "7:05 PM ET",
       "away": "Colorado Rockies",
       "home": "New York Yankees",
-      "side": "Colorado Rockies +1.5 +110",
-      "time": "7:05 PM ET",
-      "edge": "plus-money +1.5 dog",
-      "units": "1u",
-      "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "Colorado Rockies 3-10 New York Yankees",
-      "odds": 110,
-      "now_odds": null,
-      "now_side": null,
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
       "ou_line": null,
-      "check": "2:00 PM ET check \u00b7 posted 1:47 PM ET",
-      "posted_at": "2026-09-10 13:47 ET"
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "7:40 PM ET",
+      "away": "Pittsburgh Pirates",
+      "home": "Chicago White Sox",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
     }
   ],
-  "picks_status": "1 model ticket(s) \u00b7 restored",
+  "picks": [],
+  "picks_status": "No lock this pass.",
   "recent": [
+    {
+      "date": "2026-09-10",
+      "game": "Colorado Rockies @ New York Yankees",
+      "market": "RL",
+      "side": "Colorado Rockies +1.5 +110",
+      "result": "L",
+      "status": "loss",
+      "units": -0.909,
+      "odds": 110,
+      "final": "Colorado Rockies 3-10 New York Yankees"
+    },
     {
       "date": "2026-09-09",
       "game": "Los Angeles Angels @ Boston Red Sox",

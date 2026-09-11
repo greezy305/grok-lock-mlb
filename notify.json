@@ -1,8 +1,11 @@
 {
-  "new_tickets": 0,
-  "picks_today": 0,
-  "day": "2026-09-10",
+  "new_tickets": 2,
+  "picks_today": 2,
+  "day": "2026-09-11",
   "book": "hardrockbet",
-  "updated": "2026-09-10 22:30 ET",
-  "titles": []
+  "updated": "2026-09-11 13:34 ET",
+  "titles": [
+    "RL Pittsburgh Pirates +1.5 -125",
+    "RL Kansas City Royals +1.5 -130"
+  ]
 }

@@ -549,14 +549,16 @@ def void_invalid_main_lines(by_id, events, day):
 
 
 def refresh_pending_lines(by_id, events, now, day):
-    """Update odds/side on pending pregame tickets (evening pass only)."""
-    if not is_line_refresh_window(now):
+    """Snapshot current book price as now_odds without changing locked odds/side.
+
+    Locked odds are used for grading. now_odds is display-only ("Now +120").
+    Runs on every pass that has event data (not only 5:30).
+    """
+    if not events:
         return 0
     by_match = {}
     for ev in events:
-        key = (ev.get("away_team"), ev.get("home_team"))
-        by_match[key] = ev
-        # loose key by lower names
+        by_match[(ev.get("away_team"), ev.get("home_team"))] = ev
         by_match[(norm_name(ev.get("away_team")), norm_name(ev.get("home_team")))] = ev
 
     updated = 0
@@ -565,7 +567,10 @@ def refresh_pending_lines(by_id, events, now, day):
             continue
         if t.get("date") != day:
             continue
-        # only pregame
+        # Preserve original lock once
+        if t.get("locked_odds") is None and t.get("odds") is not None:
+            t["locked_odds"] = t.get("odds")
+            t["locked_side"] = t.get("side")
         ev = by_match.get((t.get("away"), t.get("home")))
         if not ev:
             ev = by_match.get((norm_name(t.get("away")), norm_name(t.get("home"))))
@@ -573,22 +578,22 @@ def refresh_pending_lines(by_id, events, now, day):
             continue
         commence = event_commence_et(ev)
         if commence is not None and commence <= now:
-            continue  # live — leave locked price
+            continue  # live — stop refreshing now line
         hit = current_price_for_ticket(t, ev)
         if not hit:
             continue
         new_side, new_odds = hit
-        old_odds = t.get("odds")
-        if old_odds == new_odds and t.get("side") == new_side:
-            continue
-        t["side"] = new_side
-        t["odds"] = new_odds
+        # Never overwrite locked odds/side used for grading
+        if t.get("locked_odds") is not None:
+            t["odds"] = t.get("locked_odds")
+        if t.get("locked_side"):
+            t["side"] = t.get("locked_side")
+        prev_now = t.get("now_odds")
+        t["now_odds"] = new_odds
+        t["now_side"] = new_side
         t["line_refreshed_at"] = now.strftime("%Y-%m-%d %H:%M ET")
-        # keep original check; note refresh on edge tag lightly
-        edge = t.get("edge") or ""
-        if "refreshed" not in edge.lower():
-            t["edge"] = (edge + " · line refreshed").strip(" ·")
-        updated += 1
+        if prev_now != new_odds:
+            updated += 1
     print("line_refresh_updated", updated)
     return updated
 
@@ -836,6 +841,10 @@ def main():
                 "home": home,
                 "side": side,
                 "odds": odds,
+                "locked_odds": odds,
+                "locked_side": side,
+                "now_odds": odds,
+                "now_side": side,
                 "units": "1u",
                 "time": tlabel,
                 "status": "pending",
@@ -949,8 +958,9 @@ def main():
             have.add((ak, hk))
 
     # 5:30 PM ET pass: refresh Hard Rock prices on pending pregame tickets
-    voided_n = void_invalid_main_lines(by_id, events, day)
-    print("voided_invalid", voided_n)
+    # Auto-void disabled: once a ticket is locked it stays until graded.
+    # Line moves are tracked as now_odds / now_side for display only.
+    print("voided_invalid", 0, "(auto-void off)")
     refresh_pending_lines(by_id, events, now, day)
 
     ledger = list(by_id.values())
@@ -1013,7 +1023,9 @@ def main():
             "result": t.get("result") or "",
             "pnl": t.get("pnl"),
             "final": t.get("final") or t.get("live") or "",
-            "odds": t.get("odds"),
+            "odds": t.get("locked_odds") if t.get("locked_odds") is not None else t.get("odds"),
+            "now_odds": t.get("now_odds"),
+            "now_side": t.get("now_side"),
             "ou_line": t.get("ou_line"),
             "check": t.get("check") or "",
             "posted_at": t.get("posted_at") or "",

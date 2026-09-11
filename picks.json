@@ -1,0 +1,491 @@
+{
+  "updated": "2026-09-10 22:05 ET",
+  "unit_dollars": 50,
+  "season": 2026,
+  "book": "hardrockbet",
+  "ytd": {
+    "ml": {
+      "bets": 0,
+      "wr": 0.0,
+      "units": 0.0,
+      "live_bets": 0,
+      "live_units": 0.0
+    },
+    "rl": {
+      "bets": 15,
+      "wr": 0.6,
+      "units": 2.33,
+      "live_bets": 15,
+      "live_units": 2.33
+    },
+    "ou": {
+      "bets": 17,
+      "wr": 0.706,
+      "units": 6.0,
+      "live_bets": 17,
+      "live_units": 6.0
+    },
+    "stacked_units": 8.33,
+    "live_units": 8.33
+  },
+  "locks": [
+    {
+      "market": "ML",
+      "rule": "Frozen logreg. model_p \u2212 open \u2265 7%. Cap \u2212180 to +200."
+    },
+    {
+      "market": "RL",
+      "rule": "+1.5 dog only. Juice \u2212130 to +170. P(cover) \u2212 implied \u2265 3%."
+    },
+    {
+      "market": "OU",
+      "rule": "One side. |P(over) \u2212 52.4%| \u2265 4%. Full-game lines 5.5\u201314.5 only."
+    }
+  ],
+  "slate_date": "2026-09-10",
+  "slate": [
+    {
+      "time": "7:08 PM ET",
+      "away": "Colorado Rockies",
+      "home": "New York Yankees",
+      "ml_away": "+275",
+      "ml_home": "-400",
+      "rl_away": "-130",
+      "rl_home": "",
+      "ou_line": 8.5,
+      "ou_over": "+100",
+      "ou_under": "-135",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "7:41 PM ET",
+      "away": "Pittsburgh Pirates",
+      "home": "Chicago White Sox",
+      "ml_away": "-105",
+      "ml_home": "-115",
+      "rl_away": "",
+      "rl_home": "-200",
+      "ou_line": 7.5,
+      "ou_over": "-115",
+      "ou_under": "-105",
+      "note": "hardrockbet"
+    },
+    {
+      "time": "12:15 PM ET",
+      "away": "Tampa Bay Rays",
+      "home": "Atlanta Braves",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "1:05 PM ET",
+      "away": "Houston Astros",
+      "home": "Philadelphia Phillies",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "4:10 PM ET",
+      "away": "Texas Rangers",
+      "home": "Seattle Mariners",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    }
+  ],
+  "picks": [
+    {
+      "date": "2026-09-10",
+      "market": "RL",
+      "away": "Colorado Rockies",
+      "home": "New York Yankees",
+      "side": "Colorado Rockies +1.5 +110",
+      "time": "7:05 PM ET",
+      "edge": "plus-money +1.5 dog",
+      "units": "1u",
+      "note": "hardrockbet",
+      "status": "pending",
+      "result": "",
+      "pnl": 0.0,
+      "final": "Colorado Rockies 3-10 New York Yankees",
+      "odds": 110,
+      "now_odds": null,
+      "now_side": null,
+      "ou_line": null,
+      "check": "2:00 PM ET check \u00b7 posted 1:47 PM ET",
+      "posted_at": "2026-09-10 13:47 ET"
+    }
+  ],
+  "picks_status": "1 model ticket(s) \u00b7 restored",
+  "recent": [
+    {
+      "date": "2026-09-09",
+      "game": "Los Angeles Angels @ Boston Red Sox",
+      "market": "RL",
+      "side": "Los Angeles Angels +1.5 -115",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -115,
+      "final": "Los Angeles Angels 6-4 Boston Red Sox"
+    },
+    {
+      "date": "2026-09-09",
+      "game": "Colorado Rockies @ New York Yankees",
+      "market": "RL",
+      "side": "Colorado Rockies +1.5 -105",
+      "result": "L",
+      "status": "loss",
+      "units": -1.05,
+      "odds": -105,
+      "final": "Colorado Rockies 1-6 New York Yankees"
+    },
+    {
+      "date": "2026-09-09",
+      "game": "Colorado Rockies @ New York Yankees",
+      "market": "OU",
+      "side": "Under 9.5 -130",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -130,
+      "final": "Colorado Rockies 1-6 New York Yankees"
+    },
+    {
+      "date": "2026-09-09",
+      "game": "Cincinnati Reds @ Los Angeles Dodgers",
+      "market": "RL",
+      "side": "Cincinnati Reds +1.5 +110",
+      "result": "L",
+      "status": "loss",
+      "units": -0.909,
+      "odds": 110,
+      "final": "Cincinnati Reds 1-14 Los Angeles Dodgers"
+    },
+    {
+      "date": "2026-09-08",
+      "game": "Colorado Rockies @ New York Yankees",
+      "market": "RL",
+      "side": "Colorado Rockies +1.5 -125",
+      "result": "L",
+      "status": "loss",
+      "units": -1.25,
+      "odds": -125,
+      "final": "Colorado Rockies 3-5 New York Yankees"
+    },
+    {
+      "date": "2026-09-08",
+      "game": "Chicago Cubs @ Milwaukee Brewers",
+      "market": "RL",
+      "side": "Chicago Cubs +1.5 -120",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -120,
+      "final": "Chicago Cubs 3-4 Milwaukee Brewers"
+    },
+    {
+      "date": "2026-09-08",
+      "game": "Arizona Diamondbacks @ Kansas City Royals",
+      "market": "OU",
+      "side": "Under 9.5 -135",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -135,
+      "final": "Arizona Diamondbacks 5-3 Kansas City Royals"
+    },
+    {
+      "date": "2026-09-07",
+      "game": "Washington Nationals @ San Diego Padres",
+      "market": "RL",
+      "side": "Washington Nationals +1.5 -130",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -130,
+      "final": "Washington Nationals 2-3 San Diego Padres"
+    },
+    {
+      "date": "2026-09-06",
+      "game": "Detroit Tigers @ Cleveland Guardians",
+      "market": "OU",
+      "side": "Over 6.5 -140",
+      "result": "L",
+      "status": "loss",
+      "units": -1.4,
+      "odds": -140,
+      "final": "Detroit Tigers 2-3 Cleveland Guardians"
+    },
+    {
+      "date": "2026-09-06",
+      "game": "Athletics @ Seattle Mariners",
+      "market": "RL",
+      "side": "Athletics +1.5 -130",
+      "result": "L",
+      "status": "loss",
+      "units": -1.3,
+      "odds": -130,
+      "final": "Athletics 0-2 Seattle Mariners"
+    },
+    {
+      "date": "2026-09-06",
+      "game": "Athletics @ Seattle Mariners",
+      "market": "OU",
+      "side": "Under 7.5 -130",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -130,
+      "final": "Athletics 0-2 Seattle Mariners"
+    },
+    {
+      "date": "2026-09-06",
+      "game": "New York Yankees @ San Diego Padres",
+      "market": "OU",
+      "side": "Over 6.5 -140",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -140,
+      "final": "New York Yankees 3-4 San Diego Padres"
+    },
+    {
+      "date": "2026-09-06",
+      "game": "Washington Nationals @ Los Angeles Dodgers",
+      "market": "RL",
+      "side": "Washington Nationals +1.5 -125",
+      "result": "L",
+      "status": "loss",
+      "units": -1.25,
+      "odds": -125,
+      "final": "Washington Nationals 5-7 Los Angeles Dodgers"
+    },
+    {
+      "date": "2026-09-05",
+      "game": "Detroit Tigers @ Cleveland Guardians",
+      "market": "OU",
+      "side": "Over 6.5 -130",
+      "result": "L",
+      "status": "loss",
+      "units": -1.3,
+      "odds": -130,
+      "final": "Detroit Tigers 6-0 Cleveland Guardians"
+    },
+    {
+      "date": "2026-09-05",
+      "game": "Milwaukee Brewers @ Cincinnati Reds",
+      "market": "OU",
+      "side": "Under 9.5 -130",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -130,
+      "final": "Milwaukee Brewers 3-5 Cincinnati Reds"
+    },
+    {
+      "date": "2026-09-05",
+      "game": "Washington Nationals @ Los Angeles Dodgers",
+      "market": "RL",
+      "side": "Washington Nationals +1.5 -120",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -120,
+      "final": "Washington Nationals 5-6 Los Angeles Dodgers"
+    },
+    {
+      "date": "2026-09-05",
+      "game": "Athletics @ Seattle Mariners",
+      "market": "RL",
+      "side": "Athletics +1.5 -105",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -105,
+      "final": "Athletics 6-2 Seattle Mariners"
+    },
+    {
+      "date": "2026-09-04",
+      "game": "Minnesota Twins @ Chicago White Sox",
+      "market": "OU",
+      "side": "Under 9.5 -135",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -135,
+      "final": "Minnesota Twins 1-4 Chicago White Sox"
+    },
+    {
+      "date": "2026-09-04",
+      "game": "Athletics @ Seattle Mariners",
+      "market": "RL",
+      "side": "Athletics +1.5 -120",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -120,
+      "final": "Athletics 7-6 Seattle Mariners"
+    },
+    {
+      "date": "2026-09-04",
+      "game": "Washington Nationals @ Los Angeles Dodgers",
+      "market": "RL",
+      "side": "Washington Nationals +1.5 +110",
+      "result": "L",
+      "status": "loss",
+      "units": -0.909,
+      "odds": 110,
+      "final": "Washington Nationals 3-5 Los Angeles Dodgers"
+    },
+    {
+      "date": "2026-09-04",
+      "game": "St. Louis Cardinals @ Colorado Rockies",
+      "market": "OU",
+      "side": "Over 10.5 -130",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -130,
+      "final": "St. Louis Cardinals 7-6 Colorado Rockies"
+    },
+    {
+      "date": "2026-09-03",
+      "game": "Miami Marlins @ Kansas City Royals",
+      "market": "OU",
+      "side": "Under 9.5 -135",
+      "result": "L",
+      "status": "loss",
+      "units": -1.35,
+      "odds": -135,
+      "final": "Miami Marlins 3-7 Kansas City Royals"
+    },
+    {
+      "date": "2026-09-03",
+      "game": "Athletics @ Seattle Mariners",
+      "market": "RL",
+      "side": "Athletics +1.5 -130",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -130,
+      "final": "Athletics 7-4 Seattle Mariners"
+    },
+    {
+      "date": "2026-09-03",
+      "game": "St. Louis Cardinals @ Los Angeles Dodgers",
+      "market": "RL",
+      "side": "St. Louis Cardinals +1.5 +105",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": 105,
+      "final": "St. Louis Cardinals 2-3 Los Angeles Dodgers"
+    },
+    {
+      "date": "2026-09-03",
+      "game": "Chicago White Sox @ Houston Astros",
+      "market": "OU",
+      "side": "Over 7.5 -135",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -135,
+      "final": "Chicago White Sox 2-6 Houston Astros"
+    },
+    {
+      "date": "2026-09-02",
+      "game": "Athletics @ Texas Rangers",
+      "market": "OU",
+      "side": "Under 7.5 +100",
+      "result": "L",
+      "status": "loss",
+      "units": -1.0,
+      "odds": 100,
+      "final": "Athletics 1-8 Texas Rangers"
+    },
+    {
+      "date": "2026-09-02",
+      "game": "Baltimore Orioles @ Colorado Rockies",
+      "market": "OU",
+      "side": "Under 11.5 -120",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -120,
+      "final": "Baltimore Orioles 2-1 Colorado Rockies"
+    },
+    {
+      "date": "2026-09-02",
+      "game": "New York Mets @ Tampa Bay Rays",
+      "market": "OU",
+      "side": "Under 7.5 +105",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": 105,
+      "final": "New York Mets 3-2 Tampa Bay Rays"
+    },
+    {
+      "date": "2026-09-02",
+      "game": "Milwaukee Brewers @ Chicago Cubs",
+      "market": "OU",
+      "side": "Over 8.5 +100",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": 100,
+      "final": "Milwaukee Brewers 3-17 Chicago Cubs"
+    },
+    {
+      "date": "2026-09-02",
+      "game": "St. Louis Cardinals @ Los Angeles Dodgers",
+      "market": "OU",
+      "side": "Under 7.5 +105",
+      "result": "L",
+      "status": "loss",
+      "units": -0.952,
+      "odds": 105,
+      "final": "St. Louis Cardinals 13-8 Los Angeles Dodgers"
+    },
+    {
+      "date": "2026-09-02",
+      "game": "Miami Marlins @ Kansas City Royals",
+      "market": "OU",
+      "side": "Over 8.5 -130",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -130,
+      "final": "Miami Marlins 6-3 Kansas City Royals"
+    },
+    {
+      "date": "2026-09-02",
+      "game": "St. Louis Cardinals @ Los Angeles Dodgers",
+      "market": "RL",
+      "side": "St. Louis Cardinals +1.5 -105",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -105,
+      "final": "St. Louis Cardinals 8-6 Los Angeles Dodgers"
+    }
+  ]
+}

@@ -56,6 +56,7 @@ jobs:
           curl -sS -H "Title: Grok-Lock +$NEW pick(s)" \
                -H "Priority: high" \
                -H "Tags: baseball,moneybag" \
+               -H "Click: https://greezy305.github.io/grok-lock-mlb/" \
                -d "$TITLE" \
                "https://ntfy.sh/${NTFY_TOPIC}"
           echo "ntfy sent"

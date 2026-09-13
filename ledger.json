@@ -22,8 +22,8 @@
     "check": "2:00 PM ET check \u00b7 posted 1:33 PM ET",
     "edge": "plus-money +1.5 dog",
     "line_refreshed_at": "2026-09-13 13:33 ET",
-    "live": "Cincinnati Reds 0-0 Milwaukee Brewers",
-    "game_status": "Pre-Game"
+    "live": "Cincinnati Reds 3-3 Milwaukee Brewers",
+    "game_status": "In Progress"
   },
   {
     "id": "2026-09-13|Pittsburgh Pirates|Chicago Cubs|OU",
@@ -49,8 +49,8 @@
     "edge": "P(over) 58.3%",
     "ou_line": 6.5,
     "line_refreshed_at": "2026-09-13 13:33 ET",
-    "live": "Pittsburgh Pirates 0-0 Chicago Cubs",
-    "game_status": "Pre-Game"
+    "live": "Pittsburgh Pirates 4-2 Chicago Cubs",
+    "game_status": "In Progress"
   },
   {
     "id": "2026-09-13|Seattle Mariners|Athletics|OU",
@@ -62,8 +62,8 @@
     "odds": -130,
     "locked_odds": -130,
     "locked_side": "Under 9.5 -130",
-    "now_odds": -130,
-    "now_side": "Under 9.5 -130",
+    "now_odds": -135,
+    "now_side": "Under 9.5 -135",
     "units": "1u",
     "time": "4:06 PM ET",
     "status": "pending",
@@ -75,9 +75,9 @@
     "check": "2:00 PM ET check \u00b7 posted 1:33 PM ET",
     "edge": "P(over) 47.6%",
     "ou_line": 9.5,
-    "line_refreshed_at": "2026-09-13 13:33 ET",
-    "live": "Seattle Mariners None-None Athletics",
-    "game_status": "Pre-Game"
+    "line_refreshed_at": "2026-09-13 16:02 ET",
+    "live": "Seattle Mariners 0-0 Athletics",
+    "game_status": "Warmup"
   },
   {
     "id": "2026-09-12|Kansas City Royals|Boston Red Sox|RL",
@@ -949,7 +949,7 @@
     "status": "void",
     "result": "VOID",
     "pnl": 0.0,
-    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
+    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
     "book": "hardrockbet",
     "edge": "P(over) 45.5%",
     "ou_line": 2.5,

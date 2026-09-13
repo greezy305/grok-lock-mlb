@@ -1648,5 +1648,155 @@
     "ou_line": 9.5,
     "ou_over": -110,
     "ou_under": -110
+  },
+  "83d0a9d067e7d1abba253a527eb4257f": {
+    "away": "Colorado Rockies",
+    "home": "Detroit Tigers",
+    "ml_away": null,
+    "ml_home": null,
+    "rl_away": 110,
+    "ou_line": 13.5,
+    "ou_over": 105,
+    "ou_under": -135
+  },
+  "712095bfc2d808a30b170139a010a1d4": {
+    "away": "Philadelphia Phillies",
+    "home": "Atlanta Braves",
+    "ml_away": 110,
+    "ml_home": -130,
+    "rl_away": -185,
+    "ou_line": 9.5,
+    "ou_over": 100,
+    "ou_under": -120
+  },
+  "56927216de1b9cc394e6c83b75d6926b": {
+    "away": "Los Angeles Angels",
+    "home": "Washington Nationals",
+    "ml_away": 110,
+    "ml_home": -135,
+    "rl_away": -185,
+    "ou_line": 9.5,
+    "ou_over": 100,
+    "ou_under": -120
+  },
+  "e11cab546e55ee3d1f8dbb787a7d7fee": {
+    "away": "Baltimore Orioles",
+    "home": "Toronto Blue Jays",
+    "ml_away": 125,
+    "ml_home": -150,
+    "rl_away": -180,
+    "ou_line": 7.5,
+    "ou_over": 105,
+    "ou_under": -125
+  },
+  "bb473dec1856e220c392f73ee51cb98a": {
+    "away": "Los Angeles Dodgers",
+    "home": "Miami Marlins",
+    "ml_away": -140,
+    "ml_home": 120,
+    "rl_away": null,
+    "ou_line": 8.5,
+    "ou_over": -105,
+    "ou_under": -115
+  },
+  "c8c288fb5f290ac3cb4c91c056e01cdc": {
+    "away": "Houston Astros",
+    "home": "Tampa Bay Rays",
+    "ml_away": 110,
+    "ml_home": -130,
+    "rl_away": -195,
+    "ou_line": 7.5,
+    "ou_over": -120,
+    "ou_under": 100
+  },
+  "25ea35d9e1cfed80a2bef6c8e21f0786": {
+    "away": "New York Mets",
+    "home": "New York Yankees",
+    "ml_away": 155,
+    "ml_home": -185,
+    "rl_away": -140,
+    "ou_line": 7.5,
+    "ou_over": -120,
+    "ou_under": 100
+  },
+  "1366a8adfad9998b51c129fc23c43a7e": {
+    "away": "Cincinnati Reds",
+    "home": "Milwaukee Brewers",
+    "ml_away": 165,
+    "ml_home": -200,
+    "rl_away": -125,
+    "ou_line": 8.5,
+    "ou_over": 105,
+    "ou_under": -125
+  },
+  "982bac2587501eb197d4e92fdd3ec130": {
+    "away": "Cleveland Guardians",
+    "home": "Minnesota Twins",
+    "ml_away": 105,
+    "ml_home": -125,
+    "rl_away": -200,
+    "ou_line": 7.5,
+    "ou_over": -120,
+    "ou_under": 100
+  },
+  "c57fd4622cf0e5105ce22874c061913c": {
+    "away": "Chicago White Sox",
+    "home": "St. Louis Cardinals",
+    "ml_away": -115,
+    "ml_home": -105,
+    "rl_away": null,
+    "ou_line": 8.5,
+    "ou_over": -120,
+    "ou_under": 100
+  },
+  "07ac61b68b123cfa71662bb8a948366e": {
+    "away": "Pittsburgh Pirates",
+    "home": "Chicago Cubs",
+    "ml_away": 140,
+    "ml_home": -165,
+    "rl_away": -165,
+    "ou_line": 6.5,
+    "ou_over": -140,
+    "ou_under": 115
+  },
+  "119261d49b81854e942bebf7f44afa6b": {
+    "away": "Kansas City Royals",
+    "home": "Boston Red Sox",
+    "ml_away": 155,
+    "ml_home": -190,
+    "rl_away": -145,
+    "ou_line": 7.5,
+    "ou_over": 100,
+    "ou_under": -120
+  },
+  "24dff06b7aac0693e5e299af47f50290": {
+    "away": "Seattle Mariners",
+    "home": "Athletics",
+    "ml_away": -135,
+    "ml_home": 110,
+    "rl_away": null,
+    "ou_line": 9.5,
+    "ou_over": 110,
+    "ou_under": -130
+  },
+  "deb38987e1d795a4b7e4e497442320ac": {
+    "away": "Texas Rangers",
+    "home": "Arizona Diamondbacks",
+    "ml_away": 115,
+    "ml_home": -135,
+    "rl_away": -185,
+    "ou_line": 8.5,
+    "ou_over": 100,
+    "ou_under": -120
+  },
+  "6f96adeb30e87f1372ad951bf3404d21": {
+    "away": "San Diego Padres",
+    "home": "San Francisco Giants",
+    "ml_away": -130,
+    "ml_home": 110,
+    "rl_away": null,
+    "ou_line": 7.5,
+    "ou_over": 100,
+    "ou_under": -120
   }
 }

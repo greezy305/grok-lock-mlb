@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0f0c" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="GREEN" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <title>Daily Lock Check</title>
+  <style>
+    :root {
+      --bg: #0b0f0c; --card: #141a15; --line: #243028; --text: #e8f0e6;
+      --mute: #8aa08a; --green: #7CFF6B; --red: #ff6b6b; --amber: #ffd36b; --blue: #8ec8ff;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0; background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    }
+    body { padding: calc(18px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom)); }
+    header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 18px; }
+    .brand { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--green); font-weight: 700; }
+    h1 { margin: 4px 0 0; font-size: 22px; letter-spacing: -.03em; line-height: 1.15; max-width: 70%; }
+    .stamp { font-size: 11px; color: var(--mute); text-align: right; white-space: nowrap; flex-shrink: 0; }
+    .brand-row { display: flex; align-items: center; gap: 10px; }
+    .brand-row img.logo {
+      width: 32px; height: 32px; border-radius: 8px;
+      flex-shrink: 0; display: block;
+      box-shadow: 0 0 0 1px #243028;
+    }
+    .brand-text { min-width: 0; }
+    .bank {
+      background: linear-gradient(180deg, #1a231b, #121812);
+      border: 1px solid var(--line); border-radius: 18px; padding: 16px 16px 14px; margin-bottom: 14px;
+    }
+    .bank .label { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+    .bank .big { font-size: 42px; font-weight: 700; letter-spacing: -.04em; margin: 4px 0 2px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .stat { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 8px; text-align: center; }
+    .stat .m { font-size: 10px; color: var(--mute); letter-spacing: .12em; text-transform: uppercase; }
+    .stat .u { font-size: 18px; font-weight: 700; margin-top: 4px; }
+    .stat .s { font-size: 11px; color: var(--mute); margin-top: 2px; }
+    .pos { color: var(--green); } .neg { color: var(--red); }
+    .tabs { display: flex; gap: 6px; margin: 16px 0 12px; }
+    .tab {
+      flex: 1; border: 1px solid var(--line); background: var(--card); color: var(--mute);
+      border-radius: 999px; padding: 9px 0; font-size: 13px; font-weight: 600;
+    }
+    .tab.on { background: #1d2a1e; color: var(--green); border-color: #2e4a30; }
+    
+    
+    
+    .board-cols { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+    .board-cols-spacer { min-width: 110px; }
+    .board-odds-head .od-cell.head {
+      background: transparent; padding: 0 6px 4px; min-width: 58px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+      color: #6b7c6b; text-transform: uppercase; text-align: center; width: 100%;
+    }
+    .board-odds { display: flex; gap: 6px; flex: 1; justify-content: flex-end; align-items: stretch; }
+    .od-cell {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+    }
+    
+
+    
+    .board-grid {
+      display: grid;
+      grid-template-columns: minmax(96px, 1.2fr) 62px 62px 62px;
+      gap: 6px;
+      align-items: stretch;
+      margin-bottom: 8px;
+    }
+    .board-grid-head {
+      margin-bottom: 4px;
+      align-items: end;
+    }
+    .board-grid-head .od-cell.head {
+      background: transparent;
+      padding: 0 0 4px;
+      min-width: 0;
+      min-height: 0;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #6b7c6b;
+      text-transform: uppercase;
+      text-align: center;
+      justify-content: center;
+      box-shadow: none;
+      border: none;
+    }
+    .board-grid .board-team {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .board-grid .od-cell {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .card.board { padding: 12px 14px; }
+    .card.board.on-picks { border-color: #3d5a3d; }
+    .board-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+    .board-team { display: flex; align-items: center; gap: 8px; min-width: 110px; }
+    .board-abbr { font-size: 14px; font-weight: 700; min-width: 2.5em; }
+    .board-score {
+      font-size: 15px; font-weight: 800; background: #1a1a1a;
+      border-radius: 8px; padding: 4px 8px; min-width: 1.6em; text-align: center;
+    }
+    .board-odds { display: flex; gap: 6px; flex: 1; justify-content: flex-end; }
+    .od-cell {
+      background: #1a1a22; border-radius: 10px; padding: 8px 6px;
+      min-width: 58px; text-align: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .od-line { display: block; height: 14px; line-height: 14px; font-size: 11px; color: var(--mute); font-weight: 600; text-align: center; }
+    .od-line-spacer { visibility: hidden; }
+    .od-price { display: block; height: 18px; line-height: 18px; font-size: 13px; font-weight: 700; color: #a78bfa; margin-top: 2px; text-align: center; }
+    .od-price.ml { font-size: 13px; }
+    .od-cell.ml-cell {
+      justify-content: center;
+      min-height: 52px;
+    }
+    .od-cell.ml-cell .od-price {
+      margin-top: 0;
+      height: auto;
+      line-height: 1.2;
+    }
+    .board-foot {
+      display: flex; justify-content: space-between; gap: 8px;
+      font-size: 11px; color: var(--muted); margin-top: 4px; padding-top: 6px;
+      border-top: 1px solid var(--line);
+    }
+
+    
+    
+    .card.board.glow-pick {
+      border: 1px solid var(--green) !important;
+      box-shadow: 0 0 0 1px rgba(124,255,107,0.45), 0 0 22px rgba(124,255,107,0.28) !important;
+    }
+
+    .glow-pick, .glow-win {
+      border-color: var(--green) !important;
+      box-shadow: 0 0 0 1px rgba(124,255,107,0.35), 0 0 18px rgba(124,255,107,0.18);
+    }
+    .glow-loss, .card.loss {
+      border-color: var(--red) !important;
+      box-shadow: 0 0 0 1px rgba(255,107,107,0.35), 0 0 14px rgba(255,107,107,0.12);
+    }
+    .od-price { color: #a78bfa !important; }
+    .od-price.pick-mkt { color: var(--blue) !important; }
+    .ticket-odds { color: #a78bfa; }
+    .ticket-odds-row { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+    .ticket-units { font-size: 14px; font-weight: 700; text-align: right; margin-top: 4px; }
+    .won-tag {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.06em;
+      color: #0b0f0c; background: var(--green); padding: 3px 8px; border-radius: 999px;
+    }
+    .lost-tag {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.06em;
+      color: #fff; background: var(--red); padding: 3px 8px; border-radius: 999px;
+    }
+    .push-tag {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.06em;
+      color: #0b0f0c; background: var(--amber); padding: 3px 8px; border-radius: 999px;
+    }
+    .card.board.on-picks { border-color: var(--line); } /* superseded by glow-pick */
+
+    .card.ticket { padding: 16px; }
+    .ticket-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+    .ticket-title { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+    .ticket-sub { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); margin-top: 4px; text-transform: uppercase; }
+    .ticket-odds-block { text-align: right; flex-shrink: 0; }
+    .ticket-odds { font-size: 20px; font-weight: 700; color: #a78bfa; }
+    .ticket-score {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #141414; border-radius: 12px; padding: 12px 14px; margin-bottom: 12px;
+    }
+    .ts-team { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .ts-team.right { flex-direction: row; }
+    .ts-logo {
+      width: 28px !important;
+      height: 28px !important;
+      min-width: 28px !important;
+      min-height: 28px !important;
+      max-width: 28px !important;
+      max-height: 28px !important;
+      object-fit: contain !important;
+      object-position: center center !important;
+      flex-shrink: 0 !important;
+      display: block !important;
+      background: transparent !important;
+    }
+    .logo-slot {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      min-height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .logo-slot .ts-logo {
+      width: 28px !important;
+      height: 28px !important;
+    }
+    .board-grid img.ts-logo,
+    .card img.ts-logo,
+    .ticket img.ts-logo {
+      width: 28px !important;
+      height: 28px !important;
+      min-width: 28px !important;
+      min-height: 28px !important;
+      max-width: 28px !important;
+      max-height: 28px !important;
+      object-fit: contain !important;
+    }
+    
+    .ts-abbr { font-size: 13px; font-weight: 700; color: var(--muted); }
+    .ts-runs { font-size: 22px; font-weight: 800; min-width: 1.2em; text-align: center; }
+    .ts-mid { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .ticket-risk {
+      display: flex; justify-content: space-between; gap: 12px;
+      padding: 8px 0 4px; border-top: 1px solid var(--line);
+    }
+    .ticket-risk .rk { display: block; font-size: 11px; color: var(--muted); }
+    .ticket-risk .rv { font-size: 16px; font-weight: 700; }
+    .ticket-foot {
+      display: flex; flex-wrap: wrap; gap: 8px 12px;
+      margin-top: 10px; font-size: 11px; color: var(--muted);
+    }
+
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px; margin-bottom: 10px; }
+    .card.win { border-color: #2e4a30; } .card.loss { border-color: #4a2e2e; } .card.push { border-color: #3a3620; }
+    .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+    .game { font-size: 16px; font-weight: 700; }
+    .time { font-size: 12px; color: var(--mute); }
+    .note { font-size: 12px; color: var(--mute); margin-top: 6px; }
+    .odds { font-size: 13px; color: var(--blue); margin-top: 4px; }
+    .scoreline { font-size: 14px; font-weight: 700; margin-top: 6px; }
+    .scoreline.live { color: var(--amber); }
+    .scoreline.final { color: var(--green); }
+    .scoreline.preview { color: var(--mute); font-weight: 600; }
+    .badge { display: inline-block; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; font-weight: 700; }
+    .ml { background: #1c2c3a; color: var(--blue); }
+    .rl { background: #2a2416; color: var(--amber); }
+    .ou { background: #1b2a1c; color: var(--green); }
+    .winb { background: #1b2a1c; color: var(--green); }
+    .lossb { background: #2a1b1b; color: var(--red); }
+    .pushb { background: #2a2416; color: var(--amber); }
+    .pendb { background: #222; color: var(--mute); }
+    .liveb { background: #3a1515; color: var(--red); font-weight: 700; }
+    .finalb { background: #2a2416; color: var(--amber); }
+    details.day-group {
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+      margin-bottom: 10px; overflow: hidden;
+    }
+    details.day-group > summary {
+      list-style: none; cursor: pointer; padding: 12px 14px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; font-weight: 600; color: var(--text);
+      user-select: none;
+    }
+    details.day-group > summary::-webkit-details-marker { display: none; }
+    details.day-group > summary::after {
+      content: "▸"; color: var(--mute); font-size: 12px; transition: transform .15s;
+    }
+    details.day-group[open] > summary::after { content: "▾"; }
+    details.day-group .day-body { padding: 0 10px 10px; }
+    details.day-group .day-meta { font-size: 11px; color: var(--mute); font-weight: 500; }
+    .empty { text-align: center; color: var(--mute); padding: 28px 12px; border: 1px dashed var(--line); border-radius: 16px; }
+    .pick-side { font-size: 18px; font-weight: 700; margin: 4px 0; }
+    .edge { color: var(--green); font-size: 13px; }
+    .refresh {
+      width: 100%; margin: 0 0 12px; border: 1px solid var(--line); background: var(--card);
+      color: var(--text); border-radius: 12px; padding: 10px; font-weight: 600;
+    }
+    .rules { margin: 0; padding-left: 18px; }
+    .rules li { margin: 0 0 10px; font-size: 13px; color: #c5d4c4; line-height: 1.4; }
+    footer { margin-top: 18px; font-size: 11px; color: var(--mute); text-align: center; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand-row">
+      <img class="logo" src="./icon.png" width="32" height="32" alt="Grok-Lock" />
+      <div class="brand-text">
+        <div class="brand">GROK-LOCK-MLB 2026</div>
+        <h1>Daily Lock Check</h1>
+      </div>
+    </div>
+    <div class="stamp" id="stamp">loading…</div>
+  </header>
+
+  <section class="bank">
+    <div class="label">Stacked YTD · 1u = $50</div>
+    <div class="big pos" id="stacked">+0.0u</div>
+    <div class="note" id="bankNote">live ledger · win-1u ($50)</div>
+    <div class="grid">
+      <div class="stat"><div class="m">ML</div><div class="u pos" id="mlU">+0</div><div class="s" id="mlS">—</div></div>
+      <div class="stat"><div class="m">RL</div><div class="u pos" id="rlU">+0</div><div class="s" id="rlS">—</div></div>
+      <div class="stat"><div class="m">OU</div><div class="u pos" id="ouU">+0</div><div class="s" id="ouS">—</div></div>
+    </div>
+  </section>
+
+  <button class="refresh" id="refreshBtn">Refresh picks + scores</button>
+
+  <div class="tabs">
+    <button class="tab on" data-tab="today">Picks</button>
+    <button class="tab" data-tab="slate">Slate</button>
+    <button class="tab" data-tab="recent">Results</button>
+    <button class="tab" data-tab="rules">Rules</button>
+  </div>
+
+  <div id="today"></div>
+  <div id="slate" hidden></div>
+  <div id="recent" hidden></div>
+  <div id="rules" hidden></div>
+
+  <footer>
+    One ticket per game per market. No parlays. No playoffs.<br />
+    Cron locks at 10:30 / 2:00 / 5:30 ET. Pull to refresh after a run.
+  </footer>
+
+  <script>
+    if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
+    const fmtU = n => (n >= 0 ? "+" : "") + Number(n).toFixed(1) + "u";
+    // Stake required to win target dollars at American odds (1u = $50)
+    function stakeToWin(odds, winDollars) {
+      const o = Number(odds);
+      if (!Number.isFinite(o) || o === 0 || !Number.isFinite(winDollars)) return null;
+      const stake = o > 0 ? winDollars * 100 / o : winDollars * Math.abs(o) / 100;
+      return Math.round(stake * 100) / 100;
+    }
+    function fmtMoney(n) {
+      if (n == null) return "—";
+      return "$" + n.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    }
+        
+    const MLB_ABBR = {
+      "arizona diamondbacks":"ari","diamondbacks":"ari","atlanta braves":"atl","braves":"atl",
+      "baltimore orioles":"bal","orioles":"bal","boston red sox":"bos","red sox":"bos",
+      "chicago cubs":"chc","cubs":"chc","chicago white sox":"chw","white sox":"chw",
+      "cincinnati reds":"cin","reds":"cin","cleveland guardians":"cle","guardians":"cle",
+      "colorado rockies":"col","rockies":"col","detroit tigers":"det","tigers":"det",
+      "houston astros":"hou","astros":"hou","kansas city royals":"kc","royals":"kc",
+      "los angeles angels":"laa","angels":"laa","los angeles dodgers":"lad","dodgers":"lad",
+      "miami marlins":"mia","marlins":"mia","milwaukee brewers":"mil","brewers":"mil",
+      "minnesota twins":"min","twins":"min","new york mets":"nym","mets":"nym",
+      "new york yankees":"nyy","yankees":"nyy","oakland athletics":"oak","athletics":"oak",
+      "philadelphia phillies":"phi","phillies":"phi","pittsburgh pirates":"pit","pirates":"pit",
+      "san diego padres":"sd","padres":"sd","san francisco giants":"sf","giants":"sf",
+      "seattle mariners":"sea","mariners":"sea","st. louis cardinals":"stl","saint louis cardinals":"stl","cardinals":"stl",
+      "tampa bay rays":"tb","rays":"tb","texas rangers":"tex","rangers":"tex",
+      "toronto blue jays":"tor","blue jays":"tor","washington nationals":"wsh","nationals":"wsh"
+    };
+    function teamAbbr(name) {
+      const k = String(name || "").toLowerCase().trim();
+      if (MLB_ABBR[k]) return MLB_ABBR[k];
+      const parts = k.split(/\s+/);
+      const last = parts[parts.length - 1];
+      for (const [key, ab] of Object.entries(MLB_ABBR)) {
+        if (key.endsWith(last) || k.includes(key)) return ab;
+      }
+      return (parts[0] || "mlb").slice(0, 3);
+    }
+    function teamLogo(name) {
+      const ab = teamAbbr(name);
+      const v = "v51";
+      // Exact marks from your attachments (transparent PNG in /logos)
+      const LOCAL = {
+        lad: "logos/lad.png?" + v,
+        stl: "logos/stl.png?" + v,
+        nyy: "logos/nyy.png?" + v,
+        wsh: "logos/wsh.png?" + v,
+        tex: "logos/tex.png?" + v,
+        tb: "logos/tb.png?" + v,
+        phi: "logos/phi.png?" + v
+      };
+      if (LOCAL[ab]) return LOCAL[ab];
+      const FIX = {
+        sd: "https://www.mlbstatic.com/team-logos/team-primary-on-dark/135.svg?" + v,
+        min: "https://www.mlbstatic.com/team-logos/team-primary-on-dark/142.svg?" + v,
+        sf: "https://www.mlbstatic.com/team-logos/team-primary-on-dark/137.svg?" + v,
+        bos: "https://a.espncdn.com/i/teamlogos/mlb/500/bos.png?" + v,
+        cle: "https://a.espncdn.com/i/teamlogos/mlb/500/cle.png?" + v,
+        col: "https://www.mlbstatic.com/team-logos/team-primary-on-dark/115.svg?" + v,
+        kc: "https://upload.wikimedia.org/wikipedia/commons/7/78/Kansas_City_Royals_Primary_Logo.svg?" + v
+      };
+      if (FIX[ab]) return FIX[ab];
+      return "https://a.espncdn.com/i/teamlogos/mlb/500/" + ab + ".png?" + v;
+    }
+    function shortTeam(name) {
+      const n = String(name || "");
+      const parts = n.split(/\s+/);
+      if (parts.length <= 1) return n;
+      // Last word for mascot, except Red Sox / Blue Jays / White Sox
+      const two = parts.slice(-2).join(" ");
+      if (/red sox|blue jays|white sox/i.test(n)) return two;
+      return parts[parts.length - 1];
+    }
+    function pickHeadline(p) {
+      const market = (p.market || "").toUpperCase();
+      const side = String(p.side || "");
+      let title = side;
+      let sub = market;
+      if (market === "ML") {
+        // "Team -130" or team name in side
+        const team = side.replace(/\s*[+-]\d+.*$/, "").trim() || shortTeam(p.away);
+        title = shortTeam(team) + " TO WIN";
+        sub = "MONEYLINE";
+      } else if (market === "RL") {
+        // "Nationals +1.5 -130"
+        const m = side.match(/^(.+?)\s+([+-]?1\.5)\s*([+-]\d+)?$/i);
+        if (m) {
+          title = shortTeam(m[1]) + " " + m[2];
+        } else {
+          title = side.replace(/\s*[+-]\d+$/, "").trim();
+        }
+        sub = "SPREAD";
+      } else if (market === "OU") {
+        const m = side.match(/(Over|Under)\s+(\d+(?:\.\d+)?)/i);
+        const line = m ? m[2] : "";
+        const ou = m ? m[1] : (side.match(/over|under/i) || [""])[0];
+        // Prefer team context: home total framing
+        title = (ou ? ou.charAt(0).toUpperCase() + ou.slice(1).toLowerCase() : "Total") + (line ? " " + line : "");
+        sub = "TOTAL RUNS";
+      }
+      return { title, sub };
+    }
+    function fmtOdds(o) {
+      const n = Number(o);
+      if (!Number.isFinite(n) || n === 0) return "";
+      return (n > 0 ? "+" : "") + n;
+    }
+
+    function stakeLines(p) {
+      const o = p.odds;
+      const half = stakeToWin(o, 25);  // win 1/2u
+      const full = stakeToWin(o, 50);  // win 1u
+      if (half == null || full == null) return "";
+      return `<div class="note" style="margin-top:8px">Risk ${fmtMoney(half)} to win ½u · Risk ${fmtMoney(full)} to win 1u</div>`;
+    }
+    function pickStatusBadge(p) {
+      const sc = findScore(p.away, p.home);
+      const phase = gamePhase(sc);
+      if (phase === 1) return `<span class="badge liveb">LIVE</span>`;
+      if (phase === 2) return `<span class="badge finalb">FINAL</span>`;
+      return `<span class="badge pendb">PENDING</span>`;
+    }
+    // "2:00 ET check · posted 1:40 PM ET" -> "2PM ET check"
+    // Job labels use clock faces without AM/PM; map known windows.
+    function shortCheck(check) {
+      if (!check) return "";
+      const s = String(check);
+      // Prefer explicit AM/PM if present
+      let m = s.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)\s*ET\s*check/i);
+      if (m) {
+        let h = parseInt(m[1], 10);
+        const mins = m[2] ? parseInt(m[2], 10) : 0;
+        const ap = m[3].toUpperCase();
+        if (mins === 0) return h + ap + " ET check";
+        return h + ":" + String(mins).padStart(2, "0") + ap + " ET check";
+      }
+      m = s.match(/(\d{1,2})(?::(\d{2}))?\s*ET\s*check/i);
+      if (!m) return "";
+      let h = parseInt(m[1], 10);
+      const mins = m[2] ? parseInt(m[2], 10) : 0;
+      // Known lock windows (ET): 10:30 AM, 2:00 PM, 5:30 PM
+      let ap = "AM";
+      if (h === 2 && mins === 0) { ap = "PM"; }
+      else if (h === 5 && (mins === 30 || mins === 45)) { ap = "PM"; }
+      else if (h === 10 && mins === 30) { ap = "AM"; }
+      else if (h >= 12) { ap = "PM"; h = h === 12 ? 12 : h - 12; }
+      else if (h === 0) { h = 12; ap = "AM"; }
+      // normalize hour display for PM windows already in 1-12 form
+      if (h > 12) { h = h - 12; ap = "PM"; }
+      if (mins === 0) return h + ap + " ET check";
+      return h + ":" + String(mins).padStart(2, "0") + ap + " ET check";
+    }
+    function bookLabel(p) {
+      const n = (p.note || p.book || "").toLowerCase();
+      if (!n) return "";
+      if (n.includes("hardrock") || n.includes("hard rock")) return "Hard Rock Bet";
+      return p.note || p.book || "";
+    }
+    function show(id) {
+      ["today","slate","recent","rules"].forEach(t => {
+        document.getElementById(t).hidden = t !== id;
+      });
+      document.querySelectorAll(".tab").forEach(b => b.classList.toggle("on", b.dataset.tab === id));
+    }
+    document.querySelectorAll(".tab").forEach(b => b.onclick = () => show(b.dataset.tab));
+
+    function isPending(p) {
+      const s = (p.status || p.result || "pending").toLowerCase();
+      return !(s === "win" || s === "w" || s === "loss" || s === "l" || s === "push" || s === "p");
+    }
+    function resultStack(p) {
+      const s = (p.status || p.result || "pending").toLowerCase();
+      let label = "PENDING";
+      let cls = "pendb";
+      if (s === "win" || s === "w") { label = "WIN"; cls = "winb"; }
+      else if (s === "loss" || s === "l") { label = "LOSS"; cls = "lossb"; }
+      else if (s === "push" || s === "p") { label = "PUSH"; cls = "pushb"; }
+      const u = (p.pnl != null ? p.pnl : p.units);
+      const uLine = (label === "PENDING")
+        ? ""
+        : `<div class="${(Number(u) >= 0 ? "pos" : "neg")}" style="font-size:13px;font-weight:700;text-align:right;margin-top:2px">${fmtU(u || 0)}</div>`;
+      return `<div style="text-align:right"><span class="badge ${cls}">${label}</span>${uLine}</div>`;
+    }
+    function cardClass(p) {
+      const s = (p.status || p.result || "").toLowerCase();
+      if (s === "win" || s === "w") return "win";
+      if (s === "loss" || s === "l") return "loss";
+      if (s === "push" || s === "p") return "push";
+      return "";
+    }
+    function locksEmptyMessage() {
+      // Cron: 10:30, 14:00, 17:30 ET — after last check use final wording
+      const now = new Date();
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York", hour: "numeric", minute: "numeric", hour12: false
+      }).formatToParts(now);
+      const hour = Number(parts.find(p => p.type === "hour").value);
+      const minute = Number(parts.find(p => p.type === "minute").value);
+      const mins = hour * 60 + minute;
+      if (mins >= 17 * 60 + 45) return "No Locks!";
+      return "No Locks yet!";
+    }
+
+    // Live clock: network time (HTTP time API) with local ET fallback.
+    // Browsers cannot query pool.ntp.org (NTP); worldtimeapi is the HTTP equivalent.
+    let clockOffsetMs = 0; // networkNow - Date.now()
+    let clockSynced = false;
+
+    function formatStamp(dateObj) {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      }).formatToParts(dateObj);
+      const get = t => (parts.find(p => p.type === t) || {}).value || "";
+      return get("month") + "-" + get("day") + "-" + get("year") + " " + get("hour") + ":" + get("minute") + " ET";
+    }
+
+    function tickClock() {
+      const now = new Date(Date.now() + clockOffsetMs);
+      document.getElementById("stamp").textContent = formatStamp(now);
+    }
+
+    async function syncNetworkTime() {
+      try {
+        const r = await fetch(
+          "https://worldtimeapi.org/api/timezone/America/New_York",
+          { cache: "no-store" }
+        );
+        if (!r.ok) throw new Error("time http " + r.status);
+        const j = await r.json();
+        // unixtime is UTC seconds; datetime is ISO with offset
+        const netMs = (typeof j.unixtime === "number")
+          ? j.unixtime * 1000
+          : Date.parse(j.datetime);
+        if (!Number.isFinite(netMs)) throw new Error("bad time payload");
+        clockOffsetMs = netMs - Date.now();
+        clockSynced = true;
+      } catch (e) {
+        clockOffsetMs = 0;
+        clockSynced = false;
+      }
+      tickClock();
+    }
+
+
+    // --- Live scores from MLB Stats API (no Odds API; Refresh-only) ---
+    let lastPayload = null;
+    let scoreMap = {}; // key: "away|home" lower -> {status, abstract, as, hs, inning}
+
+    function normName(s) {
+      return (s || "")
+        .toLowerCase()
+        .replace(/\./g, "")
+        .replace(/\b(the)\b/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+    function teamKey(away, home) {
+      return normName(away) + "|" + normName(home);
+    }
+    function namesLoose(a, b) {
+      const x = normName(a), y = normName(b);
+      if (!x || !y) return false;
+      if (x === y) return true;
+      // Allow "athletics" vs "oakland athletics" only when last token (nickname) matches
+      const xt = x.split(" "), yt = y.split(" ");
+      const xn = xt[xt.length - 1], yn = yt[yt.length - 1];
+      if (xn && yn && xn === yn) return true;
+      return false;
+    }
+    function findScore(away, home, dateStr) {
+      // Strict same-date only. Series rematches must never inherit another day's Final.
+      const wantDate = dateStr || (lastPayload && lastPayload.slate_date) || todayEtStr();
+      if (!wantDate) return null;
+      const exactDated = scoreMap[wantDate + "|" + teamKey(away, home)];
+      if (exactDated) return exactDated;
+      // Same calendar day only; require both sides to fuzzy-match
+      for (const k of Object.keys(scoreMap)) {
+        const parts = k.split("|");
+        if (parts.length < 3) continue;
+        const dt = parts[0];
+        if (dt !== wantDate) continue;
+        const a = parts[1];
+        const h = parts.slice(2).join("|"); // safety if name ever had |
+        if (namesLoose(a, away) && namesLoose(h, home)) return scoreMap[k];
+      }
+      return null;
+    }
+    function scoreHtml(g, dateStr) {
+      const sc = findScore(g.away, g.home, dateStr || (lastPayload && lastPayload.slate_date));
+      if (!sc) return "";
+      const abs = (sc.abstract || "").toLowerCase();
+      const st = sc.status || "";
+      const as = sc.as != null ? sc.as : "–";
+      const hs = sc.hs != null ? sc.hs : "–";
+      // Inning / LIVE status lives top-right; under the date only show score (or FINAL)
+      if (abs === "live" || /in progress|warmup|manager challenge|review|delayed/i.test(st)) {
+        return `<div class="scoreline live">${as}–${hs}</div>`;
+      }
+      if (abs === "final" || /^final/i.test(st) || /^game over/i.test(st)) {
+        return `<div class="scoreline final">FINAL · ${as}–${hs}</div>`;
+      }
+      if (abs === "preview" || /scheduled|pre-game|pregame/i.test(st)) {
+        return "";
+      }
+      if (sc.as != null && sc.hs != null) {
+        return `<div class="scoreline live">${as}–${hs}</div>`;
+      }
+      return "";
+    }
+    // "7:15 PM ET" / "7:15 PM" -> minutes from midnight for sort
+    function parseStartMinutes(timeStr) {
+      if (!timeStr) return 9999;
+      const m = String(timeStr).match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?/i);
+      if (!m) return 9999;
+      let h = parseInt(m[1], 10);
+      const mins = m[2] ? parseInt(m[2], 10) : 0;
+      const ap = (m[3] || "").toUpperCase();
+      if (ap === "PM" && h < 12) h += 12;
+      if (ap === "AM" && h === 12) h = 0;
+      // bare 0-23 if no AM/PM and hour>12 already fine; if hour<=12 and no ap, assume PM for MLB evenings is risky — leave as-is
+      return h * 60 + mins;
+    }
+    function gamePhase(sc) {
+      if (!sc) return 0; // treat unknown as pregame
+      const abs = (sc.abstract || "").toLowerCase();
+      const st = (sc.status || "");
+      // Live first so a bad status string never classifies as Final
+      if (abs === "live" || /in progress|warmup|manager challenge|review|delayed/i.test(st)) return 1;
+      if (abs === "final" || /^final/i.test(st) || /^game over/i.test(st)) return 2;
+      return 0; // pregame
+    }
+    function isOnPicks(away, home) {
+      if (pickMarketsFor(away, home).length > 0) return true;
+      // Also treat graded ledger tickets as picks (glow + sort)
+      const led = (lastPayload && (lastPayload.ledger || lastPayload.results)) || [];
+      for (const r of led) {
+        const match =
+          (namesLoose(r.away, away) && namesLoose(r.home, home)) ||
+          (namesLoose(r.away, home) && namesLoose(r.home, away));
+        if (match) return true;
+      }
+      return false;
+    }
+    function pickMarketsFor(away, home) {
+      const picks = (lastPayload && lastPayload.picks) || [];
+      const out = [];
+      for (const p of picks) {
+        const match =
+          (namesLoose(p.away, away) && namesLoose(p.home, home)) ||
+          (namesLoose(p.away, home) && namesLoose(p.home, away));
+        if (match && p.market) out.push(String(p.market).toUpperCase());
+      }
+      return out;
+    }
+    function fmtDisplayDate(iso) {
+      if (!iso) return "";
+      const s = String(iso).slice(0, 10);
+      const m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (m) return m[2] + "-" + m[3] + "-" + m[1];
+      return s;
+    }
+    function todayEtStr() {
+      return new Intl.DateTimeFormat("en-CA", {
+        timeZone: "America/New_York",
+        year: "numeric", month: "2-digit", day: "2-digit"
+      }).format(new Date(Date.now() + clockOffsetMs));
+    }
+    function fmtShortDate(iso) {
+      // iso YYYY-MM-DD -> "Sep 4"
+      if (!iso || iso.length < 10) return "";
+      const [y, m, d] = iso.split("-").map(Number);
+      const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      if (!m || !d) return iso;
+      return months[m - 1] + " " + d;
+    }
+    function etHourMinute() {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York", hour: "numeric", minute: "numeric", hour12: false
+      }).formatToParts(new Date(Date.now() + clockOffsetMs));
+      const hour = Number((parts.find(p => p.type === "hour") || {}).value || 0);
+      const minute = Number((parts.find(p => p.type === "minute") || {}).value || 0);
+      return hour * 60 + minute;
+    }
+    function renderSlate(slate, _scores) {
+      const el = document.getElementById("slate");
+      const today = todayEtStr();
+      const boardDate = (lastPayload && lastPayload.slate_date) || "";
+
+      // Full day board: start from picks.json slate (has odds when locked),
+      // then merge any MLB games missing (Finals books already dropped).
+      let useSlate = (slate && slate.length) ? slate.slice() : [];
+      let dateIso = boardDate || today;
+      const mins = etHourMinute();
+      // After 10:00 ET, previous day's board is always stale — clear and use today's
+      if (boardDate && boardDate < today && mins >= 10 * 60) {
+        useSlate = (mlbDayGames && mlbDayGames.length) ? mlbDayGames.slice() : [];
+        dateIso = today;
+      } else if (boardDate && boardDate < today && mins >= 8 * 60) {
+        // 8–10 ET soft rollover: prefer today's MLB list if available
+        if (mlbDayGames && mlbDayGames.length) {
+          useSlate = mlbDayGames.slice();
+          dateIso = today;
+        }
+      } else {
+        dateIso = boardDate || today;
+        if (mlbDayGames && mlbDayGames.length) {
+          const have = new Set(useSlate.map(g => teamKey(g.away, g.home)));
+          for (const g of mlbDayGames) {
+            const k = teamKey(g.away, g.home);
+            if (!have.has(k)) {
+              useSlate.push(g);
+              have.add(k);
+            }
+          }
+        }
+        if (!useSlate.length && mlbDayGames && mlbDayGames.length) {
+          useSlate = mlbDayGames.slice();
+          dateIso = today;
+        }
+      }
+
+      if (!useSlate || !useSlate.length) {
+        el.innerHTML = `<div class="empty">No slate loaded.</div>`;
+        return;
+      }
+
+      // Always show the locked/API slate rows. Scores are optional overlays —
+      // never hide a game because team-name matching failed against scoreMap.
+      const rows = useSlate.slice();
+
+      const allFinal = rows.length > 0 && rows.every(g => gamePhase(findScore(g.away, g.home, dateIso)) === 2);
+      // Sort:
+      //  - all Final → ⚾ pick games first, then by start time
+      //  - mixed → LIVE (⚾ picks first, then by start) → pending by start → Final
+      //  - all pending → by first pitch time
+      function slateOrder(sc) {
+        const p = gamePhase(sc);
+        if (p === 1) return 0; // live
+        if (p === 0) return 1; // pending / pregame
+        return 2;              // final
+      }
+      rows.sort((a, b) => {
+        function bucket(g) {
+          const phase = slateOrder(findScore(g.away, g.home, dateIso)); // 0 live, 1 pre, 2 final
+          const pick = isOnPicks(g.away, g.home) ? 0 : 1;
+          // 0 live-pick, 1 live-other, 2 pre-pick, 3 pre-other, 4 final-pick, 5 final-other
+          return phase * 2 + pick;
+        }
+        const ba = bucket(a);
+        const bb = bucket(b);
+        if (ba !== bb) return ba - bb;
+        return parseStartMinutes(a.time) - parseStartMinutes(b.time);
+      });
+      const dateLabel = fmtDisplayDate(dateIso) || dateIso || "";
+      const header =
+        `<div class="note" style="margin-bottom:10px;font-weight:600">` +
+        `${dateLabel} · ${rows.length} games</div>`;
+      el.innerHTML = header + rows.map(g => {
+        const odds = [g.ml_away && (g.away + " " + g.ml_away), g.ml_home && (g.home + " " + g.ml_home)]
+          .filter(Boolean).join(" · ") || "lines pending";
+        const sc = findScore(g.away, g.home, dateIso);
+        const abs = ((sc && sc.abstract) || "").toLowerCase();
+        const st = (sc && sc.status) || "";
+        // Abstract state first — never let "Final" text win over Live
+        const liveish = sc && (abs === "live" || /^(in progress|warmup|delayed)/i.test(st) || /manager challenge|review/i.test(st));
+        const finalish = sc && !liveish && (abs === "final" || /^final/i.test(st) || /^game over/i.test(st));
+        // Right side: start time for pregame; inning/status when live/final
+        let right = g.time || "";
+        if (liveish) right = (sc && sc.inning) ? sc.inning : "Live";
+        else if (finalish) right = "Final";
+        const as = sc && sc.as != null ? sc.as : "0";
+        const hs = sc && sc.hs != null ? sc.hs : "0";
+        const pick = isOnPicks(g.away, g.home);
+        const mlA = g.ml_away != null && g.ml_away !== "" ? fmtOdds(g.ml_away) : "—";
+        const mlH = g.ml_home != null && g.ml_home !== "" ? fmtOdds(g.ml_home) : "—";
+        // Optional RL / OU fields when present on slate row
+        const rlA = g.rl_away != null && g.rl_away !== "" ? String(g.rl_away) : "—";
+        const rlH = g.rl_home != null && g.rl_home !== "" ? String(g.rl_home) : "—";
+        const ouLine = g.ou_line != null && g.ou_line !== "" ? g.ou_line : "";
+        const ouO = g.ou_over != null && g.ou_over !== "" ? String(g.ou_over) : "—";
+        const ouU = g.ou_under != null && g.ou_under !== "" ? String(g.ou_under) : "—";
+        const ouOLab = ouLine !== "" ? ("O " + ouLine) : "O";
+        const ouULab = ouLine !== "" ? ("U " + ouLine) : "U";
+        const statusLine = liveish
+          ? (sc && sc.inning ? sc.inning : "Live")
+          : (finalish ? "Final" : (g.time || "").replace(/\bEST\b/g, "ET"));
+        const markets = pickMarketsFor(g.away, g.home);
+        const hiRL = markets.indexOf("RL") >= 0;
+        const hiOU = markets.indexOf("OU") >= 0;
+        const hiML = markets.indexOf("ML") >= 0;
+        const showHead = rows.indexOf(g) === 0;
+        const headHtml = showHead ? `
+          <div class="board-grid board-grid-head">
+            <div class="board-team"></div>
+            <div class="od-cell head">SPREAD</div>
+            <div class="od-cell head">TOTAL</div>
+            <div class="od-cell head">WINNER</div>
+          </div>` : "";
+        return `
+        <div class="card board${pick ? " glow-pick" : ""}">
+          ${headHtml}
+          <div class="board-grid">
+            <div class="board-team">
+              <img class="ts-logo" src="${teamLogo(g.away)}" alt="" onerror="this.style.display='none'"/>
+              <span class="board-abbr">${teamAbbr(g.away).toUpperCase()}</span>
+              <span class="board-score">${as}</span>
+            </div>
+            <div class="od-cell"><span class="od-line">+1.5</span><span class="od-price${hiRL ? " pick-mkt" : ""}">${rlA}</span></div>
+            <div class="od-cell"><span class="od-line">${ouOLab}</span><span class="od-price${hiOU ? " pick-mkt" : ""}">${ouO}</span></div>
+            <div class="od-cell ml-cell"><span class="od-price ml${hiML ? " pick-mkt" : ""}">${mlA}</span></div>
+          </div>
+          <div class="board-grid">
+            <div class="board-team">
+              <img class="ts-logo" src="${teamLogo(g.home)}" alt="" onerror="this.style.display='none'"/>
+              <span class="board-abbr">${teamAbbr(g.home).toUpperCase()}</span>
+              <span class="board-score">${hs}</span>
+            </div>
+            <div class="od-cell"><span class="od-line">-1.5</span><span class="od-price${hiRL ? " pick-mkt" : ""}">${rlH}</span></div>
+            <div class="od-cell"><span class="od-line">${ouULab}</span><span class="od-price${hiOU ? " pick-mkt" : ""}">${ouU}</span></div>
+            <div class="od-cell ml-cell"><span class="od-price ml${hiML ? " pick-mkt" : ""}">${mlH}</span></div>
+          </div>
+          <div class="board-foot">
+            <span>${statusLine}</span>
+          </div>
+        </div>`;
+      }).join("");
+    }
+    function statusRank(abstract, status) {
+      const a = (abstract || "").toLowerCase();
+      const s = (status || "").toLowerCase();
+      if (a === "final" || /final/.test(s)) return 3;
+      if (a === "live" || /in progress|warmup|manager challenge|review|delayed/.test(s)) return 2;
+      if (a === "preview" || /scheduled|pre-game|pregame/.test(s)) return 1;
+      return 0;
+    }
+    function formatEtTime(iso) {
+      if (!iso) return "";
+      try {
+        const d = new Date(iso);
+        return new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/New_York",
+          hour: "numeric", minute: "2-digit", hour12: true
+        }).format(d) + " ET";
+      } catch (e) { return ""; }
+    }
+    async function fetchScores(dateStr) {
+      // dateStr: YYYY-MM-DD in ET preferred
+      const day = dateStr || todayEtStr();
+      const url = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=" +
+        encodeURIComponent(day) + "&hydrate=linescore,team";
+      const r = await fetch(url, { cache: "no-store", mode: "cors" });
+      if (!r.ok) throw new Error("mlb schedule " + r.status);
+      const j = await r.json();
+      const map = {};
+      const games = [];
+      for (const d of (j.dates || [])) {
+        for (const g of (d.games || [])) {
+          const away = ((g.teams || {}).away || {}).team || {};
+          const home = ((g.teams || {}).home || {}).team || {};
+          const aName = away.name || away.teamName || "";
+          const hName = home.name || home.teamName || "";
+          const status = ((g.status || {}).detailedState) || "";
+          const abstract = ((g.status || {}).abstractGameState) || "";
+          const as = ((g.teams || {}).away || {}).score;
+          const hs = ((g.teams || {}).home || {}).score;
+          let inning = "";
+          const ls = g.linescore || {};
+          if (ls.currentInningOrdinal || ls.currentInning) {
+            const half = (ls.inningHalf || ls.inningState || "").toString();
+            const ord = ls.currentInningOrdinal || (ls.currentInning + "");
+            inning = (half ? half + " " : "") + ord;
+          }
+          const key = day + "|" + teamKey(aName, hName);
+          const row = {
+            status, abstract,
+            as: as == null ? null : as,
+            hs: hs == null ? null : hs,
+            inning: inning.trim(),
+            date: day,
+            away: aName,
+            home: hName
+          };
+          // Doubleheaders share a team key — keep Final/Live over Preview
+          const prev = map[key];
+          if (!prev || statusRank(abstract, status) >= statusRank(prev.abstract, prev.status)) {
+            map[key] = row;
+          }
+          games.push({
+            away: aName,
+            home: hName,
+            time: formatEtTime(g.gameDate),
+            ml_away: "",
+            ml_home: ""
+          });
+        }
+      }
+      // Merge so multi-day pulls (today + yesterday) keep both scoreboards
+      scoreMap = Object.assign({}, scoreMap, map);
+      return games;
+    }
+
+    
+    function profitUnits(odds) {
+      // Win-1u: a win is always +1.0u
+      return 1;
+    }
+    function riskUnits(odds) {
+      const o = Number(odds);
+      if (!Number.isFinite(o) || o === 0) return 1.1;
+      if (o < 0) return Math.abs(o) / 100;
+      return 100 / o;
+    }
+    function parseOuLine(side) {
+      const m = String(side || "").match(/\b(\d+(?:\.\d+)?)\b/);
+      return m ? parseFloat(m[1]) : null;
+    }
+    function clientGradePick(p, sc) {
+      if (!sc) return null;
+      const abs = (sc.abstract || "").toLowerCase();
+      const st = sc.status || "";
+      if (!(abs === "final" || /final/i.test(st))) return null;
+      if (sc.as == null || sc.hs == null) return null;
+      const aw = Number(sc.as);
+      const hm = Number(sc.hs);
+      if (!Number.isFinite(aw) || !Number.isFinite(hm)) return null;
+      const market = (p.market || "").toUpperCase();
+      const side = p.side || "";
+      const odds = p.odds;
+      let won = null;
+      let push = false;
+      if (market === "ML") {
+        if (aw === hm) push = true;
+        else {
+          const pickAway = (p.away || "") && side.indexOf(p.away) >= 0;
+          const awayWon = aw > hm;
+          won = pickAway ? awayWon : !awayWon;
+        }
+      } else if (market === "RL") {
+        // +1.5 dog: ticket side names the dog
+        const pickAway = (p.away || "") && side.indexOf(p.away) >= 0;
+        if (pickAway) won = (aw - hm) >= -1;
+        else won = (hm - aw) >= -1;
+      } else if (market === "OU") {
+        const line = p.ou_line != null ? Number(p.ou_line) : parseOuLine(side);
+        if (line == null || !Number.isFinite(line)) return null;
+        const total = aw + hm;
+        if (total === line) push = true;
+        else if (/under/i.test(side)) won = total < line;
+        else won = total > line;
+      } else {
+        return null;
+      }
+      const out = Object.assign({}, p);
+      if (push) {
+        out.status = "push";
+        out.result = "P";
+        out.pnl = 0;
+      } else if (won === true) {
+        out.status = "win";
+        out.result = "W";
+        out.pnl = 1;  // win-1u
+      } else if (won === false) {
+        out.status = "loss";
+        out.result = "L";
+        out.pnl = Math.round(-riskUnits(odds || -110) * 1000) / 1000;
+      } else {
+        return null;
+      }
+      out.final = (p.away || "") + " " + aw + "-" + hm + " " + (p.home || "");
+      out._clientGraded = true;
+      return out;
+    }
+    function applyClientGrades(d) {
+      // Grade pending picks against live scoreboard; adjust YTD for display only
+      const picks = (d.picks || []).slice();
+      const recent = (d.recent || []).map(r => {
+        const out = Object.assign({}, r);
+        const res = String(out.result || out.status || "").toUpperCase();
+        const odds = out.odds;
+        if (res === "W" || res === "WIN") out.units = 1;
+        else if (res === "L" || res === "LOSS") {
+          if (odds != null && Number(odds) && Math.abs(Number(odds)) < 500)
+            out.units = -riskUnits(Number(odds));
+        } else if (res === "P" || res === "PUSH") out.units = 0;
+        return out;
+      });
+      const y = Object.assign({}, d.ytd || {});
+      let stacked = Number(y.stacked_units || 0) || 0;
+      let liveU = Number(y.live_units || 0) || 0;
+      const markets = {
+        ml: Object.assign({ units: 0, bets: 0, wr: 0 }, y.ml || {}),
+        rl: Object.assign({ units: 0, bets: 0, wr: 0 }, y.rl || {}),
+        ou: Object.assign({ units: 0, bets: 0, wr: 0 }, y.ou || {})
+      };
+      const stillPending = [];
+      let gradedN = 0;
+      for (const p of picks) {
+        const st = (p.status || p.result || "pending").toLowerCase();
+        if (st && st !== "pending" && st !== "") {
+          stillPending.push(p);
+          continue;
+        }
+        const sc = findScore(p.away, p.home, p.date || (d.slate_date || ""));
+        const g = clientGradePick(p, sc);
+        if (!g) {
+          stillPending.push(p);
+          continue;
+        }
+        gradedN++;
+        const pnl = Number(g.pnl) || 0;
+        stacked += pnl;
+        // recent card shape
+        recent.unshift({
+          date: g.date || d.slate_date || "",
+          game: (g.away || "") + " @ " + (g.home || ""),
+          market: g.market,
+          side: g.side,
+          result: g.result,
+          status: g.status,
+          units: pnl,
+          final: g.final
+        });
+        const mk = (g.market || "").toLowerCase();
+        if (markets[mk]) {
+          markets[mk].units = Number(markets[mk].units || 0) + pnl;
+          markets[mk].bets = Number(markets[mk].bets || 0) + 1;
+        }
+      }
+      // Cap recent list
+      while (recent.length > 40) recent.pop();
+      return {
+        picks: stillPending,
+        recent: recent,
+        ytd: {
+          stacked_units: Math.round(stacked * 1000) / 1000,
+          live_units: liveU,
+          ml: markets.ml,
+          rl: markets.rl,
+          ou: markets.ou
+        },
+        gradedN: gradedN
+      };
+    }
+
+function render(d) {
+      // Top-right stamp is the live network/local clock — not picks.updated
+      tickClock();
+      // Grade any Finals against MLB scores on this refresh (no need to wait for cron)
+      const graded = applyClientGrades(d);
+      if (graded.gradedN) {
+        d = Object.assign({}, d, {
+          picks: graded.picks,
+          recent: graded.recent,
+          ytd: graded.ytd
+        });
+      }
+      const y = d.ytd || {};
+      document.getElementById("stacked").textContent = fmtU(y.stacked_units || 0);
+      document.getElementById("stacked").className = "big " + ((y.stacked_units || 0) >= 0 ? "pos" : "neg");
+      document.getElementById("bankNote").textContent =
+        "$" + Math.round((y.stacked_units || 0) * (d.unit_dollars || 50)).toLocaleString() +
+        " paper · live " + fmtU(y.live_units || 0);
+      ["ml","rl","ou"].forEach(k => {
+        const row = y[k] || {units:0,bets:0,wr:0};
+        const el = document.getElementById(k + "U");
+        el.textContent = fmtU(row.units);
+        el.className = "u " + (row.units >= 0 ? "pos" : "neg");
+        document.getElementById(k + "S").textContent = row.bets + " · " + Math.round((row.wr||0)*100) + "%";
+      });
+
+      // Picks tab: only pending tickets whose date matches today ET
+      // (hides overnight stale 9/02 pending after calendar flips)
+      function todayEt() {
+        return new Intl.DateTimeFormat("en-CA", {
+          timeZone: "America/New_York",
+          year: "numeric", month: "2-digit", day: "2-digit"
+        }).format(new Date());
+      }
+      const todayStr = todayEt();
+      // Keep pending tickets until graded — including live games past midnight
+      const pending = (d.picks || []).filter(p => isPending(p))
+        .slice().sort((a, b) => parseStartMinutes(a.time) - parseStartMinutes(b.time));
+      const today = document.getElementById("today");
+      if (!pending.length) {
+        today.innerHTML =
+          `<div class="empty"><strong>${locksEmptyMessage()}</strong>` +
+          `<div style="margin-top:8px;font-size:12px">Graded tickets are on Results.</div></div>`;
+      } else {
+        today.innerHTML = pending.map(p => {
+          const chk = shortCheck(p.check);
+          const dateLine = fmtDisplayDate(p.date || d.slate_date || "");
+          const timeEt = (p.time || "").replace(/\bEST\b/g, "ET");
+          const head = pickHeadline(p);
+          const oddsStr = fmtOdds(p.odds);
+          const sc = findScore(p.away, p.home, p.date || dateLine);
+          const aw = sc && sc.as != null ? sc.as : "–";
+          const hm = sc && sc.hs != null ? sc.hs : "–";
+          const statusBit = pickStatusBadge(p);
+          const half = stakeToWin(p.odds, 25);
+          const full = stakeToWin(p.odds, 50);
+          const riskHtml = (half != null && full != null)
+            ? `<div class="ticket-risk">
+                 <div><span class="rk">½u risk</span><span class="rv">${fmtMoney(half)}</span></div>
+                 <div><span class="rk">1u risk</span><span class="rv">${fmtMoney(full)}</span></div>
+               </div>`
+            : "";
+          return `
+          <div class="card ticket glow-pick">
+            <div class="ticket-top">
+              <div class="ticket-title-block">
+                <div class="ticket-title">${head.title}</div>
+                <div class="ticket-sub">${head.sub}</div>
+              </div>
+              <div class="ticket-odds-block">
+                <div class="ticket-odds">${oddsStr}</div>
+                ${statusBit}
+              </div>
+            </div>
+            <div class="ticket-score">
+              <div class="ts-team">
+                <img class="ts-logo" src="${teamLogo(p.away)}" alt="" onerror="this.style.display='none'"/>
+                <span class="ts-abbr">${teamAbbr(p.away).toUpperCase()}</span>
+                <span class="ts-runs">${aw}</span>
+              </div>
+              <div class="ts-mid">${sc && gamePhase(sc) === 2 ? "Final" : (sc && gamePhase(sc) === 1 ? "Live" : "vs")}</div>
+              <div class="ts-team right">
+                <span class="ts-runs">${hm}</span>
+                <span class="ts-abbr">${teamAbbr(p.home).toUpperCase()}</span>
+                <img class="ts-logo" src="${teamLogo(p.home)}" alt="" onerror="this.style.display='none'"/>
+              </div>
+            </div>
+            ${riskHtml}
+            <div class="ticket-foot">
+              <span>${dateLine}</span>
+              <span>${timeEt}</span>
+              <span>${chk}</span>
+            </div>
+          </div>`;
+        }).join("");
+      }
+
+      lastPayload = d;
+      renderSlate(d.slate || [], scoreMap);
+
+      // Results tab: graded only — WIN/LOSS stacked over units
+      // Hide junk/alt totals (e.g. Under 2.5 -1500) that slipped in before the line filter
+      function isJunkResult(r) {
+        const side = (r.side || "");
+        const m = side.match(/\b(\d+(?:\.\d+)?)\b/);
+        if (m && (r.market || "").toUpperCase() === "OU") {
+          const line = parseFloat(m[1]);
+          if (line < 5.5 || line > 14.5) return true;
+        }
+        if (/-[5-9]\d{2,}|-[1-9]\d{3,}/.test(side)) return true; // juice <= -500
+        return false;
+      }
+      const recent = (d.recent || []).filter(r => !isJunkResult(r));
+      const byDate = {};
+      for (const r of recent) {
+        const dt = r.date || "Unknown";
+        if (!byDate[dt]) byDate[dt] = [];
+        byDate[dt].push(r);
+      }
+      const dates = Object.keys(byDate).sort().reverse(); // newest first
+      function daySummary(list) {
+        let u = 0, w = 0, l = 0;
+        for (const r of list) {
+          const x = Number(r.units);
+          if (!Number.isNaN(x)) u += x;
+          // ledger uses status win/loss; recent payload often uses result "W"/"L"/"P"
+          const s = (r.status || "").toLowerCase();
+          const res = String(r.result || "").toLowerCase();
+          if (s === "win" || s === "w" || res === "win" || res === "w" || res === "won") w++;
+          else if (s === "loss" || s === "l" || res === "loss" || res === "l" || res === "lost") l++;
+          else if (Number(r.units) > 0) w++;
+          else if (Number(r.units) < 0) l++;
+        }
+        const sign = u > 0 ? "+" : "";
+        const n = list.length;
+        const ticketWord = n === 1 ? "Ticket" : "Tickets";
+        return `${n} ${ticketWord} · ${w}W-${l}L · ${sign}${u.toFixed(2)}u`;
+      }
+      document.getElementById("recent").innerHTML = dates.length ? dates.map((dt, idx) => {
+        const list = byDate[dt];
+        const open = idx === 0 ? " open" : "";
+        const cards = list.map(r => {
+          const head = pickHeadline({
+            market: r.market,
+            side: r.side,
+            away: (r.game || "").split(" @ ")[0],
+            home: (r.game || "").split(" @ ")[1],
+            odds: r.odds
+          });
+          const parts = String(r.game || "").split(" @ ");
+          const away = parts[0] || "";
+          const home = parts[1] || "";
+          let aw = "–", hm = "–";
+          const fm = String(r.final || "").match(/(\d+)\s*-\s*(\d+)/);
+          if (fm) { aw = fm[1]; hm = fm[2]; }
+          const u = Number(r.units);
+          let uStr = "";
+          if (Number.isFinite(u)) {
+            if (Math.abs(u - 1) < 1e-9) uStr = "+1u";
+            else if (Math.abs(u + 1) < 1e-9) uStr = "-1u";
+            else if (Math.abs(u - Math.round(u)) < 1e-9) uStr = (u > 0 ? "+" : "") + Math.round(u) + "u";
+            else uStr = (u > 0 ? "+" : "") + u.toFixed(2).replace(/\.?0+$/, "") + "u";
+          }
+          const oddsStr = r.odds != null ? fmtOdds(r.odds) : "";
+          const st = String(r.status || r.result || "").toLowerCase();
+          let outcome = "";
+          let outcomeCls = "";
+          if (st === "win" || st === "w") { outcome = "WON"; outcomeCls = "won-tag"; }
+          else if (st === "loss" || st === "l") { outcome = "LOST"; outcomeCls = "lost-tag"; }
+          else if (st === "push" || st === "p") { outcome = "PUSH"; outcomeCls = "push-tag"; }
+          const glowCls = (st === "win" || st === "w") ? " glow-win" : ((st === "loss" || st === "l") ? " glow-loss" : "");
+          return `
+          <div class="card ticket ${cardClass(r)}${glowCls}">
+            <div class="ticket-top">
+              <div class="ticket-title-block">
+                <div class="ticket-title">${head.title}</div>
+                <div class="ticket-sub">${head.sub}</div>
+              </div>
+              <div class="ticket-odds-block">
+                <div class="ticket-odds-row">
+                  <span class="ticket-odds">${oddsStr}</span>
+                  ${outcome ? `<span class="${outcomeCls}">${outcome}</span>` : ""}
+                </div>
+                <div class="ticket-units ${u >= 0 ? "pos" : "neg"}">${uStr}</div>
+              </div>
+            </div>
+            <div class="ticket-score">
+              <div class="ts-team">
+                <img class="ts-logo" src="${teamLogo(away)}" alt="" onerror="this.style.display='none'"/>
+                <span class="ts-abbr">${teamAbbr(away).toUpperCase()}</span>
+                <span class="ts-runs">${aw}</span>
+              </div>
+              <div class="ts-mid">Final</div>
+              <div class="ts-team right">
+                <span class="ts-runs">${hm}</span>
+                <span class="ts-abbr">${teamAbbr(home).toUpperCase()}</span>
+                <img class="ts-logo" src="${teamLogo(home)}" alt="" onerror="this.style.display='none'"/>
+              </div>
+            </div>
+          </div>`;
+        }).join("");
+        return `<details class="day-group"${open}>
+          <summary><span>${fmtDisplayDate(dt)}</span><span class="day-meta">${daySummary(list)}</span></summary>
+          <div class="day-body">${cards}</div>
+        </details>`;
+      }).join("") : `<div class="empty">No graded tickets yet. After finals, the next cron pass paints W/L here.</div>`;
+
+      document.getElementById("rules").innerHTML = `
+        <div class="card"><ol class="rules">
+          ${(d.locks||[]).map(l => `<li><strong>${l.market}.</strong> ${l.rule}</li>`).join("")}
+          <li>Max 1 unit per game per market. No parlays. No playoffs.</li>
+          <li>Tickets freeze when first posted. Later cron runs only grade them.</li>
+        </ol></div>`;
+    }
+
+    async function ensureNotifyPermission() {
+      if (!("Notification" in window)) return false;
+      if (Notification.permission === "granted") return true;
+      if (Notification.permission === "denied") return false;
+      try {
+        const r = await Notification.requestPermission();
+        return r === "granted";
+      } catch (e) { return false; }
+    }
+    function pendingFingerprint(picks) {
+      const pending = (picks || []).filter(p => {
+        const s = (p.status || p.result || "pending").toLowerCase();
+        return s === "pending" || s === "";
+      });
+      return pending.map(p =>
+        [p.date || "", p.market || "", p.away || "", p.home || "", p.side || ""].join("|")
+      ).sort().join(";;");
+    }
+    async function maybeNotifyNewPicks(d) {
+      const fp = pendingFingerprint(d.picks);
+      const key = "gl_pending_fp";
+      const prev = localStorage.getItem(key) || "";
+      if (fp && fp !== prev) {
+        const ok = await ensureNotifyPermission();
+        if (ok && prev) {
+          // only notify when we already had a prior snapshot (avoid blast on first install)
+          const nNew = fp.split(";;").filter(Boolean).length;
+          const nOld = prev.split(";;").filter(Boolean).length;
+          if (nNew > nOld) {
+            try {
+              new Notification("Grok-Lock", {
+                body: (nNew - nOld) + " new pick(s) locked",
+                icon: "./icon.png",
+                tag: "grok-lock-picks"
+              });
+            } catch (e) {}
+          }
+        }
+        localStorage.setItem(key, fp);
+      } else if (fp) {
+        localStorage.setItem(key, fp);
+      }
+    }
+
+    async function load() {
+      const btn = document.getElementById("refreshBtn");
+      const prev = btn.textContent;
+      btn.textContent = "Refreshing…";
+      btn.disabled = true;
+      try {
+        const r = await fetch("./picks.json?t=" + Date.now(), { cache: "no-store" });
+        const data = await r.json();
+        lastPayload = data;
+        // Scores first (free MLB API) so client grading can settle Finals on refresh
+        try {
+          const today = todayEtStr();
+          const board = data.slate_date || "";
+          // Display day = today's slate after 8am ET; overnight keep board date
+          let displayDay = today;
+          if (board && board < today && etHourMinute() < 8 * 60) displayDay = board;
+          else if (board && board === today) displayDay = board;
+
+          // Primary: games shown on Slate
+          const displayGames = await fetchScores(displayDay);
+          if (displayGames && displayGames.length) mlbDayGames = displayGames;
+
+          // Secondary: other day for grading only — do NOT overwrite mlbDayGames
+          if (board && board !== displayDay) {
+            try { await fetchScores(board); } catch (e2) {}
+          }
+          if (displayDay === today) {
+            const yest = (() => {
+              const d = new Date(Date.now() + clockOffsetMs - 86400000);
+              return new Intl.DateTimeFormat("en-CA", {
+                timeZone: "America/New_York",
+                year: "numeric", month: "2-digit", day: "2-digit"
+              }).format(d);
+            })();
+            if (yest !== displayDay) {
+              try { await fetchScores(yest); } catch (e3) {}
+            }
+          }
+        } catch (se) {
+          console.warn("score fetch failed", se);
+        }
+        // Grade + paint picks/results/ytd using scoreMap
+        render(data);
+      } catch (e) {
+        document.getElementById("today").innerHTML = `<div class="empty">Could not load picks.json</div>`;
+      } finally {
+        btn.textContent = prev;
+        btn.disabled = false;
+      }
+    }
+    document.getElementById("refreshBtn").onclick = load;
+    syncNetworkTime();
+    setInterval(tickClock, 15000);
+    setInterval(syncNetworkTime, 10 * 60 * 1000);
+    load();
+  </script>
+</body>
+</html>

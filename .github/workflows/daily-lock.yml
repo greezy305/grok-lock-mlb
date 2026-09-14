@@ -6,6 +6,12 @@ on:
     - cron: "0 18 * * *"   # 2:00 PM ET
     - cron: "30 21 * * *"  # 5:30 PM ET (EDT)
   workflow_dispatch:
+    inputs:
+      test_notify:
+        description: "Send a test ntfy push even with 0 new tickets"
+        required: false
+        default: "false"
+        type: boolean
 
 permissions:
   contents: write
@@ -33,30 +39,71 @@ jobs:
           git commit -m "chore: daily Hard Rock lock pass"
           git push
 
-      - name: Push notify (new tickets only)
+      - name: Push notify (new tickets or test)
         if: success()
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
+          TEST_NOTIFY: ${{ github.event.inputs.test_notify || 'false' }}
         run: |
+          set -e
           if [ -z "$NTFY_TOPIC" ]; then
-            echo "NTFY_TOPIC secret not set — skip push"
+            echo "::warning::NTFY_TOPIC secret not set — skip push"
+            echo "Create a secret named NTFY_TOPIC = your topic string (e.g. grok-lock-mlb-yourname)"
             exit 0
           fi
-          if [ ! -f notify.json ]; then
+          echo "topic_set yes"
+          echo "topic_len ${#NTFY_TOPIC}"
+
+          NEW=0
+          BODY="Grok-Lock check finished"
+          TITLE="Grok-Lock"
+          if [ -f notify.json ]; then
+            NEW=$(python3 -c "import json; print(int(json.load(open('notify.json')).get('new_tickets') or 0))")
+            BODY=$(python3 -c "
+import json
+d=json.load(open('notify.json'))
+titles=d.get('titles') or []
+day=d.get('day') or ''
+n=int(d.get('new_tickets') or 0)
+pt=int(d.get('picks_today') or 0)
+lines=[]
+if n:
+    lines.append('%s new lock(s) · %s' % (n, day))
+    for t in titles[:5]:
+        lines.append(str(t))
+else:
+    lines.append('No new locks · %s open today · %s' % (pt, day))
+print(chr(10).join(lines)[:900])
+")
+            TITLE=$(python3 -c "import json; d=json.load(open('notify.json')); n=int(d.get('new_tickets') or 0); print('Grok-Lock +%s pick(s)' % n if n else 'Grok-Lock')")
+          else
             echo "no notify.json"
+          fi
+          echo "new_tickets=$NEW test=$TEST_NOTIFY"
+
+          if [ "$NEW" = "0" ] && [ "$TEST_NOTIFY" != "true" ]; then
+            echo "No new tickets — no push (use workflow_dispatch test_notify=true to force)"
             exit 0
           fi
-          NEW=$(python3 -c "import json; print(json.load(open('notify.json')).get('new_tickets',0))")
-          echo "new_tickets=$NEW"
-          if [ "$NEW" = "0" ] || [ -z "$NEW" ]; then
-            echo "No new tickets — no push"
-            exit 0
+
+          AUTH_ARGS=()
+          if [ -n "$NTFY_TOKEN" ]; then
+            AUTH_ARGS=(-H "Authorization: Bearer $NTFY_TOKEN")
           fi
-          TITLE=$(python3 -c "import json; d=json.load(open('notify.json')); print(', '.join(d.get('titles') or [])[:180] or 'New locks')")
-          curl -sS -H "Title: Grok-Lock +$NEW pick(s)" \
+
+          CODE=$(curl -sS -o /tmp/ntfy_out.txt -w "%{http_code}" \
+               -H "Title: $TITLE" \
                -H "Priority: high" \
                -H "Tags: baseball,moneybag" \
                -H "Click: https://greezy305.github.io/grok-lock-mlb/" \
-               -d "$TITLE" \
-               "https://ntfy.sh/${NTFY_TOPIC}"
-          echo "ntfy sent"
+               "${AUTH_ARGS[@]}" \
+               -d "$BODY" \
+               "https://ntfy.sh/${NTFY_TOPIC}")
+          echo "ntfy_http=$CODE"
+          cat /tmp/ntfy_out.txt || true
+          if [ "$CODE" != "200" ]; then
+            echo "::error::ntfy push failed with HTTP $CODE"
+            exit 1
+          fi
+          echo "ntfy sent ok"

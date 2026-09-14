@@ -1097,7 +1097,15 @@ def main():
         "day": day,
         "book": book_used,
         "updated": now.strftime("%Y-%m-%d %H:%M ET"),
-        "titles": ["%s %s" % (x.get("market"), x.get("side")) for x in new_tickets[:5]],
+        "titles": [
+            "%s · %s @ %s · %s" % (
+                x.get("market"),
+                x.get("away") or "?",
+                x.get("home") or "?",
+                x.get("side") or "",
+            )
+            for x in new_tickets[:6]
+        ],
     }, indent=2) + "\n")
     print("picks", len(today_picks), "ledger", len(graded), "new", len(new_tickets))
     print("notify_new", len(new_tickets))

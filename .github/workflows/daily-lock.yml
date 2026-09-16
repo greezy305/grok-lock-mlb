@@ -60,22 +60,7 @@ jobs:
           TITLE="Grok-Lock"
           if [ -f notify.json ]; then
             NEW=$(python3 -c "import json; print(int(json.load(open('notify.json')).get('new_tickets') or 0))")
-            BODY=$(python3 -c "
-import json
-d=json.load(open('notify.json'))
-titles=d.get('titles') or []
-day=d.get('day') or ''
-n=int(d.get('new_tickets') or 0)
-pt=int(d.get('picks_today') or 0)
-lines=[]
-if n:
-    lines.append('%s new lock(s) · %s' % (n, day))
-    for t in titles[:5]:
-        lines.append(str(t))
-else:
-    lines.append('No new locks · %s open today · %s' % (pt, day))
-print(chr(10).join(lines)[:900])
-")
+            BODY=$(python3 -c "import json;d=json.load(open('notify.json'));titles=d.get('titles') or [];day=d.get('day') or '';n=int(d.get('new_tickets') or 0);pt=int(d.get('picks_today') or 0);lines=(['%s new lock(s) · %s' % (n, day)] + [str(t) for t in titles[:5]]) if n else ['No new locks · %s open today · %s' % (pt, day)];print(chr(10).join(lines)[:900])")
             TITLE=$(python3 -c "import json; d=json.load(open('notify.json')); n=int(d.get('new_tickets') or 0); print('Grok-Lock +%s pick(s)' % n if n else 'Grok-Lock')")
           else
             echo "no notify.json"

@@ -7,6 +7,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
 from pathlib import Path
+import sys
 from zoneinfo import ZoneInfo
 
 ET = ZoneInfo("America/New_York")
@@ -14,9 +15,20 @@ SPORT = "baseball_mlb"
 BOOKS = ["hardrockbet_fl", "hardrockbet"]
 MARKETS = "h2h,spreads,totals"
 UNIT = 50
+
+# Frozen logreg (models/model.json) — pure Python scorer
+try:
+    import frozen_model
+except ImportError:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    try:
+        import frozen_model
+    except ImportError:
+        frozen_model = None
+
 ML_EDGE = 0.07
 ML_CAP = -180
-ML_PLUS_CAP = 200
+ML_PLUS_CAP = 180
 RL_JUICE_LO = -130
 RL_JUICE_HI = 170
 OU_EDGE = 0.04
@@ -670,6 +682,35 @@ def main():
     ledger = load_json(ledger_path, [])
     by_id = {t.get("id"): t for t in ledger if t.get("id")}
 
+    # Frozen model + live form / SP priors (ML)
+    _frozen = None
+    team_form = {}
+    probable_map = {}
+    sp_priors = {}
+    park_factors = {}
+    if frozen_model is not None:
+        _frozen = frozen_model.find_model()
+        if _frozen:
+            print("frozen_model_loaded", _frozen.get("train"), "nfeat", len(_frozen.get("features") or []))
+            try:
+                team_form = frozen_model.build_team_form(day)
+                print("team_form_teams", len(team_form))
+            except Exception as e:
+                print("team_form_fail", type(e).__name__, e)
+            try:
+                probable_map = frozen_model.probable_pitchers(day)
+                print("probable_games", len(probable_map))
+            except Exception as e:
+                print("probable_fail", type(e).__name__, e)
+            sp_priors = frozen_model.load_sp_priors()
+            park_factors = frozen_model.load_park_factors()
+            print("sp_priors", len(sp_priors), "parks", len(park_factors))
+        else:
+            print("frozen_model_missing")
+    else:
+        print("frozen_model_module_missing")
+
+
     try:
         slate = pull_schedule(day)
     except Exception as e:
@@ -860,23 +901,55 @@ def main():
             by_id[tid] = row
             new_tickets.append(row)
 
-        for side, cur, open_px in (
-            (away, ml_away, op.get("ml_away")),
-            (home, ml_home, op.get("ml_home")),
-        ):
-            if not cur or open_px is None:
-                continue
-            px = px_int(cur["price"])
-            if px is None or px < ML_CAP or px > ML_PLUS_CAP:
-                continue
-            edge = american_to_prob(open_px) - american_to_prob(px)
-            if edge >= ML_EDGE:
-                add_ticket(
-                    "ML",
-                    "%s %+d" % (side, px),
-                    px,
-                    {"edge": "open-move %.1f%%" % (edge * 100)},
-                )
+        # --- ML: frozen logreg P(home win); edge vs open implied ---
+        # Requires opens; uses current HR price as close-proxy features at lock time.
+        if frozen_model is not None and ml_away and ml_home:
+            px_a = px_int(ml_away["price"])
+            px_h = px_int(ml_home["price"])
+            open_a = op.get("ml_away")
+            open_h = op.get("ml_home")
+            if px_a is not None and px_h is not None and open_a is not None and open_h is not None:
+                try:
+                    feats, meta = frozen_model.build_game_features(
+                        away, home, px_a, px_h, open_a, open_h,
+                        team_form, probable_map, sp_priors, park_factors,
+                    )
+                    p_home = frozen_model.score_market(_frozen, "ml", feats)
+                except Exception as e:
+                    print("ml_score_error", away, home, type(e).__name__, e)
+                    p_home = None
+                if p_home is not None:
+                    p_away = 1.0 - p_home
+                    # Evaluate each side vs open
+                    for side_name, px, open_px, model_p in (
+                        (away, px_a, open_a, p_away),
+                        (home, px_h, open_h, p_home),
+                    ):
+                        if px is None or px < ML_CAP or px > ML_PLUS_CAP:
+                            continue
+                        open_imp = american_to_prob(open_px)
+                        if open_imp is None:
+                            continue
+                        edge = model_p - open_imp
+                        if edge >= ML_EDGE:
+                            sp_note = ""
+                            if side_name == away and meta.get("away_sp"):
+                                sp_note = " · %s" % meta.get("away_sp")
+                            if side_name == home and meta.get("home_sp"):
+                                sp_note = " · %s" % meta.get("home_sp")
+                            add_ticket(
+                                "ML",
+                                "%s %+d" % (side_name, px),
+                                px,
+                                {
+                                    "edge": "model-open %.1f%% (p=%.1f%%)" % (edge * 100, model_p * 100),
+                                    "model_p": round(model_p, 4),
+                                    "open_implied": round(open_imp, 4),
+                                    "note": (book_used or "") + sp_note,
+                                },
+                            )
+        elif ml_away and ml_home:
+            print("ml_skip_no_frozen_model")
 
         if rl_away:
             px = px_int(rl_away["price"])
@@ -1067,7 +1140,7 @@ def main():
         "locks": [
             {
                 "market": "ML",
-                "rule": "Frozen logreg. model_p − open ≥ 7%. Cap −180 to +200.",
+                "rule": "Frozen logreg (wired). model_p − open_implied ≥ 7%. Cap −180 to +180. Current ML as close-proxy features.",
             },
             {
                 "market": "RL",

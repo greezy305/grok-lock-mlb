@@ -37,8 +37,8 @@
     "odds": -130,
     "locked_odds": -130,
     "locked_side": "Under 11.5 -130",
-    "now_odds": -130,
-    "now_side": "Under 11.5 -130",
+    "now_odds": 110,
+    "now_side": "Under 10.5 +110",
     "units": "1u",
     "time": "8:41 PM ET",
     "status": "pending",
@@ -50,9 +50,9 @@
     "check": "10:30 AM ET check \u00b7 posted 12:13 PM ET",
     "edge": "P(over) 47.6%",
     "ou_line": 11.5,
-    "line_refreshed_at": "2026-09-16 12:13 ET",
-    "live": "San Diego Padres None-None Colorado Rockies",
-    "game_status": "Scheduled"
+    "line_refreshed_at": "2026-09-16 19:42 ET",
+    "live": "San Diego Padres 0-0 Colorado Rockies",
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-16|Philadelphia Phillies|Washington Nationals|OU",
@@ -78,8 +78,8 @@
     "edge": "P(over) 56.5%",
     "ou_line": 8.5,
     "line_refreshed_at": "2026-09-16 16:38 ET",
-    "live": "Philadelphia Phillies 0-0 Washington Nationals",
-    "game_status": "Pre-Game"
+    "live": "Philadelphia Phillies 2-0 Washington Nationals",
+    "game_status": "In Progress"
   },
   {
     "id": "2026-09-16|Baltimore Orioles|New York Mets|OU",
@@ -105,8 +105,8 @@
     "edge": "P(over) 56.5%",
     "ou_line": 8.5,
     "line_refreshed_at": "2026-09-16 16:38 ET",
-    "live": "Baltimore Orioles None-None New York Mets",
-    "game_status": "Pre-Game"
+    "live": "Baltimore Orioles 3-0 New York Mets",
+    "game_status": "In Progress"
   },
   {
     "id": "2026-09-13|Cincinnati Reds|Milwaukee Brewers|RL",
@@ -1061,7 +1061,7 @@
     "status": "void",
     "result": "VOID",
     "pnl": 0.0,
-    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
+    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
     "book": "hardrockbet",
     "edge": "P(over) 45.5%",
     "ou_line": 2.5,

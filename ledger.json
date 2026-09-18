@@ -9,8 +9,8 @@
     "odds": -115,
     "locked_odds": -115,
     "locked_side": "Athletics +1.5 -115",
-    "now_odds": -115,
-    "now_side": "Athletics +1.5 -115",
+    "now_odds": -150,
+    "now_side": "Athletics +1.5 -150",
     "units": "1u",
     "time": "7:11 PM ET",
     "status": "pending",
@@ -21,9 +21,9 @@
     "posted_at": "2026-09-18 13:47 ET",
     "check": "2:00 PM ET check \u00b7 posted 1:47 PM ET",
     "edge": "plus-money +1.5 dog",
-    "line_refreshed_at": "2026-09-18 13:47 ET",
-    "live": "Athletics None-None Cleveland Guardians",
-    "game_status": "Scheduled"
+    "line_refreshed_at": "2026-09-18 16:09 ET",
+    "live": "Athletics 0-0 Cleveland Guardians",
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-18|Boston Red Sox|Tampa Bay Rays|OU",
@@ -48,9 +48,9 @@
     "check": "2:00 PM ET check \u00b7 posted 1:47 PM ET",
     "edge": "P(over) 46.5%",
     "ou_line": 7.5,
-    "line_refreshed_at": "2026-09-18 13:47 ET",
-    "live": "Boston Red Sox None-None Tampa Bay Rays",
-    "game_status": "Scheduled"
+    "line_refreshed_at": "2026-09-18 16:09 ET",
+    "live": "Boston Red Sox 0-0 Tampa Bay Rays",
+    "game_status": "Pre-Game"
   },
   {
     "id": "2026-09-18|Miami Marlins|San Diego Padres|RL",
@@ -100,7 +100,7 @@
     "posted_at": "2026-09-18 13:47 ET",
     "check": "2:00 PM ET check \u00b7 posted 1:47 PM ET",
     "edge": "plus-money +1.5 dog",
-    "line_refreshed_at": "2026-09-18 13:47 ET",
+    "line_refreshed_at": "2026-09-18 16:09 ET",
     "live": "San Francisco Giants None-None Los Angeles Dodgers",
     "game_status": "Scheduled"
   },
@@ -1197,7 +1197,7 @@
     "status": "void",
     "result": "VOID",
     "pnl": 0.0,
-    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
+    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
     "book": "hardrockbet",
     "edge": "P(over) 45.5%",
     "ou_line": 2.5,

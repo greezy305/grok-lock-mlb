@@ -1,8 +1,13 @@
 {
-  "new_tickets": 0,
-  "picks_today": 1,
-  "day": "2026-09-17",
+  "new_tickets": 4,
+  "picks_today": 4,
+  "day": "2026-09-18",
   "book": "hardrockbet",
-  "updated": "2026-09-17 19:35 ET",
-  "titles": []
+  "updated": "2026-09-18 13:47 ET",
+  "titles": [
+    "RL \u00b7 Athletics @ Cleveland Guardians \u00b7 Athletics +1.5 -115",
+    "OU \u00b7 Boston Red Sox @ Tampa Bay Rays \u00b7 Under 7.5 -135",
+    "RL \u00b7 Miami Marlins @ San Diego Padres \u00b7 Miami Marlins +1.5 -125",
+    "RL \u00b7 San Francisco Giants @ Los Angeles Dodgers \u00b7 San Francisco Giants +1.5 +115"
+  ]
 }

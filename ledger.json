@@ -1,5 +1,31 @@
 [
   {
+    "id": "2026-09-19|San Francisco Giants|Los Angeles Dodgers|RL",
+    "date": "2026-09-19",
+    "market": "RL",
+    "away": "San Francisco Giants",
+    "home": "Los Angeles Dodgers",
+    "side": "San Francisco Giants +1.5 -120",
+    "odds": -120,
+    "locked_odds": -120,
+    "locked_side": "San Francisco Giants +1.5 -120",
+    "now_odds": -120,
+    "now_side": "San Francisco Giants +2.5 -120",
+    "units": "1u",
+    "time": "9:11 PM ET",
+    "status": "pending",
+    "result": "",
+    "pnl": 0.0,
+    "note": "hardrockbet",
+    "book": "hardrockbet",
+    "posted_at": "2026-09-19 13:21 ET",
+    "check": "2:00 PM ET check \u00b7 posted 1:21 PM ET",
+    "edge": "plus-money +1.5 dog",
+    "line_refreshed_at": "2026-09-19 13:21 ET",
+    "live": "San Francisco Giants None-None Los Angeles Dodgers",
+    "game_status": "Scheduled"
+  },
+  {
     "id": "2026-09-18|Athletics|Cleveland Guardians|RL",
     "date": "2026-09-18",
     "market": "RL",
@@ -13,9 +39,9 @@
     "now_side": "Athletics +1.5 -150",
     "units": "1u",
     "time": "7:11 PM ET",
-    "status": "pending",
-    "result": "",
-    "pnl": 0.0,
+    "status": "loss",
+    "result": "L",
+    "pnl": -1.15,
     "note": "hardrockbet",
     "book": "hardrockbet",
     "posted_at": "2026-09-18 13:47 ET",
@@ -23,7 +49,8 @@
     "edge": "plus-money +1.5 dog",
     "line_refreshed_at": "2026-09-18 19:26 ET",
     "live": "Athletics 3-0 Cleveland Guardians",
-    "game_status": "In Progress"
+    "game_status": "Final",
+    "final": "Athletics 3-5 Cleveland Guardians"
   },
   {
     "id": "2026-09-18|Boston Red Sox|Tampa Bay Rays|OU",
@@ -39,9 +66,9 @@
     "now_side": "Under 7.5 -135",
     "units": "1u",
     "time": "7:11 PM ET",
-    "status": "pending",
-    "result": "",
-    "pnl": 0.0,
+    "status": "win",
+    "result": "W",
+    "pnl": 1.0,
     "note": "hardrockbet",
     "book": "hardrockbet",
     "posted_at": "2026-09-18 13:47 ET",
@@ -50,7 +77,8 @@
     "ou_line": 7.5,
     "line_refreshed_at": "2026-09-18 16:09 ET",
     "live": "Boston Red Sox 1-1 Tampa Bay Rays",
-    "game_status": "In Progress"
+    "game_status": "Final",
+    "final": "Boston Red Sox 4-2 Tampa Bay Rays"
   },
   {
     "id": "2026-09-18|Miami Marlins|San Diego Padres|RL",
@@ -66,9 +94,9 @@
     "now_side": "Miami Marlins +1.5 -170",
     "units": "1u",
     "time": "9:41 PM ET",
-    "status": "pending",
-    "result": "",
-    "pnl": 0.0,
+    "status": "loss",
+    "result": "L",
+    "pnl": -1.25,
     "note": "hardrockbet",
     "book": "hardrockbet",
     "posted_at": "2026-09-18 13:47 ET",
@@ -76,7 +104,8 @@
     "edge": "plus-money +1.5 dog",
     "line_refreshed_at": "2026-09-18 19:26 ET",
     "live": "Miami Marlins 0-0 San Diego Padres",
-    "game_status": "Pre-Game"
+    "game_status": "Final",
+    "final": "Miami Marlins 2-8 San Diego Padres"
   },
   {
     "id": "2026-09-18|San Francisco Giants|Los Angeles Dodgers|RL",
@@ -92,9 +121,9 @@
     "now_side": "San Francisco Giants +2.5 -135",
     "units": "1u",
     "time": "10:15 PM ET",
-    "status": "pending",
-    "result": "",
-    "pnl": 0.0,
+    "status": "loss",
+    "result": "L",
+    "pnl": -0.87,
     "note": "hardrockbet",
     "book": "hardrockbet",
     "posted_at": "2026-09-18 13:47 ET",
@@ -102,7 +131,8 @@
     "edge": "plus-money +1.5 dog",
     "line_refreshed_at": "2026-09-18 19:26 ET",
     "live": "San Francisco Giants 0-0 Los Angeles Dodgers",
-    "game_status": "Pre-Game"
+    "game_status": "Final",
+    "final": "San Francisco Giants 2-8 Los Angeles Dodgers"
   },
   {
     "id": "2026-09-17|Kansas City Royals|Houston Astros|OU",
@@ -1197,7 +1227,7 @@
     "status": "void",
     "result": "VOID",
     "pnl": 0.0,
-    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
+    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
     "book": "hardrockbet",
     "edge": "P(over) 45.5%",
     "ou_line": 2.5,

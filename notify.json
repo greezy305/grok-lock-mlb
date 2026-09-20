@@ -1,8 +1,12 @@
 {
-  "new_tickets": 0,
-  "picks_today": 1,
-  "day": "2026-09-19",
+  "new_tickets": 3,
+  "picks_today": 3,
+  "day": "2026-09-20",
   "book": "hardrockbet",
-  "updated": "2026-09-19 19:17 ET",
-  "titles": []
+  "updated": "2026-09-20 13:34 ET",
+  "titles": [
+    "RL \u00b7 Athletics @ Cleveland Guardians \u00b7 Athletics +1.5 -115",
+    "OU \u00b7 Athletics @ Cleveland Guardians \u00b7 Under 7.5 -135",
+    "RL \u00b7 San Francisco Giants @ Los Angeles Dodgers \u00b7 San Francisco Giants +1.5 +105"
+  ]
 }

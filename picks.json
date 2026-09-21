@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-21 15:39 ET",
+  "updated": "2026-09-21 17:24 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": "hardrockbet",
@@ -74,13 +74,13 @@
       "time": "9:46 PM ET",
       "away": "Minnesota Twins",
       "home": "San Francisco Giants",
-      "ml_away": "-120",
-      "ml_home": "+100",
+      "ml_away": "-125",
+      "ml_home": "+105",
       "rl_away": "",
-      "rl_home": "-165",
+      "rl_home": "-160",
       "ou_line": 8.5,
-      "ou_over": "+100",
-      "ou_under": "-120",
+      "ou_over": "-105",
+      "ou_under": "-115",
       "note": "hardrockbet"
     }
   ],

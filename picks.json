@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-26 19:43 ET",
+  "updated": "2026-09-27 14:35 ET",
   "unit_dollars": 50,
   "season": 2026,
   "book": null,
@@ -12,21 +12,21 @@
       "live_units": 0.0
     },
     "rl": {
-      "bets": 34,
-      "wr": 0.5,
-      "units": -2.05,
-      "live_bets": 34,
-      "live_units": -2.05
+      "bets": 35,
+      "wr": 0.514,
+      "units": -1.05,
+      "live_bets": 35,
+      "live_units": -1.05
     },
     "ou": {
-      "bets": 34,
-      "wr": 0.618,
-      "units": 4.45,
-      "live_bets": 34,
-      "live_units": 4.45
+      "bets": 35,
+      "wr": 0.629,
+      "units": 5.45,
+      "live_bets": 35,
+      "live_units": 5.45
     },
-    "stacked_units": 2.4,
-    "live_units": 2.4
+    "stacked_units": 4.4,
+    "live_units": 4.4
   },
   "locks": [
     {
@@ -42,10 +42,10 @@
       "rule": "One side. |P(over) \u2212 52.4%| \u2265 4%. Full-game lines 5.5\u201314.5 only."
     }
   ],
-  "slate_date": "2026-09-26",
+  "slate_date": "2026-09-27",
   "slate": [
     {
-      "time": "12:35 PM ET",
+      "time": "1:05 PM ET",
       "away": "New York Mets",
       "home": "Washington Nationals",
       "ml_away": "",
@@ -58,9 +58,61 @@
       "note": "final/no book line"
     },
     {
-      "time": "1:10 PM ET",
-      "away": "Pittsburgh Pirates",
-      "home": "Detroit Tigers",
+      "time": "1:05 PM ET",
+      "away": "Baltimore Orioles",
+      "home": "New York Yankees",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "2:30 PM ET",
+      "away": "Tampa Bay Rays",
+      "home": "Philadelphia Phillies",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "3:05 PM ET",
+      "away": "Chicago Cubs",
+      "home": "Boston Red Sox",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "3:05 PM ET",
+      "away": "Houston Astros",
+      "home": "Athletics",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "3:05 PM ET",
+      "away": "Los Angeles Dodgers",
+      "home": "San Francisco Giants",
       "ml_away": "",
       "ml_home": "",
       "rl_away": "",
@@ -84,46 +136,7 @@
       "note": "final/no book line"
     },
     {
-      "time": "4:05 PM ET",
-      "away": "Los Angeles Dodgers",
-      "home": "San Francisco Giants",
-      "ml_away": "",
-      "ml_home": "",
-      "rl_away": "",
-      "rl_home": "",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "final/no book line"
-    },
-    {
-      "time": "4:10 PM ET",
-      "away": "Texas Rangers",
-      "home": "Minnesota Twins",
-      "ml_away": "",
-      "ml_home": "",
-      "rl_away": "",
-      "rl_home": "",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "final/no book line"
-    },
-    {
-      "time": "4:10 PM ET",
-      "away": "Atlanta Braves",
-      "home": "Miami Marlins",
-      "ml_away": "",
-      "ml_home": "",
-      "rl_away": "",
-      "rl_home": "",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "final/no book line"
-    },
-    {
-      "time": "7:10 PM ET",
+      "time": "3:10 PM ET",
       "away": "Cleveland Guardians",
       "home": "Kansas City Royals",
       "ml_away": "",
@@ -136,9 +149,9 @@
       "note": "final/no book line"
     },
     {
-      "time": "7:10 PM ET",
-      "away": "Colorado Rockies",
-      "home": "Chicago White Sox",
+      "time": "3:10 PM ET",
+      "away": "Pittsburgh Pirates",
+      "home": "Detroit Tigers",
       "ml_away": "",
       "ml_home": "",
       "rl_away": "",
@@ -149,33 +162,7 @@
       "note": "final/no book line"
     },
     {
-      "time": "7:10 PM ET",
-      "away": "St. Louis Cardinals",
-      "home": "Milwaukee Brewers",
-      "ml_away": "",
-      "ml_home": "",
-      "rl_away": "",
-      "rl_home": "",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "final/no book line"
-    },
-    {
-      "time": "7:15 PM ET",
-      "away": "Tampa Bay Rays",
-      "home": "Philadelphia Phillies",
-      "ml_away": "",
-      "ml_home": "",
-      "rl_away": "",
-      "rl_home": "",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "final/no book line"
-    },
-    {
-      "time": "8:40 PM ET",
+      "time": "3:10 PM ET",
       "away": "Arizona Diamondbacks",
       "home": "San Diego Padres",
       "ml_away": "",
@@ -188,20 +175,7 @@
       "note": "final/no book line"
     },
     {
-      "time": "9:40 PM ET",
-      "away": "Houston Astros",
-      "home": "Athletics",
-      "ml_away": "",
-      "ml_home": "",
-      "rl_away": "",
-      "rl_home": "",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "final/no book line"
-    },
-    {
-      "time": "9:40 PM ET",
+      "time": "3:10 PM ET",
       "away": "Los Angeles Angels",
       "home": "Seattle Mariners",
       "ml_away": "",
@@ -212,54 +186,85 @@
       "ou_over": "",
       "ou_under": "",
       "note": "final/no book line"
-    }
-  ],
-  "picks": [
+    },
     {
-      "date": "2026-09-26",
-      "market": "RL",
+      "time": "3:10 PM ET",
+      "away": "Texas Rangers",
+      "home": "Minnesota Twins",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "3:10 PM ET",
       "away": "Colorado Rockies",
       "home": "Chicago White Sox",
-      "side": "Colorado Rockies +1.5 -110",
-      "time": "7:11 PM ET",
-      "edge": "plus-money +1.5 dog",
-      "units": "1u",
-      "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "Colorado Rockies 3-0 Chicago White Sox",
-      "odds": -110,
-      "now_odds": -110,
-      "now_side": "Colorado Rockies +1.5 -110",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
       "ou_line": null,
-      "check": "2:00 PM ET check \u00b7 posted 1:54 PM ET",
-      "posted_at": "2026-09-26 13:54 ET"
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "3:10 PM ET",
+      "away": "Atlanta Braves",
+      "home": "Miami Marlins",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "3:10 PM ET",
+      "away": "St. Louis Cardinals",
+      "home": "Milwaukee Brewers",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    }
+  ],
+  "picks": [],
+  "picks_status": "No lock this pass.",
+  "recent": [
+    {
+      "date": "2026-09-26",
+      "game": "Colorado Rockies @ Chicago White Sox",
+      "market": "RL",
+      "side": "Colorado Rockies +1.5 -110",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -110,
+      "final": "Colorado Rockies 9-6 Chicago White Sox"
     },
     {
       "date": "2026-09-26",
+      "game": "Tampa Bay Rays @ Philadelphia Phillies",
       "market": "OU",
-      "away": "Tampa Bay Rays",
-      "home": "Philadelphia Phillies",
       "side": "Over 6.5 -135",
-      "time": "7:16 PM ET",
-      "edge": "P(over) 57.4%",
-      "units": "1u",
-      "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "Tampa Bay Rays 0-0 Philadelphia Phillies",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
       "odds": -135,
-      "now_odds": -135,
-      "now_side": "Over 6.5 -135",
-      "ou_line": 6.5,
-      "check": "2:00 PM ET check \u00b7 posted 1:54 PM ET",
-      "posted_at": "2026-09-26 13:54 ET"
-    }
-  ],
-  "picks_status": "2 model ticket(s) \u00b7 no book",
-  "recent": [
+      "final": "Tampa Bay Rays 12-1 Philadelphia Phillies"
+    },
     {
       "date": "2026-09-25",
       "game": "Colorado Rockies @ Chicago White Sox",

@@ -13,9 +13,9 @@
     "now_side": "Colorado Rockies +1.5 -110",
     "units": "1u",
     "time": "7:11 PM ET",
-    "status": "pending",
-    "result": "",
-    "pnl": 0.0,
+    "status": "win",
+    "result": "W",
+    "pnl": 1.0,
     "note": "hardrockbet",
     "book": "hardrockbet",
     "posted_at": "2026-09-26 13:54 ET",
@@ -23,7 +23,8 @@
     "edge": "plus-money +1.5 dog",
     "line_refreshed_at": "2026-09-26 13:54 ET",
     "live": "Colorado Rockies 3-0 Chicago White Sox",
-    "game_status": "In Progress"
+    "game_status": "Final",
+    "final": "Colorado Rockies 9-6 Chicago White Sox"
   },
   {
     "id": "2026-09-26|Tampa Bay Rays|Philadelphia Phillies|OU",
@@ -39,9 +40,9 @@
     "now_side": "Over 6.5 -135",
     "units": "1u",
     "time": "7:16 PM ET",
-    "status": "pending",
-    "result": "",
-    "pnl": 0.0,
+    "status": "win",
+    "result": "W",
+    "pnl": 1.0,
     "note": "hardrockbet",
     "book": "hardrockbet",
     "posted_at": "2026-09-26 13:54 ET",
@@ -50,7 +51,8 @@
     "ou_line": 6.5,
     "line_refreshed_at": "2026-09-26 13:54 ET",
     "live": "Tampa Bay Rays 0-0 Philadelphia Phillies",
-    "game_status": "Warmup"
+    "game_status": "Final",
+    "final": "Tampa Bay Rays 12-1 Philadelphia Phillies"
   },
   {
     "id": "2026-09-25|Colorado Rockies|Chicago White Sox|RL",
@@ -1719,7 +1721,7 @@
     "status": "void",
     "result": "VOID",
     "pnl": 0.0,
-    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
+    "note": "hardrockbet \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds \u00b7 voided junk line/odds",
     "book": "hardrockbet",
     "edge": "P(over) 45.5%",
     "ou_line": 2.5,

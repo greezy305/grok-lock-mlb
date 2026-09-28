@@ -372,12 +372,21 @@ def grade_ticket(t, games):
 
 
 def ytd_from_ledger(ledger):
-    """Live ledger only, win-1u: win +1.0, loss −risk_units(odds)."""
-    live = {
-        "ml": {"bets": 0, "wins": 0, "units": 0.0},
-        "rl": {"bets": 0, "wins": 0, "units": 0.0},
-        "ou": {"bets": 0, "wins": 0, "units": 0.0},
-    }
+    """Live ledger only, win-1u: win +1.0, loss −risk_units(odds).
+
+    Also splits regular vs playoff using ticket is_playoff / season_phase flags.
+    """
+    def empty_bucket():
+        return {
+            "ml": {"bets": 0, "wins": 0, "units": 0.0},
+            "rl": {"bets": 0, "wins": 0, "units": 0.0},
+            "ou": {"bets": 0, "wins": 0, "units": 0.0},
+        }
+
+    live = empty_bucket()
+    po = empty_bucket()
+    rs = empty_bucket()
+
     for t in ledger:
         st = t.get("status")
         if st not in ("win", "loss", "push"):
@@ -394,30 +403,45 @@ def ytd_from_ledger(ledger):
             odds = -110.0
         if abs(odds) >= 500:
             continue  # junk odds
-        live[key]["bets"] += 1
+        is_po = bool(t.get("is_playoff")) or str(t.get("season_phase") or "").lower() == "playoffs"
+        targets = [live, po if is_po else rs]
+        for bucket in targets:
+            bucket[key]["bets"] += 1
+            if st == "win":
+                bucket[key]["wins"] += 1
+                bucket[key]["units"] += 1.0
+            else:
+                bucket[key]["units"] += -risk_units(odds)
         if st == "win":
-            live[key]["wins"] += 1
-            live[key]["units"] += 1.0
             t["pnl"] = 1.0
         else:
-            live[key]["units"] += -risk_units(odds)
             t["pnl"] = round(-risk_units(odds), 3)
-    out = {}
-    stacked = 0.0
-    for k in ("ml", "rl", "ou"):
-        bets = live[k]["bets"]
-        wins = live[k]["wins"]
-        units = round(live[k]["units"], 2)
-        stacked += units
-        out[k] = {
-            "bets": bets,
-            "wr": round(wins / bets, 3) if bets else 0.0,
-            "units": units,
-            "live_bets": bets,
-            "live_units": units,
-        }
-    out["stacked_units"] = round(stacked, 2)
-    out["live_units"] = round(stacked, 2)
+
+    def pack(bucket):
+        out = {}
+        stacked = 0.0
+        total_bets = 0
+        for k in ("ml", "rl", "ou"):
+            bets = bucket[k]["bets"]
+            wins = bucket[k]["wins"]
+            units = round(bucket[k]["units"], 2)
+            stacked += units
+            total_bets += bets
+            out[k] = {
+                "bets": bets,
+                "wr": round(wins / bets, 3) if bets else 0.0,
+                "units": units,
+                "live_bets": bets,
+                "live_units": units,
+            }
+        out["stacked_units"] = round(stacked, 2)
+        out["live_units"] = round(stacked, 2)
+        out["bets"] = total_bets
+        return out
+
+    out = pack(live)
+    out["playoffs"] = pack(po)
+    out["regular"] = pack(rs)
     return out
 
 

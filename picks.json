@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-28 18:45 ET",
+  "updated": "2026-09-28 19:00 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "regular",
@@ -31,7 +31,60 @@
       "live_units": 5.45
     },
     "stacked_units": 4.4,
-    "live_units": 4.4
+    "live_units": 4.4,
+    "bets": 70,
+    "playoffs": {
+      "ml": {
+        "bets": 0,
+        "wr": 0.0,
+        "units": 0.0,
+        "live_bets": 0,
+        "live_units": 0.0
+      },
+      "rl": {
+        "bets": 0,
+        "wr": 0.0,
+        "units": 0.0,
+        "live_bets": 0,
+        "live_units": 0.0
+      },
+      "ou": {
+        "bets": 0,
+        "wr": 0.0,
+        "units": 0.0,
+        "live_bets": 0,
+        "live_units": 0.0
+      },
+      "stacked_units": 0.0,
+      "live_units": 0.0,
+      "bets": 0
+    },
+    "regular": {
+      "ml": {
+        "bets": 0,
+        "wr": 0.0,
+        "units": 0.0,
+        "live_bets": 0,
+        "live_units": 0.0
+      },
+      "rl": {
+        "bets": 35,
+        "wr": 0.514,
+        "units": -1.05,
+        "live_bets": 35,
+        "live_units": -1.05
+      },
+      "ou": {
+        "bets": 35,
+        "wr": 0.629,
+        "units": 5.45,
+        "live_bets": 35,
+        "live_units": 5.45
+      },
+      "stacked_units": 4.4,
+      "live_units": 4.4,
+      "bets": 70
+    }
   },
   "locks": [
     {

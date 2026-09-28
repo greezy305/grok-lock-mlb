@@ -1,7 +1,12 @@
 {
-  "updated": "2026-09-28 16:40 ET",
+  "updated": "2026-09-28 18:41 ET",
   "unit_dollars": 50,
   "season": 2026,
+  "season_phase": "regular",
+  "playoff_live_locks": true,
+  "playoff_rl_live": true,
+  "playoff_ml_live": true,
+  "playoff_ou_live": false,
   "book": null,
   "ytd": {
     "ml": {
@@ -31,15 +36,15 @@
   "locks": [
     {
       "market": "ML",
-      "rule": "Frozen logreg (wired). model_p \u2212 open_implied \u2265 7%. Cap \u2212180 to +180. Current ML as close-proxy features."
+      "rule": "RS: frozen logreg, edge \u2265 7% vs open, \u2212180\u2026+180. Playoffs: Rule A only \u2014 elim + opp short start + bp_adv\u22651 + \u2212180\u2026+180 (no RS logreg)."
     },
     {
       "market": "RL",
-      "rule": "+1.5 dog only. Juice \u2212130 to +170. P(cover) \u2212 implied \u2265 3%."
+      "rule": "RS: ML dog +1.5, juice \u2212130\u2026+170. Playoffs: ML dog +1.5, juice \u2212150\u2026+100, dog ML \u2264 +200 (holdout)."
     },
     {
       "market": "OU",
-      "rule": "One side. |P(over) \u2212 52.4%| \u2265 4%. Full-game lines 5.5\u201314.5 only."
+      "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: OFF until totals model clears holdout."
     }
   ],
   "slate_date": "2026-09-28",

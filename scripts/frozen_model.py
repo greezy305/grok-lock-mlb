@@ -143,13 +143,11 @@ def sp_lookup(priors, pitcher_name):
 
 
 def build_team_form(day_iso, lookback_days=25):
-    """Season WP + L10 RS/RA/RD from MLB schedule API."""
+    """Season WP + L10/L3 RS/RA/RD + rest_days from MLB schedule API (strictly before day)."""
     from datetime import datetime, timedelta
 
     end = datetime.strptime(day_iso, "%Y-%m-%d").date()
-    start = end - timedelta(days=lookback_days)
-    # season start roughly
-    season_start = f"{end.year}-03-20"
+    season_start = "%d-03-20" % end.year
     url = (
         "https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate=%s&endDate=%s"
         "&hydrate=linescore,team"
@@ -160,10 +158,10 @@ def build_team_form(day_iso, lookback_days=25):
         print("team_form_error", type(e).__name__, e)
         return {}
 
-    # per team list of results before day_iso (finals only)
     games_by = {}
     season_w = {}
     season_n = {}
+    last_date = {}
     for d in data.get("dates") or []:
         ds = d.get("date") or ""
         for g in d.get("games") or []:
@@ -189,20 +187,127 @@ def build_team_form(day_iso, lookback_days=25):
                 season_w[ab] = season_w.get(ab, 0) + (1 if won else 0)
                 season_n[ab] = season_n.get(ab, 0) + 1
                 games_by.setdefault(ab, []).append((ds, rs, ra))
+                prev = last_date.get(ab)
+                if prev is None or ds > prev:
+                    last_date[ab] = ds
 
     out = {}
     for ab, games in games_by.items():
-        games = sorted(games, key=lambda x: x[0])[-10:]
-        if not games:
+        games_sorted = sorted(games, key=lambda x: x[0])
+        last10 = games_sorted[-10:]
+        last3 = games_sorted[-3:]
+        if not last10:
             continue
-        rs = sum(g[1] for g in games) / len(games)
-        ra = sum(g[2] for g in games) / len(games)
+        rs = sum(g[1] for g in last10) / len(last10)
+        ra = sum(g[2] for g in last10) / len(last10)
+        ra3 = sum(g[2] for g in last3) / len(last3) if last3 else ra
+        rs3 = sum(g[1] for g in last3) / len(last3) if last3 else rs
         n = season_n.get(ab, 0) or 1
+        rest = 3.0
+        ld = last_date.get(ab)
+        if ld:
+            try:
+                rest = float((end - datetime.strptime(ld, "%Y-%m-%d").date()).days)
+            except Exception:
+                rest = 3.0
         out[ab] = {
             "wp_sea": season_w.get(ab, 0) / n,
             "rs_L10": rs,
             "ra_L10": ra,
             "rd_L10": rs - ra,
+            "rs_L3": rs3,
+            "ra_L3": ra3,
+            "rd_L3": rs3 - ra3,
+            "rest_days": rest,
+            "last_game_date": ld,
+        }
+    return out
+
+
+def _best_of_from_series(series_desc, game_type):
+    s = str(series_desc or "").lower()
+    gt = str(game_type or "").upper()
+    if "wild card" in s or gt == "F":
+        return 3 if "series" in s else 1
+    if "division" in s or gt == "D":
+        return 5
+    if "championship" in s or "lcs" in s or gt == "L":
+        return 7
+    if "world series" in s or gt == "W":
+        return 7
+    return 5
+
+
+def build_series_context(day_iso):
+    """Playoff series state for games on day_iso: game number, wins, elimination flags.
+
+    Uses MLB schedule from season start through day_iso. Only Finals before today
+    count toward series score; today's game is not included in prior wins.
+    """
+    from datetime import datetime
+
+    end = datetime.strptime(day_iso, "%Y-%m-%d").date()
+    season_start = "%d-03-20" % end.year
+    url = (
+        "https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate=%s&endDate=%s"
+        "&hydrate=team"
+    ) % (season_start, day_iso)
+    try:
+        data = fetch_json(url, timeout=45)
+    except Exception as e:
+        print("series_context_error", type(e).__name__, e)
+        return {}
+
+    # series_key -> list of completed games (date, away_ab, home_ab, away_score, home_score)
+    completed = {}
+    today_games = []
+    for d in data.get("dates") or []:
+        ds = d.get("date") or ""
+        for g in d.get("games") or []:
+            gt = (g.get("gameType") or "R").upper()
+            if gt not in ("F", "D", "L", "W"):
+                continue
+            series = g.get("seriesDescription") or ""
+            away = ((g.get("teams") or {}).get("away") or {}).get("team") or {}
+            home = ((g.get("teams") or {}).get("home") or {}).get("team") or {}
+            ak = team_to_abbr(away.get("name") or "")
+            hk = team_to_abbr(home.get("name") or "")
+            pair = tuple(sorted([ak, hk]))
+            sk = (gt, series, pair)
+            st = (g.get("status") or {}).get("abstractGameState") or ""
+            ar = ((g.get("teams") or {}).get("away") or {}).get("score")
+            hr = ((g.get("teams") or {}).get("home") or {}).get("score")
+            if ds < day_iso and st == "Final" and ar is not None and hr is not None:
+                completed.setdefault(sk, []).append((ds, ak, hk, int(ar), int(hr)))
+            if ds == day_iso:
+                today_games.append((sk, ak, hk, gt, series, g.get("gamePk")))
+
+    out = {}
+    for sk, ak, hk, gt, series, pk in today_games:
+        prior = sorted(completed.get(sk) or [], key=lambda x: x[0])
+        wins = {ak: 0, hk: 0}
+        for _ds, a, h, ar, hr in prior:
+            if ar > hr:
+                wins[a] = wins.get(a, 0) + 1
+            else:
+                wins[h] = wins.get(h, 0) + 1
+        series_game = len(prior) + 1
+        best_of = _best_of_from_series(series, gt)
+        need = best_of // 2 + 1
+        away_elim = series_game > 1 and wins.get(hk, 0) >= need - 1
+        home_elim = series_game > 1 and wins.get(ak, 0) >= need - 1
+        out[(ak, hk)] = {
+            "series_game": series_game,
+            "best_of": best_of,
+            "series_wins_away": wins.get(ak, 0),
+            "series_wins_home": wins.get(hk, 0),
+            "is_series_game1": series_game == 1,
+            "is_elimination_game": bool(away_elim or home_elim),
+            "away_elim_if_lose": bool(away_elim),
+            "home_elim_if_lose": bool(home_elim),
+            "series_description": series,
+            "game_type": gt,
+            "game_pk": pk,
         }
     return out
 
@@ -244,8 +349,14 @@ def build_game_features(
     pitchers,
     priors,
     parks,
+    series_context=None,
 ):
-    """Feature dict for frozen model. Uses current ML as close proxy at lock time."""
+    """Feature dict for frozen model. Uses current ML as close proxy at lock time.
+
+    series_context: optional dict from build_series_context(day) keyed by (away_abbr, home_abbr).
+    Rest / L3 / series flags are attached to meta for playoff logic and future model versions.
+    BP ERA uses recent RA as live proxy until true bullpen IP feed exists.
+    """
     aa = team_to_abbr(away_name)
     ha = team_to_abbr(home_name)
     fa = form.get(aa) or {}
@@ -254,10 +365,8 @@ def build_game_features(
     asp = sp_lookup(priors, pinfo.get("away_sp"))
     hsp = sp_lookup(priors, pinfo.get("home_sp"))
 
-    # Odds features — current as close proxy
     home_imp = american_to_prob(ml_home)
     away_imp = american_to_prob(ml_away)
-    # moves in American points (current - open)
     home_move = None
     away_move = None
     try:
@@ -271,6 +380,14 @@ def build_game_features(
     pf = parks.get(ha)
     if pf is None:
         pf = parks.get(str(ha).upper())
+
+    # Live bullpen proxy: recent runs allowed (L10 primary, L3 fallback)
+    home_bp = fh.get("ra_L10")
+    if home_bp is None:
+        home_bp = fh.get("ra_L3")
+    away_bp = fa.get("ra_L10")
+    if away_bp is None:
+        away_bp = fa.get("ra_L3")
 
     feats = {
         "home_implied_close": home_imp,
@@ -290,15 +407,17 @@ def build_game_features(
         "home_sp_xfip_prior": hsp.get("xfip"),
         "away_sp_xfip_prior": asp.get("xfip"),
         "park_factor": pf,
-        "home_bp_era_L30": None,  # median fill until live BP feed
-        "away_bp_era_L30": None,
+        "home_bp_era_L30": home_bp,
+        "away_bp_era_L30": away_bp,
         "home_sp_kbb_prior": hsp.get("kbb"),
         "away_sp_kbb_prior": asp.get("kbb"),
         "home_sp_stuff_prior": hsp.get("stuff"),
         "away_sp_stuff_prior": asp.get("stuff"),
-        "wind_out_mph": None,  # median fill
+        "wind_out_mph": None,
         "temp_f": None,
     }
+
+    sx = (series_context or {}).get((aa, ha)) or {}
     meta = {
         "away_abbr": aa,
         "home_abbr": ha,
@@ -306,5 +425,214 @@ def build_game_features(
         "home_sp": pinfo.get("home_sp") or "",
         "away_sp_matched": bool(asp),
         "home_sp_matched": bool(hsp),
+        "away_rest_days": fa.get("rest_days"),
+        "home_rest_days": fh.get("rest_days"),
+        "away_ra_L3": fa.get("ra_L3"),
+        "home_ra_L3": fh.get("ra_L3"),
+        "series_game": sx.get("series_game"),
+        "best_of": sx.get("best_of"),
+        "is_series_game1": sx.get("is_series_game1"),
+        "is_elimination_game": sx.get("is_elimination_game"),
+        "series_wins_away": sx.get("series_wins_away"),
+        "series_wins_home": sx.get("series_wins_home"),
+        "series_description": sx.get("series_description"),
+        "game_type": sx.get("game_type"),
     }
     return feats, meta
+
+
+def _parse_ip(s):
+    """MLB inningsPitched: 5.1 = 5 + 1/3, 5.2 = 5 + 2/3."""
+    if s is None:
+        return 0.0
+    try:
+        x = float(s)
+    except (TypeError, ValueError):
+        return 0.0
+    whole = int(x)
+    frac = x - whole
+    if abs(frac - 0.1) < 0.01:
+        return whole + 1.0 / 3.0
+    if abs(frac - 0.2) < 0.01:
+        return whole + 2.0 / 3.0
+    return float(x)
+
+
+def _box_pitching_ip(game_pk):
+    """Return {abbr: {relief_ip, starter_ip}} for a completed game."""
+    try:
+        data = fetch_json(
+            "https://statsapi.mlb.com/api/v1.1/game/%s/feed/live" % int(game_pk),
+            timeout=25,
+        )
+    except Exception:
+        return {}
+    gd = data.get("gameData") or {}
+    teams_meta = gd.get("teams") or {}
+    box = (data.get("liveData") or {}).get("boxscore") or {}
+    bteams = box.get("teams") or {}
+    out = {}
+    for side in ("away", "home"):
+        tname = ((teams_meta.get(side) or {}).get("team") or {}).get("name") or ""
+        ab = team_to_abbr(tname)
+        players = (bteams.get(side) or {}).get("players") or {}
+        pitchers = (bteams.get(side) or {}).get("pitchers") or []
+        relief_ip = 0.0
+        starter_ip = 0.0
+        for i, pid in enumerate(pitchers):
+            pl = players.get("ID%s" % pid) or {}
+            stats = ((pl.get("stats") or {}).get("pitching") or {})
+            ip = _parse_ip(stats.get("inningsPitched"))
+            if i == 0:
+                starter_ip = ip
+            else:
+                relief_ip += ip
+        out[ab] = {
+            "relief_ip": round(relief_ip, 3),
+            "starter_ip": round(starter_ip, 3),
+        }
+    return out
+
+
+def build_live_bullpen_context(day_iso, team_abbrs=None):
+    """Live relief IP L3d + previous-start length for teams on today's slate.
+
+    Returns dict abbr -> {
+      bp_ip_L3d, prev_starter_ip, prev_short_start (1 if prior start <= 5 IP)
+    }
+    Strictly uses Finals before day_iso only (no lookahead).
+    """
+    from datetime import datetime, timedelta
+
+    end = datetime.strptime(day_iso, "%Y-%m-%d").date()
+    start = end - timedelta(days=4)
+    url = (
+        "https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate=%s&endDate=%s"
+        "&hydrate=team"
+    ) % (start.isoformat(), day_iso)
+    try:
+        data = fetch_json(url, timeout=40)
+    except Exception as e:
+        print("bullpen_context_error", type(e).__name__, e)
+        return {}
+
+    want = None
+    if team_abbrs:
+        want = set(str(t).upper() for t in team_abbrs)
+
+    # Collect finals before today for relevant teams
+    games = []  # (date, pk, away_ab, home_ab)
+    for d in data.get("dates") or []:
+        ds = d.get("date") or ""
+        if ds >= day_iso:
+            continue
+        for g in d.get("games") or []:
+            if (g.get("status") or {}).get("abstractGameState") != "Final":
+                continue
+            pk = g.get("gamePk")
+            if not pk:
+                continue
+            away = ((g.get("teams") or {}).get("away") or {}).get("team") or {}
+            home = ((g.get("teams") or {}).get("home") or {}).get("team") or {}
+            aa = team_to_abbr(away.get("name") or "")
+            ha = team_to_abbr(home.get("name") or "")
+            if want and aa not in want and ha not in want:
+                continue
+            games.append((ds, int(pk), aa, ha))
+
+    # Fetch boxes
+    by_team = {}  # ab -> list of (date, relief_ip, starter_ip)
+    seen_pk = set()
+    for ds, pk, aa, ha in games:
+        if pk in seen_pk:
+            continue
+        seen_pk.add(pk)
+        box = _box_pitching_ip(pk)
+        for ab in (aa, ha):
+            info = box.get(ab) or {}
+            if not info and ab:
+                # try any key match
+                for k, v in box.items():
+                    if k == ab:
+                        info = v
+                        break
+            by_team.setdefault(ab, []).append(
+                (
+                    ds,
+                    float(info.get("relief_ip") or 0),
+                    float(info.get("starter_ip") or 0),
+                )
+            )
+
+    out = {}
+    for ab, rows in by_team.items():
+        rows = sorted(rows, key=lambda x: x[0])
+        lo = (end - timedelta(days=3)).isoformat()
+        l3 = [r for r in rows if r[0] >= lo]
+        bp_l3 = sum(r[1] for r in l3)
+        prev = rows[-1] if rows else None
+        prev_starter = float(prev[2]) if prev else None
+        prev_short = 1.0 if prev is not None and prev[2] <= 5.0 else 0.0
+        out[ab] = {
+            "bp_ip_L3d": round(bp_l3, 3),
+            "prev_starter_ip": prev_starter,
+            "prev_short_start": prev_short,
+            "games_L3d": len(l3),
+        }
+    return out
+
+
+def playoff_ml_rule_a_sides(away_name, home_name, ml_away_px, ml_home_px, series_context, bullpen_context):
+    """Playoff ML Rule A: elim + opp short start + bp_adv>=1 + price -180..+180.
+
+    Returns list of (side_name, price, meta_dict) for sides that qualify.
+    Does not use RS logreg edge.
+    """
+    aa = team_to_abbr(away_name)
+    ha = team_to_abbr(home_name)
+    sx = (series_context or {}).get((aa, ha)) or {}
+    if not sx.get("is_elimination_game"):
+        return []
+
+    ba = (bullpen_context or {}).get(aa) or {}
+    bh = (bullpen_context or {}).get(ha) or {}
+    away_bp = float(ba.get("bp_ip_L3d") or 0)
+    home_bp = float(bh.get("bp_ip_L3d") or 0)
+    away_short = float(ba.get("prev_short_start") or 0) >= 1
+    home_short = float(bh.get("prev_short_start") or 0) >= 1
+
+    out = []
+    # Side qualifies if: opponent had short start, we have fresher pen (bp_adv>=1), price in band
+    for side_name, px, our_bp, opp_bp, opp_short in (
+        (away_name, ml_away_px, away_bp, home_bp, home_short),
+        (home_name, ml_home_px, home_bp, away_bp, away_short),
+    ):
+        if px is None:
+            continue
+        try:
+            px = int(px)
+        except (TypeError, ValueError):
+            continue
+        if px < -180 or px > 180:
+            continue
+        if not opp_short:
+            continue
+        bp_adv = opp_bp - our_bp
+        if bp_adv < 1.0:
+            continue
+        out.append(
+            (
+                side_name,
+                px,
+                {
+                    "rule": "playoff_ml_rule_a",
+                    "edge": "elim · opp short start · bp_adv %.1f" % bp_adv,
+                    "bp_adv": round(bp_adv, 3),
+                    "our_bp_ip_L3d": round(our_bp, 3),
+                    "opp_bp_ip_L3d": round(opp_bp, 3),
+                    "is_elimination_game": True,
+                    "series_game": sx.get("series_game"),
+                },
+            )
+        )
+    return out

@@ -38,6 +38,28 @@ OU_LINE_LO = 5.5
 OU_LINE_HI = 14.5
 OU_JUICE_LO = -200
 OU_JUICE_HI = 200
+
+# --- Playoff mode (MLB Stats API gameType) ---
+# F=Wild Card, D=Division, L=LCS, W=World Series
+PLAYOFF_GAME_TYPES = frozenset({"F", "D", "L", "W"})
+# Playoff market flags (holdout-tested rules only).
+PLAYOFF_RL_LIVE = os.environ.get("PLAYOFF_RL_LIVE", "1").strip() not in ("0", "false", "False")
+# Rule A: elim + opp short start + bp_adv>=1 + ML −180…+180 (playoffs only; RS ML unchanged)
+PLAYOFF_ML_LIVE = os.environ.get("PLAYOFF_ML_LIVE", "1").strip() not in ("0", "false", "False")
+PLAYOFF_OU_LIVE = os.environ.get("PLAYOFF_OU_LIVE", "0").strip() in ("1", "true", "True")
+# Back-compat: any playoff live market
+PLAYOFF_LIVE_LOCKS = PLAYOFF_RL_LIVE or PLAYOFF_ML_LIVE
+
+# Playoff RL holdout rule (dev 2014–21 / test 2022–25):
+# ML dog on +1.5, RL juice −150…+100, dog ML ≤ +200
+PLAYOFF_RL_JUICE_LO = -150
+PLAYOFF_RL_JUICE_HI = 100
+PLAYOFF_RL_DOG_ML_MAX = 200  # American; exclude huge dogs
+
+# Playoff ML Rule A juice band (same numeric caps as RS display band)
+PLAYOFF_ML_CAP = -180
+PLAYOFF_ML_PLUS_CAP = 180
+
 # Live ledger only — no pre-live RESEARCH seed mixed into YTD
 RESEARCH = {
     "ml": {"bets": 0, "wr": 0.0, "units": 0.0},
@@ -102,6 +124,9 @@ def pull_schedule(day):
         for g in d.get("games") or []:
             away = g["teams"]["away"]
             home = g["teams"]["home"]
+            gt = (g.get("gameType") or "R").upper()
+            series = g.get("seriesDescription") or ""
+            is_po = gt in PLAYOFF_GAME_TYPES
             games.append({
                 "pk": g.get("gamePk"),
                 "date": day,
@@ -114,8 +139,23 @@ def pull_schedule(day):
                 "hs": home.get("score"),
                 "ap": (away.get("probablePitcher") or {}).get("fullName", "TBD"),
                 "hp": (home.get("probablePitcher") or {}).get("fullName", "TBD"),
+                "game_type": gt,
+                "series": series,
+                "is_playoff": is_po,
             })
     return games
+
+
+def season_phase_from_games(games):
+    """Return regular | playoffs | mixed from MLB schedule rows."""
+    if not games:
+        return "regular"
+    po = sum(1 for g in games if g.get("is_playoff"))
+    if po == 0:
+        return "regular"
+    if po == len(games):
+        return "playoffs"
+    return "mixed"
 
 
 def book_markets(event):
@@ -686,6 +726,8 @@ def main():
     _frozen = None
     team_form = {}
     probable_map = {}
+    series_context = {}
+    bullpen_context = {}
     sp_priors = {}
     park_factors = {}
     if frozen_model is not None:
@@ -702,11 +744,25 @@ def main():
                 print("probable_games", len(probable_map))
             except Exception as e:
                 print("probable_fail", type(e).__name__, e)
+            try:
+                series_context = frozen_model.build_series_context(day)
+                print("series_context_games", len(series_context))
+            except Exception as e:
+                print("series_context_fail", type(e).__name__, e)
+                series_context = {}
             sp_priors = frozen_model.load_sp_priors()
             park_factors = frozen_model.load_park_factors()
             print("sp_priors", len(sp_priors), "parks", len(park_factors))
         else:
             print("frozen_model_missing")
+        # Bullpen context for playoff ML Rule A (safe to build any day; empty in deep RS)
+        if PLAYOFF_ML_LIVE:
+            try:
+                bullpen_context = frozen_model.build_live_bullpen_context(day)
+                print("bullpen_context_teams", len(bullpen_context))
+            except Exception as e:
+                print("bullpen_context_fail", type(e).__name__, e)
+                bullpen_context = {}
     else:
         print("frozen_model_module_missing")
 
@@ -718,6 +774,15 @@ def main():
         slate = []
 
     grade_games = list(slate)
+    phase = season_phase_from_games(slate)
+    print("season_phase", phase, "games", len(slate),
+          "playoff_games", sum(1 for g in slate if g.get("is_playoff")))
+    playoff_match = {}
+    for g in slate:
+        key = (norm_name(g.get("away")), norm_name(g.get("home")))
+        playoff_match[key] = bool(g.get("is_playoff"))
+        playoff_match[(g.get("away"), g.get("home"))] = bool(g.get("is_playoff"))
+
     # Look back 14 days so lagged pendings (e.g. 9/02) still grade
     for i in range(1, 15):
         prev = (now - timedelta(days=i)).strftime("%Y-%m-%d")
@@ -838,6 +903,10 @@ def main():
                 return _fmt_px(px)
             return "%s %s %s" % (side, ou_line, _fmt_px(px))
 
+        _is_po = bool(
+            playoff_match.get((norm_name(away), norm_name(home)))
+            or playoff_match.get((away, home))
+        )
         slate_cards.append({
             "time": tlabel,
             "away": away,
@@ -850,6 +919,8 @@ def main():
             "ou_over": _fmt_px(ou_o_px),
             "ou_under": _fmt_px(ou_u_px),
             "note": book_used or "no Hard Rock book",
+            "is_playoff": _is_po,
+            "season_phase": "playoffs" if _is_po else "regular",
         })
 
         if eid not in opens:
@@ -874,6 +945,26 @@ def main():
             tid = ticket_id(day, away, home, market)
             if tid in by_id:
                 return
+            is_po = bool(
+                playoff_match.get((norm_name(away), norm_name(home)))
+                or playoff_match.get((away, home))
+            )
+            # Playoff gate: RL may go live under holdout rule; ML/OU stay off unless enabled.
+            if is_po:
+                allow = (
+                    (market == "RL" and PLAYOFF_RL_LIVE)
+                    or (market == "ML" and PLAYOFF_ML_LIVE)
+                    or (market == "OU" and PLAYOFF_OU_LIVE)
+                )
+                if not allow:
+                    print(
+                        "playoff_shadow",
+                        market,
+                        "%s @ %s" % (away, home),
+                        side,
+                        odds,
+                    )
+                    return
             row = {
                 "id": tid,
                 "date": day,
@@ -895,15 +986,36 @@ def main():
                 "book": book_used,
                 "posted_at": now.strftime("%Y-%m-%d %H:%M ET"),
                 "check": scan_tag,
+                "is_playoff": is_po,
+                "season_phase": "playoffs" if is_po else "regular",
             }
             if extra:
                 row.update(extra)
             by_id[tid] = row
             new_tickets.append(row)
 
-        # --- ML: frozen logreg P(home win); edge vs open implied ---
-        # Requires opens; uses current HR price as close-proxy features at lock time.
-        if frozen_model is not None and ml_away and ml_home:
+        is_po_game = bool(
+            playoff_match.get((norm_name(away), norm_name(home)))
+            or playoff_match.get((away, home))
+        )
+
+        # --- ML ---
+        # Playoffs: Rule A only (does NOT use RS logreg). RS: frozen logreg unchanged.
+        if is_po_game and PLAYOFF_ML_LIVE and frozen_model is not None and ml_away and ml_home:
+            px_a = px_int(ml_away["price"])
+            px_h = px_int(ml_home["price"])
+            try:
+                sides = frozen_model.playoff_ml_rule_a_sides(
+                    away, home, px_a, px_h, series_context, bullpen_context,
+                )
+            except Exception as e:
+                print("playoff_ml_rule_a_error", away, home, type(e).__name__, e)
+                sides = []
+            for side_name, px, extra in sides:
+                extra = dict(extra or {})
+                extra["note"] = book_used or ""
+                add_ticket("ML", "%s %+d" % (side_name, px), px, extra)
+        elif (not is_po_game) and frozen_model is not None and _frozen and ml_away and ml_home:
             px_a = px_int(ml_away["price"])
             px_h = px_int(ml_home["price"])
             open_a = op.get("ml_away")
@@ -913,6 +1025,7 @@ def main():
                     feats, meta = frozen_model.build_game_features(
                         away, home, px_a, px_h, open_a, open_h,
                         team_form, probable_map, sp_priors, park_factors,
+                        series_context=series_context,
                     )
                     p_home = frozen_model.score_market(_frozen, "ml", feats)
                 except Exception as e:
@@ -920,7 +1033,6 @@ def main():
                     p_home = None
                 if p_home is not None:
                     p_away = 1.0 - p_home
-                    # Evaluate each side vs open
                     for side_name, px, open_px, model_p in (
                         (away, px_a, open_a, p_away),
                         (home, px_h, open_h, p_home),
@@ -946,22 +1058,79 @@ def main():
                                     "model_p": round(model_p, 4),
                                     "open_implied": round(open_imp, 4),
                                     "note": (book_used or "") + sp_note,
+                                    "rule": "rs_logreg",
                                 },
                             )
-        elif ml_away and ml_home:
+        elif ml_away and ml_home and not is_po_game:
             print("ml_skip_no_frozen_model")
 
-        if rl_away:
-            px = px_int(rl_away["price"])
-            if px is not None and RL_JUICE_LO <= px <= RL_JUICE_HI:
-                add_ticket(
-                    "RL",
-                    "%s +1.5 %+d" % (away, px),
-                    px,
-                    {"edge": "plus-money +1.5 dog"},
-                )
+        # --- RL: ML dog on +1.5 ---
+        # RS: juice −130…+170
+        # Playoffs (holdout): juice −150…+100 and dog ML ≤ +200
+        if ml_away and ml_home:
+            px_a = px_int(ml_away["price"])
+            px_h = px_int(ml_home["price"])
+            if px_a is not None and px_h is not None:
+                # Higher American price = underdog (e.g. +140 > -160)
+                if px_a > px_h:
+                    dog_name, dog_ml, rl_row = away, px_a, rl_away
+                else:
+                    dog_name, dog_ml, rl_row = home, px_h, (
+                        outcome_price(spreads, name=home, point=1.5) or rl_home
+                    )
+                if rl_row is None and dog_name == home:
+                    for o in spreads or []:
+                        if o.get("name") == home and float(o.get("point") or 0) == 1.5:
+                            rl_row = o
+                            break
+                if rl_row is not None:
+                    rl_px = px_int(rl_row["price"])
+                    pts = rl_row.get("point")
+                    try:
+                        pts_f = float(pts) if pts is not None else None
+                    except (TypeError, ValueError):
+                        pts_f = None
+                    if rl_px is not None and pts_f is not None and abs(pts_f - 1.5) < 0.05:
+                        if is_po_game:
+                            juice_ok = PLAYOFF_RL_JUICE_LO <= rl_px <= PLAYOFF_RL_JUICE_HI
+                            dog_ok = dog_ml <= PLAYOFF_RL_DOG_ML_MAX
+                            if juice_ok and dog_ok:
+                                aa = frozen_model.team_to_abbr(away) if frozen_model else ""
+                                ha = frozen_model.team_to_abbr(home) if frozen_model else ""
+                                sx = (series_context or {}).get((aa, ha)) or {}
+                                fa = (team_form or {}).get(aa) or {}
+                                fh = (team_form or {}).get(ha) or {}
+                                extra = {
+                                    "edge": "playoff dog +1.5 · juice %d · ML %+d"
+                                    % (rl_px, dog_ml),
+                                    "dog_ml": dog_ml,
+                                    "rule": "playoff_rl_holdout",
+                                    "series_game": sx.get("series_game"),
+                                    "is_elimination_game": sx.get("is_elimination_game"),
+                                    "is_series_game1": sx.get("is_series_game1"),
+                                    "away_rest_days": fa.get("rest_days"),
+                                    "home_rest_days": fh.get("rest_days"),
+                                }
+                                add_ticket(
+                                    "RL",
+                                    "%s +1.5 %+d" % (dog_name, rl_px),
+                                    rl_px,
+                                    extra,
+                                )
+                        else:
+                            if RL_JUICE_LO <= rl_px <= RL_JUICE_HI:
+                                add_ticket(
+                                    "RL",
+                                    "%s +1.5 %+d" % (dog_name, rl_px),
+                                    rl_px,
+                                    {
+                                        "edge": "RS dog +1.5 · juice %d" % rl_px,
+                                        "dog_ml": dog_ml,
+                                    },
+                                )
 
-        if tot_over and tot_under:
+        # --- OU: regular season only unless PLAYOFF_OU_LIVE ---
+        if (not is_po_game or PLAYOFF_OU_LIVE) and tot_over and tot_under:
             ov = px_int(tot_over["price"])
             un = px_int(tot_under["price"])
             line = tot_over.get("point")
@@ -1135,20 +1304,25 @@ def main():
         "updated": now.strftime("%Y-%m-%d %H:%M ET"),
         "unit_dollars": UNIT,
         "season": 2026,
+        "season_phase": phase,
+        "playoff_live_locks": PLAYOFF_LIVE_LOCKS,
+        "playoff_rl_live": PLAYOFF_RL_LIVE,
+        "playoff_ml_live": PLAYOFF_ML_LIVE,
+        "playoff_ou_live": PLAYOFF_OU_LIVE,
         "book": book_used,
         "ytd": ytd,
         "locks": [
             {
                 "market": "ML",
-                "rule": "Frozen logreg (wired). model_p − open_implied ≥ 7%. Cap −180 to +180. Current ML as close-proxy features.",
+                "rule": "RS: frozen logreg, edge ≥ 7% vs open, −180…+180. Playoffs: Rule A only — elim + opp short start + bp_adv≥1 + −180…+180 (no RS logreg).",
             },
             {
                 "market": "RL",
-                "rule": "+1.5 dog only. Juice −130 to +170. P(cover) − implied ≥ 3%.",
+                "rule": "RS: ML dog +1.5, juice −130…+170. Playoffs: ML dog +1.5, juice −150…+100, dog ML ≤ +200 (holdout).",
             },
             {
                 "market": "OU",
-                "rule": "One side. |P(over) − 52.4%| ≥ 4%. Full-game lines 5.5–14.5 only.",
+                "rule": "RS: |P(over) − 52.4%| ≥ 4%, lines 5.5–14.5. Playoffs: OFF until totals model clears holdout.",
             },
         ],
         "slate_date": day,  # always ET calendar today — never carry prior board

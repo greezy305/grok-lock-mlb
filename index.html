@@ -393,8 +393,9 @@
   <div id="recent" hidden></div>
   <div id="rules" hidden></div>
 
-  <footer>
-    One ticket per game per market. No parlays. No playoffs.<br />
+  <footer id="appFooter">
+    One ticket per game per market. No parlays.<br />
+    <span id="footerPhase">Playoffs: ML Rule A + RL live · OU pending holdout.</span><br />
     Cron locks at 10:30 / 2:00 / 5:30 ET. Pull to refresh after a run.
   </footer>
 
@@ -1274,11 +1275,30 @@ function render(d) {
         });
       }
       const y = d.ytd || {};
+      const poY = y.playoffs || {};
+      const phase = (d.season_phase || "").toLowerCase();
+      const poLive = !!(d.playoff_ml_live || d.playoff_rl_live || d.playoff_live_locks);
       document.getElementById("stacked").textContent = fmtU(y.stacked_units || 0);
       document.getElementById("stacked").className = "big " + ((y.stacked_units || 0) >= 0 ? "pos" : "neg");
-      document.getElementById("bankNote").textContent =
+      let note =
         "$" + Math.round((y.stacked_units || 0) * (d.unit_dollars || 50)).toLocaleString() +
         " paper · live " + fmtU(y.live_units || 0);
+      const poUnits = Number(poY.stacked_units || 0);
+      const poBets = Number(poY.bets || 0);
+      if (poBets > 0 || phase === "playoffs" || phase === "mixed") {
+        note += " · Playoff YTD " + fmtU(poUnits) + (poBets ? " (" + poBets + ")" : "");
+      }
+      document.getElementById("bankNote").textContent = note;
+      const foot = document.getElementById("footerPhase");
+      if (foot) {
+        if (phase === "playoffs" || (poLive && phase === "mixed")) {
+          foot.textContent = "Playoffs live: ML Rule A + RL · OU pending holdout.";
+        } else if (phase === "mixed") {
+          foot.textContent = "Mixed slate: RS + playoff rules by game.";
+        } else {
+          foot.textContent = "Regular season rules · playoff locks auto when MLB posts F/D/L/W games.";
+        }
+      }
       ["ml","rl","ou"].forEach(k => {
         const row = y[k] || {units:0,bets:0,wr:0};
         const el = document.getElementById(k + "U");
@@ -1479,7 +1499,8 @@ function render(d) {
       document.getElementById("rules").innerHTML = `
         <div class="card"><ol class="rules">
           ${(d.locks||[]).map(l => `<li><strong>${l.market}.</strong> ${l.rule}</li>`).join("")}
-          <li>Max 1 unit per game per market. No parlays. No playoffs.</li>
+          <li>Max 1 unit per game per market. No parlays.</li>
+          <li>Playoffs: ML Rule A (elim + opp short start + bp_adv≥1 + −180…+180) and RL dog +1.5 live. OU off until holdout clears.</li>
           <li>Tickets freeze when first posted. Later cron runs only grade them.</li>
         </ol></div>`;
     }

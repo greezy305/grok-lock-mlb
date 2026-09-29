@@ -567,19 +567,188 @@ def build_live_bullpen_context(day_iso, team_abbrs=None):
     out = {}
     for ab, rows in by_team.items():
         rows = sorted(rows, key=lambda x: x[0])
-        lo = (end - timedelta(days=3)).isoformat()
-        l3 = [r for r in rows if r[0] >= lo]
+        lo3 = (end - timedelta(days=3)).isoformat()
+        lo1 = (end - timedelta(days=1)).isoformat()
+        l3 = [r for r in rows if r[0] >= lo3]
+        l1 = [r for r in rows if r[0] >= lo1]
+        # series proxy: last up to 5 appearances (playoff series length)
+        series_rows = rows[-5:] if rows else []
         bp_l3 = sum(r[1] for r in l3)
+        bp_l1 = sum(r[1] for r in l1)
+        series_bp = sum(r[1] for r in series_rows)
         prev = rows[-1] if rows else None
         prev_starter = float(prev[2]) if prev else None
         prev_short = 1.0 if prev is not None and prev[2] <= 5.0 else 0.0
         out[ab] = {
             "bp_ip_L3d": round(bp_l3, 3),
+            "bp_ip_L1d": round(bp_l1, 3),
+            "series_bp_ip": round(series_bp, 3),
             "prev_starter_ip": prev_starter,
             "prev_short_start": prev_short,
             "games_L3d": len(l3),
         }
     return out
+
+
+# Playoff OU rich_bp coefficients (fit ≤2021 only; test 2022–25 +6.4u @ gap≥0.5 / juice≥−120)
+PLAYOFF_OU_BETA = {
+    "intercept": 5.736813462659192,
+    "line_f": 0.5353685815786897,
+    "sp_siera_avg": 0.7274290128021123,
+    "offense_L10": -0.18926188974508282,
+    "bp_L3": -0.0559612440594952,
+    "bp_L1": 0.06413794400171527,
+    "series_bp": 0.024101174209405503,
+    "short_starts": -0.015356276067296315,
+    "prev_starter_avg": -0.3189115825173517,
+    "park": -1.9426530619391378,
+}
+PLAYOFF_OU_GAP = 0.5
+PLAYOFF_OU_JUICE_MAX_FAV = -120  # do not lay worse than -120
+
+
+def _fnum(x, default):
+    try:
+        if x is None:
+            return default
+        v = float(x)
+        if v != v:
+            return default
+        return v
+    except (TypeError, ValueError):
+        return default
+
+
+def playoff_ou_expected_runs_rich_bp(
+    line,
+    away_siera,
+    home_siera,
+    away_rs_l10,
+    home_rs_l10,
+    away_bp_l3,
+    home_bp_l3,
+    away_bp_l1,
+    home_bp_l1,
+    away_series_bp,
+    home_series_bp,
+    away_short,
+    home_short,
+    away_prev_starter,
+    home_prev_starter,
+    park,
+):
+    """rich_bp expected total (dev-fit)."""
+    line_f = _fnum(line, 7.5)
+    sp_siera_avg = (_fnum(away_siera, 4.0) + _fnum(home_siera, 4.0)) / 2.0
+    offense_L10 = (_fnum(away_rs_l10, 4.5) + _fnum(home_rs_l10, 4.5)) / 2.0
+    bp_L3 = _fnum(away_bp_l3, 0.0) + _fnum(home_bp_l3, 0.0)
+    bp_L1 = _fnum(away_bp_l1, 0.0) + _fnum(home_bp_l1, 0.0)
+    series_bp = _fnum(away_series_bp, 0.0) + _fnum(home_series_bp, 0.0)
+    short_starts = _fnum(away_short, 0.0) + _fnum(home_short, 0.0)
+    prev_starter_avg = (_fnum(away_prev_starter, 5.5) + _fnum(home_prev_starter, 5.5)) / 2.0
+    park_f = _fnum(park, 1.0)
+    b = PLAYOFF_OU_BETA
+    return (
+        b["intercept"]
+        + b["line_f"] * line_f
+        + b["sp_siera_avg"] * sp_siera_avg
+        + b["offense_L10"] * offense_L10
+        + b["bp_L3"] * bp_L3
+        + b["bp_L1"] * bp_L1
+        + b["series_bp"] * series_bp
+        + b["short_starts"] * short_starts
+        + b["prev_starter_avg"] * prev_starter_avg
+        + b["park"] * park_f
+    )
+
+
+def playoff_ou_rule_sides(
+    away_name,
+    home_name,
+    line,
+    over_px,
+    under_px,
+    form,
+    pitchers,
+    priors,
+    parks,
+    bullpen_context,
+    gap_min=None,
+    juice_max_fav=None,
+):
+    """Playoff OU rich_bp: |exp - line| >= 0.5 and odds >= -120.
+
+    Returns list of (side_label, price, meta) — at most one side.
+    """
+    if gap_min is None:
+        gap_min = PLAYOFF_OU_GAP
+    if juice_max_fav is None:
+        juice_max_fav = PLAYOFF_OU_JUICE_MAX_FAV
+    if line is None or over_px is None or under_px is None:
+        return []
+    try:
+        line_f = float(line)
+        ov = int(over_px)
+        un = int(under_px)
+    except (TypeError, ValueError):
+        return []
+
+    aa = team_to_abbr(away_name)
+    ha = team_to_abbr(home_name)
+    fa = (form or {}).get(aa) or {}
+    fh = (form or {}).get(ha) or {}
+    pinfo = (pitchers or {}).get((aa, ha)) or {}
+    asp = sp_lookup(priors or {}, pinfo.get("away_sp"))
+    hsp = sp_lookup(priors or {}, pinfo.get("home_sp"))
+    ba = (bullpen_context or {}).get(aa) or {}
+    bh = (bullpen_context or {}).get(ha) or {}
+    pf = (parks or {}).get(ha)
+    if pf is None:
+        pf = (parks or {}).get(str(ha).upper())
+
+    exp = playoff_ou_expected_runs_rich_bp(
+        line_f,
+        asp.get("siera"),
+        hsp.get("siera"),
+        fa.get("rs_L10"),
+        fh.get("rs_L10"),
+        ba.get("bp_ip_L3d"),
+        bh.get("bp_ip_L3d"),
+        ba.get("bp_ip_L1d"),
+        bh.get("bp_ip_L1d"),
+        ba.get("series_bp_ip"),
+        bh.get("series_bp_ip"),
+        ba.get("prev_short_start"),
+        bh.get("prev_short_start"),
+        ba.get("prev_starter_ip"),
+        bh.get("prev_starter_ip"),
+        pf,
+    )
+    gap = exp - line_f
+    if gap >= gap_min:
+        side, px, label = "over", ov, "Over"
+    elif gap <= -gap_min:
+        side, px, label = "under", un, "Under"
+    else:
+        return []
+    if px < juice_max_fav:
+        return []
+    if abs(px) < 100 or abs(px) > 200:
+        return []
+    return [
+        (
+            "%s %s %+d" % (label, line_f, px),
+            px,
+            {
+                "rule": "playoff_ou_rich_bp",
+                "edge": "exp %.2f vs line %.1f · gap %+.2f" % (exp, line_f, gap),
+                "exp_runs": round(exp, 3),
+                "ou_line": line_f,
+                "gap": round(gap, 3),
+                "ou_side": side,
+            },
+        )
+    ]
 
 
 def playoff_ml_rule_a_sides(away_name, home_name, ml_away_px, ml_home_px, series_context, bullpen_context):

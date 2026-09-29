@@ -46,9 +46,10 @@ PLAYOFF_GAME_TYPES = frozenset({"F", "D", "L", "W"})
 PLAYOFF_RL_LIVE = os.environ.get("PLAYOFF_RL_LIVE", "1").strip() not in ("0", "false", "False")
 # Rule A: elim + opp short start + bp_adv>=1 + ML −180…+180 (playoffs only; RS ML unchanged)
 PLAYOFF_ML_LIVE = os.environ.get("PLAYOFF_ML_LIVE", "1").strip() not in ("0", "false", "False")
-PLAYOFF_OU_LIVE = os.environ.get("PLAYOFF_OU_LIVE", "0").strip() in ("1", "true", "True")
+# Playoff OU: exp-runs gap ≥ 0.5 vs line, juice ≥ −120 (holdout test +u)
+PLAYOFF_OU_LIVE = os.environ.get("PLAYOFF_OU_LIVE", "1").strip() not in ("0", "false", "False")
 # Back-compat: any playoff live market
-PLAYOFF_LIVE_LOCKS = PLAYOFF_RL_LIVE or PLAYOFF_ML_LIVE
+PLAYOFF_LIVE_LOCKS = PLAYOFF_RL_LIVE or PLAYOFF_ML_LIVE or PLAYOFF_OU_LIVE
 
 # Playoff RL holdout rule (dev 2014–21 / test 2022–25):
 # ML dog on +1.5, RL juice −150…+100, dog ML ≤ +200
@@ -779,8 +780,8 @@ def main():
             print("sp_priors", len(sp_priors), "parks", len(park_factors))
         else:
             print("frozen_model_missing")
-        # Bullpen context for playoff ML Rule A (safe to build any day; empty in deep RS)
-        if PLAYOFF_ML_LIVE:
+        # Bullpen context for playoff ML Rule A / OU exp-runs (safe any day)
+        if PLAYOFF_ML_LIVE or PLAYOFF_OU_LIVE:
             try:
                 bullpen_context = frozen_model.build_live_bullpen_context(day)
                 print("bullpen_context_teams", len(bullpen_context))
@@ -1153,8 +1154,27 @@ def main():
                                     },
                                 )
 
-        # --- OU: regular season only unless PLAYOFF_OU_LIVE ---
-        if (not is_po_game or PLAYOFF_OU_LIVE) and tot_over and tot_under:
+        # --- OU ---
+        # Playoffs: expected-runs gap rule (no RS juice gate). RS: market P(over) gate.
+        if is_po_game and PLAYOFF_OU_LIVE and frozen_model is not None and tot_over and tot_under:
+            ov = px_int(tot_over["price"])
+            un = px_int(tot_under["price"])
+            line = tot_over.get("point")
+            if line is None and tot_under:
+                line = tot_under.get("point")
+            try:
+                sides = frozen_model.playoff_ou_rule_sides(
+                    away, home, line, ov, un,
+                    team_form, probable_map, sp_priors, park_factors, bullpen_context,
+                )
+            except Exception as e:
+                print("playoff_ou_error", away, home, type(e).__name__, e)
+                sides = []
+            for side_label, px, extra in sides:
+                extra = dict(extra or {})
+                extra["note"] = book_used or ""
+                add_ticket("OU", side_label, px, extra)
+        elif (not is_po_game) and tot_over and tot_under:
             ov = px_int(tot_over["price"])
             un = px_int(tot_under["price"])
             line = tot_over.get("point")
@@ -1168,6 +1188,7 @@ def main():
                         {
                             "edge": "P(over) %.1f%%" % (p_over * 100),
                             "ou_line": line,
+                            "rule": "rs_juice_gate",
                         },
                     )
                 elif p_over <= OU_BASE - OU_EDGE:
@@ -1178,6 +1199,7 @@ def main():
                         {
                             "edge": "P(over) %.1f%%" % (p_over * 100),
                             "ou_line": line,
+                            "rule": "rs_juice_gate",
                         },
                     )
 
@@ -1346,7 +1368,7 @@ def main():
             },
             {
                 "market": "OU",
-                "rule": "RS: |P(over) − 52.4%| ≥ 4%, lines 5.5–14.5. Playoffs: OFF until totals model clears holdout.",
+                "rule": "RS: |P(over) − 52.4%| ≥ 4%, lines 5.5–14.5. Playoffs: rich_bp exp-runs gap ≥ 0.5 vs line, juice ≥ −120 (no RS juice gate).",
             },
         ],
         "slate_date": day,  # always ET calendar today — never carry prior board

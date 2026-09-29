@@ -353,6 +353,20 @@
     }
     .rules { margin: 0; padding-left: 18px; }
     .rules li { margin: 0 0 10px; font-size: 13px; color: #c5d4c4; line-height: 1.4; }
+    .status-block {
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+      padding: 12px 14px; margin: 0 0 10px;
+    }
+    .status-block h3 {
+      margin: 0 0 6px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--mute); font-weight: 600;
+    }
+    .status-block .val { font-size: 16px; font-weight: 700; color: var(--text); margin: 0 0 2px; }
+    .status-block .sub { font-size: 12px; color: var(--mute); line-height: 1.35; }
+    .status-block .val.pos { color: var(--green); }
+    .status-block .val.neg { color: #ff6b6b; }
+    .status-why { font-size: 13px; color: #c5d4c4; line-height: 1.4; }
+    .status-why strong { color: var(--text); }
     footer { margin-top: 18px; font-size: 11px; color: var(--mute); text-align: center; line-height: 1.5; }
   </style>
 </head>
@@ -385,13 +399,13 @@
     <button class="tab on" data-tab="today">Picks</button>
     <button class="tab" data-tab="slate">Slate</button>
     <button class="tab" data-tab="recent">Results</button>
-    <button class="tab" data-tab="rules">Rules</button>
+    <button class="tab" data-tab="status">Status</button>
   </div>
 
   <div id="today"></div>
   <div id="slate" hidden></div>
   <div id="recent" hidden></div>
-  <div id="rules" hidden></div>
+  <div id="status" hidden></div>
 
   <footer id="appFooter">
     One ticket per game per market. No parlays.<br />
@@ -563,7 +577,7 @@
       return p.note || p.book || "";
     }
     function show(id) {
-      ["today","slate","recent","rules"].forEach(t => {
+      ["today","slate","recent","status"].forEach(t => {
         document.getElementById(t).hidden = t !== id;
       });
       document.querySelectorAll(".tab").forEach(b => b.classList.toggle("on", b.dataset.tab === id));
@@ -1496,13 +1510,95 @@ function render(d) {
         </details>`;
       }).join("") : `<div class="empty">No graded tickets yet. After finals, the next cron pass paints W/L here.</div>`;
 
-      document.getElementById("rules").innerHTML = `
-        <div class="card"><ol class="rules">
-          ${(d.locks||[]).map(l => `<li><strong>${l.market}.</strong> ${l.rule}</li>`).join("")}
-          <li>Max 1 unit per game per market. No parlays.</li>
-          <li>Playoffs: ML Rule A (elim + opp short start + bp_adv≥1 + −180…+180), RL dog +1.5, OU exp-runs gap ≥ 0.5 + juice ≥ −120.</li>
-          <li>Tickets freeze when first posted. Later cron runs only grade them.</li>
-        </ol></div>`;
+      // Status tab: Phase · Units · Job · Why last pick (no markets-live strip)
+      (function renderStatus() {
+        const phaseRaw = (d.season_phase || "").toLowerCase();
+        const phaseLabel =
+          phaseRaw === "playoffs" ? "Playoffs" :
+          phaseRaw === "mixed" ? "Mixed (RS + playoffs)" :
+          phaseRaw === "regular" ? "Regular season" :
+          (phaseRaw || "—");
+        const y = d.ytd || {};
+        const po = y.playoffs || {};
+        const stacked = Number(y.stacked_units || 0);
+        const poU = Number(po.stacked_units || 0);
+        const poB = Number(po.bets || 0);
+        const stackCls = stacked >= 0 ? "pos" : "neg";
+        const poCls = poU >= 0 ? "pos" : "neg";
+
+        // Next cron estimate from ET clock
+        function nextCheckEt() {
+          const parts = new Intl.DateTimeFormat("en-US", {
+            timeZone: "America/New_York",
+            hour: "numeric", minute: "numeric", hour12: false
+          }).formatToParts(new Date());
+          let h = 0, m = 0;
+          for (const p of parts) {
+            if (p.type === "hour") h = parseInt(p.value, 10);
+            if (p.type === "minute") m = parseInt(p.value, 10);
+          }
+          const mins = h * 60 + m;
+          const checks = [10 * 60 + 30, 14 * 60, 17 * 60 + 30]; // 10:30 / 2:00 / 5:30
+          for (const c of checks) {
+            if (mins < c) {
+              const hh = Math.floor(c / 60);
+              const mm = c % 60;
+              const label = (hh > 12 ? hh - 12 : hh) + ":" + String(mm).padStart(2, "0") + (hh >= 12 ? " PM" : " AM");
+              return label + " ET";
+            }
+          }
+          return "10:30 AM ET (tomorrow)";
+        }
+
+        // Prefer pending picks, else most recent graded
+        let why = null;
+        const pool = [].concat(d.picks || [], d.recent || []);
+        for (const p of pool) {
+          if (!p) continue;
+          why = p;
+          break;
+        }
+        let whyHtml = `<div class="sub">No picks this pass.</div>`;
+        if (why) {
+          const game = why.game || ((why.away || "") + " @ " + (why.home || ""));
+          const mkt = why.market || "";
+          const side = why.side || why.pick || "";
+          const edge = why.edge || (why.meta && why.meta.edge) || "";
+          const rule = why.rule || (why.meta && why.meta.rule) || "";
+          const odds = why.odds != null ? why.odds : "";
+          whyHtml = `<div class="status-why">
+            <strong>${mkt}</strong> ${side}${odds !== "" ? " · " + odds : ""}<br/>
+            ${game ? game + "<br/>" : ""}
+            ${rule ? "<span class=\\"sub\\">Rule: " + rule + "</span><br/>" : ""}
+            ${edge ? "<span class=\\"edge\\">" + edge + "</span>" : ""}
+          </div>`;
+        }
+
+        document.getElementById("status").innerHTML = `
+          <div class="status-block">
+            <h3>Phase</h3>
+            <div class="val">${phaseLabel}</div>
+            <div class="sub">Slate ${d.slate_date || "—"} · season ${d.season || "2026"}</div>
+          </div>
+          <div class="status-block">
+            <h3>Units</h3>
+            <div class="val ${stackCls}">${fmtU(stacked)}</div>
+            <div class="sub">Stacked YTD · win-1u</div>
+            <div class="val ${poCls}" style="margin-top:8px;font-size:15px">${fmtU(poU)}</div>
+            <div class="sub">Playoff YTD${poB ? " · " + poB + " graded" : " · no PS tickets graded yet"}</div>
+          </div>
+          <div class="status-block">
+            <h3>Job</h3>
+            <div class="val" style="font-size:14px">${d.updated || "—"}</div>
+            <div class="sub">Last run · book ${d.book || "—"}</div>
+            <div class="sub" style="margin-top:6px">Next check ~ ${nextCheckEt()}</div>
+            <div class="sub">Cron 10:30 / 2:00 / 5:30 ET</div>
+          </div>
+          <div class="status-block">
+            <h3>Why last pick</h3>
+            ${whyHtml}
+          </div>`;
+      })();
     }
 
     async function ensureNotifyPermission() {

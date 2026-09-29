@@ -395,7 +395,7 @@
 
   <footer id="appFooter">
     One ticket per game per market. No parlays.<br />
-    <span id="footerPhase">Playoffs: ML Rule A + RL live · OU pending holdout.</span><br />
+    <span id="footerPhase">Playoffs: ML Rule A + RL + OU exp-runs live.</span><br />
     Cron locks at 10:30 / 2:00 / 5:30 ET. Pull to refresh after a run.
   </footer>
 
@@ -1292,7 +1292,7 @@ function render(d) {
       const foot = document.getElementById("footerPhase");
       if (foot) {
         if (phase === "playoffs" || (poLive && phase === "mixed")) {
-          foot.textContent = "Playoffs live: ML Rule A + RL · OU pending holdout.";
+          foot.textContent = "Playoffs live: ML Rule A + RL + OU exp-runs.";
         } else if (phase === "mixed") {
           foot.textContent = "Mixed slate: RS + playoff rules by game.";
         } else {
@@ -1500,7 +1500,7 @@ function render(d) {
         <div class="card"><ol class="rules">
           ${(d.locks||[]).map(l => `<li><strong>${l.market}.</strong> ${l.rule}</li>`).join("")}
           <li>Max 1 unit per game per market. No parlays.</li>
-          <li>Playoffs: ML Rule A (elim + opp short start + bp_adv≥1 + −180…+180) and RL dog +1.5 live. OU off until holdout clears.</li>
+          <li>Playoffs: ML Rule A (elim + opp short start + bp_adv≥1 + −180…+180), RL dog +1.5, OU exp-runs gap ≥ 0.5 + juice ≥ −120.</li>
           <li>Tickets freeze when first posted. Later cron runs only grade them.</li>
         </ol></div>`;
     }

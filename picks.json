@@ -1,12 +1,12 @@
 {
-  "updated": "2026-09-28 21:07 ET",
+  "updated": "2026-09-29 07:30 ET",
   "unit_dollars": 50,
   "season": 2026,
-  "season_phase": "regular",
+  "season_phase": "playoffs",
   "playoff_live_locks": true,
   "playoff_rl_live": true,
   "playoff_ml_live": true,
-  "playoff_ou_live": false,
+  "playoff_ou_live": true,
   "book": null,
   "ytd": {
     "ml": {
@@ -97,11 +97,64 @@
     },
     {
       "market": "OU",
-      "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: OFF until totals model clears holdout."
+      "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: rich_bp exp-runs gap \u2265 0.5 vs line, juice \u2265 \u2212120 (no RS juice gate)."
     }
   ],
-  "slate_date": "2026-09-28",
-  "slate": [],
+  "slate_date": "2026-09-29",
+  "slate": [
+    {
+      "time": "2:00 PM ET",
+      "away": "Philadelphia Phillies",
+      "home": "Atlanta Braves",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "5:00 PM ET",
+      "away": "Chicago White Sox",
+      "home": "Houston Astros",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "8:00 PM ET",
+      "away": "Boston Red Sox",
+      "home": "New York Yankees",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    },
+    {
+      "time": "10:00 PM ET",
+      "away": "Chicago Cubs",
+      "home": "San Diego Padres",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
+    }
+  ],
   "picks": [],
   "picks_status": "No lock this pass.",
   "recent": [

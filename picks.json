@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-29 23:51 ET",
+  "updated": "2026-09-30 15:33 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -100,7 +100,7 @@
       "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: rich_bp exp-runs gap \u2265 0.5 vs line, juice \u2265 \u2212120 (no RS juice gate)."
     }
   ],
-  "slate_date": "2026-09-29",
+  "slate_date": "2026-09-30",
   "slate": [
     {
       "time": "2:00 PM ET",

@@ -1,4 +1,4 @@
-const CACHE = "lock-picker-v61";
+const CACHE = "lock-picker-v62";
 const ASSETS = ["./manifest.json", "./icon.png", "./apple-touch-icon.png"];
 // index.html + picks.json + logos always network-first so updates show immediately
 self.addEventListener("install", (e) => {

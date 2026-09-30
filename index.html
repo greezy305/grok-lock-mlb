@@ -1566,12 +1566,12 @@ function render(d) {
           const edge = why.edge || (why.meta && why.meta.edge) || "";
           const rule = why.rule || (why.meta && why.meta.rule) || "";
           const odds = why.odds != null ? why.odds : "";
-          whyHtml = `<div class="status-why">
-            <strong>${mkt}</strong> ${side}${odds !== "" ? " · " + odds : ""}<br/>
-            ${game ? game + "<br/>" : ""}
-            ${rule ? "<span class=\\"sub\\">Rule: " + rule + "</span><br/>" : ""}
-            ${edge ? "<span class=\\"edge\\">" + edge + "</span>" : ""}
-          </div>`;
+          whyHtml = '<div class="status-why">'
+            + '<strong>' + mkt + '</strong> ' + side + (odds !== "" ? " · " + odds : "") + '<br/>'
+            + (game ? game + '<br/>' : '')
+            + (rule ? '<span class="sub">Rule: ' + rule + '</span><br/>' : '')
+            + (edge ? '<span class="edge">' + edge + '</span>' : '')
+            + '</div>';
         }
 
         document.getElementById("status").innerHTML = `

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-30 17:40 ET",
+  "updated": "2026-09-30 20:40 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -7,7 +7,7 @@
   "playoff_rl_live": true,
   "playoff_ml_live": true,
   "playoff_ou_live": true,
-  "book": null,
+  "book": "hardrockbet",
   "ytd": {
     "ml": {
       "bets": 0,
@@ -103,6 +103,36 @@
   "slate_date": "2026-09-30",
   "slate": [
     {
+      "time": "8:15 PM ET",
+      "away": "Boston Red Sox",
+      "home": "New York Yankees",
+      "ml_away": "+130",
+      "ml_home": "-170",
+      "rl_away": "-185",
+      "rl_home": "+140",
+      "ou_line": 5.5,
+      "ou_over": "-110",
+      "ou_under": "-120",
+      "note": "hardrockbet",
+      "is_playoff": true,
+      "season_phase": "playoffs"
+    },
+    {
+      "time": "10:00 PM ET",
+      "away": "Chicago Cubs",
+      "home": "San Diego Padres",
+      "ml_away": "+125",
+      "ml_home": "-145",
+      "rl_away": "-180",
+      "rl_home": "+150",
+      "ou_line": 7.5,
+      "ou_over": "+105",
+      "ou_under": "-125",
+      "note": "hardrockbet",
+      "is_playoff": true,
+      "season_phase": "playoffs"
+    },
+    {
       "time": "2:00 PM ET",
       "away": "Philadelphia Phillies",
       "home": "Atlanta Braves",
@@ -127,36 +157,32 @@
       "ou_over": "",
       "ou_under": "",
       "note": "final/no book line"
-    },
-    {
-      "time": "8:00 PM ET",
-      "away": "Boston Red Sox",
-      "home": "New York Yankees",
-      "ml_away": "",
-      "ml_home": "",
-      "rl_away": "",
-      "rl_home": "",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "final/no book line"
-    },
-    {
-      "time": "10:00 PM ET",
-      "away": "Chicago Cubs",
-      "home": "San Diego Padres",
-      "ml_away": "",
-      "ml_home": "",
-      "rl_away": "",
-      "rl_home": "",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "final/no book line"
     }
   ],
-  "picks": [],
-  "picks_status": "No lock this pass.",
+  "picks": [
+    {
+      "date": "2026-09-30",
+      "market": "OU",
+      "away": "Chicago Cubs",
+      "home": "San Diego Padres",
+      "side": "Over 7.5 +105",
+      "time": "10:00 PM ET",
+      "edge": "exp 9.53 vs line 7.5 \u00b7 gap +2.03",
+      "units": "1u",
+      "note": "hardrockbet",
+      "status": "pending",
+      "result": "",
+      "pnl": 0.0,
+      "final": "Chicago Cubs 0-0 San Diego Padres",
+      "odds": 105,
+      "now_odds": 105,
+      "now_side": "Over 7.5 +105",
+      "ou_line": 7.5,
+      "check": "5:30 PM ET check \u00b7 posted 8:40 PM ET",
+      "posted_at": "2026-09-30 20:40 ET"
+    }
+  ],
+  "picks_status": "1 model ticket(s) \u00b7 hardrockbet",
   "recent": [
     {
       "date": "2026-09-26",

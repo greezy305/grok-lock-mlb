@@ -3248,5 +3248,25 @@
     "ou_line": 7.5,
     "ou_over": 100,
     "ou_under": -120
+  },
+  "110c5c1a6de988c7066e2f291be8d7ff": {
+    "away": "Boston Red Sox",
+    "home": "New York Yankees",
+    "ml_away": 130,
+    "ml_home": -170,
+    "rl_away": -185,
+    "ou_line": 5.5,
+    "ou_over": -110,
+    "ou_under": -120
+  },
+  "66c0c13a06424600557af241371043fc": {
+    "away": "Chicago Cubs",
+    "home": "San Diego Padres",
+    "ml_away": 125,
+    "ml_home": -145,
+    "rl_away": -180,
+    "ou_line": 7.5,
+    "ou_over": 105,
+    "ou_under": -125
   }
 }

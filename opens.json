@@ -3268,5 +3268,15 @@
     "ou_line": 7.5,
     "ou_over": 105,
     "ou_under": -125
+  },
+  "5524c44b05e28aa899909c9e001184ec": {
+    "away": "Philadelphia Phillies",
+    "home": "Atlanta Braves",
+    "ml_away": -115,
+    "ml_home": -105,
+    "rl_away": null,
+    "ou_line": 7.5,
+    "ou_over": -105,
+    "ou_under": -115
   }
 }

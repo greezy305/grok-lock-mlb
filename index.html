@@ -1205,7 +1205,8 @@
       return out;
     }
     function applyClientGrades(d) {
-      // Grade pending picks against live scoreboard; adjust YTD for display only
+      // Grade pending picks against live scoreboard; adjust YTD for display only.
+      // Preserve regular/playoffs split so Playoff YTD stays correct.
       const picks = (d.picks || []).slice();
       const recent = (d.recent || []).map(r => {
         const out = Object.assign({}, r);
@@ -1226,6 +1227,12 @@
         rl: Object.assign({ units: 0, bets: 0, wr: 0 }, y.rl || {}),
         ou: Object.assign({ units: 0, bets: 0, wr: 0 }, y.ou || {})
       };
+      const poY = Object.assign({ stacked_units: 0, bets: 0 }, y.playoffs || {});
+      const rsY = Object.assign({ stacked_units: 0, bets: 0 }, y.regular || {});
+      let poStacked = Number(poY.stacked_units || 0) || 0;
+      let poBets = Number(poY.bets || 0) || 0;
+      let rsStacked = Number(rsY.stacked_units || 0) || 0;
+      let rsBets = Number(rsY.bets || 0) || 0;
       const stillPending = [];
       let gradedN = 0;
       for (const p of picks) {
@@ -1243,7 +1250,10 @@
         gradedN++;
         const pnl = Number(g.pnl) || 0;
         stacked += pnl;
-        // recent card shape
+        const isPo = !!(g.is_playoff) || String(g.season_phase || "").toLowerCase() === "playoffs"
+          || String(d.season_phase || "").toLowerCase() === "playoffs";
+        if (isPo) { poStacked += pnl; poBets += 1; }
+        else { rsStacked += pnl; rsBets += 1; }
         recent.unshift({
           date: g.date || d.slate_date || "",
           game: (g.away || "") + " @ " + (g.home || ""),
@@ -1252,7 +1262,9 @@
           result: g.result,
           status: g.status,
           units: pnl,
-          final: g.final
+          final: g.final,
+          is_playoff: isPo,
+          season_phase: isPo ? "playoffs" : "regular"
         });
         const mk = (g.market || "").toLowerCase();
         if (markets[mk]) {
@@ -1260,7 +1272,6 @@
           markets[mk].bets = Number(markets[mk].bets || 0) + 1;
         }
       }
-      // Cap recent list
       while (recent.length > 40) recent.pop();
       return {
         picks: stillPending,
@@ -1270,7 +1281,17 @@
           live_units: liveU,
           ml: markets.ml,
           rl: markets.rl,
-          ou: markets.ou
+          ou: markets.ou,
+          playoffs: Object.assign({}, poY, {
+            stacked_units: Math.round(poStacked * 1000) / 1000,
+            live_units: Math.round(poStacked * 1000) / 1000,
+            bets: poBets
+          }),
+          regular: Object.assign({}, rsY, {
+            stacked_units: Math.round(rsStacked * 1000) / 1000,
+            live_units: Math.round(rsStacked * 1000) / 1000,
+            bets: rsBets
+          })
         },
         gradedN: gradedN
       };
@@ -1290,17 +1311,34 @@ function render(d) {
       }
       const y = d.ytd || {};
       const poY = y.playoffs || {};
+      const rsY = y.regular || {};
       const phase = (d.season_phase || "").toLowerCase();
       const poLive = !!(d.playoff_ml_live || d.playoff_rl_live || d.playoff_live_locks);
-      document.getElementById("stacked").textContent = fmtU(y.stacked_units || 0);
-      document.getElementById("stacked").className = "big " + ((y.stacked_units || 0) >= 0 ? "pos" : "neg");
-      let note =
-        "$" + Math.round((y.stacked_units || 0) * (d.unit_dollars || 50)).toLocaleString() +
-        " paper · live " + fmtU(y.live_units || 0);
       const poUnits = Number(poY.stacked_units || 0);
       const poBets = Number(poY.bets || 0);
-      if (poBets > 0 || phase === "playoffs" || phase === "mixed") {
-        note += " · Playoff YTD " + fmtU(poUnits) + (poBets ? " (" + poBets + ")" : "");
+      const rsUnits = Number(rsY.stacked_units != null ? rsY.stacked_units : y.stacked_units || 0);
+      const rsBets = Number(rsY.bets != null ? rsY.bets : y.bets || 0);
+      const showPoPrimary = phase === "playoffs" || (poLive && phase === "mixed" && poBets > 0);
+      const primaryU = showPoPrimary ? poUnits : Number(y.stacked_units || 0);
+      const labelEl = document.querySelector(".bank .label");
+      if (labelEl) {
+        labelEl.textContent = showPoPrimary
+          ? "Playoff YTD · 1u = $50"
+          : "Stacked YTD · 1u = $50";
+      }
+      document.getElementById("stacked").textContent = fmtU(primaryU);
+      document.getElementById("stacked").className = "big " + (primaryU >= 0 ? "pos" : "neg");
+      let note;
+      if (showPoPrimary) {
+        note = "$" + Math.round(primaryU * (d.unit_dollars || 50)).toLocaleString()
+          + " paper · " + (poBets || 0) + " PS ticket" + ((poBets||0)===1?"":"s")
+          + " · RS archive " + fmtU(rsUnits) + (rsBets ? " (" + rsBets + ")" : "");
+      } else {
+        note = "$" + Math.round((y.stacked_units || 0) * (d.unit_dollars || 50)).toLocaleString()
+          + " paper · live " + fmtU(y.live_units || 0);
+        if (poBets > 0 || phase === "playoffs" || phase === "mixed") {
+          note += " · Playoff YTD " + fmtU(poUnits) + (poBets ? " (" + poBets + ")" : "");
+        }
       }
       document.getElementById("bankNote").textContent = note;
       const foot = document.getElementById("footerPhase");
@@ -1582,10 +1620,17 @@ function render(d) {
           </div>
           <div class="status-block">
             <h3>Units</h3>
+            ${phaseRaw === "playoffs" || (phaseRaw === "mixed" && poB > 0) ? `
+            <div class="val ${poCls}">${fmtU(poU)}</div>
+            <div class="sub">Playoff YTD · win-1u${poB ? " · " + poB + " graded" : " · no PS tickets graded yet"}</div>
+            <div class="val ${stackCls}" style="margin-top:8px;font-size:15px">${fmtU(stacked)}</div>
+            <div class="sub">All-time stacked (incl. RS archive)</div>
+            ` : `
             <div class="val ${stackCls}">${fmtU(stacked)}</div>
             <div class="sub">Stacked YTD · win-1u</div>
             <div class="val ${poCls}" style="margin-top:8px;font-size:15px">${fmtU(poU)}</div>
             <div class="sub">Playoff YTD${poB ? " · " + poB + " graded" : " · no PS tickets graded yet"}</div>
+            `}
           </div>
           <div class="status-block">
             <h3>Job</h3>

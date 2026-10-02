@@ -54,21 +54,29 @@ jobs:
           fi
           echo "topic_set yes"
           echo "topic_len ${#NTFY_TOPIC}"
+          echo "token_set $([ -n "$NTFY_TOKEN" ] && echo yes || echo no)"
 
           NEW=0
+          PO_NEW=0
           BODY="Grok-Lock check finished"
           TITLE="Grok-Lock"
+          TAGS="baseball,moneybag"
           if [ -f notify.json ]; then
+            cat notify.json
             NEW=$(python3 -c "import json; print(int(json.load(open('notify.json')).get('new_tickets') or 0))")
-            BODY=$(python3 -c "import json;d=json.load(open('notify.json'));titles=d.get('titles') or [];day=d.get('day') or '';n=int(d.get('new_tickets') or 0);pt=int(d.get('picks_today') or 0);lines=(['%s new lock(s) · %s' % (n, day)] + [str(t) for t in titles[:5]]) if n else ['No new locks · %s open today · %s' % (pt, day)];print(chr(10).join(lines)[:900])")
-            TITLE=$(python3 -c "import json; d=json.load(open('notify.json')); n=int(d.get('new_tickets') or 0); print('Grok-Lock +%s pick(s)' % n if n else 'Grok-Lock')")
+            PO_NEW=$(python3 -c "import json; print(int(json.load(open('notify.json')).get('new_playoff_tickets') or 0))")
+            BODY=$(python3 -c "import json;d=json.load(open('notify.json'));titles=d.get('titles') or [];day=d.get('day') or '';n=int(d.get('new_tickets') or 0);pt=int(d.get('picks_today') or 0);phase=d.get('phase') or '';lines=(['%s new lock(s) · %s · %s' % (n, day, phase)] + [str(t) for t in titles[:5]]) if n else ['No new locks · %s open today · %s' % (pt, day)];print(chr(10).join(lines)[:900])")
+            TITLE=$(python3 -c "import json; d=json.load(open('notify.json')); n=int(d.get('new_tickets') or 0); po=int(d.get('new_playoff_tickets') or 0); print(('Grok-Lock PS +%s' % n) if po else (('Grok-Lock +%s pick(s)' % n) if n else 'Grok-Lock'))")
+            if [ "$PO_NEW" != "0" ]; then TAGS="baseball,trophy,moneybag"; fi
           else
             echo "no notify.json"
           fi
-          echo "new_tickets=$NEW test=$TEST_NOTIFY"
+          echo "new_tickets=$NEW playoff_new=$PO_NEW test=$TEST_NOTIFY"
 
-          if [ "$NEW" = "0" ] && [ "$TEST_NOTIFY" != "true" ]; then
-            echo "No new tickets — no push (use workflow_dispatch test_notify=true to force)"
+          # GHA boolean inputs can be True/true
+          TEST_LC=$(echo "$TEST_NOTIFY" | tr '[:upper:]' '[:lower:]')
+          if [ "$NEW" = "0" ] && [ "$TEST_LC" != "true" ]; then
+            echo "No new tickets — no push (Actions → Daily lock → Run workflow → test_notify)"
             exit 0
           fi
 
@@ -80,7 +88,7 @@ jobs:
           CODE=$(curl -sS -o /tmp/ntfy_out.txt -w "%{http_code}" \
                -H "Title: $TITLE" \
                -H "Priority: high" \
-               -H "Tags: baseball,moneybag" \
+               -H "Tags: $TAGS" \
                -H "Click: https://greezy305.github.io/grok-lock-mlb/" \
                "${AUTH_ARGS[@]}" \
                -d "$BODY" \

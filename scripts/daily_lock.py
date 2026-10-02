@@ -1384,14 +1384,18 @@ def main():
     Path("picks.json").write_text(json.dumps(payload, indent=2) + "\n")
     opens_path.write_text(json.dumps(opens, indent=2) + "\n")
     ledger_path.write_text(json.dumps(graded, indent=2) + "\n")
+    po_new = sum(1 for x in new_tickets if x.get("is_playoff") or str(x.get("season_phase") or "").lower() == "playoffs")
     Path("notify.json").write_text(json.dumps({
         "new_tickets": len(new_tickets),
+        "new_playoff_tickets": po_new,
         "picks_today": len(today_picks),
         "day": day,
+        "phase": phase,
         "book": book_used,
         "updated": now.strftime("%Y-%m-%d %H:%M ET"),
         "titles": [
-            "%s · %s @ %s · %s" % (
+            "%s%s · %s @ %s · %s" % (
+                "[PS] " if (x.get("is_playoff") or str(x.get("season_phase") or "").lower() == "playoffs") else "",
                 x.get("market"),
                 x.get("away") or "?",
                 x.get("home") or "?",
@@ -1401,7 +1405,7 @@ def main():
         ],
     }, indent=2) + "\n")
     print("picks", len(today_picks), "ledger", len(graded), "new", len(new_tickets))
-    print("notify_new", len(new_tickets))
+    print("notify_new", len(new_tickets), "notify_playoff_new", po_new)
 
 
 if __name__ == "__main__":

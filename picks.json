@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-01 20:58 ET",
+  "updated": "2026-10-02 15:26 ET",
   "unit_dollars": 50,
   "season": 2026,
-  "season_phase": "playoffs",
+  "season_phase": "regular",
   "playoff_live_locks": true,
   "playoff_rl_live": true,
   "playoff_ml_live": true,
@@ -24,15 +24,15 @@
       "live_units": -1.05
     },
     "ou": {
-      "bets": 36,
-      "wr": 0.611,
-      "units": 4.5,
-      "live_bets": 36,
-      "live_units": 4.5
+      "bets": 37,
+      "wr": 0.622,
+      "units": 5.5,
+      "live_bets": 37,
+      "live_units": 5.5
     },
-    "stacked_units": 3.45,
-    "live_units": 3.45,
-    "bets": 71,
+    "stacked_units": 4.45,
+    "live_units": 4.45,
+    "bets": 72,
     "playoffs": {
       "ml": {
         "bets": 0,
@@ -49,15 +49,15 @@
         "live_units": 0.0
       },
       "ou": {
-        "bets": 1,
-        "wr": 0.0,
-        "units": -0.95,
-        "live_bets": 1,
-        "live_units": -0.95
+        "bets": 2,
+        "wr": 0.5,
+        "units": 0.05,
+        "live_bets": 2,
+        "live_units": 0.05
       },
-      "stacked_units": -0.95,
-      "live_units": -0.95,
-      "bets": 1
+      "stacked_units": 0.05,
+      "live_units": 0.05,
+      "bets": 2
     },
     "regular": {
       "ml": {
@@ -100,49 +100,22 @@
       "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: rich_bp exp-runs gap \u2265 0.5 vs line, juice \u2265 \u2212120 (no RS juice gate)."
     }
   ],
-  "slate_date": "2026-10-01",
-  "slate": [
-    {
-      "time": "8:15 PM ET",
-      "away": "Philadelphia Phillies",
-      "home": "Atlanta Braves",
-      "ml_away": "+375",
-      "ml_home": "-550",
-      "rl_away": "-110",
-      "rl_home": "",
-      "ou_line": 8.5,
-      "ou_over": "-120",
-      "ou_under": "-110",
-      "note": "hardrockbet",
-      "is_playoff": true,
-      "season_phase": "playoffs"
-    }
-  ],
-  "picks": [
+  "slate_date": "2026-10-02",
+  "slate": [],
+  "picks": [],
+  "picks_status": "No lock this pass.",
+  "recent": [
     {
       "date": "2026-10-01",
+      "game": "Philadelphia Phillies @ Atlanta Braves",
       "market": "OU",
-      "away": "Philadelphia Phillies",
-      "home": "Atlanta Braves",
       "side": "Over 7.5 -105",
-      "time": "8:11 PM ET",
-      "edge": "exp 10.58 vs line 7.5 \u00b7 gap +3.08",
-      "units": "1u",
-      "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "Philadelphia Phillies 0-3 Atlanta Braves",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
       "odds": -105,
-      "now_odds": -105,
-      "now_side": "Over 7.5 -105",
-      "ou_line": 7.5,
-      "check": "2:00 PM ET check \u00b7 posted 3:42 PM ET",
-      "posted_at": "2026-10-01 15:42 ET"
-    }
-  ],
-  "picks_status": "1 model ticket(s) \u00b7 hardrockbet",
-  "recent": [
+      "final": "Philadelphia Phillies 2-6 Atlanta Braves"
+    },
     {
       "date": "2026-09-30",
       "game": "Chicago Cubs @ San Diego Padres",

@@ -1,8 +1,10 @@
 {
   "new_tickets": 0,
-  "picks_today": 1,
-  "day": "2026-10-01",
+  "new_playoff_tickets": 0,
+  "picks_today": 0,
+  "day": "2026-10-02",
+  "phase": "regular",
   "book": "hardrockbet",
-  "updated": "2026-10-01 20:58 ET",
+  "updated": "2026-10-02 15:26 ET",
   "titles": []
 }

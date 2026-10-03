@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-03 14:06 ET",
+  "updated": "2026-10-03 16:21 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -103,31 +103,16 @@
   "slate_date": "2026-10-03",
   "slate": [
     {
-      "time": "1:07 PM ET",
-      "away": "Chicago White Sox",
-      "home": "Cleveland Guardians",
-      "ml_away": "+110",
-      "ml_home": "-140",
-      "rl_away": "-300",
-      "rl_home": "+210",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "hardrockbet",
-      "is_playoff": true,
-      "season_phase": "playoffs"
-    },
-    {
-      "time": "4:00 PM ET",
+      "time": "4:08 PM ET",
       "away": "Atlanta Braves",
       "home": "Los Angeles Dodgers",
-      "ml_away": "+185",
-      "ml_home": "-225",
-      "rl_away": "-110",
-      "rl_home": "-110",
-      "ou_line": 8.5,
-      "ou_over": "+100",
-      "ou_under": "-120",
+      "ml_away": "+225",
+      "ml_home": "-300",
+      "rl_away": "+100",
+      "rl_home": "-135",
+      "ou_line": 7.5,
+      "ou_over": "-130",
+      "ou_under": "+100",
       "note": "hardrockbet",
       "is_playoff": true,
       "season_phase": "playoffs"
@@ -161,6 +146,19 @@
       "note": "hardrockbet",
       "is_playoff": true,
       "season_phase": "playoffs"
+    },
+    {
+      "time": "1:00 PM ET",
+      "away": "Chicago White Sox",
+      "home": "Cleveland Guardians",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
     }
   ],
   "picks": [
@@ -177,7 +175,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Atlanta Braves None-None Los Angeles Dodgers",
+      "final": "Atlanta Braves 0-0 Los Angeles Dodgers",
       "odds": -110,
       "now_odds": -110,
       "now_side": "Atlanta Braves +1.5 -110",

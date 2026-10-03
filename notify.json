@@ -1,10 +1,13 @@
 {
-  "new_tickets": 0,
-  "new_playoff_tickets": 0,
-  "picks_today": 0,
-  "day": "2026-10-02",
-  "phase": "regular",
+  "new_tickets": 2,
+  "new_playoff_tickets": 2,
+  "picks_today": 2,
+  "day": "2026-10-03",
+  "phase": "playoffs",
   "book": "hardrockbet",
-  "updated": "2026-10-02 20:35 ET",
-  "titles": []
+  "updated": "2026-10-03 14:06 ET",
+  "titles": [
+    "[PS] RL \u00b7 Atlanta Braves @ Los Angeles Dodgers \u00b7 Atlanta Braves +1.5 -110",
+    "[PS] RL \u00b7 San Diego Padres @ Milwaukee Brewers \u00b7 San Diego Padres +1.5 -125"
+  ]
 }

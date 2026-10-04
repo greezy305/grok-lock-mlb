@@ -1,14 +1,10 @@
 {
-  "new_tickets": 3,
-  "new_playoff_tickets": 3,
+  "new_tickets": 0,
+  "new_playoff_tickets": 0,
   "picks_today": 3,
   "day": "2026-10-04",
   "phase": "playoffs",
   "book": "hardrockbet",
-  "updated": "2026-10-04 14:17 ET",
-  "titles": [
-    "[PS] OU \u00b7 San Diego Padres @ Milwaukee Brewers \u00b7 Over 7.5 +115",
-    "[PS] RL \u00b7 Atlanta Braves @ Los Angeles Dodgers \u00b7 Atlanta Braves +1.5 -150",
-    "[PS] OU \u00b7 Atlanta Braves @ Los Angeles Dodgers \u00b7 Over 7.5 -110"
-  ]
+  "updated": "2026-10-04 16:38 ET",
+  "titles": []
 }

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-03 19:57 ET",
+  "updated": "2026-10-04 14:17 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -17,11 +17,11 @@
       "live_units": 0.0
     },
     "rl": {
-      "bets": 36,
-      "wr": 0.5,
-      "units": -2.15,
-      "live_bets": 36,
-      "live_units": -2.15
+      "bets": 37,
+      "wr": 0.514,
+      "units": -1.15,
+      "live_bets": 37,
+      "live_units": -1.15
     },
     "ou": {
       "bets": 37,
@@ -30,9 +30,9 @@
       "live_bets": 37,
       "live_units": 5.5
     },
-    "stacked_units": 3.35,
-    "live_units": 3.35,
-    "bets": 73,
+    "stacked_units": 4.35,
+    "live_units": 4.35,
+    "bets": 74,
     "playoffs": {
       "ml": {
         "bets": 0,
@@ -42,11 +42,11 @@
         "live_units": 0.0
       },
       "rl": {
-        "bets": 1,
-        "wr": 0.0,
-        "units": -1.1,
-        "live_bets": 1,
-        "live_units": -1.1
+        "bets": 2,
+        "wr": 0.5,
+        "units": -0.1,
+        "live_bets": 2,
+        "live_units": -0.1
       },
       "ou": {
         "bets": 2,
@@ -55,9 +55,9 @@
         "live_bets": 2,
         "live_units": 0.05
       },
-      "stacked_units": -1.05,
-      "live_units": -1.05,
-      "bets": 3
+      "stacked_units": -0.05,
+      "live_units": -0.05,
+      "bets": 4
     },
     "regular": {
       "ml": {
@@ -100,89 +100,105 @@
       "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: rich_bp exp-runs gap \u2265 0.5 vs line, juice \u2265 \u2212120 (no RS juice gate)."
     }
   ],
-  "slate_date": "2026-10-03",
+  "slate_date": "2026-10-04",
   "slate": [
     {
-      "time": "6:31 PM ET",
-      "away": "New York Yankees",
-      "home": "Tampa Bay Rays",
-      "ml_away": "+230",
-      "ml_home": "-325",
-      "rl_away": "-160",
-      "rl_home": "+120",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "hardrockbet",
-      "is_playoff": true,
-      "season_phase": "playoffs"
-    },
-    {
-      "time": "8:30 PM ET",
+      "time": "4:00 PM ET",
       "away": "San Diego Padres",
       "home": "Milwaukee Brewers",
-      "ml_away": "+170",
-      "ml_home": "-210",
-      "rl_away": "-125",
-      "rl_home": "+105",
-      "ou_line": 6.5,
-      "ou_over": "-135",
-      "ou_under": "+115",
+      "ml_away": "+115",
+      "ml_home": "-140",
+      "rl_away": "-190",
+      "rl_home": "+160",
+      "ou_line": 7.5,
+      "ou_over": "+115",
+      "ou_under": "-135",
       "note": "hardrockbet",
       "is_playoff": true,
       "season_phase": "playoffs"
     },
     {
-      "time": "1:00 PM ET",
-      "away": "Chicago White Sox",
-      "home": "Cleveland Guardians",
-      "ml_away": "",
-      "ml_home": "",
-      "rl_away": "",
-      "rl_home": "",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "final/no book line"
-    },
-    {
-      "time": "4:00 PM ET",
+      "time": "8:00 PM ET",
       "away": "Atlanta Braves",
       "home": "Los Angeles Dodgers",
-      "ml_away": "",
-      "ml_home": "",
-      "rl_away": "",
-      "rl_home": "",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "final/no book line"
+      "ml_away": "+150",
+      "ml_home": "-180",
+      "rl_away": "-150",
+      "rl_home": "+125",
+      "ou_line": 7.5,
+      "ou_over": "-110",
+      "ou_under": "-110",
+      "note": "hardrockbet",
+      "is_playoff": true,
+      "season_phase": "playoffs"
     }
   ],
   "picks": [
     {
-      "date": "2026-10-03",
-      "market": "RL",
+      "date": "2026-10-04",
+      "market": "OU",
       "away": "San Diego Padres",
       "home": "Milwaukee Brewers",
-      "side": "San Diego Padres +1.5 -125",
-      "time": "8:30 PM ET",
-      "edge": "playoff dog +1.5 \u00b7 juice -125 \u00b7 ML +170",
+      "side": "Over 7.5 +115",
+      "time": "4:00 PM ET",
+      "edge": "exp 9.66 vs line 7.5 \u00b7 gap +2.16",
       "units": "1u",
       "note": "hardrockbet",
       "status": "pending",
       "result": "",
       "pnl": 0.0,
       "final": "San Diego Padres 0-0 Milwaukee Brewers",
-      "odds": -125,
-      "now_odds": -125,
-      "now_side": "San Diego Padres +1.5 -125",
+      "odds": 115,
+      "now_odds": 115,
+      "now_side": "Over 7.5 +115",
+      "ou_line": 7.5,
+      "check": "2:00 PM ET check \u00b7 posted 2:17 PM ET",
+      "posted_at": "2026-10-04 14:17 ET"
+    },
+    {
+      "date": "2026-10-04",
+      "market": "RL",
+      "away": "Atlanta Braves",
+      "home": "Los Angeles Dodgers",
+      "side": "Atlanta Braves +1.5 -150",
+      "time": "8:00 PM ET",
+      "edge": "playoff dog +1.5 \u00b7 juice -150 \u00b7 ML +150",
+      "units": "1u",
+      "note": "hardrockbet",
+      "status": "pending",
+      "result": "",
+      "pnl": 0.0,
+      "final": "Atlanta Braves None-None Los Angeles Dodgers",
+      "odds": -150,
+      "now_odds": -150,
+      "now_side": "Atlanta Braves +1.5 -150",
       "ou_line": null,
-      "check": "2:00 PM ET check \u00b7 posted 2:06 PM ET",
-      "posted_at": "2026-10-03 14:06 ET"
+      "check": "2:00 PM ET check \u00b7 posted 2:17 PM ET",
+      "posted_at": "2026-10-04 14:17 ET"
+    },
+    {
+      "date": "2026-10-04",
+      "market": "OU",
+      "away": "Atlanta Braves",
+      "home": "Los Angeles Dodgers",
+      "side": "Over 7.5 -110",
+      "time": "8:00 PM ET",
+      "edge": "exp 10.43 vs line 7.5 \u00b7 gap +2.93",
+      "units": "1u",
+      "note": "hardrockbet",
+      "status": "pending",
+      "result": "",
+      "pnl": 0.0,
+      "final": "Atlanta Braves None-None Los Angeles Dodgers",
+      "odds": -110,
+      "now_odds": -110,
+      "now_side": "Over 7.5 -110",
+      "ou_line": 7.5,
+      "check": "2:00 PM ET check \u00b7 posted 2:17 PM ET",
+      "posted_at": "2026-10-04 14:17 ET"
     }
   ],
-  "picks_status": "1 model ticket(s) \u00b7 hardrockbet",
+  "picks_status": "3 model ticket(s) \u00b7 hardrockbet",
   "recent": [
     {
       "date": "2026-10-03",
@@ -194,6 +210,17 @@
       "units": -1.1,
       "odds": -110,
       "final": "Atlanta Braves 3-5 Los Angeles Dodgers"
+    },
+    {
+      "date": "2026-10-03",
+      "game": "San Diego Padres @ Milwaukee Brewers",
+      "market": "RL",
+      "side": "San Diego Padres +1.5 -125",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
+      "odds": -125,
+      "final": "San Diego Padres 2-3 Milwaukee Brewers"
     },
     {
       "date": "2026-10-01",

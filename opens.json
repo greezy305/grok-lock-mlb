@@ -3318,5 +3318,25 @@
     "ou_line": 6.5,
     "ou_over": -140,
     "ou_under": 115
+  },
+  "6da40e91a31110e51e84ba5671996deb": {
+    "away": "San Diego Padres",
+    "home": "Milwaukee Brewers",
+    "ml_away": 115,
+    "ml_home": -140,
+    "rl_away": -190,
+    "ou_line": 7.5,
+    "ou_over": 115,
+    "ou_under": -135
+  },
+  "583202487b52f61769b2404a64e01c77": {
+    "away": "Atlanta Braves",
+    "home": "Los Angeles Dodgers",
+    "ml_away": 150,
+    "ml_home": -180,
+    "rl_away": -150,
+    "ou_line": 7.5,
+    "ou_over": -110,
+    "ou_under": -110
   }
 }

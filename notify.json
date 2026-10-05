@@ -1,10 +1,12 @@
 {
-  "new_tickets": 0,
-  "new_playoff_tickets": 0,
-  "picks_today": 2,
-  "day": "2026-10-04",
+  "new_tickets": 1,
+  "new_playoff_tickets": 1,
+  "picks_today": 1,
+  "day": "2026-10-05",
   "phase": "playoffs",
   "book": "hardrockbet",
-  "updated": "2026-10-04 20:02 ET",
-  "titles": []
+  "updated": "2026-10-05 17:34 ET",
+  "titles": [
+    "[PS] OU \u00b7 New York Yankees @ Tampa Bay Rays \u00b7 Over 6.5 -115"
+  ]
 }

@@ -3338,5 +3338,25 @@
     "ou_line": 7.5,
     "ou_over": -110,
     "ou_under": -110
+  },
+  "ccd487a87bb73145e3f12dd3a765ad47": {
+    "away": "Chicago White Sox",
+    "home": "Cleveland Guardians",
+    "ml_away": 350,
+    "ml_home": -525,
+    "rl_away": -115,
+    "ou_line": 7.5,
+    "ou_over": -125,
+    "ou_under": -105
+  },
+  "4be245ad03895bcafcdc42d7d926b675": {
+    "away": "New York Yankees",
+    "home": "Tampa Bay Rays",
+    "ml_away": -130,
+    "ml_home": 110,
+    "rl_away": null,
+    "ou_line": 6.5,
+    "ou_over": -115,
+    "ou_under": -105
   }
 }

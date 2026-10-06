@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06 15:43 ET",
+  "updated": "2026-10-06 18:01 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -103,11 +103,11 @@
   "slate_date": "2026-10-06",
   "slate": [
     {
-      "time": "6:00 PM ET",
+      "time": "6:05 PM ET",
       "away": "Los Angeles Dodgers",
       "home": "Atlanta Braves",
-      "ml_away": "-110",
-      "ml_home": "-110",
+      "ml_away": "-115",
+      "ml_home": "-105",
       "rl_away": "",
       "rl_home": "-195",
       "ou_line": 6.5,
@@ -126,8 +126,8 @@
       "rl_away": "-190",
       "rl_home": "+155",
       "ou_line": 7.5,
-      "ou_over": "-105",
-      "ou_under": "-115",
+      "ou_over": "-110",
+      "ou_under": "-110",
       "note": "hardrockbet",
       "is_playoff": true,
       "season_phase": "playoffs"
@@ -170,8 +170,8 @@
       "pnl": 0.0,
       "final": "Milwaukee Brewers None-None San Diego Padres",
       "odds": -105,
-      "now_odds": -105,
-      "now_side": "Over 7.5 -105",
+      "now_odds": -110,
+      "now_side": "Over 7.5 -110",
       "ou_line": 7.5,
       "check": "2:00 PM ET check \u00b7 posted 3:43 PM ET",
       "posted_at": "2026-10-06 15:43 ET"

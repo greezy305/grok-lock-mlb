@@ -1,10 +1,16 @@
 {
-  "new_tickets": 0,
-  "new_playoff_tickets": 0,
-  "picks_today": 2,
-  "day": "2026-10-06",
+  "new_tickets": 5,
+  "new_playoff_tickets": 5,
+  "picks_today": 5,
+  "day": "2026-10-07",
   "phase": "playoffs",
   "book": "hardrockbet",
-  "updated": "2026-10-06 20:53 ET",
-  "titles": []
+  "updated": "2026-10-07 16:04 ET",
+  "titles": [
+    "[PS] OU \u00b7 Cleveland Guardians @ Chicago White Sox \u00b7 Over 7.5 -110",
+    "[PS] RL \u00b7 Los Angeles Dodgers @ Atlanta Braves \u00b7 Atlanta Braves +1.5 -140",
+    "[PS] OU \u00b7 Los Angeles Dodgers @ Atlanta Braves \u00b7 Over 7.5 -110",
+    "[PS] OU \u00b7 Tampa Bay Rays @ New York Yankees \u00b7 Over 7.5 +110",
+    "[PS] OU \u00b7 Milwaukee Brewers @ San Diego Padres \u00b7 Over 7.5 -110"
+  ]
 }

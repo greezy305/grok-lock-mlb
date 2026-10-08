@@ -302,8 +302,10 @@ def main_totals(totals):
 
 
 def grade_ticket(t, games):
-    if t.get("status") not in (None, "", "pending"):
-        return t  # void / already settled
+    # void stays void; allow re-grade of win/loss so RL side bugs can be corrected
+    st0 = (t.get("status") or "").lower()
+    if st0 in ("void",):
+        return t
     tdate = t.get("date")
     for g in games:
         if tdate and g.get("date") and g.get("date") != tdate:
@@ -340,9 +342,12 @@ def grade_ticket(t, games):
             if aw == hm:
                 push = True
         elif market == "RL":
-            # locked side is always away +1.5
-            cover = (aw - hm) >= -1
-            won = cover
+            # Ticket names the +1.5 side (usually the ML dog), not always away
+            pick_away = bool(t.get("away") and t.get("away") in side)
+            if pick_away:
+                won = (aw - hm) >= -1  # away +1.5
+            else:
+                won = (hm - aw) >= -1  # home +1.5
         elif market == "OU":
             line = t.get("ou_line")
             if line is None:
@@ -1368,7 +1373,7 @@ def main():
             },
             {
                 "market": "OU",
-                "rule": "RS: |P(over) − 52.4%| ≥ 4%, lines 5.5–14.5. Playoffs: rich_bp exp-runs gap ≥ 0.5 vs line, juice ≥ −120 (no RS juice gate).",
+                "rule": "RS: |P(over) − 52.4%| ≥ 4%, lines 5.5–14.5. Playoffs: rich_bp v2 — 40% residual shrink, Over gap≥1.0 / Under gap≥0.75, juice ≥ −120.",
             },
         ],
         "slate_date": day,  # always ET calendar today — never carry prior board

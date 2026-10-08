@@ -590,7 +590,9 @@ def build_live_bullpen_context(day_iso, team_abbrs=None):
     return out
 
 
-# Playoff OU rich_bp coefficients (fit ≤2021 only; test 2022–25 +6.4u @ gap≥0.5 / juice≥−120)
+# Playoff OU rich_bp coefficients (fit ≤2021 only).
+# Live 2026 PS was 100% Overs with inflated gaps (+2–3 vs holdout ~+0.5) → 2-5 −3.07u.
+# Fix: residual shrink toward market line + asymmetric gaps (stricter on Overs).
 PLAYOFF_OU_BETA = {
     "intercept": 5.736813462659192,
     "line_f": 0.5353685815786897,
@@ -603,7 +605,11 @@ PLAYOFF_OU_BETA = {
     "prev_starter_avg": -0.3189115825173517,
     "park": -1.9426530619391378,
 }
-PLAYOFF_OU_GAP = 0.5
+PLAYOFF_OU_GAP = 0.5  # legacy symmetric (unused when asymmetric set)
+PLAYOFF_OU_GAP_OVER = 1.0   # need exp_cal - line >= this for Over
+PLAYOFF_OU_GAP_UNDER = 0.75  # need line - exp_cal >= this for Under
+PLAYOFF_OU_SHRINK = 0.40     # only trust 40% of (exp - line); rest = market
+PLAYOFF_OU_SERIES_BP_CAP = 20.0  # per-team series BP IP proxy cap
 PLAYOFF_OU_JUICE_MAX_FAV = -120  # do not lay worse than -120
 
 
@@ -617,6 +623,14 @@ def _fnum(x, default):
         return v
     except (TypeError, ValueError):
         return default
+
+
+def _starter_ip_or_default(x, default=5.5):
+    """Treat missing/zero prior-start IP as unknown (default), not true 0."""
+    v = _fnum(x, default)
+    if v <= 0.05:
+        return default
+    return v
 
 
 def playoff_ou_expected_runs_rich_bp(
@@ -637,16 +651,22 @@ def playoff_ou_expected_runs_rich_bp(
     home_prev_starter,
     park,
 ):
-    """rich_bp expected total (dev-fit)."""
+    """rich_bp raw expected total (dev-fit). Apply PLAYOFF_OU_SHRINK at decision time."""
     line_f = _fnum(line, 7.5)
     sp_siera_avg = (_fnum(away_siera, 4.0) + _fnum(home_siera, 4.0)) / 2.0
     offense_L10 = (_fnum(away_rs_l10, 4.5) + _fnum(home_rs_l10, 4.5)) / 2.0
     bp_L3 = _fnum(away_bp_l3, 0.0) + _fnum(home_bp_l3, 0.0)
     bp_L1 = _fnum(away_bp_l1, 0.0) + _fnum(home_bp_l1, 0.0)
-    series_bp = _fnum(away_series_bp, 0.0) + _fnum(home_series_bp, 0.0)
+    # Cap series BP proxy — live last-5 sum was inflating vs true series load
+    cap = PLAYOFF_OU_SERIES_BP_CAP
+    series_bp = min(_fnum(away_series_bp, 0.0), cap) + min(_fnum(home_series_bp, 0.0), cap)
     short_starts = _fnum(away_short, 0.0) + _fnum(home_short, 0.0)
-    prev_starter_avg = (_fnum(away_prev_starter, 5.5) + _fnum(home_prev_starter, 5.5)) / 2.0
+    prev_starter_avg = (
+        _starter_ip_or_default(away_prev_starter) + _starter_ip_or_default(home_prev_starter)
+    ) / 2.0
     park_f = _fnum(park, 1.0)
+    if park_f < 0.5 or park_f > 1.6:
+        park_f = 1.0
     b = PLAYOFF_OU_BETA
     return (
         b["intercept"]
@@ -676,12 +696,13 @@ def playoff_ou_rule_sides(
     gap_min=None,
     juice_max_fav=None,
 ):
-    """Playoff OU rich_bp: |exp - line| >= 0.5 and odds >= -120.
+    """Playoff OU rich_bp v2: shrunk exp, asymmetric gaps, juice >= -120.
 
     Returns list of (side_label, price, meta) — at most one side.
     """
-    if gap_min is None:
-        gap_min = PLAYOFF_OU_GAP
+    # gap_min legacy arg: if caller passes a single number, use it both sides;
+    # otherwise asymmetric PLAYOFF_OU_GAP_OVER / _UNDER.
+    use_symmetric = gap_min is not None
     if juice_max_fav is None:
         juice_max_fav = PLAYOFF_OU_JUICE_MAX_FAV
     if line is None or over_px is None or under_px is None:
@@ -706,7 +727,7 @@ def playoff_ou_rule_sides(
     if pf is None:
         pf = (parks or {}).get(str(ha).upper())
 
-    exp = playoff_ou_expected_runs_rich_bp(
+    exp_raw = playoff_ou_expected_runs_rich_bp(
         line_f,
         asp.get("siera"),
         hsp.get("siera"),
@@ -724,10 +745,18 @@ def playoff_ou_rule_sides(
         bh.get("prev_starter_ip"),
         pf,
     )
+    # Shrink residual toward market — live gaps were 4–6× holdout mean
+    shrink = PLAYOFF_OU_SHRINK
+    exp = line_f + shrink * (exp_raw - line_f)
     gap = exp - line_f
-    if gap >= gap_min:
+    if use_symmetric:
+        gap_over = gap_under = float(gap_min)
+    else:
+        gap_over = PLAYOFF_OU_GAP_OVER
+        gap_under = PLAYOFF_OU_GAP_UNDER
+    if gap >= gap_over:
         side, px, label = "over", ov, "Over"
-    elif gap <= -gap_min:
+    elif gap <= -gap_under:
         side, px, label = "under", un, "Under"
     else:
         return []
@@ -740,12 +769,14 @@ def playoff_ou_rule_sides(
             "%s %s %+d" % (label, line_f, px),
             px,
             {
-                "rule": "playoff_ou_rich_bp",
-                "edge": "exp %.2f vs line %.1f · gap %+.2f" % (exp, line_f, gap),
+                "rule": "playoff_ou_rich_bp_v2",
+                "edge": "exp %.2f (raw %.2f) vs line %.1f · gap %+.2f" % (exp, exp_raw, line_f, gap),
                 "exp_runs": round(exp, 3),
+                "exp_raw": round(exp_raw, 3),
                 "ou_line": line_f,
                 "gap": round(gap, 3),
                 "ou_side": side,
+                "shrink": shrink,
             },
         )
     ]

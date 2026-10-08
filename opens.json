@@ -3418,5 +3418,15 @@
     "ou_line": 7.5,
     "ou_over": -110,
     "ou_under": -110
+  },
+  "b57e790481f2b8e5eaf9e0f3eab816bc": {
+    "away": "Cleveland Guardians",
+    "home": "Chicago White Sox",
+    "ml_away": -115,
+    "ml_home": -105,
+    "rl_away": null,
+    "ou_line": 7.5,
+    "ou_over": 110,
+    "ou_under": -130
   }
 }

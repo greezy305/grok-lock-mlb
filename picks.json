@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-08 16:02 ET",
+  "updated": "2026-10-08 16:33 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -18,10 +18,10 @@
     },
     "rl": {
       "bets": 39,
-      "wr": 0.538,
-      "units": 0.85,
+      "wr": 0.513,
+      "units": -1.55,
       "live_bets": 39,
-      "live_units": 0.85
+      "live_units": -1.55
     },
     "ou": {
       "bets": 46,
@@ -30,8 +30,8 @@
       "live_bets": 46,
       "live_units": 0.27
     },
-    "stacked_units": 1.12,
-    "live_units": 1.12,
+    "stacked_units": -1.28,
+    "live_units": -1.28,
     "bets": 85,
     "playoffs": {
       "ml": {
@@ -43,10 +43,10 @@
       },
       "rl": {
         "bets": 4,
-        "wr": 0.75,
-        "units": 1.9,
+        "wr": 0.5,
+        "units": -0.5,
         "live_bets": 4,
-        "live_units": 1.9
+        "live_units": -0.5
       },
       "ou": {
         "bets": 11,
@@ -55,8 +55,8 @@
         "live_bets": 11,
         "live_units": -5.18
       },
-      "stacked_units": -3.28,
-      "live_units": -3.28,
+      "stacked_units": -5.68,
+      "live_units": -5.68,
       "bets": 15
     },
     "regular": {
@@ -97,7 +97,7 @@
     },
     {
       "market": "OU",
-      "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: rich_bp exp-runs gap \u2265 0.5 vs line, juice \u2265 \u2212120 (no RS juice gate)."
+      "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: rich_bp v2 \u2014 40% residual shrink, Over gap\u22651.0 / Under gap\u22650.75, juice \u2265 \u2212120."
     }
   ],
   "slate_date": "2026-10-08",
@@ -132,7 +132,7 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Cleveland Guardians None-None Chicago White Sox",
+      "final": "Cleveland Guardians 0-0 Chicago White Sox",
       "odds": 110,
       "now_odds": 110,
       "now_side": "Over 7.5 +110",
@@ -159,9 +159,9 @@
       "game": "Los Angeles Dodgers @ Atlanta Braves",
       "market": "RL",
       "side": "Atlanta Braves +1.5 -140",
-      "result": "W",
-      "status": "win",
-      "units": 1.0,
+      "result": "L",
+      "status": "loss",
+      "units": -1.4,
       "odds": -140,
       "final": "Los Angeles Dodgers 4-1 Atlanta Braves"
     },

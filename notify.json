@@ -1,12 +1,10 @@
 {
-  "new_tickets": 1,
-  "new_playoff_tickets": 1,
+  "new_tickets": 0,
+  "new_playoff_tickets": 0,
   "picks_today": 1,
   "day": "2026-10-08",
   "phase": "playoffs",
   "book": "hardrockbet",
-  "updated": "2026-10-08 16:02 ET",
-  "titles": [
-    "[PS] OU \u00b7 Cleveland Guardians @ Chicago White Sox \u00b7 Over 7.5 +110"
-  ]
+  "updated": "2026-10-08 16:33 ET",
+  "titles": []
 }

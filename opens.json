@@ -3438,5 +3438,15 @@
     "ou_line": 7.5,
     "ou_over": 105,
     "ou_under": -125
+  },
+  "c43e98d4effc9181f21e21225fcbd47a": {
+    "away": "Los Angeles Dodgers",
+    "home": "Milwaukee Brewers",
+    "ml_away": -115,
+    "ml_home": -105,
+    "rl_away": null,
+    "ou_line": 6.5,
+    "ou_over": 105,
+    "ou_under": -125
   }
 }

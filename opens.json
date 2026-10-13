@@ -3468,5 +3468,15 @@
     "ou_line": 6.5,
     "ou_over": -125,
     "ou_under": 105
+  },
+  "38049724abb5fcb2b69405bbe4bb3d72": {
+    "away": "Cleveland Guardians",
+    "home": "Tampa Bay Rays",
+    "ml_away": 115,
+    "ml_home": -135,
+    "rl_away": -200,
+    "ou_line": 6.5,
+    "ou_over": -130,
+    "ou_under": 110
   }
 }

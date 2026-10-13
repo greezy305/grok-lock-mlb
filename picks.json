@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13 16:18 ET",
+  "updated": "2026-10-13 18:05 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -108,11 +108,11 @@
       "home": "Tampa Bay Rays",
       "ml_away": "+115",
       "ml_home": "-135",
-      "rl_away": "-200",
-      "rl_home": "+165",
+      "rl_away": "-195",
+      "rl_home": "+160",
       "ou_line": 6.5,
       "ou_over": "-130",
-      "ou_under": "+110",
+      "ou_under": "+105",
       "note": "hardrockbet",
       "is_playoff": true,
       "season_phase": "playoffs"

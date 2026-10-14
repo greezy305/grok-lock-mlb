@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14 14:48 ET",
+  "updated": "2026-10-14 17:06 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -111,8 +111,8 @@
       "rl_away": "-145",
       "rl_home": "+120",
       "ou_line": 7.5,
-      "ou_over": "-105",
-      "ou_under": "-115",
+      "ou_over": "+100",
+      "ou_under": "-120",
       "note": "hardrockbet",
       "is_playoff": true,
       "season_phase": "playoffs"

@@ -1,10 +1,12 @@
 {
-  "new_tickets": 0,
-  "new_playoff_tickets": 0,
-  "picks_today": 0,
-  "day": "2026-10-13",
+  "new_tickets": 1,
+  "new_playoff_tickets": 1,
+  "picks_today": 1,
+  "day": "2026-10-14",
   "phase": "playoffs",
   "book": "hardrockbet",
-  "updated": "2026-10-13 20:26 ET",
-  "titles": []
+  "updated": "2026-10-14 14:48 ET",
+  "titles": [
+    "[PS] RL \u00b7 Milwaukee Brewers @ Los Angeles Dodgers \u00b7 Milwaukee Brewers +1.5 -145"
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15 14:30 ET",
+  "updated": "2026-10-15 16:43 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -103,21 +103,6 @@
   "slate_date": "2026-10-15",
   "slate": [
     {
-      "time": "1:10 PM ET",
-      "away": "Tampa Bay Rays",
-      "home": "Cleveland Guardians",
-      "ml_away": "-135",
-      "ml_home": "+100",
-      "rl_away": "",
-      "rl_home": "-250",
-      "ou_line": 6.5,
-      "ou_over": "-125",
-      "ou_under": "-105",
-      "note": "hardrockbet",
-      "is_playoff": true,
-      "season_phase": "playoffs"
-    },
-    {
       "time": "8:00 PM ET",
       "away": "Milwaukee Brewers",
       "home": "Los Angeles Dodgers",
@@ -126,11 +111,24 @@
       "rl_away": "-165",
       "rl_home": "+135",
       "ou_line": 7.5,
-      "ou_over": "-115",
-      "ou_under": "-105",
+      "ou_over": "-120",
+      "ou_under": "+100",
       "note": "hardrockbet",
       "is_playoff": true,
       "season_phase": "playoffs"
+    },
+    {
+      "time": "1:00 PM ET",
+      "away": "Tampa Bay Rays",
+      "home": "Cleveland Guardians",
+      "ml_away": "",
+      "ml_home": "",
+      "rl_away": "",
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
     }
   ],
   "picks": [],

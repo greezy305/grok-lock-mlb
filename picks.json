@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14 17:06 ET",
+  "updated": "2026-10-14 20:00 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -103,16 +103,16 @@
   "slate_date": "2026-10-14",
   "slate": [
     {
-      "time": "8:00 PM ET",
+      "time": "8:05 PM ET",
       "away": "Milwaukee Brewers",
       "home": "Los Angeles Dodgers",
       "ml_away": "+150",
       "ml_home": "-180",
-      "rl_away": "-145",
-      "rl_home": "+120",
+      "rl_away": "-140",
+      "rl_home": "+115",
       "ou_line": 7.5,
-      "ou_over": "+100",
-      "ou_under": "-120",
+      "ou_over": "+105",
+      "ou_under": "-125",
       "note": "hardrockbet",
       "is_playoff": true,
       "season_phase": "playoffs"
@@ -132,10 +132,10 @@
       "status": "pending",
       "result": "",
       "pnl": 0.0,
-      "final": "Milwaukee Brewers None-None Los Angeles Dodgers",
+      "final": "Milwaukee Brewers 0-0 Los Angeles Dodgers",
       "odds": -145,
-      "now_odds": -145,
-      "now_side": "Milwaukee Brewers +1.5 -145",
+      "now_odds": -140,
+      "now_side": "Milwaukee Brewers +1.5 -140",
       "ou_line": null,
       "check": "2:00 PM ET check \u00b7 posted 2:48 PM ET",
       "posted_at": "2026-10-14 14:48 ET"

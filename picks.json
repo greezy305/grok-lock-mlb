@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15 16:43 ET",
+  "updated": "2026-10-15 19:44 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -108,7 +108,7 @@
       "home": "Los Angeles Dodgers",
       "ml_away": "+130",
       "ml_home": "-160",
-      "rl_away": "-165",
+      "rl_away": "-170",
       "rl_home": "+135",
       "ou_line": 7.5,
       "ou_over": "-120",

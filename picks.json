@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16 14:16 ET",
+  "updated": "2026-10-16 16:15 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -109,7 +109,7 @@
       "ml_away": "-115",
       "ml_home": "-105",
       "rl_away": "",
-      "rl_home": "-190",
+      "rl_home": "-195",
       "ou_line": 6.5,
       "ou_over": "-115",
       "ou_under": "-105",

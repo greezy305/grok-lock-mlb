@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16 16:15 ET",
+  "updated": "2026-10-16 19:44 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -103,7 +103,7 @@
   "slate_date": "2026-10-16",
   "slate": [
     {
-      "time": "8:00 PM ET",
+      "time": "8:30 PM ET",
       "away": "Tampa Bay Rays",
       "home": "Cleveland Guardians",
       "ml_away": "-115",
@@ -111,8 +111,8 @@
       "rl_away": "",
       "rl_home": "-195",
       "ou_line": 6.5,
-      "ou_over": "-115",
-      "ou_under": "-105",
+      "ou_over": "-110",
+      "ou_under": "-110",
       "note": "hardrockbet",
       "is_playoff": true,
       "season_phase": "playoffs"

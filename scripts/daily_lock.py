@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
@@ -114,6 +115,96 @@ def pull_odds(api_key, book):
     return []
 
 
+def _abbr_team(name):
+    """Short mascot/city token for series lead line."""
+    if not name:
+        return "?"
+    n = str(name).strip()
+    # common full-name → abbr used in UI
+    MAP = {
+        "Tampa Bay Rays": "TB", "Cleveland Guardians": "CLE", "Cleveland Indians": "CLE",
+        "Milwaukee Brewers": "MIL", "Los Angeles Dodgers": "LAD", "Los Angeles Angels": "LAA",
+        "New York Yankees": "NYY", "New York Mets": "NYM", "Boston Red Sox": "BOS",
+        "Chicago Cubs": "CHC", "Chicago White Sox": "CWS", "San Francisco Giants": "SF",
+        "San Diego Padres": "SD", "St. Louis Cardinals": "STL", "Kansas City Royals": "KC",
+        "Toronto Blue Jays": "TOR", "Philadelphia Phillies": "PHI", "Atlanta Braves": "ATL",
+        "Houston Astros": "HOU", "Texas Rangers": "TEX", "Seattle Mariners": "SEA",
+        "Minnesota Twins": "MIN", "Detroit Tigers": "DET", "Baltimore Orioles": "BAL",
+        "Washington Nationals": "WSH", "Miami Marlins": "MIA", "Arizona Diamondbacks": "ARI",
+        "Colorado Rockies": "COL", "Pittsburgh Pirates": "PIT", "Cincinnati Reds": "CIN",
+        "Athletics": "ATH", "Oakland Athletics": "ATH",
+    }
+    if n in MAP:
+        return MAP[n]
+    parts = n.split()
+    return (parts[-1][:3] if parts else n[:3]).upper()
+
+
+def format_series_line(series_desc, series_game, games_in_series, away_name, home_name,
+                       away_w, away_l, home_w, home_l, description=""):
+    """Build e.g. 'ALCS · Game 4 · CLE leads 2-1' for playoff slate/picks."""
+    if not series_game and not series_desc and not description:
+        return ""
+    # Prefer short code from description ("ALCS Game 4") or compress seriesDescription
+    short = ""
+    desc = (description or "").strip()
+    m = re.match(r"^([A-Z]{2,5})\s+Game\s+\d+", desc, re.I)
+    if m:
+        short = m.group(1).upper()
+    if not short:
+        sd = (series_desc or "").strip()
+        # "AL Championship Series" → ALCS, "World Series" → WS, "Wild Card Series" → WC
+        low = sd.lower()
+        if "world series" in low:
+            short = "WS"
+        elif "wild card" in low:
+            short = "WC"
+        elif "division series" in low or re.search(r"\blds\b", low):
+            short = "ALDS" if "american" in low or low.startswith("al ") else (
+                "NLDS" if "national" in low or low.startswith("nl ") else "LDS")
+            if "american" in low or re.match(r"^al\b", low):
+                short = "ALDS"
+            elif "national" in low or re.match(r"^nl\b", low):
+                short = "NLDS"
+        elif "championship" in low or re.search(r"\blcs\b", low):
+            if "american" in low or re.match(r"^al\b", low):
+                short = "ALCS"
+            elif "national" in low or re.match(r"^nl\b", low):
+                short = "NLCS"
+            else:
+                short = "LCS"
+        else:
+            short = sd[:12] if sd else "Playoffs"
+
+    parts = [short]
+    if series_game:
+        gpart = "Game %s" % series_game
+        if games_in_series:
+            gpart = "Game %s" % series_game  # keep simple; best-of is implied
+        parts.append(gpart)
+
+    # Series standing from leagueRecord during this series
+    try:
+        aw, al = int(away_w), int(away_l)
+        hw, hl = int(home_w), int(home_l)
+    except (TypeError, ValueError):
+        aw = al = hw = hl = None
+
+    if aw is not None and hw is not None:
+        a_abbr = _abbr_team(away_name)
+        h_abbr = _abbr_team(home_name)
+        if aw > hw:
+            parts.append("%s leads %d-%d" % (a_abbr, aw, hw))
+        elif hw > aw:
+            parts.append("%s leads %d-%d" % (h_abbr, hw, aw))
+        elif aw + hw > 0:
+            parts.append("Series tied %d-%d" % (aw, hw))
+        # Game 1 with 0-0: omit standings
+
+    return " · ".join(parts)
+
+
+
 def pull_schedule(day):
     url = (
         "https://statsapi.mlb.com/api/v1/schedule"
@@ -128,11 +219,26 @@ def pull_schedule(day):
             gt = (g.get("gameType") or "R").upper()
             series = g.get("seriesDescription") or ""
             is_po = gt in PLAYOFF_GAME_TYPES
+            away_name = (away.get("team") or {}).get("name")
+            home_name = (home.get("team") or {}).get("name")
+            a_rec = away.get("leagueRecord") or {}
+            h_rec = home.get("leagueRecord") or {}
+            s_game = g.get("seriesGameNumber")
+            s_total = g.get("gamesInSeries")
+            desc = g.get("description") or ""
+            series_line = ""
+            if is_po:
+                series_line = format_series_line(
+                    series, s_game, s_total, away_name, home_name,
+                    a_rec.get("wins"), a_rec.get("losses"),
+                    h_rec.get("wins"), h_rec.get("losses"),
+                    description=desc,
+                )
             games.append({
                 "pk": g.get("gamePk"),
                 "date": day,
-                "away": (away.get("team") or {}).get("name"),
-                "home": (home.get("team") or {}).get("name"),
+                "away": away_name,
+                "home": home_name,
                 "time": g.get("gameDate"),
                 "status": (g.get("status") or {}).get("detailedState", ""),
                 "abstract": (g.get("status") or {}).get("abstractGameState", ""),
@@ -142,6 +248,9 @@ def pull_schedule(day):
                 "hp": (home.get("probablePitcher") or {}).get("fullName", "TBD"),
                 "game_type": gt,
                 "series": series,
+                "series_game": s_game,
+                "games_in_series": s_total,
+                "series_line": series_line,
                 "is_playoff": is_po,
             })
     return games
@@ -808,10 +917,15 @@ def main():
     print("season_phase", phase, "games", len(slate),
           "playoff_games", sum(1 for g in slate if g.get("is_playoff")))
     playoff_match = {}
+    series_lookup = {}
     for g in slate:
         key = (norm_name(g.get("away")), norm_name(g.get("home")))
         playoff_match[key] = bool(g.get("is_playoff"))
         playoff_match[(g.get("away"), g.get("home"))] = bool(g.get("is_playoff"))
+        sl = g.get("series_line") or ""
+        if sl:
+            series_lookup[key] = sl
+            series_lookup[(g.get("away"), g.get("home"))] = sl
 
     # Look back 14 days so lagged pendings (e.g. 9/02) still grade
     for i in range(1, 15):
@@ -937,6 +1051,11 @@ def main():
             playoff_match.get((norm_name(away), norm_name(home)))
             or playoff_match.get((away, home))
         )
+        _series_line = (
+            series_lookup.get((norm_name(away), norm_name(home)))
+            or series_lookup.get((away, home))
+            or ""
+        )
         slate_cards.append({
             "time": tlabel,
             "away": away,
@@ -951,6 +1070,7 @@ def main():
             "note": book_used or "no Hard Rock book",
             "is_playoff": _is_po,
             "season_phase": "playoffs" if _is_po else "regular",
+            "series_line": _series_line,
         })
 
         if eid not in opens:
@@ -995,6 +1115,11 @@ def main():
                         odds,
                     )
                     return
+            _sl = (
+                series_lookup.get((norm_name(away), norm_name(home)))
+                or series_lookup.get((away, home))
+                or ""
+            )
             row = {
                 "id": tid,
                 "date": day,
@@ -1018,6 +1143,7 @@ def main():
                 "check": scan_tag,
                 "is_playoff": is_po,
                 "season_phase": "playoffs" if is_po else "regular",
+                "series_line": _sl,
             }
             if extra:
                 row.update(extra)

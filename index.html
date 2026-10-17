@@ -326,6 +326,8 @@
     .pushb { background: #2a2416; color: var(--amber); }
     .pendb { background: #222; color: var(--mute); }
     .liveb { background: #3a1515; color: var(--red); font-weight: 700; }
+    .ppdb { background: #3a2a10; color: #f6ad55; font-weight: 700; letter-spacing: .04em; }
+    .board-foot .ppd { color: #f6ad55; font-weight: 700; letter-spacing: .04em; }
     .finalb { background: #2a2416; color: var(--amber); }
     details.day-group {
       background: var(--card); border: 1px solid var(--line); border-radius: 14px;
@@ -368,7 +370,28 @@
     .status-why { font-size: 13px; color: #c5d4c4; line-height: 1.4; }
     .status-why strong { color: var(--text); }
     footer { margin-top: 18px; font-size: 11px; color: var(--mute); text-align: center; line-height: 1.5; }
-  </style>
+  
+    .series-line {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      color: #9ae6b4;
+    }
+    .board-foot {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px 10px;
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--mute);
+    }
+    .ticket-foot .series-line {
+      flex-basis: 100%;
+      margin-top: 2px;
+    }
+</style>
 </head>
 <body>
   <header>
@@ -534,7 +557,10 @@
       return `<div class="note" style="margin-top:8px">Risk ${fmtMoney(half)} to win ½u · Risk ${fmtMoney(full)} to win 1u</div>`;
     }
     function pickStatusBadge(p) {
-      const sc = findScore(p.away, p.home);
+      const sc = findScore(p.away, p.home, p.date);
+      if (sc && isPostponedStatus(sc.status, sc.abstract)) {
+        return `<span class="badge ppdb">POSTPONED</span>`;
+      }
       const phase = gamePhase(sc);
       if (phase === 1) return `<span class="badge liveb">LIVE</span>`;
       if (phase === 2) return `<span class="badge finalb">FINAL</span>`;
@@ -746,6 +772,13 @@
       if (ap === "AM" && h === 12) h = 0;
       // bare 0-23 if no AM/PM and hour>12 already fine; if hour<=12 and no ap, assume PM for MLB evenings is risky — leave as-is
       return h * 60 + mins;
+    }
+    function isPostponedStatus(st, abs) {
+      const s = String(st || "");
+      const a = String(abs || "").toLowerCase();
+      // MLB: detailedState "Postponed" / "Cancelled" / sometimes abstract Final with note
+      if (/postponed|cancelled|canceled|suspended/i.test(s)) return true;
+      return false;
     }
     function isPregameStatus(st, abs) {
       // MLB marks Warmup as abstract "Live" — still pre-first-pitch for our UI
@@ -989,7 +1022,8 @@
         const finalish = sc && !liveish && (abs === "final" || /^final/i.test(st) || /^game over/i.test(st));
         // Right side: start time for pregame; inning/status when live/final
         let right = g.time || "";
-        if (liveish) right = (sc && sc.inning) ? sc.inning : "Live";
+        if (sc && isPostponedStatus(sc.status || st, (sc && sc.abstract) || abs)) right = "POSTPONED";
+        else if (liveish) right = (sc && sc.inning) ? sc.inning : "Live";
         else if (finalish) right = "Final";
         const _ds = displayScores(sc);
         const as = _ds.as;
@@ -1005,9 +1039,12 @@
         const ouU = g.ou_under != null && g.ou_under !== "" ? String(g.ou_under) : "—";
         const ouOLab = ouLine !== "" ? ("O " + ouLine) : "O";
         const ouULab = ouLine !== "" ? ("U " + ouLine) : "U";
-        const statusLine = liveish
+        const postponed = sc && isPostponedStatus(sc.status || st, (sc && sc.abstract) || abs);
+        const statusLine = postponed
+          ? "POSTPONED"
+          : (liveish
           ? (sc && sc.inning ? sc.inning : "Live")
-          : (finalish ? "Final" : (g.time || "").replace(/\bEST\b/g, "ET"));
+          : (finalish ? "Final" : (g.time || "").replace(/\bEST\b/g, "ET")));
         const details = pickDetailsFor(g.away, g.home);
         const hiRLa = details.some(d => d.market === "RL" && d.side === "away");
         const hiRLh = details.some(d => d.market === "RL" && d.side === "home");
@@ -1046,7 +1083,14 @@
             <div class="od-cell"><span class="od-line">${ouULab}</span><span class="od-price${hiOUu ? " pick-mkt" : ""}">${ouU}</span></div>
             <div class="od-cell ml-cell"><span class="od-price ml${hiMLh ? " pick-mkt" : ""}">${mlH}</span></div>
           </div>
-          ${isLiveStatus(st, abs) ? situationHtml(sc) : `<div class="board-foot"><span>${statusLine}</span></div>`}
+          ${(() => {
+            const ser = g.series_line || (sc && sc.series_line) || "";
+            const serHtml = ser ? `<span class="series-line">${ser}</span>` : "";
+            if (isLiveStatus(st, abs)) {
+              return situationHtml(sc) + (ser ? `<div class="board-foot">${serHtml}</div>` : "");
+            }
+            return `<div class="board-foot"><span class="${postponed ? "ppd" : ""}">${statusLine}</span>${serHtml}</div>`;
+          })()}
         </div>`;
       }).join("");
     }
@@ -1070,6 +1114,51 @@
         }).format(d) + " ET";
       } catch (e) { return ""; }
     }
+
+    function formatSeriesLine(gApi) {
+      // gApi = raw MLB schedule game object
+      if (!gApi) return "";
+      const gt = String(gApi.gameType || "R").toUpperCase();
+      // F=Wild Card, D=Division, L=LCS, W=World Series
+      if (!["F","D","L","W"].includes(gt)) return "";
+      const desc = String(gApi.description || "");
+      const sd = String(gApi.seriesDescription || "");
+      let short = "";
+      const m = desc.match(/^([A-Z]{2,5})\s+Game\s+\d+/i);
+      if (m) short = m[1].toUpperCase();
+      if (!short) {
+        const low = sd.toLowerCase();
+        if (low.includes("world series")) short = "WS";
+        else if (low.includes("wild card")) short = "WC";
+        else if (low.includes("championship") || low.includes("lcs")) {
+          if (low.includes("american") || /^al\b/.test(low)) short = "ALCS";
+          else if (low.includes("national") || /^nl\b/.test(low)) short = "NLCS";
+          else short = "LCS";
+        } else if (low.includes("division")) {
+          if (low.includes("american") || /^al\b/.test(low)) short = "ALDS";
+          else if (low.includes("national") || /^nl\b/.test(low)) short = "NLDS";
+          else short = "LDS";
+        } else short = sd ? sd.slice(0, 12) : "Playoffs";
+      }
+      const parts = [short];
+      const sg = gApi.seriesGameNumber;
+      if (sg) parts.push("Game " + sg);
+      const aw = ((gApi.teams || {}).away || {});
+      const hm = ((gApi.teams || {}).home || {});
+      const ar = aw.leagueRecord || {};
+      const hr = hm.leagueRecord || {};
+      const aW = Number(ar.wins), aL = Number(ar.losses);
+      const hW = Number(hr.wins), hL = Number(hr.losses);
+      if (Number.isFinite(aW) && Number.isFinite(hW)) {
+        const aName = (aw.team || {}).name || "";
+        const hName = (hm.team || {}).name || "";
+        if (aW > hW) parts.push(teamAbbr(aName).toUpperCase() + " leads " + aW + "-" + hW);
+        else if (hW > aW) parts.push(teamAbbr(hName).toUpperCase() + " leads " + hW + "-" + aW);
+        else if (aW + hW > 0) parts.push("Series tied " + aW + "-" + hW);
+      }
+      return parts.join(" · ");
+    }
+
     async function fetchScores(dateStr) {
       // dateStr: YYYY-MM-DD in ET preferred
       const day = dateStr || todayEtStr();
@@ -1099,6 +1188,7 @@
           }
           const key = day + "|" + teamKey(aName, hName);
           const off = ls.offense || {};
+          const series_line = formatSeriesLine(g);
           const row = {
             status, abstract,
             as: as == null ? null : as,
@@ -1107,6 +1197,7 @@
             date: day,
             away: aName,
             home: hName,
+            series_line,
             balls: ls.balls != null ? Number(ls.balls) : null,
             strikes: ls.strikes != null ? Number(ls.strikes) : null,
             outs: ls.outs != null ? Number(ls.outs) : null,
@@ -1421,7 +1512,7 @@ function render(d) {
                 <span class="ts-abbr">${teamAbbr(p.away).toUpperCase()}</span>
                 <span class="ts-runs">${aw}</span>
               </div>
-              <div class="ts-mid">${sc && gamePhase(sc) === 2 ? "Final" : (sc && gamePhase(sc) === 1 ? "Live" : "vs")}</div>
+              <div class="ts-mid">${sc && isPostponedStatus(sc.status, sc.abstract) ? "POSTPONED" : (sc && gamePhase(sc) === 2 ? "Final" : (sc && gamePhase(sc) === 1 ? "Live" : "vs"))}</div>
               <div class="ts-team right">
                 <span class="ts-runs">${hm}</span>
                 <span class="ts-abbr">${teamAbbr(p.home).toUpperCase()}</span>
@@ -1433,6 +1524,7 @@ function render(d) {
               <span>${dateLine}</span>
               <span>${timeEt}</span>
               <span>${chk}</span>
+              ${p.series_line ? `<span class="series-line">${p.series_line}</span>` : (sc && sc.series_line ? `<span class="series-line">${sc.series_line}</span>` : "")}
             </div>
           </div>`;
         }).join("");
@@ -1442,111 +1534,147 @@ function render(d) {
       renderSlate(d.slate || [], scoreMap);
 
       // Results tab: graded only — WIN/LOSS stacked over units
-      // Hide junk/alt totals (e.g. Under 2.5 -1500) that slipped in before the line filter
-      function isJunkResult(r) {
-        const side = (r.side || "");
-        const m = side.match(/\b(\d+(?:\.\d+)?)\b/);
-        if (m && (r.market || "").toUpperCase() === "OU") {
-          const line = parseFloat(m[1]);
-          if (line < 5.5 || line > 14.5) return true;
-        }
-        if (/-[5-9]\d{2,}|-[1-9]\d{3,}/.test(side)) return true; // juice <= -500
-        return false;
-      }
-      const recent = (d.recent || []).filter(r => !isJunkResult(r));
-      const byDate = {};
-      for (const r of recent) {
-        const dt = r.date || "Unknown";
-        if (!byDate[dt]) byDate[dt] = [];
-        byDate[dt].push(r);
-      }
-      const dates = Object.keys(byDate).sort().reverse(); // newest first
-      function daySummary(list) {
-        let u = 0, w = 0, l = 0;
-        for (const r of list) {
-          const x = Number(r.units);
-          if (!Number.isNaN(x)) u += x;
-          // ledger uses status win/loss; recent payload often uses result "W"/"L"/"P"
-          const s = (r.status || "").toLowerCase();
-          const res = String(r.result || "").toLowerCase();
-          if (s === "win" || s === "w" || res === "win" || res === "w" || res === "won") w++;
-          else if (s === "loss" || s === "l" || res === "loss" || res === "l" || res === "lost") l++;
-          else if (Number(r.units) > 0) w++;
-          else if (Number(r.units) < 0) l++;
-        }
-        const sign = u > 0 ? "+" : "";
-        const n = list.length;
-        const ticketWord = n === 1 ? "Ticket" : "Tickets";
-        return `${n} ${ticketWord} · ${w}W-${l}L · ${sign}${u.toFixed(2)}u`;
-      }
-      document.getElementById("recent").innerHTML = dates.length ? dates.map((dt, idx) => {
-        const list = byDate[dt];
-        const open = idx === 0 ? " open" : "";
-        const cards = list.map(r => {
-          const head = pickHeadline({
-            market: r.market,
-            side: r.side,
-            away: (r.game || "").split(" @ ")[0],
-            home: (r.game || "").split(" @ ")[1],
-            odds: r.odds
-          });
-          const parts = String(r.game || "").split(" @ ");
-          const away = parts[0] || "";
-          const home = parts[1] || "";
-          let aw = "–", hm = "–";
-          const fm = String(r.final || "").match(/(\d+)\s*-\s*(\d+)/);
-          if (fm) { aw = fm[1]; hm = fm[2]; }
-          const u = Number(r.units);
-          let uStr = "";
-          if (Number.isFinite(u)) {
-            if (Math.abs(u - 1) < 1e-9) uStr = "+1u";
-            else if (Math.abs(u + 1) < 1e-9) uStr = "-1u";
-            else if (Math.abs(u - Math.round(u)) < 1e-9) uStr = (u > 0 ? "+" : "") + Math.round(u) + "u";
-            else uStr = (u > 0 ? "+" : "") + u.toFixed(2).replace(/\.?0+$/, "") + "u";
+      try {
+        function isJunkResult(r) {
+          const side = String(r.side || "");
+          const mkt = String(r.market || "").toUpperCase();
+          if (mkt === "OU") {
+            const m = side.match(/\b(\d{1,2}(?:\.\d)?)\b/);
+            if (m) {
+              const line = parseFloat(m[1]);
+              if (line < 5.5 || line > 14.5) return true;
+            }
           }
-          const oddsStr = r.odds != null ? fmtOdds(r.odds) : "";
-          const st = String(r.status || r.result || "").toLowerCase();
-          let outcome = "";
-          let outcomeCls = "";
-          if (st === "win" || st === "w") { outcome = "WON"; outcomeCls = "won-tag"; }
-          else if (st === "loss" || st === "l") { outcome = "LOST"; outcomeCls = "lost-tag"; }
-          else if (st === "push" || st === "p") { outcome = "PUSH"; outcomeCls = "push-tag"; }
-          const glowCls = (st === "win" || st === "w") ? " glow-win" : ((st === "loss" || st === "l") ? " glow-loss" : "");
-          return `
-          <div class="card ticket ${cardClass(r)}${glowCls}">
-            <div class="ticket-top">
-              <div class="ticket-title-block">
-                <div class="ticket-title">${head.title}</div>
-                <div class="ticket-sub">${head.sub}</div>
-              </div>
-              <div class="ticket-odds-block">
-                <div class="ticket-odds-row">
-                  <span class="ticket-odds">${oddsStr}</span>
-                  ${outcome ? `<span class="${outcomeCls}">${outcome}</span>` : ""}
-                </div>
-                <div class="ticket-units ${u >= 0 ? "pos" : "neg"}">${uStr}</div>
-              </div>
-            </div>
-            <div class="ticket-score">
-              <div class="ts-team">
-                <img class="ts-logo" src="${teamLogo(away)}" alt="" onerror="this.style.display='none'"/>
-                <span class="ts-abbr">${teamAbbr(away).toUpperCase()}</span>
-                <span class="ts-runs">${aw}</span>
-              </div>
-              <div class="ts-mid">Final</div>
-              <div class="ts-team right">
-                <span class="ts-runs">${hm}</span>
-                <span class="ts-abbr">${teamAbbr(home).toUpperCase()}</span>
-                <img class="ts-logo" src="${teamLogo(home)}" alt="" onerror="this.style.display='none'"/>
-              </div>
-            </div>
-          </div>`;
-        }).join("");
-        return `<details class="day-group"${open}>
-          <summary><span>${fmtDisplayDate(dt)}</span><span class="day-meta">${daySummary(list)}</span></summary>
-          <div class="day-body">${cards}</div>
-        </details>`;
-      }).join("") : `<div class="empty">No graded tickets yet. After finals, the next cron pass paints W/L here.</div>`;
+          const jm = side.match(/([+-]\d+)\s*$/);
+          if (jm && Math.abs(parseInt(jm[1], 10)) >= 500) return true;
+          return false;
+        }
+        function normalizeRecentRow(r) {
+          const out = Object.assign({}, r);
+          if (!out.game && (out.away || out.home)) {
+            out.game = (out.away || "?") + " @ " + (out.home || "?");
+          }
+          if (out.units == null && out.pnl != null) out.units = out.pnl;
+          if (!out.status && out.result) {
+            const res = String(out.result).toUpperCase();
+            if (res === "W" || res === "WIN") out.status = "win";
+            else if (res === "L" || res === "LOSS") out.status = "loss";
+            else if (res === "P" || res === "PUSH") out.status = "push";
+          }
+          return out;
+        }
+        let recentRows = (d.recent || []).map(normalizeRecentRow).filter(function(r) {
+          return !isJunkResult(r);
+        });
+        recentRows = recentRows.filter(function(r) {
+          const s = String(r.status || r.result || "").toLowerCase();
+          return s === "win" || s === "w" || s === "loss" || s === "l" || s === "push" || s === "p"
+            || (Number(r.units) !== 0 && Number.isFinite(Number(r.units)));
+        });
+        const byDate = {};
+        for (const r of recentRows) {
+          const dt = r.date || "Unknown";
+          if (!byDate[dt]) byDate[dt] = [];
+          byDate[dt].push(r);
+        }
+        const dates = Object.keys(byDate).sort().reverse();
+        function daySummary(list) {
+          let u = 0, w = 0, l = 0;
+          for (const r of list) {
+            const x = Number(r.units);
+            if (!Number.isNaN(x)) u += x;
+            const s = (r.status || "").toLowerCase();
+            const res = String(r.result || "").toLowerCase();
+            if (s === "win" || s === "w" || res === "win" || res === "w" || res === "won") w++;
+            else if (s === "loss" || s === "l" || res === "loss" || res === "l" || res === "lost") l++;
+            else if (Number(r.units) > 0) w++;
+            else if (Number(r.units) < 0) l++;
+          }
+          const sign = u > 0 ? "+" : "";
+          const n = list.length;
+          const ticketWord = n === 1 ? "Ticket" : "Tickets";
+          return n + " " + ticketWord + " · " + w + "W-" + l + "L · " + sign + u.toFixed(2) + "u";
+        }
+        const recentEl = document.getElementById("recent");
+        if (!dates.length) {
+          recentEl.innerHTML = '<div class="empty">No graded tickets yet. After finals, the next cron pass paints W/L here.<br/><span class="sub">Payload recent: '
+            + String((d.recent || []).length) + '</span></div>';
+        } else {
+          recentEl.innerHTML = dates.map(function(dt, idx) {
+            const list = byDate[dt];
+            const open = idx === 0 ? " open" : "";
+            const cards = list.map(function(r) {
+              const head = pickHeadline({
+                market: r.market,
+                side: r.side,
+                away: String(r.game || "").split(" @ ")[0],
+                home: String(r.game || "").split(" @ ")[1],
+                odds: r.odds
+              });
+              const parts = String(r.game || "").split(" @ ");
+              const away = parts[0] || "";
+              const home = parts[1] || "";
+              let aw = "–", hm = "–";
+              const fm = String(r.final || "").match(/(\d+)\s*-\s*(\d+)/);
+              if (fm) { aw = fm[1]; hm = fm[2]; }
+              const u = Number(r.units);
+              let uStr = "";
+              if (Number.isFinite(u)) {
+                if (Math.abs(u - 1) < 1e-9) uStr = "+1u";
+                else if (Math.abs(u + 1) < 1e-9) uStr = "-1u";
+                else if (Math.abs(u - Math.round(u)) < 1e-9) uStr = (u > 0 ? "+" : "") + Math.round(u) + "u";
+                else uStr = (u > 0 ? "+" : "") + u.toFixed(2).replace(/\.?0+$/, "") + "u";
+              }
+              const oddsStr = r.odds != null ? fmtOdds(r.odds) : "";
+              const st = String(r.status || r.result || "").toLowerCase();
+              let outcome = "";
+              let outcomeCls = "";
+              if (st === "win" || st === "w") { outcome = "WON"; outcomeCls = "won-tag"; }
+              else if (st === "loss" || st === "l") { outcome = "LOST"; outcomeCls = "lost-tag"; }
+              else if (st === "push" || st === "p") { outcome = "PUSH"; outcomeCls = "push-tag"; }
+              const glowCls = (st === "win" || st === "w") ? " glow-win" : ((st === "loss" || st === "l") ? " glow-loss" : "");
+              return (
+                '<div class="card ticket ' + cardClass(r) + glowCls + '">'
+                + '<div class="ticket-top">'
+                + '<div class="ticket-title-block">'
+                + '<div class="ticket-title">' + (head.title || "") + '</div>'
+                + '<div class="ticket-sub">' + (head.sub || "") + '</div>'
+                + '</div>'
+                + '<div class="ticket-odds-block">'
+                + '<div class="ticket-odds-row">'
+                + '<span class="ticket-odds">' + oddsStr + '</span>'
+                + (outcome ? '<span class="' + outcomeCls + '">' + outcome + '</span>' : '')
+                + '</div>'
+                + '<div class="ticket-units ' + (u >= 0 ? "pos" : "neg") + '">' + uStr + '</div>'
+                + '</div></div>'
+                + '<div class="ticket-score">'
+                + '<div class="ts-team">'
+                + '<img class="ts-logo" src="' + teamLogo(away) + '" alt="" onerror="this.style.display=\'none\'"/>'
+                + '<span class="ts-abbr">' + teamAbbr(away).toUpperCase() + '</span>'
+                + '<span class="ts-runs">' + aw + '</span>'
+                + '</div>'
+                + '<div class="ts-mid">Final</div>'
+                + '<div class="ts-team right">'
+                + '<span class="ts-runs">' + hm + '</span>'
+                + '<span class="ts-abbr">' + teamAbbr(home).toUpperCase() + '</span>'
+                + '<img class="ts-logo" src="' + teamLogo(home) + '" alt="" onerror="this.style.display=\'none\'"/>'
+                + '</div></div></div>'
+              );
+            }).join("");
+            return '<details class="day-group"' + open + '>'
+              + '<summary><span>' + fmtDisplayDate(dt) + '</span>'
+              + '<span class="day-meta">' + daySummary(list) + '</span></summary>'
+              + '<div class="day-body">' + cards + '</div></details>';
+          }).join("");
+        }
+      } catch (reErr) {
+        console.warn("Results render failed", reErr);
+        const recentEl = document.getElementById("recent");
+        if (recentEl) {
+          recentEl.innerHTML = '<div class="empty">Results failed to render. Pull to refresh.<br/><span class="sub">'
+            + String(reErr && reErr.message ? reErr.message : reErr) + '</span></div>';
+        }
+      }
 
       // Status tab: Phase · Units · Job · Why last pick (no markets-live strip)
       (function renderStatus() {

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18 13:28 ET",
+  "updated": "2026-10-18 15:51 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -107,7 +107,7 @@
       "away": "Tampa Bay Rays",
       "home": "Cleveland Guardians",
       "ml_away": "-135",
-      "ml_home": "+115",
+      "ml_home": "+110",
       "rl_away": "",
       "rl_home": "-165",
       "ou_line": 6.5,

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17 19:16 ET",
+  "updated": "2026-10-18 13:28 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -100,23 +100,23 @@
       "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: rich_bp v2 \u2014 40% residual shrink, Over gap\u22651.0 / Under gap\u22650.75, juice \u2265 \u2212120."
     }
   ],
-  "slate_date": "2026-10-17",
+  "slate_date": "2026-10-18",
   "slate": [
     {
-      "time": "8:00 PM ET",
+      "time": "5:10 PM ET",
       "away": "Tampa Bay Rays",
       "home": "Cleveland Guardians",
-      "ml_away": "-115",
-      "ml_home": "-105",
+      "ml_away": "-135",
+      "ml_home": "+115",
       "rl_away": "",
-      "rl_home": "-185",
+      "rl_home": "-165",
       "ou_line": 6.5,
-      "ou_over": "-115",
-      "ou_under": "-105",
+      "ou_over": "-105",
+      "ou_under": "-115",
       "note": "hardrockbet",
       "is_playoff": true,
       "season_phase": "playoffs",
-      "series_line": "ALCS \u00b7 Game 4 \u00b7 CLE leads 2-1"
+      "series_line": "ALCS \u00b7 Game 5 \u00b7 Series tied 2-2"
     }
   ],
   "picks": [],

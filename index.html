@@ -961,6 +961,18 @@
         dateIso = boardDate || today;
         if (mlbDayGames && mlbDayGames.length) {
           const have = new Set(useSlate.map(g => teamKey(g.away, g.home)));
+          const liveBy = {};
+          for (const g of mlbDayGames) {
+            liveBy[teamKey(g.away, g.home)] = g;
+          }
+          // Overlay live series_line / status-related fields onto locked slate rows
+          for (let i = 0; i < useSlate.length; i++) {
+            const k = teamKey(useSlate[i].away, useSlate[i].home);
+            const live = liveBy[k];
+            if (live && live.series_line) {
+              useSlate[i] = Object.assign({}, useSlate[i], { series_line: live.series_line });
+            }
+          }
           for (const g of mlbDayGames) {
             const k = teamKey(g.away, g.home);
             if (!have.has(k)) {
@@ -1084,7 +1096,7 @@
             <div class="od-cell ml-cell"><span class="od-price ml${hiMLh ? " pick-mkt" : ""}">${mlH}</span></div>
           </div>
           ${(() => {
-            const ser = g.series_line || (sc && sc.series_line) || "";
+            const ser = (sc && sc.series_line) || g.series_line || "";
             const serHtml = ser ? `<span class="series-line">${ser}</span>` : "";
             if (isLiveStatus(st, abs)) {
               return situationHtml(sc) + (ser ? `<div class="board-foot">${serHtml}</div>` : "");
@@ -1149,12 +1161,25 @@
       const hr = hm.leagueRecord || {};
       const aW = Number(ar.wins), aL = Number(ar.losses);
       const hW = Number(hr.wins), hL = Number(hr.losses);
-      if (Number.isFinite(aW) && Number.isFinite(hW)) {
+      let aWins = aW, hWins = hW;
+      // If game is Final and series wins still sum to games-before-this, fold in this result
+      // (handles brief lag where leagueRecord is still pre-game).
+      const st = ((gApi.status || {}).detailedState) || "";
+      const abs = ((gApi.status || {}).abstractGameState) || "";
+      const aScore = aw.score, hScore = hm.score;
+      const sgNum = Number(sg);
+      if ((/^final/i.test(st) || String(abs).toLowerCase() === "final")
+          && aScore != null && hScore != null && Number.isFinite(aWins) && Number.isFinite(hWins)
+          && Number.isFinite(sgNum) && (aWins + hWins) === (sgNum - 1)) {
+        if (Number(aScore) > Number(hScore)) aWins += 1;
+        else if (Number(hScore) > Number(aScore)) hWins += 1;
+      }
+      if (Number.isFinite(aWins) && Number.isFinite(hWins)) {
         const aName = (aw.team || {}).name || "";
         const hName = (hm.team || {}).name || "";
-        if (aW > hW) parts.push(teamAbbr(aName).toUpperCase() + " leads " + aW + "-" + hW);
-        else if (hW > aW) parts.push(teamAbbr(hName).toUpperCase() + " leads " + hW + "-" + aW);
-        else if (aW + hW > 0) parts.push("Series tied " + aW + "-" + hW);
+        if (aWins > hWins) parts.push(teamAbbr(aName).toUpperCase() + " leads " + aWins + "-" + hWins);
+        else if (hWins > aWins) parts.push(teamAbbr(hName).toUpperCase() + " leads " + hWins + "-" + aWins);
+        else if (aWins + hWins > 0) parts.push("Series tied " + aWins + "-" + hWins);
       }
       return parts.join(" · ");
     }
@@ -1524,7 +1549,7 @@ function render(d) {
               <span>${dateLine}</span>
               <span>${timeEt}</span>
               <span>${chk}</span>
-              ${p.series_line ? `<span class="series-line">${p.series_line}</span>` : (sc && sc.series_line ? `<span class="series-line">${sc.series_line}</span>` : "")}
+              ${(sc && sc.series_line) ? `<span class="series-line">${sc.series_line}</span>` : (p.series_line ? `<span class="series-line">${p.series_line}</span>` : "")}
             </div>
           </div>`;
         }).join("");

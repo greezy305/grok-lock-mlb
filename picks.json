@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-19 20:29 ET",
+  "updated": "2026-10-20 14:37 ET",
   "unit_dollars": 50,
   "season": 2026,
-  "season_phase": "playoffs",
+  "season_phase": "regular",
   "playoff_live_locks": true,
   "playoff_rl_live": true,
   "playoff_ml_live": true,
@@ -100,25 +100,8 @@
       "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: rich_bp v2 \u2014 40% residual shrink, Over gap\u22651.0 / Under gap\u22650.75, juice \u2265 \u2212120."
     }
   ],
-  "slate_date": "2026-10-19",
-  "slate": [
-    {
-      "time": "8:10 PM ET",
-      "away": "Cleveland Guardians",
-      "home": "Tampa Bay Rays",
-      "ml_away": "+145",
-      "ml_home": "-195",
-      "rl_away": "-170",
-      "rl_home": "+130",
-      "ou_line": 5.5,
-      "ou_over": "-105",
-      "ou_under": "-125",
-      "note": "hardrockbet",
-      "is_playoff": true,
-      "season_phase": "playoffs",
-      "series_line": "ALCS \u00b7 Game 6 \u00b7 TB leads 3-2"
-    }
-  ],
+  "slate_date": "2026-10-20",
+  "slate": [],
   "picks": [],
   "picks_status": "No lock this pass.",
   "recent": [

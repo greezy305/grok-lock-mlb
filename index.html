@@ -1851,6 +1851,50 @@ function render(d) {
       try {
         const r = await fetch("./picks.json?t=" + Date.now(), { cache: "no-store" });
         const data = await r.json();
+        try {
+          const lr = await fetch("./ledger.json?t=" + Date.now(), { cache: "no-store" });
+          if (lr.ok) {
+            const led = await lr.json();
+            const fromLed = (Array.isArray(led) ? led : []).filter(function(tk) {
+              const s = String(tk.status || "").toLowerCase();
+              return s === "win" || s === "loss" || s === "push";
+            }).map(function(tk) {
+              return {
+                date: tk.date,
+                game: (tk.away || "?") + " @ " + (tk.home || "?"),
+                market: tk.market,
+                side: tk.side,
+                result: tk.result || (String(tk.status).toLowerCase() === "win" ? "W" : (String(tk.status).toLowerCase() === "loss" ? "L" : "P")),
+                status: tk.status,
+                units: tk.pnl != null ? tk.pnl : tk.units,
+                odds: tk.odds,
+                final: tk.final || "",
+                is_playoff: tk.is_playoff,
+                season_phase: tk.season_phase
+              };
+            });
+            const existing = data.recent || [];
+            if (fromLed.length && existing.length < Math.max(fromLed.length, 1)) {
+              const seen = {};
+              const merged = [];
+              function rowKey(x) { return [x.date, x.market, x.side, x.game].join("|"); }
+              existing.concat(fromLed).forEach(function(x) {
+                const k = rowKey(x);
+                if (seen[k]) return;
+                seen[k] = 1;
+                merged.push(x);
+              });
+              merged.sort(function(a, b) {
+                return String(b.date || "").localeCompare(String(a.date || ""));
+              });
+              data.recent = merged;
+            } else if (!(existing && existing.length) && fromLed.length) {
+              data.recent = fromLed;
+            }
+          }
+        } catch (ledErr) {
+          console.warn("ledger merge failed", ledErr);
+        }
         lastPayload = data;
         // Scores first (free MLB API) so client grading can settle Finals on refresh
         try {

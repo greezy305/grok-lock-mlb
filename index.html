@@ -439,6 +439,17 @@
   <script>
     if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
     const fmtU = n => (n >= 0 ? "+" : "") + Number(n).toFixed(1) + "u";
+    // Resolve assets relative to this app folder (works if opened as /grok-lock-mlb/ or .../index.html)
+    function appBaseUrl() {
+      try {
+        return new URL("./", window.location.href).href;
+      } catch (e) {
+        return window.location.href.replace(/[^/]*$/, "");
+      }
+    }
+    function appUrl(file) {
+      return new URL(file, appBaseUrl()).href;
+    }
     // Stake required to win target dollars at American odds (1u = $50)
     function stakeToWin(odds, winDollars) {
       const o = Number(odds);
@@ -1417,13 +1428,17 @@ function render(d) {
       // Top-right stamp is the live network/local clock — not picks.updated
       tickClock();
       // Grade any Finals against MLB scores on this refresh (no need to wait for cron)
-      const graded = applyClientGrades(d);
-      if (graded.gradedN) {
-        d = Object.assign({}, d, {
-          picks: graded.picks,
-          recent: graded.recent,
-          ytd: graded.ytd
-        });
+      try {
+        const graded = applyClientGrades(d);
+        if (graded && graded.gradedN) {
+          d = Object.assign({}, d, {
+            picks: graded.picks,
+            recent: graded.recent,
+            ytd: graded.ytd
+          });
+        }
+      } catch (ge) {
+        console.warn("applyClientGrades failed", ge);
       }
       const y = d.ytd || {};
       const poY = y.playoffs || {};
@@ -1845,97 +1860,127 @@ function render(d) {
 
     async function load() {
       const btn = document.getElementById("refreshBtn");
-      const prev = btn.textContent;
-      btn.textContent = "Refreshing…";
-      btn.disabled = true;
+      const prev = btn ? btn.textContent : "";
+      if (btn) { btn.textContent = "Refreshing…"; btn.disabled = true; }
+      let data = null;
       try {
-        const r = await fetch("./picks.json?t=" + Date.now(), { cache: "no-store" });
-        const data = await r.json();
-        try {
-          const lr = await fetch("./ledger.json?t=" + Date.now(), { cache: "no-store" });
-          if (lr.ok) {
-            const led = await lr.json();
-            const fromLed = (Array.isArray(led) ? led : []).filter(function(tk) {
-              const s = String(tk.status || "").toLowerCase();
-              return s === "win" || s === "loss" || s === "push";
-            }).map(function(tk) {
-              return {
-                date: tk.date,
-                game: (tk.away || "?") + " @ " + (tk.home || "?"),
-                market: tk.market,
-                side: tk.side,
-                result: tk.result || (String(tk.status).toLowerCase() === "win" ? "W" : (String(tk.status).toLowerCase() === "loss" ? "L" : "P")),
-                status: tk.status,
-                units: tk.pnl != null ? tk.pnl : tk.units,
-                odds: tk.odds,
-                final: tk.final || "",
-                is_playoff: tk.is_playoff,
-                season_phase: tk.season_phase
-              };
-            });
-            const existing = data.recent || [];
-            if (fromLed.length && existing.length < Math.max(fromLed.length, 1)) {
-              const seen = {};
-              const merged = [];
-              function rowKey(x) { return [x.date, x.market, x.side, x.game].join("|"); }
-              existing.concat(fromLed).forEach(function(x) {
-                const k = rowKey(x);
-                if (seen[k]) return;
-                seen[k] = 1;
-                merged.push(x);
-              });
-              merged.sort(function(a, b) {
-                return String(b.date || "").localeCompare(String(a.date || ""));
-              });
-              data.recent = merged;
-            } else if (!(existing && existing.length) && fromLed.length) {
-              data.recent = fromLed;
-            }
-          }
-        } catch (ledErr) {
-          console.warn("ledger merge failed", ledErr);
-        }
-        lastPayload = data;
-        // Scores first (free MLB API) so client grading can settle Finals on refresh
-        try {
-          const today = todayEtStr();
-          const board = data.slate_date || "";
-          // Display day = today's slate after 8am ET; overnight keep board date
-          let displayDay = today;
-          if (board && board < today && etHourMinute() < 8 * 60) displayDay = board;
-          else if (board && board === today) displayDay = board;
-
-          // Primary: games shown on Slate
-          const displayGames = await fetchScores(displayDay);
-          if (displayGames && displayGames.length) mlbDayGames = displayGames;
-
-          // Secondary: other day for grading only — do NOT overwrite mlbDayGames
-          if (board && board !== displayDay) {
-            try { await fetchScores(board); } catch (e2) {}
-          }
-          if (displayDay === today) {
-            const yest = (() => {
-              const d = new Date(Date.now() + clockOffsetMs - 86400000);
-              return new Intl.DateTimeFormat("en-CA", {
-                timeZone: "America/New_York",
-                year: "numeric", month: "2-digit", day: "2-digit"
-              }).format(d);
-            })();
-            if (yest !== displayDay) {
-              try { await fetchScores(yest); } catch (e3) {}
-            }
-          }
-        } catch (se) {
-          console.warn("score fetch failed", se);
-        }
-        // Grade + paint picks/results/ytd using scoreMap
-        render(data);
+        const picksUrl = appUrl("picks.json") + "?t=" + Date.now();
+        const r = await fetch(picksUrl, { cache: "no-store" });
+        if (!r.ok) throw new Error("picks.json HTTP " + r.status + " @ " + picksUrl);
+        data = await r.json();
       } catch (e) {
-        document.getElementById("today").innerHTML = `<div class="empty">Could not load picks.json</div>`;
-      } finally {
-        btn.textContent = prev;
-        btn.disabled = false;
+        console.error("picks load failed", e);
+        const el = document.getElementById("today");
+        if (el) {
+          el.innerHTML = '<div class="empty">Could not load picks.json<br/><span class="sub">'
+            + String(e && e.message ? e.message : e)
+            + '<br/>Open: ' + appUrl("picks.json") + '</span></div>';
+        }
+        if (btn) { btn.textContent = prev; btn.disabled = false; }
+        return;
       }
+      // Merge ledger graded history for Results
+      try {
+        const lr = await fetch(appUrl("ledger.json") + "?t=" + Date.now(), { cache: "no-store" });
+        if (lr.ok) {
+          const led = await lr.json();
+          const fromLed = (Array.isArray(led) ? led : []).filter(function(tk) {
+            const s = String(tk.status || "").toLowerCase();
+            return s === "win" || s === "loss" || s === "push";
+          }).map(function(tk) {
+            return {
+              date: tk.date,
+              game: (tk.away || "?") + " @ " + (tk.home || "?"),
+              market: tk.market,
+              side: tk.side,
+              result: tk.result || (String(tk.status).toLowerCase() === "win" ? "W" : (String(tk.status).toLowerCase() === "loss" ? "L" : "P")),
+              status: tk.status,
+              units: tk.pnl != null ? tk.pnl : tk.units,
+              odds: tk.odds,
+              final: tk.final || "",
+              is_playoff: tk.is_playoff,
+              season_phase: tk.season_phase
+            };
+          });
+          const existing = data.recent || [];
+          if (fromLed.length) {
+            const seen = {};
+            const merged = [];
+            function rowKey(x) { return [x.date, x.market, x.side, x.game].join("|"); }
+            fromLed.concat(existing).forEach(function(x) {
+              const k = rowKey(x);
+              if (seen[k]) return;
+              seen[k] = 1;
+              merged.push(x);
+            });
+            merged.sort(function(a, b) {
+              return String(b.date || "").localeCompare(String(a.date || ""));
+            });
+            data.recent = merged;
+          }
+        }
+      } catch (ledErr) {
+        console.warn("ledger merge failed", ledErr);
+      }
+      lastPayload = data;
+      // Scores (non-fatal)
+      try {
+        const today = todayEtStr();
+        const board = data.slate_date || "";
+        let displayDay = today;
+        if (board && board < today && etHourMinute() < 8 * 60) displayDay = board;
+        else if (board && board === today) displayDay = board;
+        const displayGames = await fetchScores(displayDay);
+        if (displayGames && displayGames.length) mlbDayGames = displayGames;
+        if (board && board !== displayDay) {
+          try { await fetchScores(board); } catch (e2) {}
+        }
+        if (displayDay === today) {
+          const yest = (function() {
+            const d0 = new Date(Date.now() + clockOffsetMs - 86400000);
+            return new Intl.DateTimeFormat("en-CA", {
+              timeZone: "America/New_York",
+              year: "numeric", month: "2-digit", day: "2-digit"
+            }).format(d0);
+          })();
+          if (yest !== displayDay) {
+            try { await fetchScores(yest); } catch (e3) {}
+          }
+        }
+      } catch (se) {
+        console.warn("score fetch failed", se);
+      }
+      // Paint UI — never mislabel as picks.json failure
+      try {
+        render(data);
+      } catch (re) {
+        console.error("render failed", re);
+        const el = document.getElementById("today");
+        if (el) {
+          el.innerHTML = '<div class="empty">App render error<br/><span class="sub">'
+            + String(re && re.message ? re.message : re) + '</span></div>';
+        }
+        // Still try Results from raw recent
+        try {
+          const recentEl = document.getElementById("recent");
+          const rows = data.recent || [];
+          if (recentEl && rows.length) {
+            recentEl.innerHTML = '<div class="note" style="margin-bottom:8px">' + rows.length
+              + ' graded tickets (fallback list)</div>'
+              + rows.slice(0, 60).map(function(r) {
+                return '<div class="card ticket" style="margin-bottom:8px;padding:10px">'
+                  + '<div><strong>' + (r.date || "") + '</strong> · ' + (r.market || "") + '</div>'
+                  + '<div>' + (r.side || "") + '</div>'
+                  + '<div>' + (r.status || r.result || "") + ' · '
+                  + (r.units != null ? r.units : "") + 'u</div>'
+                  + '<div class="sub">' + (r.final || r.game || "") + '</div></div>';
+              }).join("");
+          }
+        } catch (re2) {
+          console.warn("results fallback failed", re2);
+        }
+      }
+      if (btn) { btn.textContent = prev; btn.disabled = false; }
     }
     document.getElementById("refreshBtn").onclick = load;
     syncNetworkTime();

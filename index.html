@@ -333,19 +333,50 @@
       background: var(--card); border: 1px solid var(--line); border-radius: 14px;
       margin-bottom: 10px; overflow: hidden;
     }
+    /* iOS Safari: flex on <summary> prevents toggle — keep summary as block */
     details.day-group > summary {
-      list-style: none; cursor: pointer; padding: 12px 14px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 13px; font-weight: 600; color: var(--text);
+      list-style: none;
+      cursor: pointer;
+      padding: 12px 14px;
+      padding-right: 28px;
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mute);
       user-select: none;
+      -webkit-user-select: none;
+      position: relative;
     }
     details.day-group > summary::-webkit-details-marker { display: none; }
+    details.day-group > summary::marker { content: ""; }
+    details.day-group > summary .sum-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    details.day-group > summary .sum-date {
+      color: var(--green);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    details.day-group > summary .day-meta {
+      font-size: 11px;
+      color: var(--mute);
+      font-weight: 500;
+      text-align: right;
+    }
     details.day-group > summary::after {
-      content: "▸"; color: var(--mute); font-size: 12px; transition: transform .15s;
+      content: "▸";
+      color: var(--mute);
+      font-size: 12px;
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
     }
     details.day-group[open] > summary::after { content: "▾"; }
     details.day-group .day-body { padding: 0 10px 10px; }
-    details.day-group .day-meta { font-size: 11px; color: var(--mute); font-weight: 500; }
     .empty { text-align: center; color: var(--mute); padding: 28px 12px; border: 1px dashed var(--line); border-radius: 16px; }
     .pick-side { font-size: 18px; font-weight: 700; margin: 4px 0; }
     .edge { color: var(--green); font-size: 13px; }
@@ -1424,6 +1455,109 @@
       };
     }
 
+
+    function paintResultsFallback(rows) {
+      const recentEl = document.getElementById("recent");
+      if (!recentEl) return;
+      const list = (rows || []).slice();
+      if (!list.length) {
+        recentEl.innerHTML = '<div class="empty">No graded tickets yet.</div>';
+        return;
+      }
+      const byDate = {};
+      list.forEach(function(r) {
+        const dt = r.date || "Unknown";
+        if (!byDate[dt]) byDate[dt] = [];
+        byDate[dt].push(r);
+      });
+      const dates = Object.keys(byDate).sort().reverse();
+      recentEl.innerHTML = dates.map(function(dt, idx) {
+        const dayRows = byDate[dt];
+        let u = 0, w = 0, l = 0;
+        dayRows.forEach(function(r) {
+          const x = Number(r.units);
+          if (!Number.isNaN(x)) u += x;
+          const s = String(r.status || r.result || "").toLowerCase();
+          if (s === "win" || s === "w") w++;
+          else if (s === "loss" || s === "l") l++;
+        });
+        const sign = u > 0 ? "+" : "";
+        const meta = dayRows.length + (dayRows.length === 1 ? " Ticket" : " Tickets")
+          + " · " + w + "W-" + l + "L · " + sign + u.toFixed(2) + "u";
+        const open = idx === 0 ? " open" : "";
+        const cards = dayRows.map(function(r) {
+          const parts = String(r.game || "").split(" @ ");
+          const away = parts[0] || r.away || "";
+          const home = parts[1] || r.home || "";
+          const st = String(r.status || r.result || "").toLowerCase();
+          const won = st === "win" || st === "w";
+          const lost = st === "loss" || st === "l";
+          const glow = won ? " glow-win" : (lost ? " glow-loss" : "");
+          const cls = won ? "win" : (lost ? "loss" : "");
+          const uVal = Number(r.units);
+          let uStr = "";
+          if (Number.isFinite(uVal)) {
+            if (Math.abs(uVal - 1) < 1e-9) uStr = "+1u";
+            else if (Math.abs(uVal + 1) < 1e-9) uStr = "-1u";
+            else uStr = (uVal > 0 ? "+" : "") + (Math.abs(uVal - Math.round(uVal)) < 1e-9
+              ? String(Math.round(uVal)) : uVal.toFixed(2)) + "u";
+          }
+          const outcome = won ? "WON" : (lost ? "LOST" : "");
+          const outcomeCls = won ? "won-tag" : (lost ? "lost-tag" : "");
+          let oddsStr = "";
+          try { oddsStr = r.odds != null ? fmtOdds(r.odds) : ""; } catch (e) { oddsStr = String(r.odds || ""); }
+          let title = r.side || "";
+          let sub = String(r.market || "").toUpperCase();
+          try {
+            const h = pickHeadline({ market: r.market, side: r.side, away: away, home: home, odds: r.odds });
+            if (h && h.title) title = h.title;
+            if (h && h.sub) sub = h.sub;
+          } catch (e) {}
+          let aw = "–", hm = "–";
+          const fm = String(r.final || "").match(/(\d+)\s*-\s*(\d+)/);
+          if (fm) { aw = fm[1]; hm = fm[2]; }
+          let aAb = away, hAb = home;
+          try { aAb = teamAbbr(away).toUpperCase(); hAb = teamAbbr(home).toUpperCase(); } catch (e) {}
+          return (
+            '<div class="card ticket ' + cls + glow + '">'
+            + '<div class="ticket-top">'
+            + '<div class="ticket-title-block">'
+            + '<div class="ticket-title">' + title + '</div>'
+            + '<div class="ticket-sub">' + sub + '</div>'
+            + '</div>'
+            + '<div class="ticket-odds-block">'
+            + '<div class="ticket-odds-row">'
+            + '<span class="ticket-odds">' + oddsStr + '</span>'
+            + (outcome ? '<span class="' + outcomeCls + '">' + outcome + '</span>' : '')
+            + '</div>'
+            + '<div class="ticket-units ' + (uVal >= 0 ? "pos" : "neg") + '">' + uStr + '</div>'
+            + '</div></div>'
+            + '<div class="ticket-score">'
+            + '<div class="ts-team"><span class="ts-abbr">' + aAb + '</span><span class="ts-runs">' + aw + '</span></div>'
+            + '<div class="ts-mid">Final</div>'
+            + '<div class="ts-team right"><span class="ts-runs">' + hm + '</span><span class="ts-abbr">' + hAb + '</span></div>'
+            + '</div></div>'
+          );
+        }).join("");
+        let dateLabel = dt;
+        try { dateLabel = fmtDisplayDate(dt); } catch (e) {}
+        return '<details class="day-group"' + open + '>'
+          + '<summary><div class="sum-row"><span class="sum-date">' + dateLabel + '</span>'
+          + '<span class="day-meta">' + meta + '</span></div></summary>'
+          + '<div class="day-body">' + cards + '</div></details>';
+      }).join("");
+      // Explicit toggle — reliable on iOS PWA when native details is flaky
+      recentEl.querySelectorAll("details.day-group").forEach(function(det) {
+        const sum = det.querySelector("summary");
+        if (!sum || sum._toggleBound) return;
+        sum._toggleBound = true;
+        sum.addEventListener("click", function(ev) {
+          ev.preventDefault();
+          det.open = !det.open;
+        });
+      });
+    }
+
 function render(d) {
       // Top-right stamp is the live network/local clock — not picks.updated
       tickClock();
@@ -1573,7 +1707,7 @@ function render(d) {
       lastPayload = d;
       renderSlate(d.slate || [], scoreMap);
 
-      // Results tab: graded only — WIN/LOSS stacked over units
+      // Results tab: graded only — collapsible by date
       try {
         function isJunkResult(r) {
           const side = String(r.side || "");
@@ -1611,108 +1745,15 @@ function render(d) {
           return s === "win" || s === "w" || s === "loss" || s === "l" || s === "push" || s === "p"
             || (Number(r.units) !== 0 && Number.isFinite(Number(r.units)));
         });
-        const byDate = {};
-        for (const r of recentRows) {
-          const dt = r.date || "Unknown";
-          if (!byDate[dt]) byDate[dt] = [];
-          byDate[dt].push(r);
-        }
-        const dates = Object.keys(byDate).sort().reverse();
-        function daySummary(list) {
-          let u = 0, w = 0, l = 0;
-          for (const r of list) {
-            const x = Number(r.units);
-            if (!Number.isNaN(x)) u += x;
-            const s = (r.status || "").toLowerCase();
-            const res = String(r.result || "").toLowerCase();
-            if (s === "win" || s === "w" || res === "win" || res === "w" || res === "won") w++;
-            else if (s === "loss" || s === "l" || res === "loss" || res === "l" || res === "lost") l++;
-            else if (Number(r.units) > 0) w++;
-            else if (Number(r.units) < 0) l++;
-          }
-          const sign = u > 0 ? "+" : "";
-          const n = list.length;
-          const ticketWord = n === 1 ? "Ticket" : "Tickets";
-          return n + " " + ticketWord + " · " + w + "W-" + l + "L · " + sign + u.toFixed(2) + "u";
-        }
-        const recentEl = document.getElementById("recent");
-        if (!dates.length) {
-          recentEl.innerHTML = '<div class="empty">No graded tickets yet. After finals, the next cron pass paints W/L here.<br/><span class="sub">Payload recent: '
-            + String((d.recent || []).length) + '</span></div>';
-        } else {
-          recentEl.innerHTML = dates.map(function(dt, idx) {
-            const list = byDate[dt];
-            const open = idx === 0 ? " open" : "";
-            const cards = list.map(function(r) {
-              const head = pickHeadline({
-                market: r.market,
-                side: r.side,
-                away: String(r.game || "").split(" @ ")[0],
-                home: String(r.game || "").split(" @ ")[1],
-                odds: r.odds
-              });
-              const parts = String(r.game || "").split(" @ ");
-              const away = parts[0] || "";
-              const home = parts[1] || "";
-              let aw = "–", hm = "–";
-              const fm = String(r.final || "").match(/(\d+)\s*-\s*(\d+)/);
-              if (fm) { aw = fm[1]; hm = fm[2]; }
-              const u = Number(r.units);
-              let uStr = "";
-              if (Number.isFinite(u)) {
-                if (Math.abs(u - 1) < 1e-9) uStr = "+1u";
-                else if (Math.abs(u + 1) < 1e-9) uStr = "-1u";
-                else if (Math.abs(u - Math.round(u)) < 1e-9) uStr = (u > 0 ? "+" : "") + Math.round(u) + "u";
-                else uStr = (u > 0 ? "+" : "") + u.toFixed(2).replace(/\.?0+$/, "") + "u";
-              }
-              const oddsStr = r.odds != null ? fmtOdds(r.odds) : "";
-              const st = String(r.status || r.result || "").toLowerCase();
-              let outcome = "";
-              let outcomeCls = "";
-              if (st === "win" || st === "w") { outcome = "WON"; outcomeCls = "won-tag"; }
-              else if (st === "loss" || st === "l") { outcome = "LOST"; outcomeCls = "lost-tag"; }
-              else if (st === "push" || st === "p") { outcome = "PUSH"; outcomeCls = "push-tag"; }
-              const glowCls = (st === "win" || st === "w") ? " glow-win" : ((st === "loss" || st === "l") ? " glow-loss" : "");
-              return (
-                '<div class="card ticket ' + cardClass(r) + glowCls + '">'
-                + '<div class="ticket-top">'
-                + '<div class="ticket-title-block">'
-                + '<div class="ticket-title">' + (head.title || "") + '</div>'
-                + '<div class="ticket-sub">' + (head.sub || "") + '</div>'
-                + '</div>'
-                + '<div class="ticket-odds-block">'
-                + '<div class="ticket-odds-row">'
-                + '<span class="ticket-odds">' + oddsStr + '</span>'
-                + (outcome ? '<span class="' + outcomeCls + '">' + outcome + '</span>' : '')
-                + '</div>'
-                + '<div class="ticket-units ' + (u >= 0 ? "pos" : "neg") + '">' + uStr + '</div>'
-                + '</div></div>'
-                + '<div class="ticket-score">'
-                + '<div class="ts-team">'
-                + '<img class="ts-logo" src="' + teamLogo(away) + '" alt="" onerror="this.style.display=\'none\'"/>'
-                + '<span class="ts-abbr">' + teamAbbr(away).toUpperCase() + '</span>'
-                + '<span class="ts-runs">' + aw + '</span>'
-                + '</div>'
-                + '<div class="ts-mid">Final</div>'
-                + '<div class="ts-team right">'
-                + '<span class="ts-runs">' + hm + '</span>'
-                + '<span class="ts-abbr">' + teamAbbr(home).toUpperCase() + '</span>'
-                + '<img class="ts-logo" src="' + teamLogo(home) + '" alt="" onerror="this.style.display=\'none\'"/>'
-                + '</div></div></div>'
-              );
-            }).join("");
-            return '<details class="day-group"' + open + '>'
-              + '<summary><span>' + fmtDisplayDate(dt) + '</span>'
-              + '<span class="day-meta">' + daySummary(list) + '</span></summary>'
-              + '<div class="day-body">' + cards + '</div></details>';
-          }).join("");
-        }
+        paintResultsFallback(recentRows);
       } catch (reErr) {
         console.warn("Results render failed", reErr);
-        const recentEl = document.getElementById("recent");
-        if (recentEl) {
-          recentEl.innerHTML = '<div class="empty">Results failed to render. Pull to refresh.<br/><span class="sub">'
-            + String(reErr && reErr.message ? reErr.message : reErr) + '</span></div>';
+        try { paintResultsFallback(d.recent || []); }
+        catch (e2) {
+          const recentEl = document.getElementById("recent");
+          if (recentEl) {
+            recentEl.innerHTML = '<div class="empty">Results failed to render.</div>';
+          }
         }
       }
 
@@ -1960,22 +2001,9 @@ function render(d) {
           el.innerHTML = '<div class="empty">App render error<br/><span class="sub">'
             + String(re && re.message ? re.message : re) + '</span></div>';
         }
-        // Still try Results from raw recent
+        // Still try Results from raw recent — collapsible by date
         try {
-          const recentEl = document.getElementById("recent");
-          const rows = data.recent || [];
-          if (recentEl && rows.length) {
-            recentEl.innerHTML = '<div class="note" style="margin-bottom:8px">' + rows.length
-              + ' graded tickets (fallback list)</div>'
-              + rows.slice(0, 60).map(function(r) {
-                return '<div class="card ticket" style="margin-bottom:8px;padding:10px">'
-                  + '<div><strong>' + (r.date || "") + '</strong> · ' + (r.market || "") + '</div>'
-                  + '<div>' + (r.side || "") + '</div>'
-                  + '<div>' + (r.status || r.result || "") + ' · '
-                  + (r.units != null ? r.units : "") + 'u</div>'
-                  + '<div class="sub">' + (r.final || r.game || "") + '</div></div>';
-              }).join("");
-          }
+          paintResultsFallback(data.recent || []);
         } catch (re2) {
           console.warn("results fallback failed", re2);
         }

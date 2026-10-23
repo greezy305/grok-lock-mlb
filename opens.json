@@ -3548,5 +3548,15 @@
     "ou_line": 6.5,
     "ou_over": -125,
     "ou_under": 105
+  },
+  "e4c03eec29795f56b6b06c313d3af271": {
+    "away": "Tampa Bay Rays",
+    "home": "Milwaukee Brewers",
+    "ml_away": 160,
+    "ml_home": -190,
+    "rl_away": -150,
+    "ou_line": 6.5,
+    "ou_over": -115,
+    "ou_under": -105
   }
 }

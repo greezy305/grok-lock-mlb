@@ -1,12 +1,10 @@
 {
-  "new_tickets": 1,
-  "new_playoff_tickets": 1,
+  "new_tickets": 0,
+  "new_playoff_tickets": 0,
   "picks_today": 1,
   "day": "2026-10-23",
   "phase": "playoffs",
   "book": "hardrockbet",
-  "updated": "2026-10-23 14:37 ET",
-  "titles": [
-    "[PS] RL \u00b7 Tampa Bay Rays @ Milwaukee Brewers \u00b7 Tampa Bay Rays +1.5 -150"
-  ]
+  "updated": "2026-10-23 16:48 ET",
+  "titles": []
 }

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23 19:54 ET",
+  "updated": "2026-10-24 13:31 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -17,11 +17,11 @@
       "live_units": 0.0
     },
     "rl": {
-      "bets": 40,
-      "wr": 0.525,
-      "units": -0.55,
-      "live_bets": 40,
-      "live_units": -0.55
+      "bets": 41,
+      "wr": 0.537,
+      "units": 0.45,
+      "live_bets": 41,
+      "live_units": 0.45
     },
     "ou": {
       "bets": 47,
@@ -30,9 +30,9 @@
       "live_bets": 47,
       "live_units": 1.27
     },
-    "stacked_units": 0.72,
-    "live_units": 0.72,
-    "bets": 87,
+    "stacked_units": 1.72,
+    "live_units": 1.72,
+    "bets": 88,
     "playoffs": {
       "ml": {
         "bets": 0,
@@ -42,11 +42,11 @@
         "live_units": 0.0
       },
       "rl": {
-        "bets": 5,
-        "wr": 0.6,
-        "units": 0.5,
-        "live_bets": 5,
-        "live_units": 0.5
+        "bets": 6,
+        "wr": 0.667,
+        "units": 1.5,
+        "live_bets": 6,
+        "live_units": 1.5
       },
       "ou": {
         "bets": 12,
@@ -55,9 +55,9 @@
         "live_bets": 12,
         "live_units": -4.18
       },
-      "stacked_units": -3.68,
-      "live_units": -3.68,
-      "bets": 17
+      "stacked_units": -2.68,
+      "live_units": -2.68,
+      "bets": 18
     },
     "regular": {
       "ml": {
@@ -100,50 +100,39 @@
       "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: rich_bp v2 \u2014 40% residual shrink, Over gap\u22651.0 / Under gap\u22650.75, juice \u2265 \u2212120."
     }
   ],
-  "slate_date": "2026-10-23",
+  "slate_date": "2026-10-24",
   "slate": [
     {
       "time": "8:00 PM ET",
       "away": "Tampa Bay Rays",
       "home": "Milwaukee Brewers",
-      "ml_away": "+160",
-      "ml_home": "-190",
-      "rl_away": "-150",
-      "rl_home": "+125",
+      "ml_away": "+100",
+      "ml_home": "-120",
+      "rl_away": "",
+      "rl_home": "-220",
       "ou_line": 6.5,
-      "ou_over": "-115",
-      "ou_under": "-105",
+      "ou_over": "-110",
+      "ou_under": "-110",
       "note": "hardrockbet",
       "is_playoff": true,
       "season_phase": "playoffs",
-      "series_line": "WS \u00b7 Game 1"
+      "series_line": "WS \u00b7 Game 2 \u00b7 MIL leads 1-0"
     }
   ],
-  "picks": [
+  "picks": [],
+  "picks_status": "No lock this pass.",
+  "recent": [
     {
       "date": "2026-10-23",
+      "game": "Tampa Bay Rays @ Milwaukee Brewers",
       "market": "RL",
-      "away": "Tampa Bay Rays",
-      "home": "Milwaukee Brewers",
       "side": "Tampa Bay Rays +1.5 -150",
-      "time": "8:00 PM ET",
-      "edge": "playoff dog +1.5 \u00b7 juice -150 \u00b7 ML +160",
-      "units": "1u",
-      "note": "hardrockbet",
-      "status": "pending",
-      "result": "",
-      "pnl": 0.0,
-      "final": "Tampa Bay Rays 0-0 Milwaukee Brewers",
+      "result": "W",
+      "status": "win",
+      "units": 1.0,
       "odds": -150,
-      "now_odds": -150,
-      "now_side": "Tampa Bay Rays +1.5 -150",
-      "ou_line": null,
-      "check": "2:00 PM ET check \u00b7 posted 2:37 PM ET",
-      "posted_at": "2026-10-23 14:37 ET"
-    }
-  ],
-  "picks_status": "1 model ticket(s) \u00b7 hardrockbet",
-  "recent": [
+      "final": "Tampa Bay Rays 2-3 Milwaukee Brewers"
+    },
     {
       "date": "2026-10-14",
       "game": "Milwaukee Brewers @ Los Angeles Dodgers",

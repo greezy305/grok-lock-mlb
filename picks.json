@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-24 19:29 ET",
+  "updated": "2026-10-25 13:45 ET",
   "unit_dollars": 50,
   "season": 2026,
-  "season_phase": "playoffs",
+  "season_phase": "regular",
   "playoff_live_locks": true,
   "playoff_rl_live": true,
   "playoff_ml_live": true,
@@ -100,25 +100,8 @@
       "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: rich_bp v2 \u2014 40% residual shrink, Over gap\u22651.0 / Under gap\u22650.75, juice \u2265 \u2212120."
     }
   ],
-  "slate_date": "2026-10-24",
-  "slate": [
-    {
-      "time": "8:00 PM ET",
-      "away": "Tampa Bay Rays",
-      "home": "Milwaukee Brewers",
-      "ml_away": "+100",
-      "ml_home": "-120",
-      "rl_away": "",
-      "rl_home": "-210",
-      "ou_line": 6.5,
-      "ou_over": "-110",
-      "ou_under": "-110",
-      "note": "hardrockbet",
-      "is_playoff": true,
-      "season_phase": "playoffs",
-      "series_line": "WS \u00b7 Game 2 \u00b7 MIL leads 1-0"
-    }
-  ],
+  "slate_date": "2026-10-25",
+  "slate": [],
   "picks": [],
   "picks_status": "No lock this pass.",
   "recent": [

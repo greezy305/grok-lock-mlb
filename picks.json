@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26 20:39 ET",
+  "updated": "2026-10-27 15:33 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -100,23 +100,23 @@
       "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: rich_bp v2 \u2014 40% residual shrink, Over gap\u22651.0 / Under gap\u22650.75, juice \u2265 \u2212120."
     }
   ],
-  "slate_date": "2026-10-26",
+  "slate_date": "2026-10-27",
   "slate": [
     {
-      "time": "8:10 PM ET",
+      "time": "8:00 PM ET",
       "away": "Milwaukee Brewers",
       "home": "Tampa Bay Rays",
-      "ml_away": "+105",
-      "ml_home": "-140",
-      "rl_away": "-260",
-      "rl_home": "+185",
-      "ou_line": 5.5,
-      "ou_over": "-130",
-      "ou_under": "+100",
+      "ml_away": "-125",
+      "ml_home": "+105",
+      "rl_away": "",
+      "rl_home": "-165",
+      "ou_line": 7.5,
+      "ou_over": "+110",
+      "ou_under": "-130",
       "note": "hardrockbet",
       "is_playoff": true,
       "season_phase": "playoffs",
-      "series_line": "WS \u00b7 Game 3 \u00b7 MIL leads 2-0"
+      "series_line": "WS \u00b7 Game 4 \u00b7 MIL leads 3-0"
     }
   ],
   "picks": [],

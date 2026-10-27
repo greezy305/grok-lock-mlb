@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27 15:33 ET",
+  "updated": "2026-10-27 17:36 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -106,8 +106,8 @@
       "time": "8:00 PM ET",
       "away": "Milwaukee Brewers",
       "home": "Tampa Bay Rays",
-      "ml_away": "-125",
-      "ml_home": "+105",
+      "ml_away": "-120",
+      "ml_home": "+100",
       "rl_away": "",
       "rl_home": "-165",
       "ou_line": 7.5,

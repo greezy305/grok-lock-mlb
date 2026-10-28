@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27 17:36 ET",
+  "updated": "2026-10-27 20:37 ET",
   "unit_dollars": 50,
   "season": 2026,
   "season_phase": "playoffs",
@@ -7,7 +7,7 @@
   "playoff_rl_live": true,
   "playoff_ml_live": true,
   "playoff_ou_live": true,
-  "book": "hardrockbet",
+  "book": null,
   "ytd": {
     "ml": {
       "bets": 0,
@@ -106,17 +106,14 @@
       "time": "8:00 PM ET",
       "away": "Milwaukee Brewers",
       "home": "Tampa Bay Rays",
-      "ml_away": "-120",
-      "ml_home": "+100",
+      "ml_away": "",
+      "ml_home": "",
       "rl_away": "",
-      "rl_home": "-165",
-      "ou_line": 7.5,
-      "ou_over": "+110",
-      "ou_under": "-130",
-      "note": "hardrockbet",
-      "is_playoff": true,
-      "season_phase": "playoffs",
-      "series_line": "WS \u00b7 Game 4 \u00b7 MIL leads 3-0"
+      "rl_home": "",
+      "ou_line": null,
+      "ou_over": "",
+      "ou_under": "",
+      "note": "final/no book line"
     }
   ],
   "picks": [],

@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-28 21:07 ET",
+  "updated": "2026-10-29 15:46 ET",
   "unit_dollars": 50,
   "season": 2026,
-  "season_phase": "playoffs",
+  "season_phase": "regular",
   "playoff_live_locks": true,
   "playoff_rl_live": true,
   "playoff_ml_live": true,
@@ -100,22 +100,8 @@
       "rule": "RS: |P(over) \u2212 52.4%| \u2265 4%, lines 5.5\u201314.5. Playoffs: rich_bp v2 \u2014 40% residual shrink, Over gap\u22651.0 / Under gap\u22650.75, juice \u2265 \u2212120."
     }
   ],
-  "slate_date": "2026-10-28",
-  "slate": [
-    {
-      "time": "8:00 PM ET",
-      "away": "Milwaukee Brewers",
-      "home": "Tampa Bay Rays",
-      "ml_away": "",
-      "ml_home": "",
-      "rl_away": "",
-      "rl_home": "",
-      "ou_line": null,
-      "ou_over": "",
-      "ou_under": "",
-      "note": "final/no book line"
-    }
-  ],
+  "slate_date": "2026-10-29",
+  "slate": [],
   "picks": [],
   "picks_status": "No lock this pass.",
   "recent": [

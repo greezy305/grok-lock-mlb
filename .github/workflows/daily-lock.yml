@@ -1,10 +1,13 @@
 name: Daily lock
 
+# OFF-SEASON PAUSE — scheduled runs disabled until 2027 MLB regular season.
+# Uncomment the three cron lines when Opening Day approaches (~late March 2027).
+# Manual runs still work: Actions → Daily lock → Run workflow.
 on:
-  schedule:
-    - cron: "30 14 * * *"  # 10:30 AM ET (EDT)
-    - cron: "0 18 * * *"   # 2:00 PM ET
-    - cron: "30 21 * * *"  # 5:30 PM ET (EDT)
+  # schedule:
+  #   - cron: "30 14 * * *"  # 10:30 AM ET
+  #   - cron: "0 18 * * *"   # 2:00 PM ET
+  #   - cron: "30 21 * * *"  # 5:30 PM ET
   workflow_dispatch:
     inputs:
       test_notify:
